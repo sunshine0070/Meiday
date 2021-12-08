@@ -64,3 +64,9 @@ C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\obj\x86\D
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\WpfAnimatedGif.dll
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\WpfAnimatedGif.pdb
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\WpfAnimatedGif.xml
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\obj\x86\Debug\Window10.g.cs
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\obj\x86\Debug\Window10.baml
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.DataVisualization.dll
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.DataVisualization.xml
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.Data.dll
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.Data.xml
