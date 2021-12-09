@@ -72,3 +72,7 @@ C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.Data.xml
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.DataServices.dll
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.DataServices.xml
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\obj\x86\Debug\WindowInsurance01.g.cs
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\obj\x86\Debug\WindowInsurance02.g.cs
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\obj\x86\Debug\WindowInsurance01.baml
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\obj\x86\Debug\WindowInsurance02.baml

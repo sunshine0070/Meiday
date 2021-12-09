@@ -34,7 +34,7 @@
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
         <!--logo-->
-        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="200" Width="200" Source="Resource/meiday.png" VerticalAlignment="Top"/>
+        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="200" Width="200" Source="MEIDAY.PNG" VerticalAlignment="Top"/>
         <!--title-->
         <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,-90,0,0" 
                    TextAlignment="Center" FontSize="36" FontWeight="Bold"
