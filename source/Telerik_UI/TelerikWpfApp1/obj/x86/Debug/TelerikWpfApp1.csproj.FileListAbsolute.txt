@@ -70,3 +70,5 @@ C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.DataVisualization.xml
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.Data.dll
 C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.Data.xml
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.DataServices.dll
+C:\Users\user\Documents\GitHub\Mayday\source\Telerik_UI\TelerikWpfApp1\bin\Debug\Telerik.Windows.Controls.DataServices.xml
