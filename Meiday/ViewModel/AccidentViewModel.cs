@@ -12,7 +12,7 @@ using static Meiday.LoginViewModel;
 using System.Windows.Input;
 using System.Windows;
 
-namespace Meiday.ViewModel
+namespace Meiday
 {
     public class AccidentViewModel : ViewModelBase
     {
@@ -144,14 +144,14 @@ namespace Meiday.ViewModel
 
 
 
-        ObservableCollection<ment> _sampleDatas = null;
-        public ObservableCollection<ment> SampleDatas
+        ObservableCollection<insuaranceM> _sampleDatas = null;
+        public ObservableCollection<insuaranceM> SampleDatas
         {
             get
             {
                 if (_sampleDatas == null)
                 {
-                    _sampleDatas = new ObservableCollection<ment>();
+                    _sampleDatas = new ObservableCollection<insuaranceM>();
                     DataSet ds = new DataSet();
                     string query = @" select i.INSURANCE_NAME InsuName, i.INSURANCE_PRODUCT InsuProduct
                               from insurance i
@@ -161,7 +161,7 @@ namespace Meiday.ViewModel
 
                     for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
                     {
-                        ment obj = new ment()
+                        insuaranceM obj = new insuaranceM()
                         {
                             InsuName = ds.Tables[0].Rows[idx]["InsuName"].ToString(),
                             InsuProduct = ds.Tables[0].Rows[idx]["InsuProduct"].ToString(),

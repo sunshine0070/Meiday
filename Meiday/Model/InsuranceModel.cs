@@ -13,6 +13,6 @@ namespace Meiday.Model
 		public string patientName { get; set; } //환자명
 		public bool IsChecked02 { get; set; } //보험체크 
 		public string InsuName { get; set; } //보험회사명
-		public string InsuProduct { get; set; } //보험상품ㄴ
+		public string InsuProduct { get; set; } //보험상품
 	}
 }

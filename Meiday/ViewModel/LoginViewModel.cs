@@ -6,11 +6,11 @@ using System.Collections.ObjectModel;
 using System;
 using System.Windows;
 
-namespace Meiday.ViewModel
+namespace Meiday
 {
     public class LoginViewModel : ViewModelBase
     {
-        ment _pa = new ment();
+        insuaranceM _pa = new insuaranceM();
 
 
         //아래 두 필드는 속성으로 구현되어 있다. //출력될 문자들을 담아둘 변수
