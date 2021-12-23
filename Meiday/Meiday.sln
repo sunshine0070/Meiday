@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meiday", "Meiday.csproj", "{F980D0F3-E782-46DC-B0BD-6BDF962B88FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F980D0F3-E782-46DC-B0BD-6BDF962B88FE}.Debug|x86.ActiveCfg = Debug|x86
+		{F980D0F3-E782-46DC-B0BD-6BDF962B88FE}.Debug|x86.Build.0 = Debug|x86
+		{F980D0F3-E782-46DC-B0BD-6BDF962B88FE}.Release|x86.ActiveCfg = Release|x86
+		{F980D0F3-E782-46DC-B0BD-6BDF962B88FE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBFEC202-9945-440C-8628-62684FFA9F56}
+	EndGlobalSection
+EndGlobal
