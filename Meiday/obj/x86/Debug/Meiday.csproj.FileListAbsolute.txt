@@ -23,3 +23,6 @@ C:\Users\hpaay\Desktop\Meiday\Meiday\obj\x86\Debug\Meiday.csproj.CoreCompileInpu
 C:\Users\hpaay\Desktop\Meiday\Meiday\obj\x86\Debug\Meiday.csproj.CopyComplete
 C:\Users\hpaay\Desktop\Meiday\Meiday\obj\x86\Debug\Meiday.exe
 C:\Users\hpaay\Desktop\Meiday\Meiday\obj\x86\Debug\Meiday.pdb
+C:\Users\hpaay\Desktop\Meiday\Meiday\bin\Debug\WpfAnimatedGif.dll
+C:\Users\hpaay\Desktop\Meiday\Meiday\bin\Debug\WpfAnimatedGif.pdb
+C:\Users\hpaay\Desktop\Meiday\Meiday\bin\Debug\WpfAnimatedGif.xml
