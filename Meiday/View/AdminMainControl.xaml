@@ -5,8 +5,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Meiday.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:View="clr-namespace:Meiday.View"
+             xmlns:ViewModel="clr-namespace:Meiday"
+             d:DesignHeight="800" d:DesignWidth="600" Background="White">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!--logo-->
+        <Image Grid.Row="0" Width="200" Source="/Resource/MEIDAY.PNG" VerticalAlignment="Top" />
+        <!--title-->
+        <TextBlock Grid.Row="1"
+                   TextAlignment="Center" FontSize="36" FontWeight="Bold"
+                   Margin="0 0 0 20"
+                   Text="관리자 페이지"/>
+        <!--navigator-->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="250" Width="200" Margin="0 0 30 0" 
+                    FontSize="20" FontWeight="Bold" Content="로그 조회" 
+                    Command="{Binding SwitchViewCommand}" 
+                    CommandParameter="91"/>
+            <Button Height="250" Width="200" Margin="0 0 0 0" 
+                    FontSize="20" FontWeight="Bold" Content="사용자 통계" 
+                    Command="{Binding SwitchViewCommand}"
+                    CommandParameter="92"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="250" Width="200" Margin="0 20 30 0" 
+                    FontSize="20" FontWeight="Bold" Content="환자 등록" 
+                    Command="{Binding SwitchViewCommand}" 
+                    CommandParameter="93"/>
+            <Button Height="250" Width="200" Margin="0 20 0 0" 
+                    FontSize="20" FontWeight="Bold" Content="이전으로" 
+                    Command="{Binding SwitchViewCommand}" 
+                    CommandParameter="1"/>
+        </StackPanel>
     </Grid>
 </UserControl>
