@@ -46,6 +46,9 @@
         <DataTemplate x:Key="TransferFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:TransferFailDialog />
         </DataTemplate>
+        <DataTemplate x:Key="LoginFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:LoginFailDialog />
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding }">
@@ -86,7 +89,9 @@
                         <DataTrigger Binding="{Binding SwitchView}" Value="103">
                             <Setter Property="ContentTemplate" Value="{StaticResource TransferFailDialogTemplate}" />
                         </DataTrigger>
-
+                        <DataTrigger Binding="{Binding SwitchView}" Value="104">
+                            <Setter Property="ContentTemplate" Value="{StaticResource LoginFailDialogTemplate}" />
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>

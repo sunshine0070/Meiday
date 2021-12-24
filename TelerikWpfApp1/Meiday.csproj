@@ -135,6 +135,9 @@
     <Compile Include="View\CustomModalDialog.xaml.cs">
       <DependentUpon>CustomModalDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LoginFailDialog.xaml.cs">
+      <DependentUpon>LoginFailDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TransferDialog.xaml.cs">
       <DependentUpon>TransferDialog.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CustomModalDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginFailDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

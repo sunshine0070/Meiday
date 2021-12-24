@@ -95,6 +95,12 @@ namespace Meiday
             { 
                 SwitchView = 103;
             }
+            /*if(LoginViewModel.connect_fail_flag == true) // DB에서 환자정보 못받아올 때 화면
+            {
+                SwitchView = 104;
+                LoginViewModel.Init();
+                LoginViewModel.connect_fail_flag = false;
+            } start here, 로그인 화면 뒤에 환자 이름 띄우면 ㄱㅊ을듯*/
         }
     }
 }
