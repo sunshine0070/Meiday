@@ -1,0 +1,43 @@
+﻿<!--Window x:Class="Meiday.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Meiday"
+        mc:Ignorable="d"
+        Title="Window1" Height="800" Width="600">
+    <Grid>
+        <Image x:Name="image1_1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="600" Height="720" Source="/img1.png"/>
+        <Image x:Name="image1_2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="200" Height="200" Margin="0,0,0,-10" Source="/MEIDAY.png"/>
+        <TextBlock x:Name="textBlock1_1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="320" Height="80" FontSize="36" FontWeight="Bold" Margin="0,0,0,70" TextWrapping="NoWrap">
+            화면을 <Run Foreground="#FF3648F4">터치</Run>하세요!
+        </TextBlock>
+    </Grid>
+</Window-->
+
+<UserControl x:Class="Meiday.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Meiday.View"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Height="800" Width="600" Background="White">
+    <Grid>
+        <Grid.InputBindings>
+            <MouseBinding Gesture="LeftClick" Command="{Binding SwitchViewCommand}" CommandParameter="1"/>
+        </Grid.InputBindings>
+        <Image gif:ImageBehavior.AnimatedSource="/Resource/logo33.gif" Margin="0,100,0,0" Width="600" Height="600" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/Resource/logo33.gif"/>
+        <!--Image x:Name="image1_1" HorizontalAlignment="Center" 
+               VerticalAlignment="Top" Width="600" Height="600" 
+               Source="/img1.png"/-->
+        <!--cs코드에서 visibility 조절로 번갈아 띄우기?-->
+        <Image x:Name="image1_2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="200" Height="200" Margin="0,0,0,60" Source="/Resource/MEIDAY.png"/>
+        <TextBlock x:Name="textBlock1_1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="320" Height="80" FontSize="36" FontWeight="Bold" Margin="0,0,0,160" TextWrapping="NoWrap">
+            화면을 <Run Foreground="#FF3648F4">터치</Run>하세요!
+        </TextBlock>
+        <TextBlock x:Name="ForTouch" Width="600" Height="800"/>
+    </Grid>
+</UserControl>
+

@@ -1,0 +1,97 @@
+﻿<Window x:Class="Meiday.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                xmlns:local="clr-namespace:Meiday"
+                xmlns:view="clr-namespace:Meiday.View"
+                xmlns:ViewModel="clr-namespace:Meiday.ViewModel"
+                Title="MainWindow" Height="800" Width="600">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="MainHomeTemplate" DataType="{x:Type local:MainViewModel}">
+            <local:Window1 />
+        </DataTemplate>
+        <DataTemplate x:Key="LoginTemplate" DataType="{x:Type local:MainViewModel}">
+            <local:Window2 />
+        </DataTemplate>
+        <DataTemplate x:Key="Insurance1Template" DataType="{x:Type local:MainViewModel}">
+            <local:WindowInsurance01 />
+        </DataTemplate>
+        <DataTemplate x:Key="Insurance2Template" DataType="{x:Type local:MainViewModel}">
+            <local:WindowInsurance02 />
+        </DataTemplate>
+        <DataTemplate x:Key="Insurance3Template" DataType="{x:Type local:MainViewModel}">
+            <local:WindowInsurance03 />
+        </DataTemplate>
+        <DataTemplate x:Key="AdmindMainTemplate" DataType="{x:Type local:MainViewModel}">
+            <local:AdminMainControl />
+        </DataTemplate>
+        <DataTemplate x:Key="AdminLogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AdminLogControl />
+        </DataTemplate>
+        <DataTemplate x:Key="AdmindUserCountTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AdminUserCountControl />
+        </DataTemplate>
+        <DataTemplate x:Key="AdmindInsertPtTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AdminInsertPtControl />
+        </DataTemplate>
+        <DataTemplate x:Key="AgreementDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AgreementDialog />
+        </DataTemplate>
+        <DataTemplate x:Key="TransferDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:TransferDialog />
+        </DataTemplate>
+        <DataTemplate x:Key="TransferFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:TransferFailDialog />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <ContentControl Content="{Binding }">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="ContentTemplate" Value="{StaticResource MainHomeTemplate}" /> <!--First view-->
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="1">
+                            <Setter Property="ContentTemplate" Value="{StaticResource LoginTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="2">
+                            <Setter Property="ContentTemplate" Value="{StaticResource Insurance1Template}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="3">
+                            <Setter Property="ContentTemplate" Value="{StaticResource Insurance2Template}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="4">
+                            <Setter Property="ContentTemplate" Value="{StaticResource Insurance3Template}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="90">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdmindMainTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="91">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdminLogTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="92">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdmindUserCountTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="93">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdmindInsertPtTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="101">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AgreementDialogTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="102">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TransferDialogTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="103">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TransferFailDialogTemplate}" />
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</Window>
+
+    
