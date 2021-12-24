@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meiday", "Meiday\Meiday.csproj", "{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meiday", "TelerikWpfApp1\Meiday.csproj", "{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}"
 EndProject
-Global 
+Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
