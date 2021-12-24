@@ -1,0 +1,83 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TelerikWpfApp1"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="TelerikWpfApp1.WindowInsurance02"
+        mc:Ignorable="d"
+        Title="WindowInsurance02" Height="800" Width="600" FontSize="16">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <!--logo-->
+        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Height="200" Width="200" Source="MEIDAY.PNG" VerticalAlignment="Top"/>
+        <!--title-->
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,-90,0,0" 
+                   TextAlignment="Center" FontSize="36" FontWeight="Bold"
+                   Text="보험금 청구"/>
+        <!--accidentDate-->
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,0,0,20"
+                   FontWeight="Bold" FontSize="24"
+                   Text="사고(발병)일"/>
+        <telerik:RadCalendar x:Name="accidentDateCalender" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Width="300" Margin="0,0,0,0">
+            
+        </telerik:RadCalendar>
+        <!--accidentInsuredName-->
+        <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,20,0,10"
+                   FontWeight="Bold" FontSize="24"
+                   Text="피보험자" />
+        <telerik:RadListBox x:Name="accidentInsuredName" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Width="300" >
+            <telerik:RadListBoxItem Content="accidentInsuredName"/>
+        </telerik:RadListBox>
+        <!--accidentType-->
+        <TextBlock Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,20,0,10"
+                   FontWeight="Bold" FontSize="24"
+                   Text="사고유형" />
+        <!--radiobutton-->
+        <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center"
+                    Margin="10,10,10,10" Orientation="Horizontal" Background="#FF3675FF">
+            <RadioButton x:Name="accidentTypeDisease" GroupName="accidentType" Margin="30,10,30,10"
+                         FontSize="20" Background="White"  >
+                질병</RadioButton>
+            <RadioButton x:Name="accidentTypeInjury" GroupName="accidentType" Margin="30,10,30,10"
+                         FontSize="20" >
+                상해</RadioButton>
+            <RadioButton x:Name="accidentTypeCar" GroupName="accidentType" Margin="30,10,30,10"
+                         FontSize="20" >
+                교통사고</RadioButton>
+        </StackPanel>
+        <!--button-->
+        <telerik:RadButton x:Name="radButtonBefore" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10"
+                    Content="이전" />
+        <telerik:RadButton x:Name="radButtonAfter" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10" 
+                    Content="다음" />
+    </Grid>
+</Window>
