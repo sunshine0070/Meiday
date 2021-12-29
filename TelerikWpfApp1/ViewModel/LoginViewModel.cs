@@ -35,9 +35,9 @@ namespace Meiday
             get 
             {
                 DataSet ds = new DataSet();
-                string query = @" select a.PT_NAME data_Name
-                              from patient a
-                              where a.pt_idnum = " + patient_id;
+                string query = @" select p.PT_NAME data_Name
+                              from patient p
+                              where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
                 OracleDBManager.Instance.ExecuteDsQuery(ds, query);
                 /*if (ds.Tables[0].Rows.Count == 0)
                 {

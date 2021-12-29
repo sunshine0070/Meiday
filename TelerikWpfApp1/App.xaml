@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
     StartupUri="View/MainWindow.xaml">
-    <!--StartupUri="View/WindowInsurance01.xaml"-->
+    <!--StartupUri="View/PharmacyPopUp.xaml"-->
     <Application.Resources>
       <ResourceDictionary>
           <ResourceDictionary.MergedDictionaries>

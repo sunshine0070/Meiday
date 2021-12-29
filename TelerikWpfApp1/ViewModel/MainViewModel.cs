@@ -71,7 +71,7 @@ namespace Meiday
 
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
             {
-                _isChecked01 = false;
+                _isChecked01 = false; // 다시 진행할때 초기화할거 많을듯?
                 LoginViewModel.Login();
             }
             else if (SwitchView == 2 && loginViewModel.InputString == "00000") // 관리자번호 입력 시 관리자 페이지 진행
@@ -80,7 +80,7 @@ namespace Meiday
                 LoginViewModel.Init();
             }
 
-            if (SwitchView == 3 && _isChecked01 == false) // 개인정보 동의 미체크 시 Dialog 화면
+            if (SwitchView == 5 && _isChecked01 == false) // 개인정보 동의 미체크 시 Dialog 화면
             {
                 SwitchView = 101;
             }
@@ -94,6 +94,12 @@ namespace Meiday
             else if (SwitchView == 102 && _isChecked02 == false) // 보험목록 미체크 시 Dialog 화면
             { 
                 SwitchView = 103;
+            }
+            if(LoginViewModel.connect_fail_flag == true) // DB에서 환자정보 못받아올 때 화면
+            {
+                SwitchView = 104;
+                LoginViewModel.Init();
+                LoginViewModel.connect_fail_flag = false;
             }
         }
     }

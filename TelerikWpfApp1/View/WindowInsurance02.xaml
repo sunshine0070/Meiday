@@ -99,10 +99,10 @@
                     HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10"
                     Content="이전" CornerRadius="15"
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="2"/>
+                    CommandParameter="4"/>
         <telerik:RadButton x:Name="radButtonAfter" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2"
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="4"
+                    CommandParameter="6"
                     HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10" 
                     Content="다음" CornerRadius="15" />
     </Grid>

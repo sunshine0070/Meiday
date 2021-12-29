@@ -15,4 +15,14 @@ namespace Meiday.Model
 		public string InsuName { get; set; }
 		public string InsuProduct { get; set; }
 	}
+
+	public class payment
+	{
+		public string Name { get; set; }
+		public string Doctor { get; set; }
+		public string Group { get; set; }
+		public string Date { get; set; }
+		public string Price { get; set; }
+		public bool Checked { get; set; }
+	}
 }

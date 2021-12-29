@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TelerikWpfApp1.ViewModel
+namespace Meiday.Model
 {
-    internal class ModalViewModel
+    public class Total_Price
     {
+        public string total_price;
     }
 }
