@@ -69,7 +69,7 @@
                     Height="40" Width="250" Grid.ColumnSpan="4" Command="{Binding SwitchViewCommand}" CommandParameter="3" />
 
             <Button x:Name="Submit" Grid.Column="2" Content="접수하기" FontSize="20" HorizontalAlignment="Right"  Grid.Row="7" 
-                    VerticalAlignment="Center" Height="40" Width="250" Grid.ColumnSpan="4" Command="{Binding SwitchViewCommand}" CommandParameter="4"/>
+                    VerticalAlignment="Center" Height="40" Width="250" Grid.ColumnSpan="4" Command="{Binding SwitchViewCommand}" CommandParameter="106"/>
 
 
 

@@ -158,6 +158,9 @@
     <Compile Include="View\pay.xaml.cs">
       <DependentUpon>pay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PharmacySubmitAlarm.xaml.cs">
+      <DependentUpon>PharmacySubmitAlarm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\prescription.xaml.cs">
       <DependentUpon>prescription.xaml</DependentUpon>
     </Compile>
@@ -220,6 +223,10 @@
     <Page Include="View\pay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PharmacySubmitAlarm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\prescription.xaml">
       <Generator>MSBuild:Compile</Generator>
