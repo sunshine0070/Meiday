@@ -18,6 +18,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -30,11 +31,11 @@
         <TextBlock Text="주변 약국 현황" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                    FontSize="36" FontWeight="ExtraBold" FontFamily="Arial" FontStyle="Normal" FontStretch="Normal" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-        <Border Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" BorderThickness="2" BorderBrush="black" Margin="10,10,10,10" Padding="0,0,10,10">
+        <Border Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" BorderThickness="2" BorderBrush="black" Margin="10,10,10,10" Padding="0,0,10,10">
             <WebBrowser x:Name="wb" Source="http://localhost/kakaomap.html" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Border>
 
-        <Border Grid.Row="2"  Grid.Column="1" BorderBrush="Black" BorderThickness="2" Padding="0" Height="555" Margin="0,0,5,0" >
+        <Border Grid.Row="2"  Grid.Column="1" BorderBrush="Black" BorderThickness="2" Padding="0" Height="515" Margin="0,0,5,0" >
 
             <ItemsControl x:Name="stack1" AlternationCount="1" DataContext="{StaticResource PharmacyViewModel}" ItemsSource="{Binding PHAR_MODEL}" Margin="0,0,0,0">
 
@@ -83,8 +84,12 @@
                 Background="{x:Null}" Opacity="0"/>
 
         <Button x:Name="pharSelect" Content="선택하기" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" 
-               BorderBrush="Black" BorderThickness="2" FontSize="20" FontWeight="Bold" Width="130" Margin="0,0,10,10" 
+               BorderBrush="Black" BorderThickness="2" FontSize="20" FontWeight="Bold" Width="135" Margin="0,0,10,10" 
                 Background="#FFCDE0F9" Command="{Binding SwitchViewCommand}" CommandParameter="105" />
+
+        <Button Content="건너뛰기" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" 
+               BorderBrush="Black" BorderThickness="2" FontSize="20" FontWeight="Bold" Width="135" Margin="0,0,10,10" 
+                Background="#FF92D89D" Command="{Binding SwitchViewCommand}" CommandParameter="4" />
 
     </Grid>
 </UserControl>
