@@ -31,6 +31,9 @@ namespace Meiday
         
 
         private bool _isChecked01 = false;
+        private bool _isChoice01 = false;
+        private bool _isChoice02 = false;
+
         public bool IsChecked01
         {
             get => _isChecked01;
@@ -38,6 +41,27 @@ namespace Meiday
             {
                 _isChecked01 = value;
                 OnPropertyChanged("IsChecked01");
+            }
+        }
+
+
+        public bool IsChoice01
+        {
+            get => _isChoice01;
+            set
+            {
+                _isChoice01 = value;
+                OnPropertyChanged("IsChoice01");
+            }
+        }
+
+        public bool IsChoice02
+        {
+            get => _isChoice02;
+            set
+            {
+                _isChoice02 = value;
+                OnPropertyChanged("IsChoice02");
             }
         }
 
@@ -117,7 +141,30 @@ namespace Meiday
                 LoginViewModel.Init();
                 LoginViewModel.connect_fail_flag = false;
             }
+
+            if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == false) 
+            {
+                SwitchView = 0;
+            }
+
+            else if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == true) 
+            {
+                SwitchView = 4;
+            }
+
+            else if (SwitchView == 3 && _isChoice01 == true && _isChoice02 == true)
+            {
+                SwitchView = 3;
+            }
+
+
+            if (SwitchView == 4 && _isChoice02 == false) 
+            {
+                SwitchView = 0;
+            }
         }
+
+
 
         //약국 선택하기 버튼 활성화 부분
         public bool CheckCanExecuted(object sender)
