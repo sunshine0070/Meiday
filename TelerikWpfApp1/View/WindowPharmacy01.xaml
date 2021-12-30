@@ -32,7 +32,7 @@
                    FontSize="36" FontWeight="ExtraBold" FontFamily="Arial" FontStyle="Normal" FontStretch="Normal" Grid.Column="0" Grid.ColumnSpan="2"/>
 
         <Border Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" BorderThickness="2" BorderBrush="black" Margin="10,10,10,10" Padding="0,0,10,10">
-            <WebBrowser x:Name="wb" Source="http://localhost/kakaomap.html" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <WebBrowser x:Name="wb" Source="http://localhost:81/kakaomap.html" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Border>
 
         <Border Grid.Row="2"  Grid.Column="1" BorderBrush="Black" BorderThickness="2" Padding="0" Height="515" Margin="0,0,5,0" >
