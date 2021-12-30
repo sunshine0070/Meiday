@@ -158,7 +158,7 @@ namespace Meiday
                             Group = ds.Tables[0].Rows[idx]["data_Depart"].ToString(),
                             Date = ds.Tables[0].Rows[idx]["data_Date"].ToString(),
                             Price = ds.Tables[0].Rows[idx]["data_Pay"].ToString(),
-                            Checked = false,
+                            Checked = true,
                         };
                         SampleDatas.Add(obj);
 
