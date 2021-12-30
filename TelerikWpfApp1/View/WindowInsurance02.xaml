@@ -110,6 +110,6 @@
                     CommandParameter="6"
                     HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10" 
                     Content="다음" CornerRadius="15" />
-        <TextBox Grid.ColumnSpan="2" DataContext="{StaticResource AccidentViewModel}" Text="{Binding AccidentTypes}"/>
+        <!--TextBox Grid.ColumnSpan="2" DataContext="{StaticResource AccidentViewModel}" Text="{Binding AccidentTypes}"/-->
     </Grid>
 </UserControl>
