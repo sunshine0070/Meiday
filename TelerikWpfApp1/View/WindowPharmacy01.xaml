@@ -85,7 +85,7 @@
 
         <Button x:Name="pharSelect" Content="선택하기" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" 
                BorderBrush="Black" BorderThickness="2" FontSize="20" FontWeight="Bold" Width="135" Margin="0,0,10,10" 
-                Background="#FFCDE0F9" Command="{Binding SwitchViewCommand}" CommandParameter="105" />
+                Background="#FFCDE0F9" Command="{Binding SwitchViewCommand2}" CommandParameter="105" />
 
         <Button Content="건너뛰기" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" 
                BorderBrush="Black" BorderThickness="2" FontSize="20" FontWeight="Bold" Width="135" Margin="0,0,10,10" 

@@ -53,6 +53,7 @@ namespace Meiday
         }*/
 
         public ICommand SwitchViewCommand { get; }
+        public ICommand SwitchViewCommand2 => new RelayCommand<object>(OnSwitchView, CheckCanExecuted); // 약국 클릭하면 확대 기능 and 제출하기 버튼 활성화 함수
 
         public MainViewModel()
         {
@@ -117,5 +118,17 @@ namespace Meiday
                 LoginViewModel.connect_fail_flag = false;
             }
         }
+
+        //약국 선택하기 버튼 활성화 부분
+        public bool CheckCanExecuted(object sender)
+        {
+            bool ret =  false;
+            if (PharmacyViewModel.selectedmodel != null)
+            {
+                ret = true;
+            }
+                return ret;
+        }
+
     }
 }
