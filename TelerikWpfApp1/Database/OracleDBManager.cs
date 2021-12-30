@@ -11,6 +11,7 @@ namespace Meiday
 {
     public sealed class OracleDBManager : Singleton<OracleDBManager>
     {
+        //TEST
         public event ExceptionEventHandler ExceptionEvent;
         public string LastExceptionString = string.Empty;
         public string ConnectionString = string.Empty;
