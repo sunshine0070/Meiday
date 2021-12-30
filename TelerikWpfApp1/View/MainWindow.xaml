@@ -62,6 +62,9 @@
         <DataTemplate x:Key="PharmacySubmitAlarmTemplate" DataType="{x:Type local:MainViewModel}">
             <view:PharmacySubmitAlarm />
         </DataTemplate>
+        <DataTemplate x:Key="AccidentNoneDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AccidentNoneDialog />
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding }">
@@ -116,6 +119,9 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="106">
                             <Setter Property="ContentTemplate" Value="{StaticResource PharmacySubmitAlarmTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="107">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AccidentNoneDialogTemplate}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

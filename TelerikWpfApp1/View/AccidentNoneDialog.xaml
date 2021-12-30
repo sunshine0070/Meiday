@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Meiday.View.AccidentNoneDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Meiday.View"
+             mc:Ignorable="d" BorderThickness="0"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
+    <Grid>
+        <Rectangle Fill="Gray" Opacity=".5" />
+        <Border CornerRadius="10" Background="White" Height="100" Width="400"
+                HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Grid Margin="5">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" FontSize="20" 
+                           TextAlignment="Center" Text="선택된 사고 유형이 없습니다." />
+                <Button Grid.Row="1" Width="100" Height="30" 
+                        Background="#34a8eb" BorderThickness="0"
+                        FontWeight="Bold" FontSize="14" Content="확인"
+                        Command="{Binding SwitchViewCommand}"
+                        CommandParameter="5"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

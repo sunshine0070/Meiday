@@ -7,13 +7,6 @@
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         Title="pay" Height="540" Width="670">
-    <!--xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"-->
-    
-    <!--
-    <Window.DataContext>
-        <local:v/>
-    </Window.DataContext>
-    -->
     <Grid>
 
         <DockPanel>

@@ -102,7 +102,7 @@
         <TextBlock x:Name="textBlock" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" Margin="120,-40,0,0"
                    TextWrapping="Wrap" Text="보험사에 청구 서류가 전달됩니다." VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
         <telerik:RadButton x:Name="radButtonBefore" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-                    CommandParameter="3"
+                    CommandParameter="5"
                     HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,-80,30,10" Padding="50,10,50,10"
                     Command="{Binding SwitchViewCommand}"
                     Content="이전" FontSize="15" CornerRadius="15"/>

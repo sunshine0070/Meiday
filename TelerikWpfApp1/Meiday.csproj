@@ -125,6 +125,9 @@
     </ApplicationDefinition>
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
+    <Compile Include="View\AccidentNoneDialog.xaml.cs">
+      <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PaymentControl.xaml.cs">
       <DependentUpon>PaymentControl.xaml</DependentUpon>
     </Compile>
@@ -199,6 +202,10 @@
     <Compile Include="View\WindowPharmacy02.xaml.cs">
       <DependentUpon>WindowPharmacy02.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AccidentNoneDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PaymentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

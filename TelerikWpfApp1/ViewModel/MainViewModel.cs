@@ -85,6 +85,8 @@ namespace Meiday
                 SwitchView = 101;
             }
 
+            //if (SwitchView == 6 && accidentViewModel.AccidentTypeCar == false && accidentViewModel.AccidentTypeDisease == false && accidentViewModel.AccidentTypeInjury == false) 
+
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {
                 LoginViewModel.Init();
