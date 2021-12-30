@@ -63,7 +63,6 @@ namespace Meiday
             {
                 if (value != _pa.patientName)
                 {
-                    
                     _pa.patientName = value; // query
                     OnPropertyChanged("PatientName");
                 }
@@ -125,7 +124,7 @@ namespace Meiday
             inputString = "";
         }
         string validCheck;
-        public bool ValidCheck()
+        public bool ValidCheck() //MainViewModel에서 확인
         {
 
             DataSet ds = new DataSet();

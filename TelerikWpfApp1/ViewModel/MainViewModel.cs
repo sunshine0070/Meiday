@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using Meiday.Model;
 using static Meiday.AccidentViewModel;
+using System.Data;
 
 namespace Meiday
 {
@@ -14,6 +15,7 @@ namespace Meiday
     {
         AccidentViewModel accidentViewModel = new AccidentViewModel();
         LoginViewModel loginViewModel = new LoginViewModel();
+        PharmacyViewModel PharmacyViewModel = new PharmacyViewModel();
 
         private int switchView;
         public int SwitchView
@@ -89,6 +91,14 @@ namespace Meiday
             {
                 SwitchView = 90;
                 LoginViewModel.Init();
+            }
+            if(switchView == 106) // 약국 접수하기 누를 시 데이터 저장
+            {
+                if(PaymentViewModel.TREATE_NUM.Count > 0)
+                {
+                     PharmacyViewModel.PharmacySubmit();
+                }
+                    SwitchView = 106;
             }
 
             if (SwitchView == 5 && _isChecked01 == false) // 개인정보 동의 미체크 시 Dialog 화면

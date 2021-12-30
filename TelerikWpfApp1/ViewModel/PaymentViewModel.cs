@@ -23,6 +23,8 @@ namespace Meiday
     {
         Total_Price tot_price = new Total_Price();
 
+        public static List<string> TREATE_NUM;
+
         payment _pa = new payment();
         // MainWindow 객체 선언
 
@@ -124,7 +126,6 @@ namespace Meiday
         ObservableCollection<payment> _sampleDatas = null;
         public ObservableCollection<payment> SampleDatas
         {
-
             get
             {
                 if (_sampleDatas == null)
@@ -137,8 +138,7 @@ namespace Meiday
                               where a.pt_idnum ="+ patient_id + "and a.PT_REGNUM = b.PT_REGNUM  and a.PT_REGNUM = b.PT_REGNUM and c.DR_DEPTNUM = d.DR_DEPTNUM ";
                     */
 
-
-                    string query = @" select a.PT_NAME data_Name , c.DR_NAME data_Doctor , d.DR_DEPTNAME data_Depart, to_char(b.TREATMENT_TIME,'yyyy-mm-dd') data_Date, b.TREATMENT_PAY data_Pay
+                    string query = @" select b.TREATMENT_NUM tr_num, a.PT_NAME data_Name , c.DR_NAME data_Doctor , d.DR_DEPTNAME data_Depart, to_char(b.TREATMENT_TIME,'yyyy-mm-dd') data_Date, b.TREATMENT_PAY data_Pay
                               from patient a, treatment b , doctor c , department d
                               where 
                               a.PT_REGNUM = b.PT_REGNUM
@@ -149,11 +149,12 @@ namespace Meiday
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
                     try
                     {
+                        TREATE_NUM = new List<string>();
                         for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
                         {
+                            TREATE_NUM.Add(ds.Tables[0].Rows[idx]["tr_num"].ToString());
                             payment obj = new payment()
                             {
-
                                 Name = ds.Tables[0].Rows[idx]["data_Name"].ToString(),
                                 Doctor = ds.Tables[0].Rows[idx]["data_Doctor"].ToString(),
                                 Group = ds.Tables[0].Rows[idx]["data_Depart"].ToString(),
