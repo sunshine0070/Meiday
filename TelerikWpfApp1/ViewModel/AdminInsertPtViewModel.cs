@@ -143,7 +143,6 @@ namespace Meiday.ViewModel
                 Phone = this.phone,
                 Addr = this.addr,
             };
-            SampleDatas.Add(p);
             if (this.idNum == null)
             {
                 string query = @"MERGE INTO PATIENT USING dual ON (PT_IDNUM = '#IdNum') 
