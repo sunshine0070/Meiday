@@ -13,7 +13,7 @@
         <ViewModel:PharmacyViewModel/>
     </Window.DataContext-->
     <Border Height="740" Width="530" BorderBrush="DimGray" BorderThickness="2" Padding="10">
-        
+
         <Grid>
 
             <Grid.RowDefinitions>
@@ -35,18 +35,18 @@
                      HorizontalAlignment="Center" TextWrapping="Wrap" Text="약국 정보"  VerticalAlignment="Center" FontSize="36" BorderThickness="0" FontWeight="Bold"  />
 
             <Border Grid.Row="1"  Grid.ColumnSpan="2" Grid.Column="0" Width="400" BorderBrush="DimGray" BorderThickness="2" Padding="5">
-            <Image DataContext="{StaticResource PharmacyViewModel}" Source="{Binding selectedmodel.Image}" 
+                <Image DataContext="{StaticResource PharmacyViewModel}" Source="{Binding selectedmodel.Image}" 
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Border>
 
             <TextBox Grid.Row="2" Grid.Column="0"
-                     HorizontalAlignment="Right" TextWrapping="Wrap" Text=" 약국명 : "  VerticalAlignment="Center" FontSize="18" BorderThickness="0" />
+                     HorizontalAlignment="Right" TextWrapping="Wrap" Text=" 약국명     : "  VerticalAlignment="Center" FontSize="18" BorderThickness="0" />
 
             <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"  BorderThickness="0" FontSize="20"
                      TextWrapping="Wrap"  VerticalAlignment="Center" DataContext="{StaticResource PharmacyViewModel}" Text="{Binding selectedmodel.Name}"/>
 
             <TextBox  Grid.Row="3" Grid.Column="0" 
-                      HorizontalAlignment="Right" TextWrapping="Wrap" Text=" 전화번호 : " VerticalAlignment="Center" FontSize="18" BorderThickness="0"/>
+                      HorizontalAlignment="Right" TextWrapping="Wrap" Text=" 전화번호  : " VerticalAlignment="Center" FontSize="18" BorderThickness="0"/>
 
             <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  BorderThickness="0" FontSize="20"
                      TextWrapping="Wrap"  VerticalAlignment="Center"  DataContext="{StaticResource PharmacyViewModel}" Text="{Binding selectedmodel.Phone}"/>
@@ -58,12 +58,12 @@
                      TextWrapping="Wrap"  VerticalAlignment="Center"   DataContext="{StaticResource PharmacyViewModel}" Text="{Binding selectedmodel.Address}"/>
 
             <TextBox  Grid.Row="5" Grid.Column="0"  
-                     HorizontalAlignment="Right" TextWrapping="Wrap" Text=" 접수자 수 :&#10;(30분 기준) " VerticalAlignment="Center" FontSize="18"  BorderThickness="0"/>
+                     HorizontalAlignment="Left" TextWrapping="Wrap" Text=" 접수자 수 :&#10; (30분 기준) " VerticalAlignment="Center" FontSize="18"  BorderThickness="0" Margin="21,0,0,0" Width="105"/>
 
 
             <TextBlock  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" TextWrapping="Wrap" Foreground="Red"
                 Text="* 주의사항 * &#10; 1. 접수시 선택한 약국에 제조 처방전이 보내집니다.&#10; 2. 당일 내에 약을 수령하지 않을 시 폐기되며 어떠한 보상도 받으실 수 없습니다."/>
-           
+
 
             <Button x:Name="Cancel" Grid.Column="0" Content="이전으로" FontSize="20" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Center"
                     Height="40" Width="250" Grid.ColumnSpan="4" Command="{Binding SwitchViewCommand}" CommandParameter="3" />
