@@ -115,55 +115,14 @@ namespace Meiday
         public ICommand Append { protected set; get; }
         public ICommand BackSpace { protected set; get; }
 
-        /*private ICommand loginCommand;
-        public ICommand LoginCommand
-        {
-            get
-            {
-                return (this.loginCommand) ?? (this.loginCommand = new RelayCommand(Login));
-            }
-        }*/
         static public void Login()
         {
             patient_id = inputString;
         }
 
-        /*private ICommand initCommand;
-        public ICommand InitCommand
-        {
-            get
-            {
-                return (this.initCommand) ?? (this.initCommand = new RelayCommand(Init));
-            }
-        }*/
         static public void Init()
         {
             inputString = "";
         }
-
-     
-        /*
-                private ICommand connectCommand;
-                public ICommand ConnectCommand
-                {
-                    get
-                    {
-                        return (this.connectCommand) ?? (this.connectCommand = new RelayCommand(Connect));
-                    }
-                }
-                public void Connect()
-                { //Connect to DB
-                    if (OracleDBManager.Instance.GetConnection() == false)
-                    {
-                        string msg = $"Failed to Connect to Database";
-                        MessageBox.Show(msg, "Error");
-                        return;
-                    }
-                    else
-                    {
-                        string msg = $"Success to Connect to Database";
-                        MessageBox.Show(msg, "Inform");
-                    }
-                }*/
     }
 }

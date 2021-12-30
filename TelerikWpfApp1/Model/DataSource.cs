@@ -25,4 +25,11 @@ namespace Meiday.Model
 		public string Price { get; set; }
 		public bool Checked { get; set; }
 	}
+	public enum AccidentType
+    {
+		None,
+		AccidentTypeDisease,
+		AccidentTypeInjury,
+		AccidentTypeCar
+	}
 }

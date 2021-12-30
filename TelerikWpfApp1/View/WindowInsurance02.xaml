@@ -10,6 +10,7 @@
     <UserControl.Resources>
         <local:AccidentViewModel x:Key="AccidentViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
+        <local:RadioBoolToAccidentTypeConverter x:Key="RadioBoolToAccidentTypeConverter"/>
         <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -83,19 +84,19 @@
                          VerticalContentAlignment="Center"
                          FontSize="20" FontWeight="Bold" 
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypeDisease}" >
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeDisease}" >
                 질병</RadioButton>
             <RadioButton x:Name="AccidentTypeInjury" GroupName="accidentType" Margin="30,10,30,10"
                          FontSize="20" FontWeight="Bold" 
                          VerticalContentAlignment="Center"
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypeInjury}">
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeInjury}">
                 상해</RadioButton>
             <RadioButton x:Name="AccidentTypeCar" GroupName="accidentType" Margin="30,10,30,10"
                          FontSize="20" FontWeight="Bold" 
                          VerticalContentAlignment="Center"
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypeCar}">
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeCar}">
                 교통사고</RadioButton>
         </StackPanel>
         <!--button-->
@@ -109,5 +110,6 @@
                     CommandParameter="6"
                     HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10" 
                     Content="다음" CornerRadius="15" />
+        <TextBox Grid.ColumnSpan="2" DataContext="{StaticResource AccidentViewModel}" Text="{Binding AccidentTypes}"/>
     </Grid>
 </UserControl>

@@ -67,6 +67,7 @@ namespace Meiday
             if (SwitchView == 0) // 다음에 하기 로그인 정보 초기화
             {
                 LoginViewModel.Init();
+                _accidentType = AccidentType.None;
             }
 
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
@@ -85,7 +86,10 @@ namespace Meiday
                 SwitchView = 101;
             }
 
-            //if (SwitchView == 6 && accidentViewModel.AccidentTypeCar == false && accidentViewModel.AccidentTypeDisease == false && accidentViewModel.AccidentTypeInjury == false) 
+            if (SwitchView == 6 && _accidentType.ToString() == "None") // 사고유형 미체크 시 Dialog 화면
+            {
+                SwitchView = 107;
+            }
 
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {

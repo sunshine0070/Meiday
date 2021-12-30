@@ -11,6 +11,8 @@ using System.Data;
 using static Meiday.LoginViewModel;
 using System.Windows.Input;
 using System.Windows;
+using System.Windows.Data;
+
 
 
 namespace Meiday
@@ -51,38 +53,21 @@ namespace Meiday
                 OnPropertyChanged(nameof(AccidentLimitedDateTime));
             }
         }
-        private bool _accidentTypeDisease;
-        public bool AccidentTypeDisease
+
+        public static AccidentType _accidentType;
+        public AccidentType AccidentTypes
         {
-            get => _accidentTypeDisease;
+            get => _accidentType;
             set
             {
-                _accidentTypeDisease = value;
-                OnPropertyChanged(nameof(AccidentTypeDisease));
+                if (_accidentType != value)
+                {
+                    _accidentType = value;
+                    OnPropertyChanged("AccidentTypes");
+                }
             }
         }
 
-        private bool _accidentTypeInjury;
-        public bool AccidentTypeInjury
-        {
-            get => _accidentTypeInjury;
-            set
-            {
-                _accidentTypeInjury = value;
-                OnPropertyChanged(nameof(AccidentTypeInjury));
-            }
-        }
-
-        private bool _accidentTypeCar;
-        public bool AccidentTypeCar
-        {
-            get => _accidentTypeCar;
-            set
-            {
-                _accidentTypeCar = value;
-                OnPropertyChanged(nameof(AccidentTypeCar));
-            }
-        }
         ment _pa = new ment();
         public string InsuName
         {
@@ -213,4 +198,36 @@ namespace Meiday
             }
         }
     }
+    public class RadioBoolToAccidentTypeConverter : IValueConverter
+    {
+        #region IValueConverter Members
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string parameterString = parameter as string;
+
+            if (parameterString == null)
+                return DependencyProperty.UnsetValue;
+
+            if (Enum.IsDefined(value.GetType(), value) == false)
+                return DependencyProperty.UnsetValue;
+
+            object parameterValue = Enum.Parse(value.GetType(), parameterString);
+
+            return parameterValue.Equals(value);
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string parameterString = parameter as string;
+
+            if (parameterString == null)
+                return DependencyProperty.UnsetValue;
+
+            return Enum.Parse(targetType, parameterString);
+        }
+        #endregion
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+
 }
