@@ -237,6 +237,8 @@ namespace Meiday
         private void payShow()
         {
             pay pay = new pay();
+            pay.Owner = Application.Current.MainWindow;
+            pay.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             pay.ShowDialog();
         }
 
