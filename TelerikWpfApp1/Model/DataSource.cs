@@ -11,9 +11,10 @@ namespace Meiday.Model
 		public string regNum { get; set; }
 		public int iDNum { get; set; }
 		public string patientName { get; set; }
-		public bool IsChecked02 { get; set; }
 		public string InsuName { get; set; }
 		public string InsuProduct { get; set; }
+		public bool IsChecked02 { get; set; }
+		public string validCheck { get; set; }
 	}
 
 	public class payment

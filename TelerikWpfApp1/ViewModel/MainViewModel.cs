@@ -72,7 +72,8 @@ namespace Meiday
 
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
             {
-                _isChecked01 = false; // 다시 진행할때 초기화할거 많을듯?
+                _isChecked01 = false; // 다시 진행할때 초기화할거 많을듯
+                LoginViewModel.Login(); // 순서 ValidCheck() 앞
                 if (loginViewModel.ValidCheck())
                 {
                     SwitchView = 2;
@@ -82,7 +83,6 @@ namespace Meiday
                     SwitchView = 104;
                     LoginViewModel.Init();
                 }
-                LoginViewModel.Login();
             }
             else if (SwitchView == 2 && loginViewModel.InputString == "00000") // 관리자번호 입력 시 관리자 페이지 진행
             {

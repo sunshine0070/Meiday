@@ -124,18 +124,18 @@ namespace Meiday
         {
             inputString = "";
         }
-
-        public string valid_check;
+        string validCheck;
         public bool ValidCheck()
         {
+
             DataSet ds = new DataSet();
-            string query2 = @" select count(*) data_Name2
+            string query = @" select count(*) data_Name2
                               from patient p
                               where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
-            //OracleDBManager.Instance.ExecuteDsQuery(ds, query2).ToString();
-            //string count = ds.Tables[0].Rows[0]["data_Name2"].ToString();
-            //return int.Parse(count) > 0;
-            return false;
+
+            OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+            validCheck = ds.Tables[0].Rows[0]["data_Name2"].ToString();
+            return int.Parse(validCheck) > 0;
         }
     }
 }
