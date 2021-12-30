@@ -123,8 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
+    <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
     </Compile>

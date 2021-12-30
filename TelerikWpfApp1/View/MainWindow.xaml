@@ -35,16 +35,16 @@
         <DataTemplate x:Key="Insurance3Template" DataType="{x:Type local:MainViewModel}">
             <local:WindowInsurance03 />
         </DataTemplate>
-        <DataTemplate x:Key="AdmindMainTemplate" DataType="{x:Type local:MainViewModel}">
+        <DataTemplate x:Key="AdminMainTemplate" DataType="{x:Type local:MainViewModel}">
             <local:AdminMainControl />
         </DataTemplate>
         <DataTemplate x:Key="AdminLogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AdminLogControl />
         </DataTemplate>
-        <DataTemplate x:Key="AdmindUserCountTemplate" DataType="{x:Type local:MainViewModel}">
+        <DataTemplate x:Key="AdminUserCountTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AdminUserCountControl />
         </DataTemplate>
-        <DataTemplate x:Key="AdmindInsertPtTemplate" DataType="{x:Type local:MainViewModel}">
+        <DataTemplate x:Key="AdminInsertPtTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AdminInsertPtControl />
         </DataTemplate>
         <DataTemplate x:Key="AgreementDialogTemplate" DataType="{x:Type local:MainViewModel}">
@@ -91,16 +91,16 @@
                             <Setter Property="ContentTemplate" Value="{StaticResource Insurance3Template}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="90">
-                            <Setter Property="ContentTemplate" Value="{StaticResource AdmindMainTemplate}" />
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdminMainTemplate}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="91">
                             <Setter Property="ContentTemplate" Value="{StaticResource AdminLogTemplate}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="92">
-                            <Setter Property="ContentTemplate" Value="{StaticResource AdmindUserCountTemplate}" />
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdminUserCountTemplate}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="93">
-                            <Setter Property="ContentTemplate" Value="{StaticResource AdmindInsertPtTemplate}" />
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdminInsertPtTemplate}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="101">
                             <Setter Property="ContentTemplate" Value="{StaticResource AgreementDialogTemplate}" />
