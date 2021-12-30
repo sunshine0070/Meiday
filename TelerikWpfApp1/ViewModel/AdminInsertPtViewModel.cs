@@ -144,25 +144,50 @@ namespace Meiday.ViewModel
                 Addr = this.addr,
             };
             SampleDatas.Add(p);
-            string query = @"MERGE INTO PATIENT USING dual ON (PT_IDNUM = '#IdNum') 
+            if (this.idNum == null)
+            {
+                string query = @"MERGE INTO PATIENT USING dual ON (PT_IDNUM = '#IdNum') 
+                            WHEN MATCHED THEN UPDATE SET PT_NAME = '#Name', PT_ADDR = '#Addr', PT_PHONE = '#Phone' ,  PT_AGE = '#Age' , PT_REGNUM = '#RegNum' 
+                            WHEN NOT MATCHED THEN INSERT (PT_REGNUM,PT_NAME,PT_ADDR,PT_PHONE,PT_AGE) VALUES ('#RegNum','#Name', '#Addr', '#Phone', '#Age') ";
+                string query1 = @"commit";
+                query = query.Replace("#IdNum", this.idNum);
+                query = query.Replace("#Name", this.name);
+                query = query.Replace("#Age", this.age);
+                query = query.Replace("#RegNum", this.regNum);
+                query = query.Replace("#Phone", this.phone);
+                query = query.Replace("#Addr", this.addr);
+                OracleDBManager.Instance.ExecuteNonQuery(query);
+                OracleDBManager.Instance.ExecuteNonQuery(query1);
+
+                this.idNum = string.Empty;
+                this.name = string.Empty;
+                this.age = string.Empty;
+                this.regNum = string.Empty;
+                this.addr = string.Empty;
+                this.phone = string.Empty;
+            }
+            else 
+            {
+                string query = @"MERGE INTO PATIENT USING dual ON (PT_IDNUM = '#IdNum') 
                             WHEN MATCHED THEN UPDATE SET PT_NAME = '#Name', PT_ADDR = '#Addr', PT_PHONE = '#Phone' ,  PT_AGE = '#Age' , PT_REGNUM = '#RegNum' 
                             WHEN NOT MATCHED THEN INSERT (PT_IDNUM,PT_REGNUM,PT_NAME,PT_ADDR,PT_PHONE,PT_AGE) VALUES ('#IdNum','#RegNum','#Name', '#Addr', '#Phone', '#Age') ";
-            string query1 = @"commit";
-            query = query.Replace("#IdNum", this.idNum);
-            query = query.Replace("#Name", this.name);
-            query = query.Replace("#Age", this.age);
-            query = query.Replace("#RegNum", this.regNum);
-            query = query.Replace("#Phone", this.phone);
-            query = query.Replace("#Addr", this.addr);
-            OracleDBManager.Instance.ExecuteNonQuery(query);
-            OracleDBManager.Instance.ExecuteNonQuery(query1);
+                string query1 = @"commit";
+                query = query.Replace("#IdNum", this.idNum);
+                query = query.Replace("#Name", this.name);
+                query = query.Replace("#Age", this.age);
+                query = query.Replace("#RegNum", this.regNum);
+                query = query.Replace("#Phone", this.phone);
+                query = query.Replace("#Addr", this.addr);
+                OracleDBManager.Instance.ExecuteNonQuery(query);
+                OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-            this.idNum = string.Empty;
-            this.name = string.Empty;
-            this.age = string.Empty;
-            this.regNum = string.Empty;
-            this.addr = string.Empty;
-            this.phone = string.Empty;
+                this.idNum = string.Empty;
+                this.name = string.Empty;
+                this.age = string.Empty;
+                this.regNum = string.Empty;
+                this.addr = string.Empty;
+                this.phone = string.Empty;
+            }
         }
 
     }
