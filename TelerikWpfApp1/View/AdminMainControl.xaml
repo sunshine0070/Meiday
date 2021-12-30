@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:Meiday"
              mc:Ignorable="d" 
              xmlns:View="clr-namespace:Meiday.View"
-             xmlns:ViewModel="clr-namespace:Meiday.ViewModel"
+             xmlns:ViewModel="clr-namespace:Meiday.ViewModel" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              d:DesignHeight="800" d:DesignWidth="600" Background="White">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -25,24 +26,64 @@
                    Text="관리자 페이지"/>
         <!--navigator-->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Height="250" Width="200" Margin="0 0 30 0" 
+            <telerik:RadButton Height="250" Width="200" Margin="0 0 30 0" 
                     FontSize="20" FontWeight="Bold" Content="로그 조회" 
                     Command="{Binding SwitchViewCommand}" 
-                    CommandParameter="91"/>
-            <Button Height="250" Width="200" Margin="0 0 0 0" 
+                    CommandParameter="91"
+                    CornerRadius="15">
+                <telerik:RadButton.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="Gainsboro" Offset="0.673"/>
+                        <GradientStop Color="#FFADADAD" Offset="0.346"/>
+                        <GradientStop Color="#FFD4D4D4" Offset="1"/>
+                    </LinearGradientBrush>
+                </telerik:RadButton.Background>
+            </telerik:RadButton>
+            <telerik:RadButton Height="250" Width="200" Margin="0 0 0 0" 
                     FontSize="20" FontWeight="Bold" Content="사용자 통계" 
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="92"/>
+                    CommandParameter="92"
+                    CornerRadius="15">
+                <telerik:RadButton.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="Gainsboro" Offset="0.673"/>
+                        <GradientStop Color="#FFADADAD" Offset="0.346"/>
+                        <GradientStop Color="#FFD4D4D4" Offset="1"/>
+                    </LinearGradientBrush>
+                </telerik:RadButton.Background>
+            </telerik:RadButton>
         </StackPanel>
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Height="250" Width="200" Margin="0 20 30 0" 
+            <telerik:RadButton Height="250" Width="200" Margin="0 20 30 0" 
                     FontSize="20" FontWeight="Bold" Content="환자 등록" 
                     Command="{Binding SwitchViewCommand}" 
-                    CommandParameter="93"/>
-            <Button Height="250" Width="200" Margin="0 20 0 0" 
+                    CommandParameter="93"
+                    CornerRadius="15">
+                <telerik:RadButton.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="Gainsboro" Offset="0.673"/>
+                        <GradientStop Color="#FFADADAD" Offset="0.346"/>
+                        <GradientStop Color="#FFD4D4D4" Offset="1"/>
+                    </LinearGradientBrush>
+                </telerik:RadButton.Background>
+            </telerik:RadButton>
+            <telerik:RadButton Height="250" Width="200" Margin="0 20 0 0" 
                     FontSize="20" FontWeight="Bold" Content="이전으로" 
                     Command="{Binding SwitchViewCommand}" 
-                    CommandParameter="1"/>
+                    CommandParameter="1"
+                    CornerRadius="15">
+                <telerik:RadButton.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="Gainsboro" Offset="0.673"/>
+                        <GradientStop Color="#FFADADAD" Offset="0.346"/>
+                        <GradientStop Color="#FFD4D4D4" Offset="1"/>
+                    </LinearGradientBrush>
+                </telerik:RadButton.Background>
+            </telerik:RadButton>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Meiday"
-             xmlns:ViewModel="clr-namespace:Meiday.ViewModel"
+             xmlns:ViewModel="clr-namespace:Meiday.ViewModel" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="600" Background="White">
     <Grid>
@@ -23,18 +23,18 @@
                    Text="로그 조회"/>
         <!--navigator-->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" >
-            <Button Height="50" Width="100" Margin="30 0 30 0" 
+            <telerik:RadButton Height="50" Width="100" Margin="30 0 30 0" 
                     FontSize="16" FontWeight="Bold" Content="사용자 통계" 
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="92"/>
-            <Button Height="50" Width="100" Margin="0 0 30 0" 
+                    CommandParameter="92" CornerRadius="10"/>
+            <telerik:RadButton Height="50" Width="100" Margin="0 0 30 0" 
                     FontSize="16" FontWeight="Bold" Content="환자 등록" 
                     Command="{Binding SwitchViewCommand}" 
-                    CommandParameter="93"/>
-            <Button Height="50" Width="100" Margin="0 0 30 0" 
+                    CommandParameter="93" CornerRadius="10"/>
+            <telerik:RadButton Height="50" Width="100" Margin="0 0 30 0" 
                     FontSize="16" FontWeight="Bold" Content="이전으로" 
                     Command="{Binding SwitchViewCommand}" 
-                    CommandParameter="90"/>
+                    CommandParameter="90" CornerRadius="10"/>
         </StackPanel>
         <TextBox Grid.Row="3" Margin="0 20 0 0"
                  Height="500" Width="550"
