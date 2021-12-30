@@ -24,7 +24,7 @@
                         Background="#34a8eb" BorderThickness="0"
                         FontWeight="Bold" FontSize="14" Content="확인"
                         Command="{Binding SwitchViewCommand}"
-                        CommandParameter="4"/>
+                        CommandParameter="6"/>
             </Grid>
         </Border>
     </Grid>

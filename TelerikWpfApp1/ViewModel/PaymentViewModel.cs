@@ -147,21 +147,27 @@ namespace Meiday
                               and a.pt_idnum = " + patient_id;
 
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-
-                    for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
+                    try
                     {
-                        payment obj = new payment()
+                        for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
                         {
+                            payment obj = new payment()
+                            {
 
-                            Name = ds.Tables[0].Rows[idx]["data_Name"].ToString(),
-                            Doctor = ds.Tables[0].Rows[idx]["data_Doctor"].ToString(),
-                            Group = ds.Tables[0].Rows[idx]["data_Depart"].ToString(),
-                            Date = ds.Tables[0].Rows[idx]["data_Date"].ToString(),
-                            Price = ds.Tables[0].Rows[idx]["data_Pay"].ToString(),
-                            Checked = true,
-                        };
-                        SampleDatas.Add(obj);
+                                Name = ds.Tables[0].Rows[idx]["data_Name"].ToString(),
+                                Doctor = ds.Tables[0].Rows[idx]["data_Doctor"].ToString(),
+                                Group = ds.Tables[0].Rows[idx]["data_Depart"].ToString(),
+                                Date = ds.Tables[0].Rows[idx]["data_Date"].ToString(),
+                                Price = ds.Tables[0].Rows[idx]["data_Pay"].ToString(),
+                                Checked = true,
+                            };
+                            SampleDatas.Add(obj);
 
+                        }
+                    }
+                    catch
+                    {
+                        connect_fail_flag = true;
                     }
                 }
                 return _sampleDatas;

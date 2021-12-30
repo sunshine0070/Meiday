@@ -173,10 +173,11 @@ namespace Meiday
                 {
                     _sampleDatas = new ObservableCollection<ment>();
                     DataSet ds = new DataSet();
-                    string query = @" select i.INSURANCE_NAME InsuName, i.INSURANCE_PRODUCT InsuProduct
-                                      from insurance i 
-                                      join patient p on i.PT_IDNUM = p.PT_IDNUM
-                                      where i.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
+                    string query = @" SELECT i.INSURANCE_NAME InsuName, i.INSURANCE_PRODUCT InsuProduct
+                                    FROM INSURANCE i 
+                                    JOIN CHECKINSURANCE c ON i.INSURANCE_NUM = c.INSURANCE_NUM 
+                                    JOIN PATIENT        p ON p.PT_REGNUM     = c.PT_REGNUM
+                                    WHERE p.pt_idnum =  " + patient_id + "or p.pt_regnum = " + patient_id;
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
 
                     for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
