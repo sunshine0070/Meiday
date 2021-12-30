@@ -10,7 +10,13 @@
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
+    
     <Window.Resources>
+
+        <DataTemplate x:Key="ChoiceControlTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:ChoiceControl />
+        </DataTemplate>
+        
         <DataTemplate x:Key="MainHomeTemplate" DataType="{x:Type local:MainViewModel}">
             <local:Window1 />
         </DataTemplate>
@@ -65,6 +71,7 @@
         <DataTemplate x:Key="AccidentNoneDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AccidentNoneDialog />
         </DataTemplate>
+
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding }">
@@ -122,6 +129,11 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="107">
                             <Setter Property="ContentTemplate" Value="{StaticResource AccidentNoneDialogTemplate}" />
+                        </DataTrigger>
+
+
+                        <DataTrigger Binding="{Binding SwitchView}" Value="108">
+                            <Setter Property="ContentTemplate" Value="{StaticResource ChoiceControlTemplate}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

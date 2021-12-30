@@ -231,6 +231,8 @@ namespace Meiday
         private void ButtonShow()
         {
             prescription prescription = new prescription();
+            prescription.Owner = Application.Current.MainWindow;
+            prescription.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             prescription.ShowDialog();
         }
 

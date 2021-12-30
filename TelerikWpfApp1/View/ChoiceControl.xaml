@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Meiday.View.ChoiceControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             xmlns:local="clr-namespace:Meiday.View" xmlns:meiday="clr-namespace:Meiday" 
+             d:DesignHeight="800" d:DesignWidth="600">
+
+
+    <UserControl.Resources>
+        <meiday:PaymentViewModel x:Key="PaymentViewModel"/>
+        <meiday:MainViewModel x:Key="MainViewModel"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="50" />
+        </Grid.ColumnDefinitions>
+        <!--logo-->
+        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="200" Width="200" Source="/Resource/MEIDAY.PNG" VerticalAlignment="Top"/>
+        <!--title-->
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,-90,0,0" 
+                   TextAlignment="Center" FontSize="36" FontWeight="Bold"
+                   Text="약국조제/보험 신청"/>
+        <!--requiredCheckbox-->
+        <!--
+        <CheckBox x:Name="cbInsu01" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,10"
+                  FontWeight="Bold" IsChecked="{Binding IsChecked01}"
+                  Content=" (필수) 보험금 청구를 위한 개인정보 동의서"/>
+        -->
+
+
+        <!--seperator blank-->
+        <telerik:RadButton x:Name="radButtonRefuse" Grid.Row="15" Grid.Column="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10"
+                    Content="처방전 확인" CornerRadius="15"
+                    DataContext="{StaticResource PaymentViewModel}"
+                    Command="{Binding NextCommand}"/>
+
+        <telerik:RadButton x:Name="radButtonAgree" Grid.Row="15" Grid.Column="2"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10"
+                    Command="{Binding SwitchViewCommand}"
+                    CommandParameter="3"
+                    Content="다음으로" CornerRadius="15" />
+    </Grid>
+
+</UserControl>

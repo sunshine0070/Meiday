@@ -17,9 +17,6 @@
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
     </UserControl.Resources>
 
-
-
-
     <Grid>
         <Grid.Resources>
             <telerik:FontFamiliesProvider x:Key="FontFamiliesProvider"/>
@@ -94,10 +91,10 @@
                     CommandParameter="92"/>
 
             <Button Height="50" Width="100" Margin="0 0 30 0" 
-                    FontSize="16" FontWeight="Bold" Content="처방전" 
+                    FontSize="16" FontWeight="Bold" Content="다음으로" 
                     
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="3"/>
+                    CommandParameter="108"/>
         </StackPanel>
 
 

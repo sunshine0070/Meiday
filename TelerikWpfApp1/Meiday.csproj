@@ -130,6 +130,9 @@
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChoiceControl.xaml.cs">
+      <DependentUpon>ChoiceControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PaymentControl.xaml.cs">
       <DependentUpon>PaymentControl.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
       <DependentUpon>WindowPharmacy02.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AccidentNoneDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChoiceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
