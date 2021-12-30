@@ -26,7 +26,10 @@
             <telerik:RadButton Height="50" Width="100" Margin="30 0 30 0" 
                     FontSize="16" FontWeight="Bold" Content="사용자 통계" 
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="92" CornerRadius="10"/>
+                    CommandParameter="92" CornerRadius="10">
+
+
+            </telerik:RadButton>
             <telerik:RadButton Height="50" Width="100" Margin="0 0 30 0" 
                     FontSize="16" FontWeight="Bold" Content="환자 등록" 
                     Command="{Binding SwitchViewCommand}" 

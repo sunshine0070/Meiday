@@ -52,7 +52,7 @@
         <!-- TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" VerticalAlignment="Bottom" 
                    TextAlignment="Center" FontSize="36" FontWeight="Bold" 
                    Text="{Binding SampleDatas[0].Name}"/-->
-        <telerik:RadGridView Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4" IsReadOnly="False" SelectionMode="Extended" SelectionUnit="FullRow"
+        <telerik:RadGridView Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow"
                              x:Name ="PatientAccRecord" DataContext="{StaticResource AccidentViewModel}"  ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" 
                              AutoGenerateColumns="False" ShowGroupPanel="False" 
                              FontSize="14">
