@@ -46,6 +46,7 @@
         <!--requiredCheckbox-->
         <CheckBox x:Name="cbInsu01" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,10"
                   FontWeight="Bold" IsChecked="{Binding IsChecked01}"
+                  VerticalContentAlignment="Center"
                   Content=" (필수) 보험금 청구를 위한 개인정보 동의서"/>
         <!--seperator blank-->
         <Separator x:Name="borderline01" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,1" />
