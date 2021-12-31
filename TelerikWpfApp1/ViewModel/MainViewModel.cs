@@ -16,7 +16,7 @@ namespace Meiday
         AccidentViewModel accidentViewModel = new AccidentViewModel();
         LoginViewModel loginViewModel = new LoginViewModel();
         PharmacyViewModel PharmacyViewModel = new PharmacyViewModel();
-
+        PaymentViewModel PaymentViewModel = new PaymentViewModel();
         private int switchView;
         public int SwitchView
         {
@@ -167,7 +167,6 @@ namespace Meiday
                 SwitchView = 3;
             }
 
-
             if (SwitchView == 4 && _isChoice02 == false) 
             {
                 SwitchView = 109;
@@ -176,6 +175,11 @@ namespace Meiday
             if (SwitchView == 106)
             {
                 PharmacyViewModel.PharmacySubmit();
+            }
+
+            if (SwitchView == 3)
+            {
+                PaymentViewModel.PaymentSubmit();
             }
         }
 

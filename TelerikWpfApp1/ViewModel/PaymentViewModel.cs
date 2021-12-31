@@ -145,6 +145,7 @@ namespace Meiday
                               a.PT_REGNUM = b.PT_REGNUM
                               and b.DR_LICENSE = c.DR_LICENSE
                               and c.DR_DEPTNUM = d.DR_DEPTNUM
+                              and b.PAY_STATUS = '0'
                               and a.pt_idnum = " + patient_id;
 
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
@@ -176,6 +177,25 @@ namespace Meiday
             }
             set
             { _sampleDatas = value; OnPropertyChanged("_sampleDatas"); }
+        }
+
+        public static void PaymentSubmit() //MainViewModel에서 확인
+        {
+            //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
+            OracleDBManager oracleDBManager = new OracleDBManager();
+            oracleDBManager.GetConnection();
+
+                //MessageBox.Show("db 조건문 진입");
+
+
+            
+                    string query = @"UPDATE (SELECT * FROM PATIENT a, TREATMENT b WHERE a.PT_REGNUM = b.PT_REGNUM AND a.PT_IDNUM =" + patient_id +") SET PAY_STATUS = '1'";
+                    string query1 = @"commit";
+                    OracleDBManager.Instance.ExecuteNonQuery(query);
+                    OracleDBManager.Instance.ExecuteNonQuery(query1);
+
+       
+            
         }
 
 
