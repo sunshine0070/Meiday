@@ -39,31 +39,14 @@ namespace Meiday
                               from patient p
                               where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
                 OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-                /*if (ds.Tables[0].Rows.Count == 0)
-                {
-                    connect_fail_flag = true;
-                }
-                else
-                {
-                    _pa.patientName = ds.Tables[0].Rows[0]["data_Name"].ToString();
-                }*/
-                try
-                {
-                    _pa.patientName = ds.Tables[0].Rows[0]["data_Name"].ToString();
-                }
-                catch (Exception ex)
-                {
-                    connect_fail_flag = true;
-                    //MessageBox.Show(ex.Message);
-                }
-
+                _pa.patientName = ds.Tables[0].Rows[0]["data_Name"].ToString();
                 return _pa.patientName;
             }
             set
             {
                 if (value != _pa.patientName)
                 {
-                    _pa.patientName = value; // query
+                    _pa.patientName = value;
                     OnPropertyChanged("PatientName");
                 }
             }
