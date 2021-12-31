@@ -20,6 +20,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Diagnostics;
 using PdfSharp.Pdf.Security;
+using static Meiday.LoginViewModel;
 
 namespace Meiday.View
 {
@@ -65,7 +66,7 @@ namespace Meiday.View
 
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
-            securitySettings.UserPassword = "user";
+            securitySettings.UserPassword = patient_id;
             securitySettings.OwnerPassword = "owner";
 
             // Restrict some rights.
