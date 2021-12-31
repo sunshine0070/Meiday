@@ -118,6 +118,11 @@ namespace Meiday
                 LoginViewModel.Init();
             }
 
+            if (SwitchView == 4 && _isChecked01 == true) // 개인정보 동의 체크박스 초기화
+            {
+                _isChecked01 = false;
+            }
+
             if (SwitchView == 5 && _isChecked01 == false) // 개인정보 동의 미체크 시 Dialog 화면
             {
                 SwitchView = 101;
