@@ -26,7 +26,7 @@ namespace Meiday.View
     /// <summary>
     /// prescription.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class prescription : Window
+    public partial class prescription : UserControl
     {
         public prescription()
         {
@@ -82,7 +82,7 @@ namespace Meiday.View
             string filename = @"C:\Users\user\Desktop\savefile\전자처방전.pdf";
             document.Save(filename);
             // ...and start a viewer.
-            Process.Start(filename);
+            //Process.Start(filename);
 
         }
     }
