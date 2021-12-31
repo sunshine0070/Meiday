@@ -154,7 +154,7 @@ namespace Meiday
 
             if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == false) 
             {
-                SwitchView = 0;
+                SwitchView = 109;
             }
 
             else if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == true) 
@@ -170,7 +170,7 @@ namespace Meiday
 
             if (SwitchView == 4 && _isChoice02 == false) 
             {
-                SwitchView = 0;
+                SwitchView = 109;
             }
         }
 
