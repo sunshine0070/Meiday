@@ -137,21 +137,23 @@ namespace Meiday
         public static void PharmacySubmit() //MainViewModel에서 확인
         {
             //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
-
+            OracleDBManager oracleDBManager = new OracleDBManager();
+            oracleDBManager.GetConnection();
             if (PaymentViewModel.TREATE_NUM.Count > 0)
             {
                 //MessageBox.Show("db 조건문 진입");
                 for (int idx = 0; idx < PaymentViewModel.TREATE_NUM.Count; idx++)
                 {
+
                     MessageBox.Show("약국이름 : "+ PharmacyViewModel.selectedmodel.Name+ " 처방전 번호 : " + PaymentViewModel.TREATE_NUM[idx]);
-                    string query = @"INSERT INTO PHARMACY_RESERVE(PHARMACY_NAME, TREATMENT_NUM) VALUES('" + PharmacyViewModel.selectedmodel.Name + "' , "+  PaymentViewModel.TREATE_NUM[idx] + ");";
+                    string query = @"INSERT INTO PHARMACY_RESERVE(PHARMACY_NAME, TREATMENT_NUM) VALUES('" + PharmacyViewModel.selectedmodel.Name + "' , "+  PaymentViewModel.TREATE_NUM[idx] + ")";
                     MessageBox.Show(query);
-                    string query1 = @"commit;";
-                    
+                    string query1 = @"commit";
                     OracleDBManager.Instance.ExecuteNonQuery(query);
+                    MessageBox.Show(query1);
                     OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-                    MessageBox.Show("끝");
+                    MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
                 }
             }
         }

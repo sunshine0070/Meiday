@@ -302,7 +302,7 @@ namespace Meiday
             } 
             return result; 
         } 
-        private bool CheckDBConnected() 
+        public bool CheckDBConnected() 
         { 
             string query = "SELECT 1 FROM DUAL"; 
             OracleDataReader result = null; 
