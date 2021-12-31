@@ -93,10 +93,10 @@ namespace Meiday
                 _isChoice01 = false;
                 _isChoice02 = false;
             }
-            if(SwitchView == 1) // 키패드 화면 들어가면 50초 타이머 시작
+            /*if(SwitchView == 1) // 키패드 화면 들어가면 50초 타이머 시작
             {
                 SessionTimer_Start();
-            }
+            }*/
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
             {
                 _isChecked01 = false; // 다시 진행할때 초기화할거 많을듯
