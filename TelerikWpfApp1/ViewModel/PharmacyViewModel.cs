@@ -141,16 +141,15 @@ namespace Meiday
             oracleDBManager.GetConnection();
             if (PaymentViewModel.TREATE_NUM.Count > 0)
             {
+                //insert 할 때 ; 끝에 붙이면 안됨 
                 //MessageBox.Show("db 조건문 진입");
                 for (int idx = 0; idx < PaymentViewModel.TREATE_NUM.Count; idx++)
                 {
 
                     MessageBox.Show("약국이름 : "+ PharmacyViewModel.selectedmodel.Name+ " 처방전 번호 : " + PaymentViewModel.TREATE_NUM[idx]);
                     string query = @"INSERT INTO PHARMACY_RESERVE(PHARMACY_NAME, TREATMENT_NUM) VALUES('" + PharmacyViewModel.selectedmodel.Name + "' , "+  PaymentViewModel.TREATE_NUM[idx] + ")";
-                    MessageBox.Show(query);
                     string query1 = @"commit";
                     OracleDBManager.Instance.ExecuteNonQuery(query);
-                    MessageBox.Show(query1);
                     OracleDBManager.Instance.ExecuteNonQuery(query1);
 
                     MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
