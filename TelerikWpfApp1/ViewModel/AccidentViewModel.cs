@@ -173,6 +173,7 @@ namespace Meiday
                 {
                     _sampleDatas = new ObservableCollection<ment>();
                     DataSet ds = new DataSet();
+
                     string query = @" SELECT i.INSURANCE_NAME InsuName, i.INSURANCE_PRODUCT InsuProduct
                                     FROM INSURANCE i 
                                     JOIN CHECKINSURANCE c ON i.INSURANCE_NUM = c.INSURANCE_NUM 
