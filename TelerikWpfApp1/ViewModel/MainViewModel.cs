@@ -6,8 +6,11 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using Meiday.Model;
+using Meiday.ViewModel;
 using static Meiday.AccidentViewModel;
 using System.Data;
+using System;
+using System.Windows.Threading;
 
 namespace Meiday
 {
@@ -17,6 +20,7 @@ namespace Meiday
         LoginViewModel loginViewModel = new LoginViewModel();
         PharmacyViewModel PharmacyViewModel = new PharmacyViewModel();
         PaymentViewModel PaymentViewModel = new PaymentViewModel();
+        
         private int switchView;
         public int SwitchView
         {
@@ -67,17 +71,6 @@ namespace Meiday
             }
         }
 
-        /*private bool _isChecked02 = false;
-        public bool IsChecked02
-        {
-            get => _isChecked02;
-            set
-            {
-                _isChecked02 = value;
-                OnPropertyChanged("IsChecked02");
-            }
-        }*/
-
         public ICommand SwitchViewCommand { get; }
         public ICommand SwitchViewCommand2 => new RelayCommand<object>(OnSwitchView, CheckCanExecuted); // 약국 클릭하면 확대 기능 and 제출하기 버튼 활성화 함수
 
@@ -91,6 +84,7 @@ namespace Meiday
         private void OnSwitchView(object index)
         {
             SwitchView = int.Parse(index.ToString());
+            //SessionTimer_Reset();
 
             if (SwitchView == 0) // 다음에 하기 로그인 정보 초기화
             {
@@ -99,7 +93,10 @@ namespace Meiday
                 _isChoice01 = false;
                 _isChoice02 = false;
             }
-
+            if(SwitchView == 1) // 키패드 화면 들어가면 50초 타이머 시작
+            {
+                SessionTimer_Start();
+            }
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
             {
                 _isChecked01 = false; // 다시 진행할때 초기화할거 많을듯
@@ -195,6 +192,45 @@ namespace Meiday
             return ret;
         }
 
-
+        // 세션 타이머 설정 부분
+        DispatcherTimer sessionTimer = new DispatcherTimer();
+        public void SessionTimer_Start()
+        {
+            TimeRemaining = 20;
+            sessionTimer.Interval = TimeSpan.FromSeconds(1);
+            sessionTimer.Tick += new EventHandler(SessionTimer_Tick);
+            sessionTimer.Start();
+        }
+        public void SessionTimer_Tick(object sender, EventArgs e)
+        {
+            TimeRemaining--;
+            if(TimeRemaining < 10 && TimeRemaining > 0)
+            {
+                SwitchView = 111;
+            }
+            else if(TimeRemaining == 0)
+            {
+                SwitchView = 0;
+                sessionTimer.Stop(); // 세션 타임아웃, 타이머 종료
+                //SessionTimer_Reset();
+            }
+        }
+        /*public void SessionTimer_Reset()
+        {
+            this.sessionTimer.Interval = TimeSpan.FromSeconds(1);
+        }*/
+        private int timeRemaining;
+        public int TimeRemaining
+        {
+            get
+            {
+                return timeRemaining;
+            }
+            set
+            {
+                timeRemaining = value;
+                OnPropertyChanged("TimeRemaining");
+            }
+        }
     }
 }

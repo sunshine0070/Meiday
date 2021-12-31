@@ -127,7 +127,6 @@
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
-    <Compile Include="ViewModel\SessionViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
     </Compile>
@@ -186,6 +185,9 @@
     </Compile>
     <Compile Include="View\prescription.xaml.cs">
       <DependentUpon>prescription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SessionTimeOutDialog.xaml.cs">
+      <DependentUpon>SessionTimeOutDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TransferDialog.xaml.cs">
       <DependentUpon>TransferDialog.xaml</DependentUpon>
@@ -266,6 +268,10 @@
     <Page Include="View\prescription.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SessionTimeOutDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TransferDialog.xaml">
       <SubType>Designer</SubType>
