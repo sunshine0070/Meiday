@@ -44,7 +44,7 @@ namespace Meiday.View
             png.Save(stream);
 
             System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
-            string stampFileName = @"C:\Users\user\Desktop\savefile\전자처방전.png";
+            string stampFileName = @"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png";
             image.Save(stampFileName);
             //이미지로 저장
 
@@ -59,7 +59,7 @@ namespace Meiday.View
             // Create a font
             XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
 
-            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\전자처방전.png");
+            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\"+ patient_id+"전자처방전.png");
 
             gfx.DrawImage(im, 30, 30, 550, 700);
 
@@ -80,7 +80,7 @@ namespace Meiday.View
             securitySettings.PermitPrint = false;
 
             // Save the document...
-            string filename = @"C:\Users\user\Desktop\savefile\전자처방전.pdf";
+            string filename = @"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf";
             document.Save(filename);
             // ...and start a viewer.
             //Process.Start(filename);
