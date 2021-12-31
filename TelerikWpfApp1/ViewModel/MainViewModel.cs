@@ -86,6 +86,7 @@ namespace Meiday
             SwitchView = 0;
 
             SwitchViewCommand = new RelayCommand<object>(p => OnSwitchView(p));
+            
         }
         private void OnSwitchView(object index)
         {
@@ -115,14 +116,6 @@ namespace Meiday
             {
                 SwitchView = 90;
                 LoginViewModel.Init();
-            }
-            if(switchView == 106) // 약국 접수하기 누를 시 데이터 저장
-            {
-                if(PaymentViewModel.TREATE_NUM.Count > 0)
-                {
-                     PharmacyViewModel.PharmacySubmit();
-                }
-                    SwitchView = 106;
             }
 
             if (SwitchView == 5 && _isChecked01 == false) // 개인정보 동의 미체크 시 Dialog 화면
@@ -172,20 +165,29 @@ namespace Meiday
             {
                 SwitchView = 0;
             }
-        }
+            
+            if (SwitchView == 106)
+            {
+                MessageBox.Show(PharmacyViewModel.selectedmodel.Name);
+                MessageBox.Show(PaymentViewModel.TREATE_NUM[0]);
+                PharmacyViewModel.PharmacySubmit();
 
+            }
+
+        }
 
 
         //약국 선택하기 버튼 활성화 부분
         public bool CheckCanExecuted(object sender)
         {
-            bool ret =  false;
+            bool ret = false;
             if (PharmacyViewModel.selectedmodel != null)
             {
                 ret = true;
             }
-                return ret;
+            return ret;
         }
+
 
     }
 }
