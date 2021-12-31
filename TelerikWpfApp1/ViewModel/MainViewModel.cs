@@ -168,12 +168,8 @@ namespace Meiday
             
             if (SwitchView == 106)
             {
-                MessageBox.Show(PharmacyViewModel.selectedmodel.Name);
-                MessageBox.Show(PaymentViewModel.TREATE_NUM[0]);
                 PharmacyViewModel.PharmacySubmit();
-
             }
-
         }
 
 

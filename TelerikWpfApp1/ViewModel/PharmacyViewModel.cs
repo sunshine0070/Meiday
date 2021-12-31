@@ -134,15 +134,24 @@ namespace Meiday
             }
         }
 
-        public  void PharmacySubmit() //MainViewModel에서 확인
+        public static void PharmacySubmit() //MainViewModel에서 확인
         {
-            if (PaymentViewModel.TREATE_NUM.Count > 1)
+            //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
+
+            if (PaymentViewModel.TREATE_NUM.Count > 0)
             {
+                //MessageBox.Show("db 조건문 진입");
                 for (int idx = 0; idx < PaymentViewModel.TREATE_NUM.Count; idx++)
                 {
-                    DataSet ds = new DataSet();
-                    string query = @"insert into PHARMACY_RESERVE(PHARMACY_NAME, TREATMENT_NUM) values(" + PharmacyViewModel.selectedmodel.Name + ", " + PaymentViewModel.TREATE_NUM[idx] + "); ";
-                    OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                    MessageBox.Show("약국이름 : "+ PharmacyViewModel.selectedmodel.Name+ " 처방전 번호 : " + PaymentViewModel.TREATE_NUM[idx]);
+                    string query = @"INSERT INTO PHARMACY_RESERVE(PHARMACY_NAME, TREATMENT_NUM) VALUES('" + PharmacyViewModel.selectedmodel.Name + "' , "+  PaymentViewModel.TREATE_NUM[idx] + ");";
+                    MessageBox.Show(query);
+                    string query1 = @"commit;";
+                    
+                    OracleDBManager.Instance.ExecuteNonQuery(query);
+                    OracleDBManager.Instance.ExecuteNonQuery(query1);
+
+                    MessageBox.Show("끝");
                 }
             }
         }
