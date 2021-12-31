@@ -96,6 +96,8 @@ namespace Meiday
             {
                 LoginViewModel.Init();
                 _accidentType = AccidentType.None;
+                _isChoice01 = false;
+                _isChoice02 = false;
             }
 
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
