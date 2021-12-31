@@ -133,8 +133,15 @@ namespace Meiday
                               where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
 
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-            validCheck = ds.Tables[0].Rows[0]["data_Name2"].ToString();
-            return int.Parse(validCheck) > 0;
+            try
+            {
+                validCheck = ds.Tables[0].Rows[0]["data_Name2"].ToString();
+                return int.Parse(validCheck) > 0;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
