@@ -10,7 +10,7 @@
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
-    
+
     <Window.Resources>
 
         <DataTemplate x:Key="ChoiceControlTemplate" DataType="{x:Type local:MainViewModel}">
@@ -19,6 +19,10 @@
 
         <DataTemplate x:Key="EndControlTemplate" DataType="{x:Type local:MainViewModel}">
             <view:EndControl />
+        </DataTemplate>
+
+        <DataTemplate x:Key="prescriptionTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:prescription />
         </DataTemplate>
 
         <DataTemplate x:Key="MainHomeTemplate" DataType="{x:Type local:MainViewModel}">
@@ -81,7 +85,8 @@
         <ContentControl Content="{Binding }">
             <ContentControl.Style>
                 <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="ContentTemplate" Value="{StaticResource MainHomeTemplate}" /> <!--First view-->
+                    <Setter Property="ContentTemplate" Value="{StaticResource MainHomeTemplate}" />
+                    <!--First view-->
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding SwitchView}" Value="1">
                             <Setter Property="ContentTemplate" Value="{StaticResource LoginTemplate}" />
@@ -142,6 +147,10 @@
 
                         <DataTrigger Binding="{Binding SwitchView}" Value="109">
                             <Setter Property="ContentTemplate" Value="{StaticResource EndControlTemplate}" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding SwitchView}" Value="110">
+                            <Setter Property="ContentTemplate" Value="{StaticResource prescriptionTemplate}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

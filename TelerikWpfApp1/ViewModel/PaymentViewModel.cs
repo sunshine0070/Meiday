@@ -23,6 +23,7 @@ namespace Meiday
     {
         Total_Price tot_price = new Total_Price();
 
+
         public static List<string> TREATE_NUM;
 
         payment _pa = new payment();
@@ -217,6 +218,7 @@ namespace Meiday
             }
         }
 
+        /*
         private ICommand nextCommand;
         public ICommand NextCommand
         {
@@ -225,6 +227,7 @@ namespace Meiday
                 return (this.nextCommand) ?? (this.nextCommand = new RelayCommand(ButtonShow));
             }
         }
+        */
         private ICommand payCommand;
         public ICommand PayCommand
         {
@@ -235,14 +238,15 @@ namespace Meiday
         }
         #endregion
 
-        private void ButtonShow()
+        /*
+        public void ButtonShow()
         {
             prescription prescription = new prescription();
             prescription.Owner = Application.Current.MainWindow;
             prescription.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             prescription.ShowDialog();
         }
-
+        */
         private void payShow()
         {
             pay pay = new pay();
