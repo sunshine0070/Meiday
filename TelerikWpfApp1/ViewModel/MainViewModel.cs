@@ -87,7 +87,6 @@ namespace Meiday
         private void OnSwitchView(object index)
         {
             SwitchView = int.Parse(index.ToString());
-            //SessionTimer_Reset();
 
             if (SwitchView == 0) // 다음에 하기 로그인 정보 초기화
             {
@@ -139,7 +138,7 @@ namespace Meiday
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {
                 LoginViewModel.Init();
-                SwitchView = 102;
+                accidentViewModel.SendEmail();
                 _isChecked02 = false;
             }
             else if (SwitchView == 102 && _isChecked02 == false) // 보험목록 미체크 시 Dialog 화면
