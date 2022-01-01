@@ -23,12 +23,15 @@ namespace Meiday
     {
         Total_Price tot_price = new Total_Price();
 
-
         public static List<string> TREATE_NUM;
+        public static List<string> PRESCRIPTION_NUM;
 
         payment _pa = new payment();
+        prescription_ment _pre = new prescription_ment();
+
         // MainWindow 객체 선언
 
+        #region payment 선언
         public string Name
         {
             get { return _pa.Name; }
@@ -124,7 +127,130 @@ namespace Meiday
             }
         }
 
+        #endregion
+
+        #region prescription_ment 선언
+        public string P_Name
+        {
+            get { return _pre.P_Name; }
+            set
+            {
+                if (value != _pre.P_Name)
+                {
+                    _pre.P_Name = value;
+                    this.OnPropertyChanged("P_Name");
+                }
+            }
+        }
+
+        public string P_Number
+        {
+            get {return _pre.P_Number; }
+            set
+            {
+                if (value != _pre.P_Number)
+                {
+                    _pre.P_Number = value;
+                    this.OnPropertyChanged("P_Number");
+                }
+            }
+        }
+
+        public string P_Date
+        {
+            get { return _pre.P_Date; }
+            set
+            {
+                if (value != _pre.P_Date)
+                {
+                    _pre.P_Date = value;
+                    this.OnPropertyChanged("P_Date");
+                }
+            }
+        }
+
+        public string P_Doctor
+        {
+            get { return _pre.P_Doctor; }
+            set
+            {
+                if (value != _pre.P_Doctor)
+                {
+                    _pre.P_Doctor = value;
+                    this.OnPropertyChanged("P_Doctor");
+                }
+            }
+        }
+
+        public string P_DoctorLicense
+        {
+            get { return _pre.P_DoctorLicense; }
+            set
+            {
+                if (value != _pre.P_DoctorLicense)
+                {
+                    _pre.P_DoctorLicense = value;
+                    this.OnPropertyChanged("P_DoctorLicense");
+                }
+            }
+        }
+
+        public string P_Medication
+        {
+            get { return _pre.P_Medication; }
+            set
+            {
+                if (value != _pre.P_Medication)
+                {
+                    _pre.P_Medication = value;
+                    this.OnPropertyChanged("P_Medication");
+                }
+            }
+        }
+
+        public string P_MedicationDose
+        {
+            get { return _pre.P_MedicationDose; }
+            set
+            {
+                if (value != _pre.P_MedicationDose)
+                {
+                    _pre.P_MedicationDose = value;
+                    this.OnPropertyChanged("P_MedicationDose");
+                }
+            }
+        }
+
+        public string P_MedicationCount
+        {
+            get { return _pre.P_MedicationCount; }
+            set
+            {
+                if (value != _pre.P_MedicationCount)
+                {
+                    _pre.P_MedicationCount = value;
+                    this.OnPropertyChanged("P_MedicationCount");
+                }
+            }
+        }
+
+        public string P_DoctorPosition
+        {
+            get { return _pre.P_DoctorPosition; }
+            set
+            {
+                if (value != _pre.P_DoctorPosition)
+                {
+                    _pre.P_DoctorPosition = value;
+                    this.OnPropertyChanged("P_DoctorPosition");
+                }
+            }
+        }
+        #endregion
+
         ObservableCollection<payment> _sampleDatas = null;
+        ObservableCollection<prescription_ment> _prescriptionDatas = null;
+
         public ObservableCollection<payment> SampleDatas
         {
             get
@@ -179,7 +305,55 @@ namespace Meiday
             { _sampleDatas = value; OnPropertyChanged("_sampleDatas"); }
         }
 
-        public static void PaymentSubmit() //MainViewModel에서 확인
+        public ObservableCollection<prescription_ment> PrescriptionDatas
+        {
+            get
+            {
+                if (_prescriptionDatas == null)
+                {
+                    _prescriptionDatas = new ObservableCollection<prescription_ment>();
+                    DataSet ds = new DataSet();
+
+
+                    string query = @" SELECT a.PT_NAME p_name, a.PT_REGNUM p_number, a.PT_REGDATE p_date, b.DR_NAME p_doctor, b.DR_LICENSE p_doctorlicense, e.MED_NAME p_medication, e.MED_DOSE p_medicationdose, e.MED_COUNT p_medicationcount, f.DR_DEPTNAME p_doctorposition
+                                      FROM PATIENT a, DOCTOR b, TREATMENT c, PRESCRIPTION d, DETAILMED e, DEPARTMENT f
+                                      WHERE a.PT_REGNUM = c.PT_REGNUM AND c.TREATMENT_NUM = d.TREATMENT_NUM AND c.DR_LICENSE = b.DR_LICENSE AND d.MED_CODE = e.MED_CODE AND b.DR_DEPTNUM = f.DR_DEPTNUM AND a.PT_IDNUM =" +patient_id;
+
+                    OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                    try
+                    {
+                        for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
+                        {
+                            prescription_ment obj = new prescription_ment()
+                            {
+
+                                P_Name = ds.Tables[0].Rows[idx]["p_name"].ToString(),
+                                P_Number = (ds.Tables[0].Rows[idx]["p_number"].ToString()).Substring(0, 6) + '-' + (ds.Tables[0].Rows[idx]["p_number"].ToString()).Substring(6),
+                                P_Date = ds.Tables[0].Rows[idx]["p_date"].ToString(),
+                                P_Doctor = ds.Tables[0].Rows[idx]["p_doctor"].ToString(),
+                                P_DoctorLicense = ds.Tables[0].Rows[idx]["p_doctorlicense"].ToString(),
+                                P_Medication = ds.Tables[0].Rows[idx]["p_medication"].ToString(),
+                                P_MedicationDose = ds.Tables[0].Rows[idx]["p_medicationdose"].ToString(),
+                                P_MedicationCount = ds.Tables[0].Rows[idx]["p_medicationcount"].ToString(),
+                                P_DoctorPosition = ds.Tables[0].Rows[idx]["p_doctorposition"].ToString(),
+
+                        };
+                            PrescriptionDatas.Add(obj);
+
+                        }
+                    }
+                    catch
+                    {
+                        connect_fail_flag = true;
+                    }
+                }
+                return _prescriptionDatas;
+            }
+            set
+            { _prescriptionDatas = value; OnPropertyChanged("__prescriptionDatas "); }
+        }
+
+        public static void PaymentSubmit() //한번 결제 한 진료를 확인하기 위한 업데이트
         {
             //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
             OracleDBManager oracleDBManager = new OracleDBManager();
@@ -187,8 +361,6 @@ namespace Meiday
 
                 //MessageBox.Show("db 조건문 진입");
 
-
-            
                     string query = @"UPDATE (SELECT * FROM PATIENT a, TREATMENT b WHERE a.PT_REGNUM = b.PT_REGNUM AND a.PT_IDNUM =" + patient_id +") SET PAY_STATUS = '1'";
                     string query1 = @"commit";
                     OracleDBManager.Instance.ExecuteNonQuery(query);

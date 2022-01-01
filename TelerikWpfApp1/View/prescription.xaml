@@ -20,10 +20,76 @@
 
         <Grid  x:Name="grStamp" Width="600" Height="700" VerticalAlignment="TOP">
             <Grid.Background>
-                <ImageBrush ImageSource="/Resource/prescription.png"/>
+                <ImageBrush ImageSource="/Resource/prescription.jpg"/>
             </Grid.Background>
 
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding SampleDatas[0].Name}" Width="120" Height="25" Margin="135,125,345,550"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Name}" Width="120" Margin="135,130,345,547"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Number}" Height="25" Margin="125,159,335,516"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Date}" Margin="125,105,335,575"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Doctor}" Margin="230,200,230,480"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorLicense}" Margin="475,210,40,470"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorPosition}" Margin="475,189,40,491"/>
+
+
+            <TextBlock TextWrapping="Wrap" Text="메이데이병원" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,105,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="010-1234-5678" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,126,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="0123456789" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,147,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="meiday@ezcaretech.com" Width="140" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,168,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="3" Width="20" Height="14" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="192,545,0,0"/>
+
+            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="35,273,335,231">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" Background="White" Margin="0,0,0,0" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate >
+                        <UserControl>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding P_Medication}" FontSize="10" Height="25" />
+                        </UserControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="285,273,290,231">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" Background="White" Margin="0,0,0,0" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate >
+                        <UserControl>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding P_MedicationDose}" FontSize="10" Height="25" />
+                        </UserControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="334,273,250,231">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" Background="White" Margin="0,0,0,0" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate >
+                        <UserControl>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding P_MedicationCount}" FontSize="10" Height="25" />
+                        </UserControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
 
         </Grid>
 

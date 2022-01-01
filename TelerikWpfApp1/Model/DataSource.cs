@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace Meiday.Model
 {
@@ -26,6 +27,21 @@ namespace Meiday.Model
 		public string Price { get; set; }
 		public bool Checked { get; set; }
 	}
+
+	public class prescription_ment
+	{
+		public string P_Name { get; set; }
+		public string P_Number { get; set; }
+		public string P_Date { get; set; }
+		public string P_Doctor { get; set; }
+		public string P_DoctorLicense { get; set; }
+		public string P_Medication { get; set; }
+		public string P_MedicationDose { get; set; }
+		public string P_MedicationCount { get; set; }
+		public string P_DoctorPosition { get; set; }
+
+	}
+
 	public enum AccidentType
     {
 		None,
