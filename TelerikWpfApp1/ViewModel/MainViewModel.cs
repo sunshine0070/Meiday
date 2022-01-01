@@ -272,6 +272,7 @@ namespace Meiday
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
+                MessageBox.Show("처방전을 약국에 전송했습니다");
             }
         }
     }
