@@ -59,9 +59,10 @@ namespace Meiday
                 string address = model.PHAR_MODEL[i].Address;
                 string latitude = model.PHAR_MODEL[i].Latitude;
                 string logitude = model.PHAR_MODEL[i].Logitude;
+                string wait = model.PHAR_MODEL[i].WaitPerson;
 
                 //배열저장
-                object[] pd = new object[] { name, latitude, logitude };
+                object[] pd = new object[] { name, latitude, logitude, wait };
 
                 wb.InvokeScript("pharmacyMarker", pd);
             }

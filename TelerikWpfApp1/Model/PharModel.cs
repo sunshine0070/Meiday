@@ -105,6 +105,26 @@ namespace Meiday.Models
                 }
         }
 
+        private String Email_;
+        public String Email
+        {
+            get { return Email_; }
+            set { Email_ = value;
+                this.OnPropertyChanged("Email");
+            }
+        }
+
+        private String WaitPerson_;
+        public String WaitPerson
+        {
+            get { return WaitPerson_; }
+            set
+            {
+                WaitPerson_ = value;
+                this.OnPropertyChanged("WaitPerson");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(String name)

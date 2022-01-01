@@ -28,7 +28,7 @@ namespace Meiday
         {
             this.PHAR_MODEL = new ObservableCollection<Pharmacy>();
             DataSet ds = new DataSet();
-            string query = @" SELECT * FROM PHARMACY ";
+            string query = @" SELECT * FROM PHARMACY_WAIT";
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
             for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
             {
@@ -38,14 +38,16 @@ namespace Meiday
                 String latitude = ds.Tables[0].Rows[idx]["PHARMACY_LATITUDE"].ToString();
                 String logitude = ds.Tables[0].Rows[idx]["PHARMACY_LOGITUDE"].ToString();
                 String image = ds.Tables[0].Rows[idx]["PHARMACY_IMAGE"].ToString();
-                PHAR_MODEL.Add(new Pharmacy { Name = name, Phone = phone, Address = address, Latitude = latitude, Logitude = logitude, Image = image });
+                String email = ds.Tables[0].Rows[idx]["PHARMACY_EMAIL"].ToString();
+                String wait = ds.Tables[0].Rows[idx]["WAIT_PERSON"].ToString();
+                PHAR_MODEL.Add(new Pharmacy { Name = name, Phone = phone, Address = address, Latitude = latitude, Logitude = logitude, Image = image, Email = email, WaitPerson = wait });
             }
         }
 
         public void DataSearch()
         {
             DataSet ds = new DataSet();
-            string query = @" SELECT * FROM PHARMACY ";
+            string query = @" SELECT * FROM PHARMACY_WAIT ";
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
 
             for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
@@ -57,8 +59,10 @@ namespace Meiday
                     Address = ds.Tables[0].Rows[idx]["PHARMACY_ADDRESS"].ToString(),
                     Latitude = ds.Tables[0].Rows[idx]["PHARMACY_LATITUDE"].ToString(),
                     Logitude = ds.Tables[0].Rows[idx]["PHARMACY_LOGITUDE"].ToString(),
-                    Image = ds.Tables[0].Rows[idx]["PHARMACY_IMAGE"].ToString()
-                };
+                    Image = ds.Tables[0].Rows[idx]["PHARMACY_IMAGE"].ToString(),
+                    Email = ds.Tables[0].Rows[idx]["PHARMACY_EMAIL"].ToString(),
+                    WaitPerson = ds.Tables[0].Rows[idx]["WAIT_PERSON"].ToString()
+            };
                 PHAR_MODEL.Add(obj);
             }
         }
