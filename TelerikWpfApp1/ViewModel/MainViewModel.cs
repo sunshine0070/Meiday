@@ -11,6 +11,8 @@ using static Meiday.AccidentViewModel;
 using System.Data;
 using System;
 using System.Windows.Threading;
+using System.Net.Mail;
+
 
 namespace Meiday
 {
@@ -246,6 +248,31 @@ namespace Meiday
             {
                 switchViewtmp = value;
                 OnPropertyChanged("SwitchViewtmp");
+            }
+        }
+        public ICommand MailSendCommand => new RelayCommand<object>(email_send, CheckCanExecuted);
+
+
+
+        public void email_send(object sender)
+        {
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("yjmong@gachon.ac.kr");
+                mail.To.Add(PharmacyViewModel.selectedmodel.Email);
+                mail.Subject = "Test Mail - 1";
+                mail.Body = "mail with attachment";
+
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment("C:/전자처방전.pdf");
+                mail.Attachments.Add(attachment);
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("yjmong@gachon.ac.kr", "~!@EzCareTec");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
             }
         }
     }

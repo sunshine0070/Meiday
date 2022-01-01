@@ -125,6 +125,7 @@ namespace Meiday.Models
             }
         }
 
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(String name)

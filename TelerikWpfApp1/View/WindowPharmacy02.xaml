@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Meiday" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:Meiday" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" d:DataContext="{d:DesignInstance Type=local:PharmacyViewModel}"
              mc:Ignorable="d"
         Height="750" Width="550">
     <UserControl.Resources>
@@ -71,8 +71,7 @@
 
             <telerik:RadButton x:Name="Submit" Grid.Column="2" Content="접수하기" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Grid.Row="7" 
                     VerticalAlignment="Center" Height="40" Width="250" Command="{Binding SwitchViewCommand}" CommandParameter="106" Margin="130,0,0,0"/>
-
-
+            <Button Grid.Column="2" Content="Button" HorizontalAlignment="Left" Margin="146,32,0,0" Grid.Row="6" VerticalAlignment="Top"  Command="{Binding MailSendCommand}"/>
 
         </Grid>
     </Border>

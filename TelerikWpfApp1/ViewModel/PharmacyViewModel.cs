@@ -13,12 +13,14 @@ using System.Net;
 using System.Web;
 using System.Reflection;
 using Meiday.ViewModel;
+using System.Net.Mail;
 
 namespace Meiday
 {
     public class PharmacyViewModel : Pharmacy
     {
         public ICommand CheckCommand => new RelayCommand<object>(CheckButtonExecuted, CheckCanExecuted); // 약국 클릭하면 확대 기능 and 제출하기 버튼 활성화
+        public ICommand MailSendCommand => new RelayCommand<object>(email_send, CheckCanExecuted);
         public ObservableCollection<Pharmacy> PHAR_MODEL { get; set; }
 
         public static Pharmacy selectedmodel { get; set; }
@@ -158,6 +160,28 @@ namespace Meiday
 
                     MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
                 }
+            }
+        }
+
+        public void email_send(object sender)
+        {
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                mail.From = new MailAddress("yjmong@gachon.ac.kr");
+                mail.To.Add("yjmong@naver.com");
+                mail.Subject = "Test Mail - 1";
+                mail.Body = "mail with attachment";
+
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment("C:/전자처방전.pdf");
+                mail.Attachments.Add(attachment);
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("yjmong@gachon.ac.kr", "~!@EzCareTec");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
             }
         }
 
