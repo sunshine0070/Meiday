@@ -12,7 +12,9 @@ using static Meiday.LoginViewModel;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Data;
-
+using System.Net.Mail;
+using System.Net;
+using System.IO;
 
 
 namespace Meiday
@@ -199,6 +201,42 @@ namespace Meiday
                 OnPropertyChanged("_sampleDatas");
             }
         }
+
+        // 보험 EMAIL 보내기
+        public void SendEmail()
+        {
+            try
+            {
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("ezsun0070@naver.com", "SNUH_Meiday", Encoding.UTF8);
+                // 보내는 계정 주소
+                mailMessage.To.Add("hcsong95@naver.com"); // 받는이 메일 주소
+                //mailMessage.CC.Add("zzz@naver.com"); // 참조 메일 주소
+                mailMessage.Subject = "Meiday_" + patient_id + "_실비청구_서류"; // 제목
+                mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
+                mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime 
+                                   + "\n환자번호: " + patient_id
+                                   + "\n사고유형: " + _accidentType; // 본문
+                mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
+                mailMessage.BodyEncoding = Encoding.UTF8; // 본문 인코딩 타입(UTF-8) 선택
+                mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png", FileMode.Open, FileAccess.Read), "test" + patient_id + ".png"));
+                mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf", FileMode.Open, FileAccess.Read), "test" + patient_id + ".pdf"));
+                // 파일 첨부
+                SmtpClient SmtpServer = new SmtpClient("smtp.naver.com");
+                // SMTP 서버 주소
+                SmtpServer.Port = 587;
+                // SMTP 포트
+                SmtpServer.EnableSsl = true; // SSL 사용 여부
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+                SmtpServer.Credentials = new NetworkCredential("ezsun0070", "1q2w3e4r!");
+                SmtpServer.Send(mailMessage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
     public class RadioBoolToAccidentTypeConverter : IValueConverter
     {
@@ -228,8 +266,4 @@ namespace Meiday
         }
         #endregion
     }
-    /// <summary>
-    /// 
-    /// </summary>
-
 }
