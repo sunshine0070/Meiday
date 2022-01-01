@@ -55,12 +55,14 @@
             <TextBox Grid.Row="4" Grid.Column="1" 
                      HorizontalAlignment="Left"  TextWrapping="Wrap" Text=" 약국 주소 : " VerticalAlignment="Center" FontSize="18" BorderThickness="0" Margin="13,0,0,0"/>
 
-            <TextBox Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center"  BorderThickness="0" FontSize="15"
+            <TextBox Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center"  BorderThickness="0" FontSize="20"
                      TextWrapping="Wrap"  VerticalAlignment="Center"   DataContext="{StaticResource PharmacyViewModel}" Text="{Binding selectedmodel.Address}"/>
 
             <TextBox  Grid.Row="5" Grid.Column="1"  
                      HorizontalAlignment="Left" TextWrapping="Wrap" Text=" 접수자 수 :&#10; (30분 기준) " VerticalAlignment="Center" FontSize="18"  BorderThickness="0" Margin="13,0,0,0" Width="105"/>
 
+            <TextBox Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center"  BorderThickness="0" FontSize="20"
+                     TextWrapping="Wrap"  VerticalAlignment="Center"   DataContext="{StaticResource PharmacyViewModel}" Text="{Binding selectedmodel.WaitPerson, StringFormat={}{0} 명}"/>
 
             <TextBlock  Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13" TextWrapping="Wrap" Foreground="Red"
                 Text="* 주의사항 * &#10; 1. 접수시 선택한 약국에 제조 처방전이 보내집니다.&#10; 2. 당일 내에 약을 수령하지 않을 시 폐기되며 어떠한 보상도 받으실 수 없습니다." Margin="7,0,0,0"/>

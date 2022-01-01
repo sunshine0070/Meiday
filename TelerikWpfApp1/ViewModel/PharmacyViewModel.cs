@@ -20,7 +20,6 @@ namespace Meiday
     {
         public ICommand CheckCommand => new RelayCommand<object>(CheckButtonExecuted, CheckCanExecuted); // 약국 클릭하면 확대 기능 and 제출하기 버튼 활성화
         public ObservableCollection<Pharmacy> PHAR_MODEL { get; set; }
-
         public static Pharmacy selectedmodel { get; set; }
 
         //생성자 생성하기 //자동으로 불러지는 데이터
@@ -40,7 +39,12 @@ namespace Meiday
                 String image = ds.Tables[0].Rows[idx]["PHARMACY_IMAGE"].ToString();
                 String email = ds.Tables[0].Rows[idx]["PHARMACY_EMAIL"].ToString();
                 String wait = ds.Tables[0].Rows[idx]["WAIT_PERSON"].ToString();
-                PHAR_MODEL.Add(new Pharmacy { Name = name, Phone = phone, Address = address, Latitude = latitude, Logitude = logitude, Image = image, Email = email, WaitPerson = wait });
+                String fontcolor = "ForestGreen";
+                if (int.Parse(wait) < 3) //접수자수 많은 약국 세곳은 글씨 빨간색으로
+                {
+                    fontcolor = "red";
+                }
+                PHAR_MODEL.Add(new Pharmacy { Name = name, Phone = phone, Address = address, Latitude = latitude, Logitude = logitude, Image = image, Email = email, WaitPerson = wait, Fontcolor = fontcolor });
             }
         }
 
