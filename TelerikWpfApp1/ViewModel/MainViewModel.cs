@@ -77,7 +77,8 @@ namespace Meiday
         public MainViewModel()
         {
             SwitchView = 0;
-
+            sessionTimer.Interval = TimeSpan.FromSeconds(1);
+            sessionTimer.Tick += SessionTimer_Tick; // 1번만 실행
             SwitchViewCommand = new RelayCommand<object>(p => OnSwitchView(p));
             
         }
@@ -93,10 +94,11 @@ namespace Meiday
                 _isChoice01 = false;
                 _isChoice02 = false;
             }
-            /*if(SwitchView == 1) // 키패드 화면 들어가면 50초 타이머 시작
+            if (SwitchView >= 1 && SwitchView != 111) // 키패드 화면 들어가면 세션 타이머 시작
             {
-                SessionTimer_Start();
-            }*/
+                SessionTimer_Reset(); // 화면 갱신때마다 남은 초 초기화
+                SessionTimer_Start(); // 화면 갱신때마다 초 세기 시작
+            }
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
             {
                 _isChecked01 = false; // 다시 진행할때 초기화할거 많을듯
@@ -196,29 +198,30 @@ namespace Meiday
         DispatcherTimer sessionTimer = new DispatcherTimer();
         public void SessionTimer_Start()
         {
-            TimeRemaining = 20;
-            sessionTimer.Interval = TimeSpan.FromSeconds(1);
-            sessionTimer.Tick += new EventHandler(SessionTimer_Tick);
             sessionTimer.Start();
         }
         public void SessionTimer_Tick(object sender, EventArgs e)
         {
-            TimeRemaining--;
-            if(TimeRemaining < 10 && TimeRemaining > 0)
+            TimeRemaining -= 1;
+            if(TimeRemaining == 16)
+            {
+                SwitchViewtmp = SwitchView; // 원래 화면 넘버 임시저장
+            }
+            else if(TimeRemaining <= 15 && TimeRemaining >= 0) // 남은 시간 표시 15초부터
             {
                 SwitchView = 111;
             }
-            else if(TimeRemaining == 0)
+            else if(TimeRemaining < 0) // 세션 타임아웃, 타이머 종료
             {
                 SwitchView = 0;
-                sessionTimer.Stop(); // 세션 타임아웃, 타이머 종료
-                //SessionTimer_Reset();
+                SessionTimer_Reset();
+                sessionTimer.Stop();
             }
         }
-        /*public void SessionTimer_Reset()
+        public void SessionTimer_Reset()
         {
-            this.sessionTimer.Interval = TimeSpan.FromSeconds(1);
-        }*/
+            TimeRemaining = 180; // 세션 시간(3분)
+        }
         private int timeRemaining;
         public int TimeRemaining
         {
@@ -230,6 +233,19 @@ namespace Meiday
             {
                 timeRemaining = value;
                 OnPropertyChanged("TimeRemaining");
+            }
+        }
+        private int switchViewtmp;
+        public int SwitchViewtmp
+        {
+            get
+            {
+                return switchViewtmp;
+            }
+            set
+            {
+                switchViewtmp = value;
+                OnPropertyChanged("SwitchViewtmp");
             }
         }
     }

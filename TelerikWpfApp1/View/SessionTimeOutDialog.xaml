@@ -26,7 +26,7 @@
                         Background="#34a8eb" BorderThickness="0"
                         FontWeight="Bold" FontSize="14" Content="확인"
                         Command="{Binding SwitchViewCommand}"
-                        CommandParameter="0"/>
+                        CommandParameter="{Binding SwitchViewtmp}"/>
             </Grid>
         </Border>
     </Grid>
