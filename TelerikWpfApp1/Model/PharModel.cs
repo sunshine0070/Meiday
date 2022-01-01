@@ -125,6 +125,16 @@ namespace Meiday.Models
             }
         }
 
+        private String Fontcolor_;
+        public String Fontcolor
+        {
+            get { return Fontcolor_; }
+            set
+            {
+                Fontcolor_ = value;
+                this.OnPropertyChanged("Fontcolor");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
