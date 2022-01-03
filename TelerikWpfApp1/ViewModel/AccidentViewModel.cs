@@ -70,6 +70,17 @@ namespace Meiday
             }
         }
 
+        public DateTime _accidentSubmitDates;
+        public DateTime AccidentSubmitDates
+        {
+            get => _accidentSubmitDates;
+            set
+            {
+                _accidentSubmitDates = value;
+                OnPropertyChanged("AccidentSubmitDates");
+            }
+        }
+
         ment _pa = new ment();
         public string InsuName
         {
@@ -214,7 +225,7 @@ namespace Meiday
                 //mailMessage.CC.Add("zzz@naver.com"); // 참조 메일 주소
                 mailMessage.Subject = "Meiday_" + patient_id + "_실비청구_서류"; // 제목
                 mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
-                mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime 
+                mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime
                                    + "\n환자번호: " + patient_id
                                    + "\n사고유형: " + _accidentType; // 본문
                 mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
@@ -236,6 +247,29 @@ namespace Meiday
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void AccidentSubmit()
+        {
+            //OracleDBManager oracleDBManager = new OracleDBManager();
+            //oracleDBManager.GetConnection();
+            InsuranceSubmit s = new InsuranceSubmit
+            {
+                AccidentDate = _accidentSelectedDateTime,
+                SelectAccidentType = _accidentType,
+                AccidentSubmitDate = _accidentSubmitDates,
+            };
+            //MessageBox.Show(patient_id.Length.ToString());
+            string query = @"INSERT INTO 
+                        INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, PT_IDNUM)
+                        VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', " + patient_id + ")";
+            string query1 = @"commit";
+            query = query.Replace("#AccidentDate", _accidentSelectedDateTime.ToString());
+            query = query.Replace("#AccidentSubmitDate", _accidentSelectedDateTime.ToString());
+            query = query.Replace("#AccidentType", _accidentType.ToString());
+            OracleDBManager.Instance.ExecuteNonQuery(query);
+            OracleDBManager.Instance.ExecuteNonQuery(query1);
+            //MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
         }
     }
     public class RadioBoolToAccidentTypeConverter : IValueConverter

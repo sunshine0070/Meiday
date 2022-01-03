@@ -126,6 +126,7 @@
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
+    <Compile Include="ViewModel\AccidentViewModel.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
@@ -150,7 +151,6 @@
     <Compile Include="Database\Singleton.cs" />
     <Compile Include="Database\XmlManager.cs" />
     <Compile Include="Model\DataSource.cs" />
-    <Compile Include="ViewModel\AccidentViewModel.cs" />
     <Compile Include="ViewModel\AdminUserControlModel.cs" />
     <Compile Include="ViewModel\Command.cs" />
     <Compile Include="ViewModel\LoginCommand.cs" />
