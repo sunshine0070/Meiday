@@ -42,6 +42,21 @@ namespace Meiday.Model
 
 	}
 
+	public class receipt_ment
+	{
+		public string R_Name { get; set; }
+		public string R_Id { get; set; }
+		public string R_Pay { get; set; }
+		public string R_Doctor { get; set; }
+		public string R_DoctorPosition { get; set; }
+		public string R_Date { get; set; }
+		public string R_Year { get; set; }
+		public string R_Month { get; set; }
+		public string R_Day { get; set; }
+
+
+	}
+
 	public enum AccidentType
     {
 		None,

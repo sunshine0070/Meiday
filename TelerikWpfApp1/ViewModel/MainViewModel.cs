@@ -198,6 +198,7 @@ namespace Meiday
             if (SwitchView == 108 && _isPayChoice == true)
             {
                 SwitchView = 112;
+                _isPayChoice = false;
             }
         }
 

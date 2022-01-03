@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Meiday" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:meiday="clr-namespace:Meiday" 
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="600">
 
@@ -13,6 +14,7 @@
         <local:AccidentViewModel x:Key="AccidentViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
+        <local:MainViewModel x:Key="MainViewModel"/>
     </UserControl.Resources>
 
     <Grid>
@@ -23,27 +25,24 @@
                 <ImageBrush ImageSource="/Resource/receipt.jpg"/>
             </Grid.Background>
 
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Name}" Width="120" Margin="135,130,345,547"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Number}" Height="25" Margin="125,159,335,516"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Date}" Margin="125,105,335,575"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Doctor}" Margin="230,200,230,480"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorLicense}" Margin="475,210,40,470"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorPosition}" Margin="475,189,40,491"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Name}" Width="120" Margin="127,147,0,388" HorizontalAlignment="Left"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Id}" Width="120" Margin="127,130,303,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_DoctorPosition}" Width="120" Margin="282,130,148,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Doctor}" Width="120" Margin="360,113,70,422"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Date}" Width="120" Margin="440,129,-10,406"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Pay}" Width="120" Margin="128,183,302,352"/>
 
 
+
+            <TextBlock TextWrapping="Wrap" Text="메이데이병원" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="360,95,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="000-000" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="127,95,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="서울특별시 중구 퇴계로 307" Width="163" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="126,112,0,0"/>
 
         </Grid>
 
-        
 
-        <telerik:RadButton x:Name="radButtonRefuse" Grid.Row="15" Grid.Column="1"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Padding="50,10,50,10"
-                    Content="영수증 전송" CornerRadius="15"            
-                    Command="{Binding SwitchViewCommand}"
-                    CommandParameter="108"/>
-
-            <!--="Button_Click"-->
-
+        <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Center" CornerRadius="15" 
+                    VerticalAlignment="Top" Height="40" Width="150" Command="{Binding SwitchViewCommand}" CommandParameter="108" Margin="0,715,0,0"/>
 
     </Grid>
 

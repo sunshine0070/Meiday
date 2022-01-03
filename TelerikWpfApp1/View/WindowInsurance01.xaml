@@ -11,6 +11,7 @@
         <local:ReadViewModel x:Key="ReadViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
     </UserControl.Resources>
+    
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

@@ -28,6 +28,7 @@ namespace Meiday
 
         payment _pa = new payment();
         prescription_ment _pre = new prescription_ment();
+        receipt_ment _re = new receipt_ment();
 
         // MainWindow 객체 선언
 
@@ -248,8 +249,131 @@ namespace Meiday
         }
         #endregion
 
+        #region receipt_ment 선언
+        public string R_Name
+        {
+            get { return _re.R_Name; }
+            set
+            {
+                if (value != _re.R_Name)
+                {
+                    _re.R_Name = value;
+                    this.OnPropertyChanged("R_Name");
+                }
+            }
+        }
+
+        public string R_Id
+        {
+            get { return _re.R_Id; }
+            set
+            {
+                if (value != _re.R_Id)
+                {
+                    _re.R_Id = value;
+                    this.OnPropertyChanged("R_Id");
+                }
+            }
+        }
+
+        public string R_Pay
+        {
+            get { return _re.R_Pay; }
+            set
+            {
+                if (value != _re.R_Pay)
+                {
+                    _re.R_Pay = value;
+                    this.OnPropertyChanged("R_Pay");
+                }
+            }
+        }
+
+        public string R_Doctor
+        {
+            get { return _re.R_Doctor; }
+            set
+            {
+                if (value != _re.R_Doctor)
+                {
+                    _re.R_Doctor = value;
+                    this.OnPropertyChanged("R_Doctor");
+                }
+            }
+        }
+
+        public string R_DoctorPosition
+        {
+            get { return _re.R_DoctorPosition; }
+            set
+            {
+                if (value != _re.R_DoctorPosition)
+                {
+                    _re.R_DoctorPosition = value;
+                    this.OnPropertyChanged("R_DoctorPosition");
+                }
+            }
+        }
+
+        public string R_Date
+        {
+            get { return _re.R_Date; }
+            set
+            {
+                if (value != _re.R_Date)
+                {
+                    _re.R_Date = value;
+                    this.OnPropertyChanged("R_Date");
+                }
+            }
+        }
+
+
+        public string R_Year
+        {
+            get { return _re.R_Year; }
+            set
+            {
+                if (value != _re.R_Year)
+                {
+                    _re.R_Year = value;
+                    this.OnPropertyChanged("R_Year");
+                }
+            }
+        }
+
+        public string R_Month
+        {
+            get { return _re.R_Month; }
+            set
+            {
+                if (value != _re.R_Month)
+                {
+                    _re.R_Month = value;
+                    this.OnPropertyChanged("R_Month");
+                }
+            }
+        }
+
+
+        public string R_Day
+        {
+            get { return _re.R_Day; }
+            set
+            {
+                if (value != _re.R_Day)
+                {
+                    _re.R_Day = value;
+                    this.OnPropertyChanged("R_Day");
+                }
+            }
+        }
+
+        #endregion
+
         ObservableCollection<payment> _sampleDatas = null;
         ObservableCollection<prescription_ment> _prescriptionDatas = null;
+        ObservableCollection<receipt_ment> _receiptDatas = null;
 
         public ObservableCollection<payment> SampleDatas
         {
@@ -350,7 +474,56 @@ namespace Meiday
                 return _prescriptionDatas;
             }
             set
-            { _prescriptionDatas = value; OnPropertyChanged("__prescriptionDatas "); }
+            { _prescriptionDatas = value; OnPropertyChanged("_prescriptionDatas"); }
+        }
+
+        public ObservableCollection<receipt_ment> ReceiptDatas
+        {
+            get
+            {
+                if (_receiptDatas == null)
+                {
+                    _receiptDatas = new ObservableCollection<receipt_ment>();
+                    DataSet ds = new DataSet();
+
+
+                    string query = @" SELECT a.PT_NAME r_name, a.PT_IDNUM r_id, c.TREATMENT_PAY r_pay, b.DR_NAME r_doctor, d.DR_DEPTNAME r_doctorposition, c.TREATMENT_TIME r_date
+                                      FROM PATIENT a, DOCTOR b, TREATMENT c, DEPARTMENT d
+                                      WHERE a.PT_REGNUM = c.PT_REGNUM  AND c.DR_LICENSE = b.DR_LICENSE AND b.DR_DEPTNUM = d.DR_DEPTNUM AND a.PT_IDNUM =" + patient_id;
+
+                    OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                    try
+                    {
+                        for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
+                        {
+                            receipt_ment obj = new receipt_ment()
+                            {
+
+                                R_Name = ds.Tables[0].Rows[idx]["r_name"].ToString(),
+                                R_Id = ds.Tables[0].Rows[idx]["r_id"].ToString(),
+                                R_Pay = ds.Tables[0].Rows[idx]["r_pay"].ToString(),
+                                R_Doctor = ds.Tables[0].Rows[idx]["r_doctor"].ToString(),
+                                R_DoctorPosition = ds.Tables[0].Rows[idx]["r_doctorposition"].ToString(),
+                                R_Date = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(0, 10),
+                                R_Year = ds.Tables[0].Rows[idx]["r_date"].ToString(),
+                                R_Month = ds.Tables[0].Rows[idx]["r_date"].ToString(),
+                                R_Day = ds.Tables[0].Rows[idx]["r_date"].ToString()
+
+
+                            };
+                            ReceiptDatas.Add(obj);
+
+                        }
+                    }
+                    catch
+                    {
+                        connect_fail_flag = true;
+                    }
+                }
+                return _receiptDatas;
+            }
+            set
+            { _receiptDatas = value; OnPropertyChanged("_receiptDatas"); }
         }
 
         public static void PaymentSubmit() //한번 결제 한 진료를 확인하기 위한 업데이트
