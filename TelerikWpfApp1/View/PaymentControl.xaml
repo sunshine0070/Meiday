@@ -15,6 +15,7 @@
         <local:AccidentViewModel x:Key="AccidentViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
+        <local:MainViewModel x:Key="MainViewModel"/>
     </UserControl.Resources>
 
     <Grid>
@@ -75,6 +76,12 @@
 
 
         <TextBlock Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="30" FontWeight="Bold"   DataContext="{StaticResource PaymentViewModel}" Text="{Binding Total_Price}" Margin="50,0,50,0"/>
+
+        <CheckBox x:Name="choice2" Grid.Row="6" Grid.Column="2"
+                  FontWeight="Bold" IsChecked="{Binding IsPayChoice}"
+                  Content="영수증 핸드폰으로 받기" Grid.ColumnSpan="2" Margin="16,63,16,92" Grid.RowSpan="2"/>
+
+
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Grid.ColumnSpan="6" Margin="90,75,0,25" Grid.RowSpan="2">
             <Button Height="50" Width="100" Margin="30 0 30 0" 
                     FontSize="16" FontWeight="Bold" Content="결제하기" 
@@ -96,22 +103,6 @@
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="108"/>
         </StackPanel>
-
-
-        <!--
-        <Button x:Name="pay_start" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="1" Command="{Binding PaystartCommand}" >가격</Button>
-
-        <TextBlock Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding Total_Price}"/>
-        <telerik:RadRichTextBox x:Name="Total_Payment" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4"  DocumentInheritsDefaultStyleSettings="True" HorizontalScrollBarVisibility="Hidden" IsSelectionMiniToolBarEnabled="True" IsSpellCheckingEnabled="True" IsContextMenuEnabled="True" Margin="98.6,54.4,98.2,62.4" VerticalScrollBarVisibility="Hidden" Grid.RowSpan="2" />
-
-        <StackPanel Grid.Row="1">
-            <Button VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Margin="5" Content="Connect" Command="{Binding ConnectCommand}"/>
-            <Button VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Margin="5" Content="결제" Command="{Binding PayCommand}"/>
-            <Button VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="2" Margin="5" Content="처방전" Command="{Binding NextCommand}"/>
-
-        </StackPanel>
-        -->
-
 
     </Grid>
 </UserControl>

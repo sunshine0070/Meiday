@@ -43,6 +43,8 @@ namespace Meiday
         private bool _isChoice01 = false;
         private bool _isChoice02 = false;
 
+        private bool _isPayChoice = false;
+
         public bool IsChecked01
         {
             get => _isChecked01;
@@ -73,6 +75,17 @@ namespace Meiday
                 OnPropertyChanged("IsChoice02");
             }
         }
+
+        public bool IsPayChoice
+        {
+            get => _isPayChoice;
+            set
+            {
+                _isPayChoice = value;
+                OnPropertyChanged("IsPayChoice");
+            }
+        }
+
 
         public ICommand SwitchViewCommand { get; }
         public ICommand SwitchViewCommand2 => new RelayCommand<object>(OnSwitchView, CheckCanExecuted); // 약국 클릭하면 확대 기능 and 제출하기 버튼 활성화 함수
@@ -180,6 +193,11 @@ namespace Meiday
             if (SwitchView == 3)
             {
                 PaymentViewModel.PaymentSubmit();
+            }
+
+            if (SwitchView == 108 && _isPayChoice == true)
+            {
+                SwitchView = 112;
             }
         }
 

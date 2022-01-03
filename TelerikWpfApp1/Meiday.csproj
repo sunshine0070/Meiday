@@ -186,6 +186,9 @@
     <Compile Include="View\prescription.xaml.cs">
       <DependentUpon>prescription.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ReceiptControl.xaml.cs">
+      <DependentUpon>ReceiptControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SessionTimeOutDialog.xaml.cs">
       <DependentUpon>SessionTimeOutDialog.xaml</DependentUpon>
     </Compile>
@@ -268,6 +271,10 @@
     <Page Include="View\prescription.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ReceiptControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SessionTimeOutDialog.xaml">
       <SubType>Designer</SubType>
@@ -404,6 +411,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\prescription.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\receipt.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets')" />

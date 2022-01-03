@@ -34,6 +34,7 @@ namespace Meiday.View
             InitializeComponent();
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             RenderTargetBitmap rtb = new RenderTargetBitmap((int)grStamp.ActualWidth, (int)grStamp.ActualHeight, 96, 96, PixelFormats.Pbgra32);
@@ -67,6 +68,7 @@ namespace Meiday.View
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
             securitySettings.UserPassword = patient_id;
+
             securitySettings.OwnerPassword = "owner";
 
             // Restrict some rights.

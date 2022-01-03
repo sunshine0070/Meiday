@@ -13,6 +13,7 @@
 
     <Window.Resources>
 
+
         <DataTemplate x:Key="ChoiceControlTemplate" DataType="{x:Type local:MainViewModel}">
             <view:ChoiceControl />
         </DataTemplate>
@@ -23,6 +24,10 @@
 
         <DataTemplate x:Key="prescriptionTemplate" DataType="{x:Type local:MainViewModel}">
             <view:prescription />
+        </DataTemplate>
+
+        <DataTemplate x:Key="ReceiptControlTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:ReceiptControl />
         </DataTemplate>
 
         <DataTemplate x:Key="MainHomeTemplate" DataType="{x:Type local:MainViewModel}">
@@ -82,6 +87,8 @@
         <DataTemplate x:Key="SessionTimeOutDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:SessionTimeOutDialog />
         </DataTemplate>
+
+
 
     </Window.Resources>
     <Grid>
@@ -157,6 +164,10 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="111">
                             <Setter Property="ContentTemplate" Value="{StaticResource SessionTimeOutDialogTemplate}" />
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding SwitchView}" Value="112">
+                            <Setter Property="ContentTemplate" Value="{StaticResource ReceiptControlTemplate}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
