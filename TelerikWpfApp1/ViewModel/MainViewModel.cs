@@ -255,6 +255,7 @@ namespace Meiday
 
         public void email_send(object sender)
         {
+            try
             {
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -270,8 +271,10 @@ namespace Meiday
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("yjmong@gachon.ac.kr", "~!@EzCareTec");
                 SmtpServer.EnableSsl = true;
-
                 SmtpServer.Send(mail);
+            }
+            catch (Exception ex)
+            {               
                 MessageBox.Show("처방전을 약국에 전송했습니다");
             }
         }
