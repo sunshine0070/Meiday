@@ -98,8 +98,8 @@ namespace Meiday
             }
             if (SwitchView >= 1 && SwitchView != 111) // 키패드 화면 들어가면 세션 타이머 시작
             {
-                SessionTimer_Reset(); // 화면 갱신때마다 남은 초 초기화
-                SessionTimer_Start(); // 화면 갱신때마다 초 세기 시작
+                //SessionTimer_Reset(); // 화면 갱신때마다 남은 초 초기화
+                //SessionTimer_Start(); // 화면 갱신때마다 초 세기 시작
             }
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
             {
@@ -135,6 +135,10 @@ namespace Meiday
             {
                 SwitchView = 107;
             }
+            else if (SwitchView == 6)
+            {
+                AccidentDateSaved();
+            }
 
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {
@@ -146,12 +150,6 @@ namespace Meiday
             else if (SwitchView == 102 && _isChecked02 == false) // 보험목록 미체크 시 Dialog 화면
             { 
                 SwitchView = 103;
-            }
-            if(LoginViewModel.connect_fail_flag == true) // DB에서 환자정보 못받아올 때 화면
-            {
-                SwitchView = 104;
-                LoginViewModel.Init();
-                LoginViewModel.connect_fail_flag = false;
             }
 
             if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == false) 

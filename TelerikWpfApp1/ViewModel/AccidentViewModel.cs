@@ -32,11 +32,15 @@ namespace Meiday
                 OnPropertyChanged(nameof(AccidentTodayDateTime));
             }
         }
+        private static DateTime _accidentSelectedDateTime2;
 
-        private DateTime _accidentSelectedDateTime = DateTime.Now;
+        private static DateTime _accidentSelectedDateTime = DateTime.Now;
         public DateTime AccidentSelectedDateTime
         {
-            get => _accidentSelectedDateTime;
+            get
+            {
+                return _accidentSelectedDateTime;
+            }
             set
             {
                 _accidentSelectedDateTime = value;
@@ -251,25 +255,20 @@ namespace Meiday
 
         public void AccidentSubmit()
         {
-            //OracleDBManager oracleDBManager = new OracleDBManager();
-            //oracleDBManager.GetConnection();
-            InsuranceSubmit s = new InsuranceSubmit
-            {
-                AccidentDate = _accidentSelectedDateTime,
-                SelectAccidentType = _accidentType,
-                AccidentSubmitDate = _accidentSubmitDates,
-            };
             //MessageBox.Show(patient_id.Length.ToString());
             string query = @"INSERT INTO 
                         INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, PT_IDNUM)
                         VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', " + patient_id + ")";
             string query1 = @"commit";
-            query = query.Replace("#AccidentDate", _accidentSelectedDateTime.ToString());
-            query = query.Replace("#AccidentSubmitDate", _accidentSelectedDateTime.ToString());
+            query = query.Replace("#AccidentDate", _accidentSelectedDateTime2.ToString());
+            query = query.Replace("#AccidentSubmitDate", _accidentTodayDateTime.ToString());
             query = query.Replace("#AccidentType", _accidentType.ToString());
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
-            //MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
+        }
+        public static void AccidentDateSaved()
+        {
+            _accidentSelectedDateTime2 = _accidentSelectedDateTime;
         }
     }
     public class RadioBoolToAccidentTypeConverter : IValueConverter

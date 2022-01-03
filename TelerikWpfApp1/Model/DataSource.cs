@@ -53,7 +53,7 @@ namespace Meiday.Model
 	public class InsuranceSubmit
     {
 		public DateTime AccidentDate { get; set; }
-		public AccidentType SelectAccidentType { get; set; }
+		public AccidentType AccidentType { get; set; }
 		public DateTime AccidentSubmitDate { get; set; }
     }
 }
