@@ -249,25 +249,28 @@ namespace Meiday
             }
         }
 
-        //public void SubmitAccidentInfo()
-        //{
-        //    InsuranceSubmit s = new InsuranceSubmit
-        //    {
-        //        AccidentDate = this.AccidentSelectedDateTime,
-        //        SelectAccidentType = this.AccidentTypes,
-        //        AccidentSubmitDate = this.AccidentSubmitDates,
-        //    };
-
-        //    string query = @"INSERT INTO
-        //                     insurance_submit (ACCIDENT_DATE, ACCIDENT_TYPE, ACCIDENT_SUBMITDATE)
-        //                     VALUES           ('#AccidentDate', '#AccidentType', '#AccidentSubmitDate')";
-        //    string query1 = @"commit";
-        //    query = query.Replace("#AccidentDate", this.AccidentSelectedDateTime.ToString());
-        //    query = query.Replace("#AccidentType", this.AccidentTypes.ToString());
-        //    query = query.Replace("#AccidentSubmitDate", this.AccidentSubmitDates.ToString());
-        //    OracleDBManager.Instance.ExecuteNonQuery(query);
-        //    OracleDBManager.Instance.ExecuteNonQuery(query1);
-        //}
+        public void AccidentSubmit()
+        {
+            //OracleDBManager oracleDBManager = new OracleDBManager();
+            //oracleDBManager.GetConnection();
+            InsuranceSubmit s = new InsuranceSubmit
+            {
+                AccidentDate = _accidentSelectedDateTime,
+                SelectAccidentType = _accidentType,
+                AccidentSubmitDate = _accidentSubmitDates,
+            };
+            //MessageBox.Show(patient_id.Length.ToString());
+            string query = @"INSERT INTO 
+                        INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, PT_IDNUM)
+                        VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', " + patient_id + ")";
+            string query1 = @"commit";
+            query = query.Replace("#AccidentDate", _accidentSelectedDateTime.ToString());
+            query = query.Replace("#AccidentSubmitDate", _accidentSelectedDateTime.ToString());
+            query = query.Replace("#AccidentType", _accidentType.ToString());
+            OracleDBManager.Instance.ExecuteNonQuery(query);
+            OracleDBManager.Instance.ExecuteNonQuery(query1);
+            //MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
+        }
     }
     public class RadioBoolToAccidentTypeConverter : IValueConverter
     {

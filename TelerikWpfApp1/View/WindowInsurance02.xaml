@@ -81,7 +81,7 @@
             <TextBlock 
                    FontWeight="Bold" FontSize="24" Margin="10"
                    Text="사고유형" />
-            <Label Width="200" Content="{Binding Path=AccidentTypes}" />
+            <!--Label Width="200" Content="{Binding Path=AccidentTypes}" /-->
         </StackPanel>
         <!--radiobutton-->
         <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center"
