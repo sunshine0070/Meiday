@@ -70,6 +70,17 @@ namespace Meiday
             }
         }
 
+        public DateTime _accidentSubmitDates;
+        public DateTime AccidentSubmitDates
+        {
+            get => _accidentSubmitDates;
+            set
+            {
+                _accidentSubmitDates = value;
+                OnPropertyChanged("AccidentSubmitDates");
+            }
+        }
+
         ment _pa = new ment();
         public string InsuName
         {
@@ -214,7 +225,7 @@ namespace Meiday
                 //mailMessage.CC.Add("zzz@naver.com"); // 참조 메일 주소
                 mailMessage.Subject = "Meiday_" + patient_id + "_실비청구_서류"; // 제목
                 mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
-                mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime 
+                mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime
                                    + "\n환자번호: " + patient_id
                                    + "\n사고유형: " + _accidentType; // 본문
                 mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
@@ -237,6 +248,26 @@ namespace Meiday
                 MessageBox.Show(ex.Message);
             }
         }
+
+        //public void SubmitAccidentInfo()
+        //{
+        //    InsuranceSubmit s = new InsuranceSubmit
+        //    {
+        //        AccidentDate = this.AccidentSelectedDateTime,
+        //        SelectAccidentType = this.AccidentTypes,
+        //        AccidentSubmitDate = this.AccidentSubmitDates,
+        //    };
+
+        //    string query = @"INSERT INTO
+        //                     insurance_submit (ACCIDENT_DATE, ACCIDENT_TYPE, ACCIDENT_SUBMITDATE)
+        //                     VALUES           ('#AccidentDate', '#AccidentType', '#AccidentSubmitDate')";
+        //    string query1 = @"commit";
+        //    query = query.Replace("#AccidentDate", this.AccidentSelectedDateTime.ToString());
+        //    query = query.Replace("#AccidentType", this.AccidentTypes.ToString());
+        //    query = query.Replace("#AccidentSubmitDate", this.AccidentSubmitDates.ToString());
+        //    OracleDBManager.Instance.ExecuteNonQuery(query);
+        //    OracleDBManager.Instance.ExecuteNonQuery(query1);
+        //}
     }
     public class RadioBoolToAccidentTypeConverter : IValueConverter
     {

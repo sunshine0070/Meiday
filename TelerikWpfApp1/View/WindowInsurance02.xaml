@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meiday"
-        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Meiday.WindowInsurance02"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        x:Class="Meiday.WindowInsurance02"
         mc:Ignorable="d"
         Height="800" Width="600" FontSize="16" Background="White">
     <UserControl.Resources>
@@ -74,30 +75,35 @@
                  DataContext="{StaticResource LoginViewModel}"
                  Text="{Binding PatientName}"/>
         <!--accidentType-->
-        <TextBlock Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,20,0,10"
-                   FontWeight="Bold" FontSize="24"
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,20,0,10"
+                    DataContext="{StaticResource AccidentViewModel}">
+            <TextBlock 
+                   FontWeight="Bold" FontSize="24" Margin="10"
                    Text="사고유형" />
+            <Label Width="200" Content="{Binding Path=AccidentTypes}" />
+        </StackPanel>
         <!--radiobutton-->
         <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center"
-                    Margin="10,10,10,10" Orientation="Horizontal" Background="#34a8eb">
+                    Margin="0,0,0,10" Orientation="Horizontal" Background="#34a8eb" Height="50" VerticalAlignment="Bottom">
             <RadioButton x:Name="AccidentTypeDisease" GroupName="accidentType" Margin="30,10,30,10"
                          VerticalContentAlignment="Center"
                          FontSize="20" FontWeight="Bold" 
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeDisease}" >
-                질병</RadioButton>
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeDisease}"
+                         Content="질병" />
             <RadioButton x:Name="AccidentTypeInjury" GroupName="accidentType" Margin="30,10,30,10"
                          FontSize="20" FontWeight="Bold" 
                          VerticalContentAlignment="Center"
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeInjury}">
-                상해</RadioButton>
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeInjury}"
+                         Content="상해" />
             <RadioButton x:Name="AccidentTypeCar" GroupName="accidentType" Margin="30,10,30,10"
                          FontSize="20" FontWeight="Bold" 
                          VerticalContentAlignment="Center"
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeCar}">
-                교통사고</RadioButton>
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeCar}"
+                         Content="교통사고" />
         </StackPanel>
         <!--button-->
         <telerik:RadButton x:Name="radButtonBefore" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
