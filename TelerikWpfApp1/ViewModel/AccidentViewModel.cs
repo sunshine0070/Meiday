@@ -133,6 +133,7 @@ namespace Meiday
             }
         }
         private string check_InsuName = string.Empty;
+        private static string CheckInsuName2;
         public string CheckInsuName
         {
             get
@@ -166,6 +167,7 @@ namespace Meiday
                 {
                     _isChecked02 = ob.IsChecked02;
                     CheckInsuName = ob.InsuName;
+                    CheckInsuName2 = CheckInsuName;
                     break;
                 }
                 else
@@ -229,9 +231,10 @@ namespace Meiday
                 //mailMessage.CC.Add("zzz@naver.com"); // 참조 메일 주소
                 mailMessage.Subject = "Meiday_" + patient_id + "_실비청구_서류"; // 제목
                 mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
-                mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime
+                mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime2
                                    + "\n환자번호: " + patient_id
-                                   + "\n사고유형: " + _accidentType; // 본문
+                                   + "\n사고유형: " + _accidentType
+                                   + "\n보험사명: " + CheckInsuName2; // 본문
                 mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
                 mailMessage.BodyEncoding = Encoding.UTF8; // 본문 인코딩 타입(UTF-8) 선택
                 mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png", FileMode.Open, FileAccess.Read), "test" + patient_id + ".png"));
@@ -252,18 +255,27 @@ namespace Meiday
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private string _query;
         public void AccidentSubmit()
         {
-            //MessageBox.Show(patient_id.Length.ToString());
-            string query = @"INSERT INTO 
-                        INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, PT_IDNUM)
-                        VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', " + patient_id + ")";
+            if(patient_id.Length == 5) // PT_IDNUM
+            {
+                _query = @"INSERT INTO 
+                            INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, INSURANCE_NAME, PT_IDNUM)
+                            VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', '#InsuranceName', " + patient_id + ")";
+            }
+            else if(patient_id.Length == 13) // PT_REGNUM
+            {
+                _query = @"INSERT INTO 
+                            INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, INSURANCE_NAME, PT_REGNUM)
+                            VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', '#InsuranceName', " + patient_id + ")";
+            }
             string query1 = @"commit";
-            query = query.Replace("#AccidentDate", _accidentSelectedDateTime2.ToString());
-            query = query.Replace("#AccidentSubmitDate", _accidentTodayDateTime.ToString());
-            query = query.Replace("#AccidentType", _accidentType.ToString());
-            OracleDBManager.Instance.ExecuteNonQuery(query);
+            _query = _query.Replace("#AccidentDate", _accidentSelectedDateTime2.ToString());
+            _query = _query.Replace("#AccidentSubmitDate", _accidentTodayDateTime.ToString());
+            _query = _query.Replace("#AccidentType", _accidentType.ToString());
+            _query = _query.Replace("#InsuranceName", CheckInsuName2);
+            OracleDBManager.Instance.ExecuteNonQuery(_query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
         }
         public static void AccidentDateSaved()
