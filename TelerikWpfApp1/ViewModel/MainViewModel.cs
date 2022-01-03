@@ -8,6 +8,7 @@ using System.ComponentModel;
 using Meiday.Model;
 using Meiday.ViewModel;
 using static Meiday.AccidentViewModel;
+using static Meiday.LoginViewModel;
 using System.Data;
 using System;
 using System.Windows.Threading;
@@ -256,8 +257,7 @@ namespace Meiday
 
         public void email_send(object sender)
         {
-            try
-            {
+
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 mail.From = new MailAddress("yjmong@gachon.ac.kr");
@@ -266,18 +266,15 @@ namespace Meiday
                 mail.Body = "mail with attachment";
 
                 System.Net.Mail.Attachment attachment;
-                attachment = new System.Net.Mail.Attachment("C:/전자처방전.pdf");
+                attachment = new System.Net.Mail.Attachment("C:/Users/user/Desktop/savefile/" + patient_id+"전자처방전.pdf");
                 mail.Attachments.Add(attachment);
 
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("yjmong@gachon.ac.kr", "~!@EzCareTec");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
-            }
-            catch (Exception ex)
-            {               
+       
                 MessageBox.Show("처방전을 약국에 전송했습니다");
-            }
         }
     }
 }
