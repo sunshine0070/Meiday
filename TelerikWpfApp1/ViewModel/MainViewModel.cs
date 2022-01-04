@@ -283,7 +283,7 @@ namespace Meiday
                 mail.Body = "mail with attachment";
 
                 System.Net.Mail.Attachment attachment;
-                attachment = new System.Net.Mail.Attachment("C:/Users/user/Desktop/savefile/" + patient_id+"전자처방전.pdf");
+                attachment = new System.Net.Mail.Attachment(@"C:\Users\user\Desktop\savefile\" + patient_id+"전자처방전.pdf");
                 mail.Attachments.Add(attachment);
 
                 SmtpServer.Port = 587;
