@@ -20,7 +20,7 @@
     <Grid>
 
 
-        <Grid  x:Name="grStamp" Width="550" Height="550" VerticalAlignment="Center">
+        <Grid  x:Name="receipt" Width="550" Height="550" VerticalAlignment="Center">
             <Grid.Background>
                 <ImageBrush ImageSource="/Resource/receipt.jpg"/>
             </Grid.Background>
@@ -41,10 +41,19 @@
         </Grid>
 
 
-        <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Center" CornerRadius="15" 
-                    VerticalAlignment="Top" Height="40" Width="150" Command="{Binding SwitchViewCommand}" CommandParameter="108" Margin="0,715,0,0"/>
+
+
+        <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click1" Command="{Binding SwitchViewCommand}" CommandParameter="108"
+                    VerticalAlignment="Top" Height="40" Width="150" Margin="340,715,0,0"/>
+
+        
+
+        <telerik:RadButton Content="동의합니다" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click2"
+                    VerticalAlignment="Top" Height="40" Width="150" Margin="100,715,0,0"/>
 
     </Grid>
+
+    <!-- Command="{Binding SwitchViewCommand}" CommandParameter="108"-->
 
 
 </UserControl>
