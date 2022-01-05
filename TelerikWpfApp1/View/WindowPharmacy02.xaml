@@ -68,10 +68,12 @@
                 Text="* 주의사항 * &#10; 1. 접수시 선택한 약국에 제조 처방전이 보내집니다.&#10; 2. 당일 내에 약을 수령하지 않을 시 폐기되며 어떠한 보상도 받으실 수 없습니다." Margin="7,0,0,0"/>
 
 
-            <telerik:RadButton x:Name="Cancel" Grid.Column="0" Content="이전으로" FontSize="20" HorizontalAlignment="Center"  CornerRadius="15" Grid.Row="7" VerticalAlignment="Center"
-                    Height="40" Width="150" Grid.ColumnSpan="3" Command="{Binding SwitchViewCommand}" CommandParameter="3" Margin="-200,0,0,0" />
-            <telerik:RadButton x:Name="Submit" Grid.Column="2" Content="접수하기" FontSize="20" HorizontalAlignment="Center" CornerRadius="15" Grid.Row="7" 
-                    VerticalAlignment="Center" Height="40" Width="150" Command="{Binding SwitchViewCommand}" CommandParameter="106" Margin="100,0,0,0"/>
+            <telerik:RadButton x:Name="Cancel" Grid.Column="0" Content="이전으로" FontSize="20" HorizontalAlignment="Left"  CornerRadius="15" Grid.Row="7" VerticalAlignment="Center"
+                    Height="40" Width="150" Grid.ColumnSpan="3" Command="{Binding SwitchViewCommand}" CommandParameter="3" />
+            <telerik:RadButton Grid.Column="2" Content="전송하기" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Grid.Row="7" 
+                    VerticalAlignment="Center" Height="40" Width="150"  Command="{Binding MailSendCommand}" Margin="46,0,0,0"/>
+            <telerik:RadButton x:Name="Submit" Grid.Column="2" Content="접수하기" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Grid.Row="7" 
+                    VerticalAlignment="Center" Height="40" Width="150" Command="{Binding SwitchViewCommand}" CommandParameter="106" Margin="218,0,0,0"/>
 
 
         </Grid>
