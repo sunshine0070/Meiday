@@ -29,9 +29,9 @@ namespace Meiday
             //백 스페이스 버튼을 클릭할 때 실행, 한글자 삭제
             this.BackSpace = new BackSpace(this);
         }
+
         public string PatientName
         {
-           
             get 
             {
                 DataSet ds = new DataSet();
@@ -50,7 +50,6 @@ namespace Meiday
                     OnPropertyChanged("PatientName");
                 }
             }
-            
         }
 
         public string InputString

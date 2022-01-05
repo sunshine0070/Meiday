@@ -34,7 +34,7 @@ namespace Meiday
         }
         private static DateTime _accidentSelectedDateTime2;
 
-        private static DateTime _accidentSelectedDateTime = DateTime.Now;
+        public static DateTime _accidentSelectedDateTime = DateTime.Now;
         public DateTime AccidentSelectedDateTime
         {
             get
@@ -177,10 +177,52 @@ namespace Meiday
                 }
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-
+        private string _selectedInsuranceMail;
+        public string selectedInsuranceMail
+        { 
+            get
+            {
+                DataSet ds = new DataSet();
+                string query = @" SELECT i.INSURANCE_MANAGEEMAIL InsuranceMail
+                                    FROM INSURANCE i 
+                                    JOIN CHECKINSURANCE c ON i.INSURANCE_NUM = c.INSURANCE_NUM 
+                                    JOIN PATIENT        p ON p.PT_REGNUM     = c.PT_REGNUM
+                                    WHERE p.pt_idnum =  " + patient_id + "or p.pt_regnum = " + patient_id;
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                _selectedInsuranceMail = ds.Tables[0].Rows[0]["InsuranceMail"].ToString();
+                return _selectedInsuranceMail;
+            }
+            set
+            {
+                if (value != _selectedInsuranceMail)
+                {
+                    _selectedInsuranceMail = value;
+                    OnPropertyChanged("selectedInsuranceMail");
+                }
+            }
+        }
+        private string _insuranceSequence;
+        public string InsuranceSequence
+        {
+            get
+            {
+                DataSet ds = new DataSet();
+                string query = @"select p.PT_NAME data_Name, INSURANCE_SEQ.nextval SeqSubmit
+                              from patient p
+                              where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                _insuranceSequence = ds.Tables[0].Rows[0]["SeqSubmit"].ToString();
+                return _insuranceSequence;
+            }
+            set
+            {
+                if (value != _insuranceSequence)
+                {
+                    _insuranceSequence = value;
+                    OnPropertyChanged("InsuranceSequence");
+                }
+            }
+        }
 
 
         ObservableCollection<ment> _sampleDatas = null;
@@ -227,17 +269,16 @@ namespace Meiday
                 MailMessage mailMessage = new MailMessage();
                 mailMessage.From = new MailAddress("ezsun0070@naver.com", "SNUH_Meiday", Encoding.UTF8);
                 // 보내는 계정 주소
-                mailMessage.To.Add("hcsong95@naver.com"); // 받는이 메일 주소
+                mailMessage.To.Add(selectedInsuranceMail); // 받는이 메일 주소
+                //mailMessage.To.Add("hcsong95@naver.com"); // 받는이 메일 주소
                 //mailMessage.CC.Add("zzz@naver.com"); // 참조 메일 주소
-                mailMessage.Subject = "Meiday_" + patient_id + "_실비청구_서류"; // 제목
+                mailMessage.Subject = "Meiday_실비청구_서류_제출번호(" + InsuranceSequence + ")_" + CheckInsuName2; // 제목
                 mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
                 mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime2
-                                   + "\n환자번호: " + patient_id
                                    + "\n사고유형: " + _accidentType
                                    + "\n보험사명: " + CheckInsuName2; // 본문
                 mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
                 mailMessage.BodyEncoding = Encoding.UTF8; // 본문 인코딩 타입(UTF-8) 선택
-                mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png", FileMode.Open, FileAccess.Read), "test" + patient_id + ".png"));
                 mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf", FileMode.Open, FileAccess.Read), "test" + patient_id + ".pdf"));
                 // 파일 첨부
                 SmtpClient SmtpServer = new SmtpClient("smtp.naver.com");
