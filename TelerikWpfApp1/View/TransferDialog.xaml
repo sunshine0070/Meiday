@@ -19,12 +19,19 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" FontSize="20" 
+                           Margin="0 10 0 0"
                            TextAlignment="Center" Text="고객님의 청구 서류가 안전하게 전달되었습니다." />
                 <Button Grid.Row="1" Width="100" Height="30" 
                         Background="#34a8eb" BorderThickness="0"
                         FontWeight="Bold" FontSize="14" Content="확인"
                         Command="{Binding SwitchViewCommand}"
-                        CommandParameter="109"/>
+                        CommandParameter="109">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Grid>
         </Border>
     </Grid>

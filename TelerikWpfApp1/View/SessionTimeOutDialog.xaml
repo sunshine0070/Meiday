@@ -19,6 +19,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" FontSize="20" 
+                           Margin="0 10 0 0"
                            TextAlignment="Center" Text="장기간 이용이 없어 로그아웃됩니다." />
                 <TextBlock Grid.Row="1" FontSize="20" FontWeight="Bold" Margin="0,0,0,50"
                            TextAlignment="Center" VerticalAlignment="Center" Text="{Binding TimeRemaining}" />
@@ -26,7 +27,13 @@
                         Background="#34a8eb" BorderThickness="0"
                         FontWeight="Bold" FontSize="14" Content="확인"
                         Command="{Binding SwitchViewCommand}"
-                        CommandParameter="{Binding SwitchViewtmp}"/>
+                        CommandParameter="{Binding SwitchViewtmp}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Grid>
         </Border>
     </Grid>
