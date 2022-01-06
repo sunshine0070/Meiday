@@ -100,21 +100,25 @@
                 // 마커가 지도 위에 표시되도록 설정합니다
                 marker.setMap(map);
 
-                if(parseInt(wait) < 3){
-                // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                            var content = '<div class="customoverlay" style="border-radius:30px">' +
-                            '<a class="circlemarker" style="color:green;">'+
-                            '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
-                            '</a>'+
-                            '</div>';
-                            
-                        }else{
-                            var content = '<div class="customoverlay" style="border-radius:30px">' +
-                            '<a class="circlemarker" style="color:red;">'+
-                            '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
-                            '</a>'+
-                            '</div>';
-                        }
+                if(parseInt(wait) >= 10){
+                                var content = '<div class="customoverlay" style="border-radius:30px">' +
+                                '<a class="circlemarker" style="color:red;">'+
+                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '</a>'+
+                                '</div>';
+                             }else if(parseInt(wait) < 10 && parseInt(wait) >=5){
+                                var content = '<div class="customoverlay" style="border-radius:30px">' +
+                                '<a class="circlemarker" style="color:orange;">'+
+                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '</a>'+
+                                '</div>';
+                            }else{
+                                var content = '<div class="customoverlay" style="border-radius:30px">' +
+                                '<a class="circlemarker" style="color:green;">'+
+                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '</a>'+
+                                '</div>';
+                            }
 
                 // 커스텀 오버레이가 표시될 위치입니다 
                 var lat2 = Number(lat);

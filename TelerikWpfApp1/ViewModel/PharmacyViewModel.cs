@@ -45,7 +45,7 @@ namespace Meiday
                 if (int.Parse(wait) >= 10) //접수자수 많은 약국 세곳은 글씨 빨간색으로
                 {
                     fontcolor = "red";
-                } else if (int.Parse(wait) > 5 && int.Parse(wait) < 9)
+                } else if (int.Parse(wait) >= 5 && int.Parse(wait) < 9)
                 {
                     fontcolor = "orange";
                 }
