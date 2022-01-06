@@ -575,7 +575,7 @@ namespace Meiday
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "PaymentSubmit")
+                Log.Fatal(ex, "PaymentSubmit");
             }
         }
 
