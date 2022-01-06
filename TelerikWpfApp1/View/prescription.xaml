@@ -42,7 +42,7 @@
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Doctor}" Margin="230,200,230,480"/>
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorLicense}" Margin="475,210,40,470"/>
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorPosition}" Margin="475,189,40,491"/>
-
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Code}" Margin="65,196,450,484"/>
 
             <TextBlock TextWrapping="Wrap" Text="메이데이병원" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,105,0,0"/>
             <TextBlock TextWrapping="Wrap" Text="010-1234-5678" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,126,0,0"/>

@@ -25,6 +25,12 @@
                 <ImageBrush ImageSource="/Resource/receipt.jpg"/>
             </Grid.Background>
 
+
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/Seoul.png" 
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="424" RenderTransformOrigin="0.5,0.5" Width="140" Margin="360,400,0,0">
+
+            </Image>
+
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Name}" Width="120" Margin="127,147,0,388" HorizontalAlignment="Left"/>
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Id}" Width="120" Margin="127,130,303,405"/>
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_DoctorPosition}" Width="120" Margin="282,130,148,405"/>
@@ -46,7 +52,7 @@
         <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click1" Command="{Binding SwitchViewCommand}" CommandParameter="108"
                     VerticalAlignment="Top" Height="40" Width="150" Margin="340,715,0,0"/>
 
-        
+
 
         <telerik:RadButton Content="동의합니다" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click2"
                     VerticalAlignment="Top" Height="40" Width="150" Margin="100,715,0,0"/>

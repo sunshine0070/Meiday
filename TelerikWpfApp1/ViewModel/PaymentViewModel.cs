@@ -261,6 +261,19 @@ namespace Meiday
                 }
             }
         }
+
+        public string P_Code
+        {
+            get { return _pre.P_Code; }
+            set
+            {
+                if (value != _pre.P_Code)
+                {
+                    _pre.P_Code = value;
+                    this.OnPropertyChanged("P_Code");
+                }
+            }
+        }
         #endregion
 
         #region receipt_ment 선언
@@ -453,9 +466,9 @@ namespace Meiday
                     DataSet ds = new DataSet();
 
 
-                    string query = @" SELECT a.PT_NAME p_name, a.PT_REGNUM p_number, d.PRESCRIPTION_DATE p_date, b.DR_NAME p_doctor, b.DR_LICENSE p_doctorlicense, e.MED_NAME p_medication, e.MED_DOSE p_medicationdose, e.MED_COUNT p_medicationcount, f.DR_DEPTNAME p_doctorposition, b.DR_STAMP p_stamp
+                    string query = @" SELECT a.PT_NAME p_name, a.PT_REGNUM p_number, d.PRESCRIPTION_DATE p_date, b.DR_NAME p_doctor, b.DR_LICENSE p_doctorlicense, e.MED_NAME p_medication, e.MED_DOSE p_medicationdose, e.MED_COUNT p_medicationcount, f.DR_DEPTNAME p_doctorposition, b.DR_STAMP p_stamp, c.DIAGNOSIS_CODE p_code
                                       FROM PATIENT a, DOCTOR b, TREATMENT c, PRESCRIPTION d, DETAILMED e, DEPARTMENT f
-                                      WHERE a.PT_REGNUM = c.PT_REGNUM AND c.TREATMENT_NUM = d.TREATMENT_NUM AND c.DR_LICENSE = b.DR_LICENSE AND d.MED_CODE = e.MED_CODE AND b.DR_DEPTNUM = f.DR_DEPTNUM AND a.PT_IDNUM =" +patient_id;
+                                      WHERE a.PT_REGNUM = c.PT_REGNUM AND c.TREATMENT_NUM = d.TREATMENT_NUM AND c.DR_LICENSE = b.DR_LICENSE AND d.MED_CODE = e.MED_CODE AND b.DR_DEPTNUM = f.DR_DEPTNUM AND a.PT_IDNUM =" + patient_id;
 
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
                     try
@@ -475,6 +488,7 @@ namespace Meiday
                                 P_MedicationCount = ds.Tables[0].Rows[idx]["p_medicationcount"].ToString(),
                                 P_DoctorPosition = ds.Tables[0].Rows[idx]["p_doctorposition"].ToString(),
                                 P_Stamp = ds.Tables[0].Rows[idx]["p_stamp"].ToString(),
+                                P_Code = ds.Tables[0].Rows[idx]["p_code"].ToString(),
 
                             };
                             PrescriptionDatas.Add(obj);

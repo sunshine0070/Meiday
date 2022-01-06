@@ -40,6 +40,7 @@ namespace Meiday.Model
 		public string P_MedicationCount { get; set; }
 		public string P_DoctorPosition { get; set; }
 		public string P_Stamp { get; set; }
+		public string P_Code { get; set; }
 
 		
 
