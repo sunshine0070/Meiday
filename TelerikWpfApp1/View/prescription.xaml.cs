@@ -31,7 +31,15 @@ namespace Meiday.View
     {
         public prescription()
         {
-            InitializeComponent();
+            Log.Debug("prescription Start!");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "prescription Error!!");
+            }
         }
 
 
@@ -128,6 +136,8 @@ namespace Meiday.View
             document.Save(filename);
             // ...and start a viewer.
             //Process.Start(filename);
+
+            Log.Debug("prescription 접수");
 
         }
     }

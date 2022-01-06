@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public EndControl()
         {
-            InitializeComponent();
+            Log.Debug("EndControl Start!");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "EndControl Error!!");
+            }
         }
     }
 }

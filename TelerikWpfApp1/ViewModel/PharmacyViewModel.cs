@@ -27,6 +27,7 @@ namespace Meiday
         //생성자 생성하기 //자동으로 불러지는 데이터
         public PharmacyViewModel()
         {
+            Log.Debug("PharmacyViewModel 생성");
             this.PHAR_MODEL = new ObservableCollection<Pharmacy>();
             DataSet ds = new DataSet();
             string query = @" SELECT * FROM PHARMACY_WAIT";
@@ -56,8 +57,6 @@ namespace Meiday
                 PHAR_MODEL.Add(new Pharmacy { Name = name, Phone = phone, Address = address, Latitude = latitude, Logitude = logitude, Image = image, Email = email, WaitPerson = wait, Fontcolor = fontcolor });
             }
             //로그 기록남기기
-            Log.Debug();
-            Log.Debug("약국페이지 진입");
         }
 
         public void DataSearch()
@@ -173,6 +172,7 @@ namespace Meiday
                     _pharmacySequence = value;
                     OnPropertyChanged("PharmacySequence");
                 }
+                Log.Debug("약국 선택");
             }
         }
 
@@ -197,10 +197,15 @@ namespace Meiday
                     //MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
                 }
             }
+            //로그 기록남기기
+            Log.Debug("제조처방전제출");
         }
 
         public void Pharmacy_SendEmail()
         {
+            //로그 기록남기기
+            Log.Debug("약국 메일보내기");
+
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.naver.com");
             mail.From = new MailAddress("ezsun0070@naver.com", "SNUH_Meiday", Encoding.UTF8);

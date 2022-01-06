@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public AdminUserCountControl()
         {
-            InitializeComponent();
+            Log.Debug("AdminUserCountControl Start!");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "AdminUserCountControl Error!!");
+            }
         }
     }
 }

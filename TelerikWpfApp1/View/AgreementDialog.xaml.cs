@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public AgreementDialog()
         {
-            InitializeComponent();
+            Log.Debug("AgreementDialog Start!");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "AgreementDialog Error!!");
+            }
         }
     }
 }

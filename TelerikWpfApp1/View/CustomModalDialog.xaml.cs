@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public CustomModalDialog()
         {
-            InitializeComponent();
+            Log.Debug("CustomModalDialog Start!");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "CustomModalDialog Error!!");
+            }
         }
     }
 }
