@@ -133,5 +133,32 @@ namespace Meiday
                 return false;
             }
         }
+
+        string validInsuCheck;
+        public bool ValidInsuCheck() //MainViewModel에서 확인
+        {
+
+            DataSet ds = new DataSet();
+            string query = @" SELECT  count(*) InsuCount
+                              FROM    insurance       i
+                                     ,patient         p
+                                     ,checkinsurance  c
+                              WHERE   p.pt_regnum     = c.pt_regnum
+                              AND     i.insurance_num = c.insurance_num
+                              AND     p.pt_idnum" + patient_id + "or p.pt_regnum = " + patient_id;
+
+            OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+            try
+            {
+                validInsuCheck = ds.Tables[0].Rows[0]["InsuCount"].ToString();
+                Log.Debug("ValidInsuCheck");
+                return int.Parse(validInsuCheck) > 0;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "ValidInsuCheck");
+                return false;
+            }
+        }
     }
 }

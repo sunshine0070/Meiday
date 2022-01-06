@@ -88,6 +88,9 @@
         <DataTemplate x:Key="SessionTimeOutDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:SessionTimeOutDialog />
         </DataTemplate>
+        <DataTemplate x:Key="NoInsuDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:NoInsuDialog />
+        </DataTemplate>
 
 
 
@@ -170,6 +173,10 @@
                         <DataTrigger Binding="{Binding SwitchView}" Value="112">
                             <Setter Property="ContentTemplate" Value="{StaticResource ReceiptControlTemplate}" />
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="113">
+                            <Setter Property="ContentTemplate" Value="{StaticResource NoInsuDialogTemplate}" />
+                        </DataTrigger>
+                        
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>

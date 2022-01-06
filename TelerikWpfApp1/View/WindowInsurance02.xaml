@@ -63,7 +63,6 @@
                     DataContext="{StaticResource AccidentViewModel}"
                     SelectedDate="{Binding AccidentSelectedDateTime, Mode=TwoWay}"
                     DisplayDateStart="{Binding AccidentLimitedDateTime}" DisplayDateEnd="{Binding AccidentTodayDateTime}" Margin="50,1,10,10"
-                    IsDropDownOpen="True"
                     FontSize="20" CalendarStyle="{StaticResource styleCalendar}"/>
         <!--accidentInsuredName-->
         <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" Margin="0,20,0,10"
