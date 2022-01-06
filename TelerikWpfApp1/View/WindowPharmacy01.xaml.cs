@@ -44,14 +44,14 @@ namespace Meiday
               peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
 
 
-            Log.Debug("WindowPharmacy01 Start!");
+            Log.Debug("WindowPharmacy01");
             try
             {
                 invokeProv.Invoke();
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "WindowPharmacy01 Invoke Error!!");
+                Log.Fatal(ex, "WindowPharmacy01");
             }
         }
 
@@ -73,14 +73,14 @@ namespace Meiday
                 //배열저장
                 object[] pd = new object[] { name, latitude, logitude, wait };
 
-                Log.Debug("pharmacyInfo_Click Start!");
+                Log.Debug("pharmacyInfo_Click");
                 try
                 {
                     wb.InvokeScript("pharmacyMarker", pd);
                 }
                 catch (Exception ex)
                 {
-                    Log.Fatal(ex, "pharmacyInfo_Click Invoke Error!!");
+                    Log.Fatal(ex, "pharmacyInfo_Click");
                 }
 
             }
@@ -98,14 +98,14 @@ namespace Meiday
 
             object[] pd = new object[] { model.Name, model.Latitude, model.Logitude };
 
-            Log.Debug("Button_Click Start!");
+            Log.Debug("Button_Click");
             try
             {
                 wb.InvokeScript("choice", pd);
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Button_Click Invoke Error!!");
+                Log.Fatal(ex, "Button_Click");
             }
 
         }

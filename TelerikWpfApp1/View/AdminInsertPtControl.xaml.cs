@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public AdminInsertPtControl()
         {
-            Log.Debug("AdminInsertPtControl Start!");
+            Log.Debug("AdminInsertPtControl");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "AdminInsertPtControl Error!!");
+                Log.Error(ex, "AdminInsertPtControl");
             }
 
         }

@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public TransferFailDialog()
         {
-            Log.Debug("TransferFailDialog Start!");
+            Log.Debug("TransferFailDialog");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "TransferFailDialog Error!!");
+                Log.Error(ex, "TransferFailDialog");
             }
         }
     }

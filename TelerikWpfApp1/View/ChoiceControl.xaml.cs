@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public ChoiceControl()
         {
-            Log.Debug("ChoiceControl Start!");
+            Log.Debug("ChoiceControl");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "ChoiceControl Error!!");
+                Log.Error(ex, "ChoiceControl");
             }
         }
     }

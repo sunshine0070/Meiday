@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public PharmacySubmitAlarm()
         {
-            Log.Debug("PharmacySubmitAlarm Start!");
+            Log.Debug("PharmacySubmitAlarm");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "PharmacySubmitAlarm Error!!");
+                Log.Error(ex, "PharmacySubmitAlarm");
             }
         }
     }

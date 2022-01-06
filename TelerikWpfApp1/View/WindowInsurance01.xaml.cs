@@ -26,14 +26,14 @@ namespace Meiday
 
         public WindowInsurance01()
         {
-            Log.Debug("WindowInsurance01 Start!");
+            Log.Debug("WindowInsurance01");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "WindowInsurance01 Error!!");
+                Log.Error(ex, "WindowInsurance01");
             }
         }
     }

@@ -21,14 +21,14 @@ namespace Meiday
     {
         public Window1()
         {
-            Log.Debug("Window1 Start!");
+            Log.Debug("Window1");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Window1 Error!!");
+                Log.Error(ex, "Window1");
             }
         }
     }

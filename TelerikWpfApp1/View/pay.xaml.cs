@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public pay()
         {
-            Log.Debug("pay Start!");
+            Log.Debug("pay");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "pay Error!!");
+                Log.Error(ex, "pay");
             }
         }
     }

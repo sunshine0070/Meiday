@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public AccidentNoneDialog()
         {
-            Log.Debug("AccidentNoneDialog Start!");
+            Log.Debug("AccidentNoneDialog");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "AccidentNoneDialog Error!!");
+                Log.Error(ex, "AccidentNoneDialog");
             }
 
         }

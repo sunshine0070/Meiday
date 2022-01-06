@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public AdminLogControl()
         {
-            Log.Debug("AdminLogControl Start!");
+            Log.Debug("AdminLogControl");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "AdminLogControl Error!!");
+                Log.Error(ex, "AdminLogControl");
             }
 
         }

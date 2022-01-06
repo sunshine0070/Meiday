@@ -22,14 +22,14 @@ namespace Meiday.View
     {
         public LoginFailDialog()
         {
-            Log.Debug("LoginFailDialog Start!");
+            Log.Debug("LoginFailDialog");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "LoginFailDialog Error!!");
+                Log.Error(ex, "LoginFailDialog");
             }
         }
     }

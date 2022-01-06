@@ -22,14 +22,14 @@ namespace Meiday
     {
         public PaymentControl()
         {
-            Log.Debug("PaymentControl Start!");
+            Log.Debug("PaymentControl");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "PaymentControl Error!!");
+                Log.Error(ex, "PaymentControl");
             }
         }
     }

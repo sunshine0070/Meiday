@@ -31,14 +31,14 @@ namespace Meiday.View
     {
         public prescription()
         {
-            Log.Debug("prescription Start!");
+            Log.Debug("prescription");
             try
             {
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "prescription Error!!");
+                Log.Error(ex, "prescription");
             }
         }
 
