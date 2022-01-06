@@ -43,7 +43,7 @@
                    Text="보험금 청구"/>
         <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="51,30,49,30"
                    FontSize="26" IsReadOnly="True" TextAlignment="Center"
-                 
+                   BorderThickness="0"
                    DataContext="{StaticResource LoginViewModel}"
                    Text="{Binding PatientName}"/>
         <TextBlock Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Margin="52,40,69,30"
@@ -55,7 +55,7 @@
         <telerik:RadGridView Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow"
                              x:Name ="PatientAccRecord" DataContext="{StaticResource AccidentViewModel}"  ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" 
                              AutoGenerateColumns="False" ShowGroupPanel="False" 
-                             FontSize="14">
+                             FontSize="16">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn x:Name="header_insuName" Width="*"  DataMemberBinding="{Binding InsuName}" Header="  보험회사  " HeaderTextAlignment="Center" TextAlignment="Center" ></telerik:GridViewDataColumn>
                 <telerik:GridViewDataColumn x:Name="header_insuProduct" Width="*"  DataMemberBinding="{Binding InsuProduct}" Header="  보험 상품명  " HeaderTextAlignment="Center" TextAlignment="Center"></telerik:GridViewDataColumn>

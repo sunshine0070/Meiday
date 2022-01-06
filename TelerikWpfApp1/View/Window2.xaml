@@ -77,8 +77,7 @@
         <!--telerik:RadPasswordBox x:Name="radPasswordBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
         HorizontalAlignment="Center" Margin="0,220,0,0" Password="" TextWrapping="NoWrap" Text="RadPasswordBox" VerticalAlignment="Top" WatermarkContent="ex) 12345 또는 000000-1234567" 
         Width="340" Height="50" FontSize="20" Background="#FFFFFF"/-->
-        <TextBlock x:Name="textBlock1" Margin="0,130,0,0" Text="주민등록번호 또는 환자번호를" Style="{StaticResource MyTxtStyle1}"/>
-        <TextBlock x:Name="textBlock2" Margin="0,170,0,0" Text="입력하세요" Style="{StaticResource MyTxtStyle1}"/>
+        <TextBlock x:Name="textBlock1" TextAlignment="Center" Margin="0,130,0,0" Text="주민등록번호 또는 환자번호를&#10;입력하세요" Style="{StaticResource MyTxtStyle1}"/>
         <Image x:Name="image" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,15,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="200" Source="/Resource/MEIDAY.png"/>
 
         <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" IsReadOnly="True"
