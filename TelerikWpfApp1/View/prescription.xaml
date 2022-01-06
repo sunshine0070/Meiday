@@ -23,6 +23,19 @@
                 <ImageBrush ImageSource="/Resource/prescription.jpg"/>
             </Grid.Background>
 
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/Seoul.png" 
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="494" RenderTransformOrigin="0.5,0.5" Width="180" Margin="410,475,0,0">
+
+            </Image>
+
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="{Binding PrescriptionDatas[0].P_Stamp}" 
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="163" RenderTransformOrigin="0.5,0.5" Width="90" Margin="313,168,0,0">
+
+            </Image>
+
+
+
+
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Name}" Width="120" Margin="135,130,345,547"/>
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Number}" Height="25" Margin="125,159,335,516"/>
             <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Date}" Margin="125,105,335,575"/>
