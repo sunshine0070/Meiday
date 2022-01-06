@@ -17,6 +17,7 @@ namespace Meiday
         static string inputString = string.Empty;
         //계산기 화면의 출력 텍스트박스에 대응되는 필드
         string displayText = "";
+        // patient_id는 PT_IDNUM or PT_REGNUM 둘 중 하나로 입력해도 가능
         public static string patient_id = "";
         public static bool connect_fail_flag = false; //
 

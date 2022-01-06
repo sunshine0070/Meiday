@@ -77,12 +77,12 @@
                  Text="{Binding Detailed03}" />
         <!--seperator blank-->
         <telerik:RadButton x:Name="radButtonRefuse" Grid.Row="15" Grid.Column="1"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10" FontWeight="ExtraBlack"
                     Content="다음에 하기" CornerRadius="15"
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="0"/>
-        <telerik:RadButton x:Name="radButtonAgree" Grid.Row="15" Grid.Column="2"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10"
+        <telerik:RadButton x:Name="radButtonAgree" Grid.Row="15" Grid.Column="2" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10" FontWeight="ExtraBlack"
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="5"
                     Content="접수 신청" CornerRadius="15" />
