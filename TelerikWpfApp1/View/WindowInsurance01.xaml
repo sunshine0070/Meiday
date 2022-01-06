@@ -42,7 +42,7 @@
         <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="200" Width="200" Source="/Resource/MEIDAY.PNG" VerticalAlignment="Top"/>
         <!--title-->
         <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,-90,0,0" 
-                   TextAlignment="Center" FontSize="36" FontWeight="Bold"
+                   TextAlignment="Center" FontSize="36" FontWeight="Bold" 
                    Text="실손보험 청구서비스"/>
         <!--requiredCheckbox-->
         <CheckBox x:Name="cbInsu01" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,10"
