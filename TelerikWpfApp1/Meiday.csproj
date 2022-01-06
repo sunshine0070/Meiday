@@ -161,7 +161,6 @@
     <Compile Include="Database\Singleton.cs" />
     <Compile Include="Database\XmlManager.cs" />
     <Compile Include="Model\DataSource.cs" />
-    <Compile Include="ViewModel\AdminUserControlModel.cs" />
     <Compile Include="ViewModel\Command.cs" />
     <Compile Include="ViewModel\LoginCommand.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

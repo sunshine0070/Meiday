@@ -60,17 +60,19 @@
                    TextAlignment="Center" FontSize="35" 
                    Text="님의 진료기록 입니다" Margin="50,15,50,0"/>
 
-        <telerik:RadGridView Grid.Row="3" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="6" IsReadOnly="False" SelectionMode="Extended" SelectionUnit="FullRow"
-                             x:Name ="Patient_Record" DataContext="{StaticResource PaymentViewModel}"  ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" AutoGenerateColumns="False" ShowGroupPanel="False">
+        <telerik:RadGridView Grid.Row="3" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="6" SelectionMode="Extended" SelectionUnit="FullRow"
+                             x:Name ="Patient_Record" DataContext="{StaticResource PaymentViewModel}"  ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+                             AutoGenerateColumns="False" ShowGroupPanel="False" IsFilteringAllowed="False"
+                             FontSize="16" >
 
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn x:Name="header_name" Width="*" DataMemberBinding="{Binding Name}" Header="이름" HeaderTextAlignment="Center" TextAlignment="Center" ></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_doctor" Width="*" DataMemberBinding="{Binding Doctor}" Header="주치의" HeaderTextAlignment="Center" TextAlignment="Center" ></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_group" Width="*" DataMemberBinding="{Binding Group}" Header="진료과" HeaderTextAlignment="Center" TextAlignment="Center"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_date" Width="*" DataMemberBinding="{Binding Date}" Header="진료일" HeaderTextAlignment="Center" TextAlignment="Center"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_price" Width="*" DataMemberBinding="{Binding Price}" Header="금액" HeaderTextAlignment="Center" TextAlignment="Center"></telerik:GridViewDataColumn>
-                <telerik:GridViewCheckBoxColumn x:Name="checkbox_ischeck" Width="0.7*" DataMemberBinding="{Binding Checked}" Header="수납" AutoSelectOnEdit="True" EditTriggers="CellClick" HeaderTextAlignment="Center"></telerik:GridViewCheckBoxColumn>
+                <telerik:GridViewDataColumn x:Name="header_name" Width="*" DataMemberBinding="{Binding Name}" Header="이름" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn x:Name="header_doctor" Width="*" DataMemberBinding="{Binding Doctor}" Header="주치의" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn x:Name="header_group" Width="*" DataMemberBinding="{Binding Group}" Header="진료과" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn x:Name="header_date" Width="*" DataMemberBinding="{Binding Date}" Header="진료일" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn x:Name="header_price" Width="*" DataMemberBinding="{Binding Price}" Header="금액" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
+                <telerik:GridViewCheckBoxColumn x:Name="checkbox_ischeck" Width="0.5*" DataMemberBinding="{Binding Checked}" Header="수납" AutoSelectOnEdit="True" EditTriggers="CellClick" HeaderTextAlignment="Center"></telerik:GridViewCheckBoxColumn>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 

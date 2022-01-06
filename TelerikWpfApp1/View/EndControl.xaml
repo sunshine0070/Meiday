@@ -46,7 +46,7 @@
                         FontWeight="Bold" FontSize="14" Content="확인"
                         Command="{Binding SwitchViewCommand}"
                         CommandParameter="0"
-                        Margin="145,73,145,4">
+                        Margin="145,77,145,10">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
