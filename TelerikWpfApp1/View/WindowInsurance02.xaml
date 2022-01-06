@@ -88,7 +88,7 @@
                     Margin="0,0,0,10" Orientation="Horizontal" Background="#34a8eb" Height="50" VerticalAlignment="Bottom">
             <RadioButton x:Name="AccidentTypeDisease" GroupName="accidentType" Margin="30,10,30,10"
                          VerticalContentAlignment="Center"
-                         FontSize="20" FontWeight="Bold" 
+                         FontSize="20" FontWeight="Bold"  
                          DataContext="{StaticResource AccidentViewModel}"
                          IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=질병}"
                          Content="질병" />
@@ -107,14 +107,14 @@
         </StackPanel>
         <!--button-->
         <telerik:RadButton x:Name="radButtonBefore" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10" FontWeight="ExtraBlack"
                     Content="이전" CornerRadius="15"
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="4"/>
         <telerik:RadButton x:Name="radButtonAfter" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2"
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="6"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10,10" Padding="50,10,50,10"  FontWeight="ExtraBlack"
                     Content="다음" CornerRadius="15" />
         <!--TextBox Grid.ColumnSpan="2" DataContext="{StaticResource AccidentViewModel}" Text="{Binding AccidentTypes}"/-->
     </Grid>

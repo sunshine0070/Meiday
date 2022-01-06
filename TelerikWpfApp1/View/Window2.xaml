@@ -69,7 +69,7 @@
         <telerik:RadButton x:Name="radButton7" Grid.Row="3" Grid.Column="1" Content="7" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="7" />
         <telerik:RadButton x:Name="radButton8" Grid.Row="3" Grid.Column="2" Content="8" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="8" />
         <telerik:RadButton x:Name="radButton9" Grid.Row="3" Grid.Column="3" Content="9" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="9" />
-        <telerik:RadButton x:Name="radButtonDel" Grid.Row="4" Grid.Column="1" Content="정정" FontSize="28" Style="{StaticResource MyBtnStyle1}  " Command="{Binding BackSpace}" />
+        <telerik:RadButton x:Name="radButtonDel" Grid.Row="4" Grid.Column="1" Content="정정" FontSize="28" Style="{StaticResource MyBtnStyle1}" Command="{Binding BackSpace}" />
         <telerik:RadButton x:Name="radButton0" Grid.Row="4" Grid.Column="2" Content="0" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="0" />
         <telerik:RadButton x:Name="radButtonOk" Grid.Row="4" Grid.Column="3" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="2"/>
 
