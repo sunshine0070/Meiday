@@ -90,19 +90,19 @@
                          VerticalContentAlignment="Center"
                          FontSize="20" FontWeight="Bold" 
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeDisease}"
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=질병}"
                          Content="질병" />
             <RadioButton x:Name="AccidentTypeInjury" GroupName="accidentType" Margin="30,10,30,10"
                          FontSize="20" FontWeight="Bold" 
                          VerticalContentAlignment="Center"
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeInjury}"
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=상해}"
                          Content="상해" />
             <RadioButton x:Name="AccidentTypeCar" GroupName="accidentType" Margin="30,10,30,10"
                          FontSize="20" FontWeight="Bold" 
                          VerticalContentAlignment="Center"
                          DataContext="{StaticResource AccidentViewModel}"
-                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=AccidentTypeCar}"
+                         IsChecked="{Binding AccidentTypes, Converter={StaticResource RadioBoolToAccidentTypeConverter}, ConverterParameter=교통사고}"
                          Content="교통사고" />
         </StackPanel>
         <!--button-->

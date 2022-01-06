@@ -126,13 +126,13 @@ namespace Meiday
                 else
                 {
                     SwitchView = 104;
-                    LoginViewModel.Init();
+                    LoginViewModel.LoginInit();
                 }
             }
             else if (SwitchView == 2 && loginViewModel.InputString == "00000") // 관리자번호 입력 시 관리자 페이지 진행
             {
                 SwitchView = 90;
-                LoginViewModel.Init();
+                LoginViewModel.LoginInit();
             }
 
             if (SwitchView == 4 && _isChecked01 == true) // 개인정보 동의 체크박스 초기화
@@ -156,7 +156,7 @@ namespace Meiday
 
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {
-                LoginViewModel.Init();
+                LoginViewModel.LoginInit();
                 //accidentViewModel.SendEmail();
                 accidentViewModel.AccidentSubmit();
                 _isChecked02 = false;
@@ -320,7 +320,7 @@ namespace Meiday
 
         private void ViewInit()
         {
-            Init();
+            LoginInit();
             _accidentType = AccidentType.None;
             _accidentSelectedDateTime = DateTime.Now;
             _isChoice01 = false;

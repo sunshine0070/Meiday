@@ -60,9 +60,9 @@ namespace Meiday.Model
 	public enum AccidentType
     {
 		None,
-		AccidentTypeDisease,
-		AccidentTypeInjury,
-		AccidentTypeCar
+		질병,
+		상해,
+		교통사고
 	}
 
 	public class InsuranceSubmit

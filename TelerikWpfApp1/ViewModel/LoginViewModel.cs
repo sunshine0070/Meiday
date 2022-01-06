@@ -101,7 +101,7 @@ namespace Meiday
             patient_id = inputString;
         }
 
-        static public void Init()
+        static public void LoginInit()
         {
             inputString = "";
         }

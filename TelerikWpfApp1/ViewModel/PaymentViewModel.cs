@@ -439,7 +439,7 @@ namespace Meiday
                     DataSet ds = new DataSet();
 
 
-                    string query = @" SELECT a.PT_NAME p_name, a.PT_REGNUM p_number, a.PT_REGDATE p_date, b.DR_NAME p_doctor, b.DR_LICENSE p_doctorlicense, e.MED_NAME p_medication, e.MED_DOSE p_medicationdose, e.MED_COUNT p_medicationcount, f.DR_DEPTNAME p_doctorposition
+                    string query = @" SELECT a.PT_NAME p_name, a.PT_REGNUM p_number, d.PRESCRIPTION_DATE p_date, b.DR_NAME p_doctor, b.DR_LICENSE p_doctorlicense, e.MED_NAME p_medication, e.MED_DOSE p_medicationdose, e.MED_COUNT p_medicationcount, f.DR_DEPTNAME p_doctorposition
                                       FROM PATIENT a, DOCTOR b, TREATMENT c, PRESCRIPTION d, DETAILMED e, DEPARTMENT f
                                       WHERE a.PT_REGNUM = c.PT_REGNUM AND c.TREATMENT_NUM = d.TREATMENT_NUM AND c.DR_LICENSE = b.DR_LICENSE AND d.MED_CODE = e.MED_CODE AND b.DR_DEPTNUM = f.DR_DEPTNUM AND a.PT_IDNUM =" +patient_id;
 

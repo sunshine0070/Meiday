@@ -276,6 +276,7 @@ namespace Meiday
                 mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
                 mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime2
                                    + "\n사고유형: " + _accidentType
+                                   + "\n환자번호: " + patient_id
                                    + "\n보험사명: " + CheckInsuName2; // 본문
                 mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
                 mailMessage.BodyEncoding = Encoding.UTF8; // 본문 인코딩 타입(UTF-8) 선택

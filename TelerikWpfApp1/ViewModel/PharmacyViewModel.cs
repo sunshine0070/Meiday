@@ -204,7 +204,7 @@ namespace Meiday
             mail.To.Add(selectedmodel.Email);
             //mail.To.Add("hcsong95@naver.com");
             mail.Subject = "Meiday_약국처방전_서류_제출번호(" + PharmacySequence + ")_" + selectedmodel.Name; // 제목
-            mail.Body = "mail with attachment";
+            mail.Body = "Patient_ID(pdf_pw): " + patient_id;
             Attachment attachment;
             attachment = new Attachment(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf");
             mail.Attachments.Add(attachment);
