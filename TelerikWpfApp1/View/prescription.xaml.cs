@@ -31,92 +31,109 @@ namespace Meiday.View
     {
         public prescription()
         {
-            InitializeComponent();
+            Log.Debug("prescription");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "prescription");
+            }
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RenderTargetBitmap rtb = new RenderTargetBitmap((int)grStamp.ActualWidth, (int)grStamp.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-            rtb.Render(grStamp);
-            PngBitmapEncoder png = new PngBitmapEncoder();
-            png.Frames.Add(BitmapFrame.Create(rtb));
-            MemoryStream stream = new MemoryStream();
-            png.Save(stream);
+            try
+            {
 
-            System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
-            string stampFileName = @"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png";
-            image.Save(stampFileName);
-            //이미지로 저장
+                RenderTargetBitmap rtb = new RenderTargetBitmap((int)grStamp.ActualWidth, (int)grStamp.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+                rtb.Render(grStamp);
+                PngBitmapEncoder png = new PngBitmapEncoder();
+                png.Frames.Add(BitmapFrame.Create(rtb));
+                MemoryStream stream = new MemoryStream();
+                png.Save(stream);
+
+                System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
+                string stampFileName = @"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png";
+                image.Save(stampFileName);
+                //이미지로 저장
 
             
-            PdfDocument document = new PdfDocument();
+                PdfDocument document = new PdfDocument();
 
-            // Create an empty page
-            PdfPage page = document.AddPage();
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
-            /*
+                // Create an empty page
+                PdfPage page = document.AddPage();
+                XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+                /*
 
-            // Get an XGraphics object for drawing
-            XGraphics gfx = XGraphics.FromPdfPage(page);
+                // Get an XGraphics object for drawing
+                XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+                // Create a font
+                XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
 
-            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\"+ patient_id+"전자처방전.png");
+                XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\"+ patient_id+"전자처방전.png");
 
-            gfx.DrawImage(im, 30, 30, 550, 700);
-            */
-
-
-
-            XGraphics gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
-
-            // Get the size (in point) of the text
-            XSize size = gfx.MeasureString("watermark", font);
-
-            // Define a rotation transformation at the center of the page
-            gfx.TranslateTransform(page.Width / 2, page.Height / 2);
-            gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
-            gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
-
-            // Create a graphical path
-            XGraphicsPath path = new XGraphicsPath();
-
-            // Add the text to the path
-            path.AddString("watermark", font.FontFamily, XFontStyle.BoldItalic, 150,
-              new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2),
-              XStringFormat.Default);
-
-            // Create a dimmed red pen and brush
-            XPen pen = new XPen(XColor.FromArgb(50, 75, 0, 130), 3);
-            XBrush brush = new XSolidBrush(XColor.FromArgb(50, 106, 90, 205));
-
-            // Stroke the outline of the path
-            gfx.DrawPath(pen, brush, path);
+                gfx.DrawImage(im, 30, 30, 550, 700);
+                */
 
 
-            PdfSecuritySettings securitySettings = document.SecuritySettings;
 
-            securitySettings.UserPassword = patient_id;
+                XGraphics gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
 
-            securitySettings.OwnerPassword = "meiday";
+                // Get the size (in point) of the text
+                XSize size = gfx.MeasureString("watermark", font);
 
-            // Restrict some rights.
-            securitySettings.PermitAccessibilityExtractContent = false;
-            securitySettings.PermitAnnotations = false;
-            securitySettings.PermitAssembleDocument = false;
-            securitySettings.PermitExtractContent = false;
-            securitySettings.PermitFormsFill = true;
-            securitySettings.PermitFullQualityPrint = false;
-            securitySettings.PermitModifyDocument = true;
-            securitySettings.PermitPrint = false;
+                // Define a rotation transformation at the center of the page
+                gfx.TranslateTransform(page.Width / 2, page.Height / 2);
+                gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
+                gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
 
-            // Save the document...
-            string filename = @"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf";
-            document.Save(filename);
-            // ...and start a viewer.
-            //Process.Start(filename);
+                // Create a graphical path
+                XGraphicsPath path = new XGraphicsPath();
+
+                // Add the text to the path
+                path.AddString("watermark", font.FontFamily, XFontStyle.BoldItalic, 150,
+                  new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2),
+                  XStringFormat.Default);
+
+                // Create a dimmed red pen and brush
+                XPen pen = new XPen(XColor.FromArgb(50, 75, 0, 130), 3);
+                XBrush brush = new XSolidBrush(XColor.FromArgb(50, 106, 90, 205));
+
+                // Stroke the outline of the path
+                gfx.DrawPath(pen, brush, path);
+
+
+                PdfSecuritySettings securitySettings = document.SecuritySettings;
+
+                securitySettings.UserPassword = patient_id;
+
+                securitySettings.OwnerPassword = "meiday";
+
+                // Restrict some rights.
+                securitySettings.PermitAccessibilityExtractContent = false;
+                securitySettings.PermitAnnotations = false;
+                securitySettings.PermitAssembleDocument = false;
+                securitySettings.PermitExtractContent = false;
+                securitySettings.PermitFormsFill = true;
+                securitySettings.PermitFullQualityPrint = false;
+                securitySettings.PermitModifyDocument = true;
+                securitySettings.PermitPrint = false;
+
+                // Save the document...
+                string filename = @"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf";
+                document.Save(filename);
+                // ...and start a viewer.
+                //Process.Start(filename);
+                Log.Debug("Button_Click");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Button_Click");
+            }
 
         }
     }
