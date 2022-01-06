@@ -55,6 +55,9 @@ namespace Meiday
                 }
                 PHAR_MODEL.Add(new Pharmacy { Name = name, Phone = phone, Address = address, Latitude = latitude, Logitude = logitude, Image = image, Email = email, WaitPerson = wait, Fontcolor = fontcolor });
             }
+            //로그 기록남기기
+            Log.Debug();
+            Log.Debug("약국페이지 진입");
         }
 
         public void DataSearch()

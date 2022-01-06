@@ -58,7 +58,6 @@ namespace Meiday
 
             oracleDBManager.Close();
         }
-
         public static void Debug(String message)
         {
             String patient = "";
@@ -102,7 +101,6 @@ namespace Meiday
 
             oracleDBManager.Close();
         }
-
         public static void Error(Exception ex)
         {
             String patient = "";
@@ -154,7 +152,6 @@ namespace Meiday
 
             oracleDBManager.Close();
         }
-
         public static void Error(Exception ex, string message)
         {
             String patient = "";
@@ -257,7 +254,6 @@ namespace Meiday
 
             oracleDBManager.Close();
         }
-
         public static void Fatal(Exception ex, String message)
         {
             String patient = "";
