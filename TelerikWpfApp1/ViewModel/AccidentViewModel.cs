@@ -164,7 +164,6 @@ namespace Meiday
         {
             get
             {
-                Log.Debug("CheckCommand");
                 return (this.checkCommand) ?? (this.checkCommand = new RelayCommand(AccCheck));
             }
         }

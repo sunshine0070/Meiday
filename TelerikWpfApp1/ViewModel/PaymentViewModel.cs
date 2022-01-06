@@ -444,16 +444,19 @@ namespace Meiday
                             SampleDatas.Add(obj);
 
                         }
+                        Log.Debug("SampleDatas");
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        connect_fail_flag = true;
+                        Log.Fatal(ex, "SampleDatas");
                     }
                 }
                 return _sampleDatas;
             }
             set
-            { _sampleDatas = value; OnPropertyChanged("_sampleDatas"); }
+            {
+                _sampleDatas = value; OnPropertyChanged("_sampleDatas"); 
+            }
         }
 
         public ObservableCollection<prescription_ment> PrescriptionDatas
@@ -494,10 +497,11 @@ namespace Meiday
                             PrescriptionDatas.Add(obj);
 
                         }
+                        Log.Debug("PrescriptionDatas");
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        connect_fail_flag = true;
+                        Log.Fatal(ex, "PrescriptionDatas");
                     }
                 }
                 return _prescriptionDatas;
@@ -543,10 +547,11 @@ namespace Meiday
                             ReceiptDatas.Add(obj);
 
                         }
+                        Log.Debug("ReceiptDatas");
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        connect_fail_flag = true;
+                        Log.Fatal(ex, "ReceiptDatas");
                     }
                 }
                 return _receiptDatas;
@@ -558,18 +563,20 @@ namespace Meiday
         public static void PaymentSubmit() //한번 결제 한 진료를 확인하기 위한 업데이트
         {
             //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
-            OracleDBManager oracleDBManager = new OracleDBManager();
-            oracleDBManager.GetConnection();
-
-                //MessageBox.Show("db 조건문 진입");
-
-                    string query = @"UPDATE (SELECT * FROM PATIENT a, TREATMENT b WHERE a.PT_REGNUM = b.PT_REGNUM AND (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id + ")) SET PAY_STATUS = '1'";
-                    string query1 = @"commit";
-                    OracleDBManager.Instance.ExecuteNonQuery(query);
-                    OracleDBManager.Instance.ExecuteNonQuery(query1);
-
-       
-            
+            try
+            {
+                OracleDBManager oracleDBManager = new OracleDBManager();
+                oracleDBManager.GetConnection();
+                string query = @"UPDATE (SELECT * FROM PATIENT a, TREATMENT b WHERE a.PT_REGNUM = b.PT_REGNUM AND (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id + ")) SET PAY_STATUS = '1'";
+                string query1 = @"commit";
+                OracleDBManager.Instance.ExecuteNonQuery(query);
+                OracleDBManager.Instance.ExecuteNonQuery(query1);
+                Log.Debug("PaymentSubmit");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "PaymentSubmit")
+            }
         }
 
 
@@ -632,17 +639,9 @@ namespace Meiday
         }
         #endregion
 
-        /*
-        public void ButtonShow()
-        {
-            prescription prescription = new prescription();
-            prescription.Owner = Application.Current.MainWindow;
-            prescription.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            prescription.ShowDialog();
-        }
-        */
         private void payShow()
         {
+            Log.Debug("payShow");
             pay pay = new pay();
             pay.Owner = Application.Current.MainWindow;
             pay.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -666,6 +665,7 @@ namespace Meiday
 
         public void Select_Price()
         {
+            Log.Debug("Select_Price");
             int temp_total = 0;
             foreach (payment ob in SampleDatas)
             {
