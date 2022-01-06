@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public NoInsuDialog()
         {
-            InitializeComponent();
+            Log.Debug("NoInsuDialog");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "NoInsuDialog");
+            }
         }
     }
 }
