@@ -45,6 +45,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("PatientName");
                 if (value != _pa.patientName)
                 {
                     _pa.patientName = value;
@@ -57,6 +58,7 @@ namespace Meiday
         {
             set
             {
+                Log.Debug("InputString");
                 if (inputString != value)
                 {
                     inputString = value;
@@ -78,6 +80,7 @@ namespace Meiday
         {
             internal set
             {
+                Log.Debug("DisplayText");
                 if (displayText != value)
                 {
 /*                    displayText = value;*/
@@ -99,11 +102,13 @@ namespace Meiday
 
         static public void Login()
         {
+            Log.Debug("Login");
             patient_id = inputString;
         }
 
         static public void LoginInit()
         {
+            Log.Debug("LoginInit");
             inputString = "";
         }
         string validCheck;
@@ -119,10 +124,12 @@ namespace Meiday
             try
             {
                 validCheck = ds.Tables[0].Rows[0]["data_Name2"].ToString();
+                Log.Debug("ValidCheck");
                 return int.Parse(validCheck) > 0;
             }
             catch (Exception ex)
             {
+                Log.Fatal(ex, "ValidCheck");
                 return false;
             }
         }
