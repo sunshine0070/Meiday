@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public TransferDialog()
         {
-            InitializeComponent();
+            Log.Debug("TransferDialog");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "TransferDialog");
+            }
         }
     }
 }

@@ -43,8 +43,6 @@ namespace Meiday.View
         public ReceiptControl()
         {
             InitializeComponent();
-
-
         }
 
         // sms api 생성

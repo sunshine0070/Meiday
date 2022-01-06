@@ -21,7 +21,15 @@ namespace Meiday
     {
         public Window1()
         {
-            InitializeComponent();
+            Log.Debug("Window1");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Window1");
+            }
         }
     }
 }

@@ -14,8 +14,15 @@ namespace Meiday
     {
         public App()
         {
-           this.InitializeComponent();
-           Log.Debug();
+            Log.Debug("App Start!");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "App Error!!");
+            }
         }
     }
 }

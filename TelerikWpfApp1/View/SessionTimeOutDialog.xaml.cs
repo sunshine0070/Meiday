@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public SessionTimeOutDialog()
         {
-            InitializeComponent();
+            Log.Debug("SessionTimeOutDialog");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "SessionTimeOutDialog");
+            }
         }
     }
 }

@@ -22,7 +22,15 @@ namespace Meiday
     {
         public WindowPharmacy02()
         {
-            InitializeComponent();
+            Log.Debug("WindowPharmacy02");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "WindowPharmacy02");
+            }
         }
     }
 }
