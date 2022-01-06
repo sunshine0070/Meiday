@@ -33,6 +33,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("SwitchView");
                 switchView = value;
                 OnPropertyChanged("SwitchView");
             }
@@ -50,6 +51,7 @@ namespace Meiday
             get => _isChecked01;
             set
             {
+                Log.Debug("IsChecked01");
                 _isChecked01 = value;
                 OnPropertyChanged("IsChecked01");
             }
@@ -61,6 +63,7 @@ namespace Meiday
             get => _isChoice01;
             set
             {
+                Log.Debug("IsChoice01");
                 _isChoice01 = value;
                 OnPropertyChanged("IsChoice01");
             }
@@ -71,6 +74,7 @@ namespace Meiday
             get => _isChoice02;
             set
             {
+                Log.Debug("IsChoice02");
                 _isChoice02 = value;
                 OnPropertyChanged("IsChoice02");
             }
@@ -81,6 +85,7 @@ namespace Meiday
             get => _isPayChoice;
             set
             {
+                Log.Debug("IsPayChoice");
                 _isPayChoice = value;
                 OnPropertyChanged("IsPayChoice");
             }
@@ -92,6 +97,7 @@ namespace Meiday
 
         public MainViewModel()
         {
+            Log.Debug("MainViewModel");
             SwitchView = 0;
             sessionTimer.Interval = TimeSpan.FromSeconds(1);
             sessionTimer.Tick += SessionTimer_Tick; // 1번만 실행
@@ -103,6 +109,7 @@ namespace Meiday
         private void OnSwitchView(object index)
         {
             SwitchView = int.Parse(index.ToString());
+            Log.Debug("OnSwitchView");
 
             if (SwitchView == 0) // 종료 case01, 다음에 하기 로그인 정보 초기화
             {
@@ -157,7 +164,7 @@ namespace Meiday
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {
                 LoginViewModel.LoginInit();
-                //accidentViewModel.SendEmail();
+                //accidentViewModel.AccidentSendEmail();
                 accidentViewModel.AccidentSubmit();
                 _isChecked02 = false;
             }
@@ -214,6 +221,7 @@ namespace Meiday
         //약국 선택하기 버튼 활성화 부분
         public bool CheckCanExecuted(object sender)
         {
+            Log.Debug("CheckCanExecuted");
             bool ret = false;
             if (PharmacyViewModel.selectedmodel != null)
             {
@@ -226,6 +234,7 @@ namespace Meiday
         DispatcherTimer sessionTimer = new DispatcherTimer();
         public void SessionTimer_Start()
         {
+            Log.Debug("SessionTimer_Start");
             sessionTimer.Start();
         }
         public void SessionTimer_Tick(object sender, EventArgs e)
@@ -249,12 +258,14 @@ namespace Meiday
         }
         public void SessionTimer_Reset()
         {
+            Log.Debug("SessionTimer_Reset");
             TimeRemaining = 180; // 세션 시간(3분)
         }
 
         DispatcherTimer endPageTimer = new DispatcherTimer();
         private void EndPageTimer_Start()
         {
+            Log.Debug("EndPageTimer_Start");
             endPageTimer.Start();
         }
 
@@ -271,6 +282,7 @@ namespace Meiday
         }
         private void EndPageTimer_Reset()
         {
+            Log.Debug("EndPageTimer_Reset");
             EndPageTimeRemaining = 7; // 마지막 페이지 세션 시간 7초
         }
 
@@ -283,6 +295,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("TimeRemaining");
                 timeRemaining = value;
                 OnPropertyChanged("TimeRemaining");
             }
@@ -297,6 +310,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("EndPageTimeRemaining");
                 endPagetimeRemaining = value;
             }
         }
@@ -310,6 +324,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("SwitchViewtmp");
                 switchViewtmp = value;
                 OnPropertyChanged("SwitchViewtmp");
             }
@@ -317,6 +332,7 @@ namespace Meiday
 
         private void ViewInit()
         {
+            Log.Debug("ViewInit");
             LoginInit();
             _accidentType = AccidentType.None;
             _accidentSelectedDateTime = DateTime.Now;

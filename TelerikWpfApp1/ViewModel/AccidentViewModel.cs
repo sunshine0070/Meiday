@@ -28,6 +28,7 @@ namespace Meiday
 
             set
             {
+                Log.Debug("AccidentTodayDateTime");
                 _accidentTodayDateTime = value;
                 OnPropertyChanged(nameof(AccidentTodayDateTime));
             }
@@ -43,6 +44,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("AccidentSelectedDateTime");
                 _accidentSelectedDateTime = value;
                 OnPropertyChanged(nameof(AccidentSelectedDateTime));
             }
@@ -55,6 +57,7 @@ namespace Meiday
             get => _accidentLimitedDateTime;
             set
             {
+                Log.Debug("AccidentLimitedDateTime");
                 _accidentLimitedDateTime = value;
                 OnPropertyChanged(nameof(AccidentLimitedDateTime));
             }
@@ -66,6 +69,7 @@ namespace Meiday
             get => _accidentType;
             set
             {
+                Log.Debug("AccidentTypes");
                 if (_accidentType != value)
                 {
                     _accidentType = value;
@@ -80,6 +84,7 @@ namespace Meiday
             get => _accidentSubmitDates;
             set
             {
+                Log.Debug("AccidentSubmitDates");
                 _accidentSubmitDates = value;
                 OnPropertyChanged("AccidentSubmitDates");
             }
@@ -94,6 +99,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("InsuName");
                 if (value != _pa.InsuName)
                 {
                     _pa.InsuName = value;
@@ -109,6 +115,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("InsuProduct");
                 if (value != _pa.InsuProduct)
                 {
                     _pa.InsuProduct = value;
@@ -125,6 +132,7 @@ namespace Meiday
             get { return _pa.IsChecked02; }
             set
             {
+                Log.Debug("IsChecked02");
                 if (value != _pa.IsChecked02)
                 {
                     _pa.IsChecked02 = value;
@@ -142,6 +150,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("CheckInsuName");
                 if (value != check_InsuName)
                 {
                     check_InsuName = value;
@@ -155,13 +164,15 @@ namespace Meiday
         {
             get
             {
-                return (this.checkCommand) ?? (this.checkCommand = new RelayCommand(Check));
+                Log.Debug("CheckCommand");
+                return (this.checkCommand) ?? (this.checkCommand = new RelayCommand(AccCheck));
             }
         }
         public static bool _isChecked02;
-        public void Check()
+        public void AccCheck()
         {
-            foreach (ment ob in SampleDatas)
+            Log.Debug("AccCheck");
+            foreach (ment ob in AccSampleDatas)
             {
                 if (ob.IsChecked02 == true)
                 {
@@ -194,6 +205,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("selectedInsuranceMail");
                 if (value != _selectedInsuranceMail)
                 {
                     _selectedInsuranceMail = value;
@@ -216,6 +228,7 @@ namespace Meiday
             }
             set
             {
+                Log.Debug("InsuranceSequence");
                 if (value != _insuranceSequence)
                 {
                     _insuranceSequence = value;
@@ -226,7 +239,7 @@ namespace Meiday
 
 
         ObservableCollection<ment> _sampleDatas = null;
-        public ObservableCollection<ment> SampleDatas
+        public ObservableCollection<ment> AccSampleDatas
         {
             get
             {
@@ -249,20 +262,21 @@ namespace Meiday
                             InsuName = ds.Tables[0].Rows[idx]["InsuName"].ToString(),
                             InsuProduct = ds.Tables[0].Rows[idx]["InsuProduct"].ToString(),
                         };
-                        SampleDatas.Add(obj);
+                        AccSampleDatas.Add(obj);
                     }
                 }
                 return _sampleDatas;
             }
             set
             {
+                Log.Debug("AccSampleDatas");
                 _sampleDatas = value;
                 OnPropertyChanged("_sampleDatas");
             }
         }
 
         // 보험 EMAIL 보내기
-        public void SendEmail()
+        public void AccidentSendEmail()
         {
             try
             {
@@ -291,37 +305,47 @@ namespace Meiday
                 SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
                 SmtpServer.Credentials = new NetworkCredential("ezsun0070", "1q2w3e4r!");
                 SmtpServer.Send(mailMessage);
+                Log.Debug("AccidentSendEmail");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Log.Fatal(ex, "AccidentSendEmail");
             }
         }
         private string _query;
         public void AccidentSubmit()
         {
-            if(patient_id.Length == 5) // PT_IDNUM
+            try
             {
-                _query = @"INSERT INTO 
-                            INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, INSURANCE_NAME, PT_IDNUM)
-                            VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', '#InsuranceName', " + patient_id + ")";
+                if(patient_id.Length == 5) // PT_IDNUM
+                {
+                    _query = @"INSERT INTO 
+                                INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, INSURANCE_NAME, PT_IDNUM)
+                                VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', '#InsuranceName', " + patient_id + ")";
+                }
+                else if(patient_id.Length == 13) // PT_REGNUM
+                {
+                    _query = @"INSERT INTO 
+                                INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, INSURANCE_NAME, PT_REGNUM)
+                                VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', '#InsuranceName', " + patient_id + ")";
+                }
+                string query1 = @"commit";
+                _query = _query.Replace("#AccidentDate", _accidentSelectedDateTime2.ToString());
+                _query = _query.Replace("#AccidentSubmitDate", _accidentTodayDateTime.ToString());
+                _query = _query.Replace("#AccidentType", _accidentType.ToString());
+                _query = _query.Replace("#InsuranceName", CheckInsuName2);
+                OracleDBManager.Instance.ExecuteNonQuery(_query);
+                OracleDBManager.Instance.ExecuteNonQuery(query1);
+                Log.Debug("AccidentSubmit");
             }
-            else if(patient_id.Length == 13) // PT_REGNUM
+            catch(Exception ex)
             {
-                _query = @"INSERT INTO 
-                            INSURANCE_SUBMIT (SUBMIT_NUM, ACCIDENT_DATE, ACCIDENT_SUBMITDATE, ACCIDENT_TYPE, INSURANCE_NAME, PT_REGNUM)
-                            VALUES (SUBMIT_NUM.nextval, '#AccidentDate', '#AccidentSubmitDate', '#AccidentType', '#InsuranceName', " + patient_id + ")";
+                Log.Fatal(ex, "AccidentSubmit");
             }
-            string query1 = @"commit";
-            _query = _query.Replace("#AccidentDate", _accidentSelectedDateTime2.ToString());
-            _query = _query.Replace("#AccidentSubmitDate", _accidentTodayDateTime.ToString());
-            _query = _query.Replace("#AccidentType", _accidentType.ToString());
-            _query = _query.Replace("#InsuranceName", CheckInsuName2);
-            OracleDBManager.Instance.ExecuteNonQuery(_query);
-            OracleDBManager.Instance.ExecuteNonQuery(query1);
         }
         public static void AccidentDateSaved()
         {
+            Log.Debug("AccidentDateSaved");
             _accidentSelectedDateTime2 = _accidentSelectedDateTime;
         }
     }
@@ -330,6 +354,7 @@ namespace Meiday
         #region IValueConverter Members
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Log.Debug("RadioConvert");
             string parameterString = parameter as string;
 
             if (parameterString == null)
@@ -344,6 +369,7 @@ namespace Meiday
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Log.Debug("RadioConvertBack");
             string parameterString = parameter as string;
 
             if (parameterString == null)
