@@ -274,9 +274,6 @@ namespace Meiday
             EndPageTimeRemaining = 7; // 마지막 페이지 세션 시간 7초
         }
 
-
-
-
         private int timeRemaining;
         public int TimeRemaining
         {
