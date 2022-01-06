@@ -15,6 +15,7 @@ namespace Meiday
         public App()
         {
            this.InitializeComponent();
+           Log.Debug();
         }
     }
 }

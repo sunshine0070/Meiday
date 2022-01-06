@@ -133,6 +133,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LogRecord.cs" />
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />

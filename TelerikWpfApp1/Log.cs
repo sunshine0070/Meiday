@@ -11,9 +11,9 @@ using System.Diagnostics;
 using Meiday;
 using System.Data;
 
-namespace LogPractice
+namespace Meiday
 {
-    public class LogRecord
+    public class Log
     {
         public static void Debug()
         {
@@ -23,14 +23,13 @@ namespace LogPractice
             String level = "DEBUG";
 
             //ip주소 알림
-            string localIP = string.Empty;
+            string ipaddress = string.Empty;
             using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
             {
                 socket.Connect("8.8.8.8", 65530);
                 IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
-                localIP = endPoint.Address.ToString();
+                ipaddress = endPoint.Address.ToString();
             }
-            String ipaddress = localIP;
             //MessageBox.Show("현재 IP : " + localIP); //endPoint의 IP주소
 
             // 이전 함수명 
@@ -42,7 +41,7 @@ namespace LogPractice
             //MessageBox.Show("현재 Class명 : " + prevClassName);
 
             // 환자 번호
-            if(LoginViewModel.patient_id != null)
+            if (LoginViewModel.patient_id != null)
             {
                 patient = LoginViewModel.patient_id;
             }
@@ -52,7 +51,7 @@ namespace LogPractice
             oracleDBManager.GetConnection();
 
             string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID) 
-            VALUES('" + level + "' , '" + prevClassName +"', '"+ prevFuncName +"','"+ ipaddress +"','"+ patient + "'"+ ")";
+            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "'" + ")";
             string query1 = @"commit";
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
@@ -62,73 +61,107 @@ namespace LogPractice
 
         public static void Error(Exception ex)
         {
-            MessageBox.Show("현재 레벨 : ERROR");
+            String patient = "";
+            String error = "";
+
+            //MessageBox.Show("현재 레벨 : DEBUG");
+            String level = "ERROR";
 
             //ip주소 알림
-            string localIP = string.Empty;
+            string ipaddress = string.Empty;
             using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
             {
                 socket.Connect("8.8.8.8", 65530);
                 IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
-                localIP = endPoint.Address.ToString();
+                ipaddress = endPoint.Address.ToString();
             }
-            MessageBox.Show("현재 IP : " + localIP); //endPoint의 IP주소
+            //MessageBox.Show("현재 IP : " + localIP); //endPoint의 IP주소
 
-            // 현재 함수명 
+            // 이전 함수명 
             string prevFuncName = new StackFrame(1, true).GetMethod().Name;
-            MessageBox.Show("실행 함수명 : " + prevFuncName);
+            //MessageBox.Show("실행 함수명 : " + prevFuncName);
 
-            // 현재 Class명
+            // 이전 Class명
             string prevClassName = new StackTrace().GetFrame(1).GetMethod().ReflectedType.Name;
-            MessageBox.Show("현재 Class명 : " + prevClassName);
+            //MessageBox.Show("현재 Class명 : " + prevClassName);
 
             // 환자 번호
             if (LoginViewModel.patient_id != null)
             {
-                String PARIENT = LoginViewModel.patient_id;
+                patient = LoginViewModel.patient_id;
             }
 
             // 오류 메시지
-            if(ex != null)
+            if (ex != null)
             {
-                MessageBox.Show("오류명 : " + ex.ToString());
+                error = ex.ToString();
+                //MessageBox.Show("오류명 : " + ex.ToString());
             }
 
+            //DB 로그데이터 삽입 
+            OracleDBManager oracleDBManager = new OracleDBManager();
+            oracleDBManager.GetConnection();
+
+            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID) 
+            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','"+error + "')";
+            string query1 = @"commit";
+            OracleDBManager.Instance.ExecuteNonQuery(query);
+            OracleDBManager.Instance.ExecuteNonQuery(query1);
+
+            oracleDBManager.Close();
         }
 
         public static void Fatal(Exception ex)
         {
-            MessageBox.Show("현재 레벨 : FATAL");
+            String patient = "";
+            String error = "";
+
+            //MessageBox.Show("현재 레벨 : DEBUG");
+            String level = "FATAL";
 
             //ip주소 알림
-            string localIP = string.Empty;
+            string ipaddress = string.Empty;
             using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
             {
                 socket.Connect("8.8.8.8", 65530);
                 IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
-                localIP = endPoint.Address.ToString();
+                ipaddress = endPoint.Address.ToString();
             }
-            MessageBox.Show("현재 IP : " + localIP); //endPoint의 IP주소
+            //MessageBox.Show("현재 IP : " + localIP); //endPoint의 IP주소
 
-            //현재 함수명 
+            // 이전 함수명 
             string prevFuncName = new StackFrame(1, true).GetMethod().Name;
-            MessageBox.Show("실행 함수명 : " + prevFuncName);
+            //MessageBox.Show("실행 함수명 : " + prevFuncName);
 
-            //현재 Class명
+            // 이전 Class명
             string prevClassName = new StackTrace().GetFrame(1).GetMethod().ReflectedType.Name;
-            MessageBox.Show("현재 Class명 : " + prevClassName);
+            //MessageBox.Show("현재 Class명 : " + prevClassName);
 
             // 환자 번호
             if (LoginViewModel.patient_id != null)
             {
-                String PARIENT = LoginViewModel.patient_id;
+                patient = LoginViewModel.patient_id;
             }
 
-            //오류 메시지
+            // 오류 메시지
             if (ex != null)
             {
-                MessageBox.Show("오류명 : " + ex.ToString());
+                error = ex.ToString();
+                //MessageBox.Show("오류명 : " + ex.ToString());
             }
+
+            //DB 로그데이터 삽입 
+            OracleDBManager oracleDBManager = new OracleDBManager();
+            oracleDBManager.GetConnection();
+
+            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID) 
+            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + error + "')";
+            string query1 = @"commit";
+            OracleDBManager.Instance.ExecuteNonQuery(query);
+            OracleDBManager.Instance.ExecuteNonQuery(query1);
+
+            oracleDBManager.Close();
         }
+
     }
 }
