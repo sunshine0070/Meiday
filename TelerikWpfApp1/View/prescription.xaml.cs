@@ -62,6 +62,8 @@ namespace Meiday.View
 
             // Create an empty page
             PdfPage page = document.AddPage();
+            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            /*
 
             // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
@@ -72,27 +74,14 @@ namespace Meiday.View
             XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\"+ patient_id+"전자처방전.png");
 
             gfx.DrawImage(im, 30, 30, 550, 700);
-            /*
-            // Variation 3: Draw watermark as transparent graphical path above text
-            PdfDocument document = new PdfDocument();
+            */
 
-            // Create an empty page
-            PdfPage page = document.AddPage();
 
-            // Get an XGraphics object for drawing
+
             XGraphics gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
 
-            // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
-
-            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png");
-
-            gfx.DrawImage(im, 30, 30, 550, 700);
-
-
-
             // Get the size (in point) of the text
-            XSize size = gfx.MeasureString(watermark, font);
+            XSize size = gfx.MeasureString("watermark", font);
 
             // Define a rotation transformation at the center of the page
             gfx.TranslateTransform(page.Width / 2, page.Height / 2);
@@ -113,7 +102,7 @@ namespace Meiday.View
 
             // Stroke the outline of the path
             gfx.DrawPath(pen, brush, path);
-            */
+
 
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
