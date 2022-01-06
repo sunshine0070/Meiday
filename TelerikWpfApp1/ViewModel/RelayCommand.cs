@@ -19,7 +19,6 @@ namespace Meiday.ViewModel
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
-
         }
 
         public RelayCommand(Action<object, Uri> checkExecuted, Func<object, bool> canExecuted)
@@ -42,7 +41,6 @@ namespace Meiday.ViewModel
 
         public void Execute(object parameter)
         {
-            
             _execute((T)parameter);
         }
 

@@ -27,7 +27,7 @@ namespace Meiday
         //생성자 생성하기 //자동으로 불러지는 데이터
         public PharmacyViewModel()
         {
-            Log.Debug("PharmacyViewModel 생성");
+            Log.Debug("PharmacyViewModel");
             this.PHAR_MODEL = new ObservableCollection<Pharmacy>();
             DataSet ds = new DataSet();
             string query = @" SELECT * FROM PHARMACY_WAIT";
@@ -61,6 +61,7 @@ namespace Meiday
 
         public void DataSearch()
         {
+            Log.Debug("DataSearch");
             DataSet ds = new DataSet();
             string query = @" SELECT * FROM PHARMACY_WAIT ";
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
@@ -142,6 +143,7 @@ namespace Meiday
         // RelayCommand 파트
         public bool CheckCanExecuted(object sender)
         {
+            Log.Debug("CheckCanExecuted");
             return true;
         }
 
@@ -151,18 +153,27 @@ namespace Meiday
             {
                 selectedmodel = Sender as Pharmacy;
             }
+            Log.Debug("CheckButtonExecuted");
         }
         private string _pharmacySequence;
         public string PharmacySequence
         {
             get
             {
+                Log.Debug("PharmacySequence");
+
                 DataSet ds = new DataSet();
                 string query = @"select p.PT_NAME data_Name, PHARMACY_SEQ.nextval SeqSubmit
                               from patient p
                               where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
                 OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-                _pharmacySequence = ds.Tables[0].Rows[0]["SeqSubmit"].ToString();
+                try
+                {
+                    _pharmacySequence = ds.Tables[0].Rows[0]["SeqSubmit"].ToString();
+                }catch (Exception ex)
+                {
+                    Log.Fatal(ex, "PharmacySequence");
+                }
                 return _pharmacySequence;
             }
             set
@@ -172,55 +183,68 @@ namespace Meiday
                     _pharmacySequence = value;
                     OnPropertyChanged("PharmacySequence");
                 }
-                Log.Debug("약국 선택");
+                Log.Debug("_pharmacySequence");
             }
         }
 
         public static void PharmacySubmit() //MainViewModel에서 확인
         {
-            //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
-            OracleDBManager oracleDBManager = new OracleDBManager();
-            oracleDBManager.GetConnection();
-            if (PaymentViewModel.TREATE_NUM.Count > 0)
+            //로그 기록남기기
+            Log.Debug("PharmacySubmit");
+            try
             {
-                //insert 할 때 ; 끝에 붙이면 안됨 
-                //MessageBox.Show("db 조건문 진입");
-                for (int idx = 0; idx < PaymentViewModel.TREATE_NUM.Count; idx++)
+                //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
+                OracleDBManager oracleDBManager = new OracleDBManager();
+                oracleDBManager.GetConnection();
+                if (PaymentViewModel.TREATE_NUM.Count > 0)
                 {
+                    //insert 할 때 ; 끝에 붙이면 안됨 
+                    //MessageBox.Show("db 조건문 진입");
+                    for (int idx = 0; idx < PaymentViewModel.TREATE_NUM.Count; idx++)
+                    {
 
-                    //MessageBox.Show("약국이름 : "+ selectedmodel.Name+ " 처방전 번호 : " + PaymentViewModel.TREATE_NUM[idx]);
-                    string query = @"INSERT INTO PHARMACY_RESERVE(PHARMACY_NAME, TREATMENT_NUM) VALUES('" + PharmacyViewModel.selectedmodel.Name + "' , "+  PaymentViewModel.TREATE_NUM[idx] + ")";
-                    string query1 = @"commit";
-                    OracleDBManager.Instance.ExecuteNonQuery(query);
-                    OracleDBManager.Instance.ExecuteNonQuery(query1);
-
-                    //MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
+                        //MessageBox.Show("약국이름 : "+ selectedmodel.Name+ " 처방전 번호 : " + PaymentViewModel.TREATE_NUM[idx]);
+                        string query = @"INSERT INTO PHARMACY_RESERVE(PHARMACY_NAME, TREATMENT_NUM) VALUES('" + PharmacyViewModel.selectedmodel.Name + "' , "+  PaymentViewModel.TREATE_NUM[idx] + ")";
+                        string query1 = @"commit";
+                        OracleDBManager.Instance.ExecuteNonQuery(query);
+                        OracleDBManager.Instance.ExecuteNonQuery(query1);
+                        //MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
+                    }
                 }
             }
-            //로그 기록남기기
-            Log.Debug("제조처방전제출");
+            catch (Exception ex)
+            {
+                Log.Fatal(ex,"PharmacySubmit");
+            }
         }
 
         public void Pharmacy_SendEmail()
         {
             //로그 기록남기기
-            Log.Debug("약국 메일보내기");
+            Log.Debug("Pharmacy_SendEmail");
 
-            MailMessage mail = new MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("smtp.naver.com");
-            mail.From = new MailAddress("ezsun0070@naver.com", "SNUH_Meiday", Encoding.UTF8);
-            mail.To.Add(selectedmodel.Email);
-            //mail.To.Add("hcsong95@naver.com");
-            mail.Subject = "Meiday_약국처방전_서류_제출번호(" + PharmacySequence + ")_" + selectedmodel.Name; // 제목
-            mail.Body = "Patient_ID(pdf_pw): " + patient_id;
-            Attachment attachment;
-            attachment = new Attachment(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf");
-            mail.Attachments.Add(attachment);
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.naver.com");
+                mail.From = new MailAddress("ezsun0070@naver.com", "SNUH_Meiday", Encoding.UTF8);
+                mail.To.Add(selectedmodel.Email);
+                //mail.To.Add("hcsong95@naver.com");
+                mail.Subject = "Meiday_약국처방전_서류_제출번호(" + PharmacySequence + ")_" + selectedmodel.Name; // 제목
+                mail.Body = "Patient_ID(pdf_pw): " + patient_id;
+                Attachment attachment;
+                attachment = new Attachment(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf");
+                mail.Attachments.Add(attachment);
 
-            SmtpServer.Port = 587;
-            SmtpServer.Credentials = new NetworkCredential("ezsun0070", "1q2w3e4r!");
-            SmtpServer.EnableSsl = true;
-            SmtpServer.Send(mail);
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new NetworkCredential("ezsun0070", "1q2w3e4r!");
+                SmtpServer.EnableSsl = true;
+                SmtpServer.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Pharmacy_SendEmail");
+            }
         }
     }
 }
