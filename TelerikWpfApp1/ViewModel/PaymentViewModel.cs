@@ -146,7 +146,7 @@ namespace Meiday
 
         public string P_Number
         {
-            get {return _pre.P_Number; }
+            get { return _pre.P_Number; }
             set
             {
                 if (value != _pre.P_Number)
@@ -446,7 +446,7 @@ namespace Meiday
                         }
                         Log.Debug("SampleDatas");
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Log.Fatal(ex, "SampleDatas");
                     }
@@ -455,7 +455,7 @@ namespace Meiday
             }
             set
             {
-                _sampleDatas = value; OnPropertyChanged("_sampleDatas"); 
+                _sampleDatas = value; OnPropertyChanged("_sampleDatas");
             }
         }
 
@@ -675,7 +675,7 @@ namespace Meiday
                     temp_total += temp;
                 }
             }
-            Total_Price = temp_total.ToString();
+            Total_Price = "총 결제금액은 " + temp_total.ToString() + "원 입니다.";
         }
 
         private void DataSearch()
