@@ -423,7 +423,7 @@ namespace Meiday
                               and b.DR_LICENSE = c.DR_LICENSE
                               and c.DR_DEPTNUM = d.DR_DEPTNUM
                               and b.PAY_STATUS = '0'
-                              and a.pt_idnum = " + patient_id;
+                              and (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id + ")";
 
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
                     try
@@ -468,7 +468,7 @@ namespace Meiday
 
                     string query = @" SELECT a.PT_NAME p_name, a.PT_REGNUM p_number, d.PRESCRIPTION_DATE p_date, b.DR_NAME p_doctor, b.DR_LICENSE p_doctorlicense, e.MED_NAME p_medication, e.MED_DOSE p_medicationdose, e.MED_COUNT p_medicationcount, f.DR_DEPTNAME p_doctorposition, b.DR_STAMP p_stamp, c.DIAGNOSIS_CODE p_code
                                       FROM PATIENT a, DOCTOR b, TREATMENT c, PRESCRIPTION d, DETAILMED e, DEPARTMENT f
-                                      WHERE a.PT_REGNUM = c.PT_REGNUM AND c.TREATMENT_NUM = d.TREATMENT_NUM AND c.DR_LICENSE = b.DR_LICENSE AND d.MED_CODE = e.MED_CODE AND b.DR_DEPTNUM = f.DR_DEPTNUM AND a.PT_IDNUM =" + patient_id;
+                                      WHERE a.PT_REGNUM = c.PT_REGNUM AND c.TREATMENT_NUM = d.TREATMENT_NUM AND c.DR_LICENSE = b.DR_LICENSE AND d.MED_CODE = e.MED_CODE AND b.DR_DEPTNUM = f.DR_DEPTNUM AND (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id + ")";
 
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
                     try
@@ -518,7 +518,7 @@ namespace Meiday
 
                     string query = @" SELECT a.PT_NAME r_name, a.PT_IDNUM r_id, c.TREATMENT_PAY r_pay, b.DR_NAME r_doctor, d.DR_DEPTNAME r_doctorposition, c.TREATMENT_TIME r_date
                                       FROM PATIENT a, DOCTOR b, TREATMENT c, DEPARTMENT d
-                                      WHERE a.PT_REGNUM = c.PT_REGNUM  AND c.DR_LICENSE = b.DR_LICENSE AND b.DR_DEPTNUM = d.DR_DEPTNUM AND a.PT_IDNUM =" + patient_id;
+                                      WHERE a.PT_REGNUM = c.PT_REGNUM  AND c.DR_LICENSE = b.DR_LICENSE AND b.DR_DEPTNUM = d.DR_DEPTNUM AND (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id + ")";
 
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
                     try
@@ -563,7 +563,7 @@ namespace Meiday
 
                 //MessageBox.Show("db 조건문 진입");
 
-                    string query = @"UPDATE (SELECT * FROM PATIENT a, TREATMENT b WHERE a.PT_REGNUM = b.PT_REGNUM AND a.PT_IDNUM =" + patient_id +") SET PAY_STATUS = '1'";
+                    string query = @"UPDATE (SELECT * FROM PATIENT a, TREATMENT b WHERE a.PT_REGNUM = b.PT_REGNUM AND (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id + ")) SET PAY_STATUS = '1'";
                     string query1 = @"commit";
                     OracleDBManager.Instance.ExecuteNonQuery(query);
                     OracleDBManager.Instance.ExecuteNonQuery(query1);
@@ -683,8 +683,8 @@ namespace Meiday
             DataSet ds = new DataSet();
             string query = @" select a.PT_NAME data_Name , c.DR_NAME data_Doctor , d.DR_DEPTNAME data_Depart, to_char(b.TREATMENT_TIME,'yyyy-mm-dd') data_Date, b.TREATMENT_PAY data_Pay
                               from patient a, treatment b , doctor c , department d
-                              where a.pt_idnum = " + patient_id +
-                    "and a.PT_REGNUM = b.PT_REGNUM and b.DR_LICENSE = c.DR_LICENSE and c.DR_DEPTNUM = d.DR_DEPTNUM ";
+                              where (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id +
+                    ") and a.PT_REGNUM = b.PT_REGNUM and b.DR_LICENSE = c.DR_LICENSE and c.DR_DEPTNUM = d.DR_DEPTNUM ";
 
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
 
