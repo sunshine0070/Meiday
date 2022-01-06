@@ -32,13 +32,25 @@ namespace Meiday.View
     {
         public prescription()
         {
-            InitializeComponent();
+            Log.Debug("prescription");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "prescription");
+            }
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            #region 이미지로 저장
+
+            try
+            {
+
+                #region 이미지로 저장
             RenderTargetBitmap rtb = new RenderTargetBitmap((int)grStamp.ActualWidth, (int)grStamp.ActualHeight, 96, 96, PixelFormats.Pbgra32);
             rtb.Render(grStamp);
             PngBitmapEncoder png = new PngBitmapEncoder();
@@ -121,6 +133,13 @@ namespace Meiday.View
             document.Save(filename);
             // ...and start a viewer.
             Process.Start(filename);
+
+            Log.Debug("Button_Click");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Button_Click");
+            }
 
         }
 
