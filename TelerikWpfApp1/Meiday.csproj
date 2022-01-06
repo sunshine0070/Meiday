@@ -133,6 +133,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Log.cs" />
     <Compile Include="LogRecord.cs" />
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Model\PharModel.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Database\Singleton.cs" />
     <Compile Include="Database\XmlManager.cs" />
     <Compile Include="Model\DataSource.cs" />
+    <Compile Include="ViewModel\AdminUserControlModel.cs" />
     <Compile Include="ViewModel\Command.cs" />
     <Compile Include="ViewModel\LoginCommand.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -424,12 +426,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\receipt.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resource\Stamp\Seoul.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resource\Stamp\jaechan.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets')" />
