@@ -49,6 +49,7 @@ namespace Meiday.View
             image.Save(stampFileName);
             //이미지로 저장
 
+            
             PdfDocument document = new PdfDocument();
 
             // Create an empty page
@@ -63,13 +64,54 @@ namespace Meiday.View
             XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\"+ patient_id+"전자처방전.png");
 
             gfx.DrawImage(im, 30, 30, 550, 700);
+            /*
+            // Variation 3: Draw watermark as transparent graphical path above text
+            PdfDocument document = new PdfDocument();
 
+            // Create an empty page
+            PdfPage page = document.AddPage();
+
+            // Get an XGraphics object for drawing
+            XGraphics gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
+
+            // Create a font
+            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+
+            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.png");
+
+            gfx.DrawImage(im, 30, 30, 550, 700);
+
+
+
+            // Get the size (in point) of the text
+            XSize size = gfx.MeasureString(watermark, font);
+
+            // Define a rotation transformation at the center of the page
+            gfx.TranslateTransform(page.Width / 2, page.Height / 2);
+            gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
+            gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
+
+            // Create a graphical path
+            XGraphicsPath path = new XGraphicsPath();
+
+            // Add the text to the path
+            path.AddString("watermark", font.FontFamily, XFontStyle.BoldItalic, 150,
+              new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2),
+              XStringFormat.Default);
+
+            // Create a dimmed red pen and brush
+            XPen pen = new XPen(XColor.FromArgb(50, 75, 0, 130), 3);
+            XBrush brush = new XSolidBrush(XColor.FromArgb(50, 106, 90, 205));
+
+            // Stroke the outline of the path
+            gfx.DrawPath(pen, brush, path);
+            */
 
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
             securitySettings.UserPassword = patient_id;
 
-            securitySettings.OwnerPassword = "owner";
+            securitySettings.OwnerPassword = "meiday";
 
             // Restrict some rights.
             securitySettings.PermitAccessibilityExtractContent = false;
