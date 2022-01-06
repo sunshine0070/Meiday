@@ -171,7 +171,7 @@ namespace Meiday
         public void AccCheck()
         {
             Log.Debug("AccCheck");
-            foreach (ment ob in AccSampleDatas)
+            foreach (ment ob in SampleDatas)
             {
                 if (ob.IsChecked02 == true)
                 {
@@ -238,7 +238,7 @@ namespace Meiday
 
 
         ObservableCollection<ment> _sampleDatas = null;
-        public ObservableCollection<ment> AccSampleDatas
+        public ObservableCollection<ment> SampleDatas
         {
             get
             {
@@ -261,7 +261,7 @@ namespace Meiday
                             InsuName = ds.Tables[0].Rows[idx]["InsuName"].ToString(),
                             InsuProduct = ds.Tables[0].Rows[idx]["InsuProduct"].ToString(),
                         };
-                        AccSampleDatas.Add(obj);
+                        SampleDatas.Add(obj);
                     }
                 }
                 return _sampleDatas;
