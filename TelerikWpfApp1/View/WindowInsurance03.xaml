@@ -41,7 +41,7 @@
         <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,10,0,0" 
                    TextAlignment="Center" FontSize="36" FontWeight="Bold"
                    Text="보험금 청구"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="40,30,60,30"
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="42,30,58,30"
                    FontSize="26" IsReadOnly="True" TextAlignment="Center"
                    BorderThickness="0"
                    DataContext="{StaticResource LoginViewModel}"

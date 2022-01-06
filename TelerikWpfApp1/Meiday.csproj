@@ -148,6 +148,9 @@
     <Compile Include="View\EndControl.xaml.cs">
       <DependentUpon>EndControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NoInsuDialog.xaml.cs">
+      <DependentUpon>NoInsuDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PaymentControl.xaml.cs">
       <DependentUpon>PaymentControl.xaml</DependentUpon>
     </Compile>
@@ -235,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EndControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NoInsuDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
