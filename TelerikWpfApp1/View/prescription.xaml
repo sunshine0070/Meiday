@@ -23,7 +23,7 @@
                 <ImageBrush ImageSource="/Resource/prescription.jpg"/>
             </Grid.Background>
 
-            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/Seoul.png" 
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/meidaystamp.png" 
                    VerticalAlignment="Top" HorizontalAlignment="Left" Height="494" RenderTransformOrigin="0.5,0.5" Width="180" Margin="410,475,0,0">
 
             </Image>
