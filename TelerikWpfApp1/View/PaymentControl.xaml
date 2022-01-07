@@ -101,7 +101,7 @@
             Grid.Row="3"
             SelectionMode="Extended" SelectionUnit="FullRow"
             DataContext="{StaticResource PaymentViewModel}"
-            ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+            ItemsSource="{Binding Path= PaymentData, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
             AutoGenerateColumns="False" 
             ShowGroupPanel="False" 
             IsFilteringAllowed="False"

@@ -31,12 +31,12 @@
 
             </Image>
 
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Name}" Width="120" Margin="127,147,0,388" HorizontalAlignment="Left"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Id}" Width="120" Margin="127,130,303,405"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_DoctorPosition}" Width="120" Margin="282,130,148,405"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Doctor}" Width="120" Margin="360,113,70,422"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Date}" Width="120" Margin="440,129,-10,406"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Pay}" Width="120" Margin="128,183,302,352"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Name}" Width="120" Margin="127,147,0,388" HorizontalAlignment="Left"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Id}" Width="120" Margin="127,130,303,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_DoctorPosition}" Width="120" Margin="282,130,148,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Doctor}" Width="120" Margin="360,113,70,422"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Date}" Width="120" Margin="440,129,-10,406"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Pay}" Width="120" Margin="128,183,302,352"/>
 
 
 
