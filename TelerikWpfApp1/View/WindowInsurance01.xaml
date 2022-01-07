@@ -10,10 +10,27 @@
     <UserControl.Resources>
         <local:ReadViewModel x:Key="ReadViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
+        <Style TargetType="{x:Type TextBox}" x:Key="tbstyle">
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Margin" Value="10" />
+        </Style>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
     </UserControl.Resources>
-    
-    <Grid x:Name="MainGrid">
-        <Grid.RowDefinitions>
+
+    <Grid Margin="20">
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -37,54 +54,101 @@
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="50" />
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
         <!--logo-->
-        <Image Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Height="200" Width="200" Source="/Resource/MEIDAY.PNG" VerticalAlignment="Top"/>
+        <Image 
+            Grid.Row="0"
+            Width="200" 
+            Source="/Resource/MEIDAY.PNG"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"/>
         <!--title-->
-        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,-90,0,0" 
-                   TextAlignment="Center" FontSize="36" FontWeight="Bold" 
-                   Text="실손보험 청구서비스"/>
-        <!--requiredCheckbox-->
-        <CheckBox x:Name="cbInsu01" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,10"
-                  FontWeight="Bold" IsChecked="{Binding IsChecked01}"
-                  VerticalContentAlignment="Center"
-                  Content=" (필수) 보험금 청구를 위한 개인정보 동의서"/>
+        <TextBlock 
+            Grid.Row="1"
+            TextAlignment="Center" 
+            FontSize="36" 
+            FontWeight="Bold" 
+            Text="실손보험 청구서비스"/>
+
         <!--seperator blank-->
-        <Separator x:Name="borderline01" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,1" />
-        <TextBlock x:Name="lblInsu01" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,10"
-                   Text="1. 수집 · 이용에 관한 사항" />
-        <TextBox x:Name="tbInsu01" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" 
-                 ScrollViewer.CanContentScroll="True" 
-                 ScrollViewer.VerticalScrollBarVisibility="Visible"
-                 Height="100" FontSize="14"
-                 IsReadOnly="True"
-                 DataContext="{StaticResource ReadViewModel}"
-                 Text="{Binding Detailed01}" />
-        <TextBlock x:Name="lblInsu02" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,10"
+        <Separator 
+            Grid.Row="2"
+            x:Name="borderline01"
+            Margin="10" 
+            HorizontalAlignment="Right"
+            Width="600" />
+        
+        <!--detailed-->
+        <StackPanel Grid.Row="3">
+            <StackPanel>
+                <TextBlock 
+                    x:Name="lblInsu01"
+                    Text="1. 수집 · 이용에 관한 사항" />
+                <TextBox 
+                    x:Name="tbInsu01"
+                    Style="{StaticResource tbstyle}"
+                    DataContext="{StaticResource ReadViewModel}"
+                    Text="{Binding Detailed01}" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock x:Name="lblInsu02" 
                    Text="2. 제공에 관한 사항" />
-        <TextBox x:Name="tbInsu02" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
-                 ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible"
-                 Height="100" FontSize="14" IsReadOnly="True" 
-                 DataContext="{StaticResource ReadViewModel}"
-                 Text="{Binding Detailed02}"  />
-        <TextBlock x:Name="lblInsu03" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,10"
-                   Text="3. 조회에 관한 사항" />
-        <TextBox x:Name="tbInsu03" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
-                 ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible"
-                 Height="100" FontSize="14"
-                 IsReadOnly="True"
-                 DataContext="{StaticResource ReadViewModel}"
-                 Text="{Binding Detailed03}" />
+                <TextBox 
+                    x:Name="tbInsu02" 
+                    Style="{StaticResource tbstyle}"
+                    DataContext="{StaticResource ReadViewModel}"
+                    Text="{Binding Detailed02}"  /> 
+            </StackPanel>
+            <StackPanel>
+                <TextBlock
+                    x:Name="lblInsu03" 
+                    Text="3. 조회에 관한 사항" />
+                <TextBox
+                    x:Name="tbInsu03"
+                    Style="{StaticResource tbstyle}"
+                    DataContext="{StaticResource ReadViewModel}"
+                    Text="{Binding Detailed03}" />
+            </StackPanel>
+        </StackPanel>
+        
+
+
         <!--seperator blank-->
-        <telerik:RadButton x:Name="radButtonRefuse" Grid.Row="15" Grid.Column="1"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10" FontWeight="ExtraBlack"
-                    Content="다음에 하기" CornerRadius="15"
+        <StackPanel
+            Grid.Row="4">
+            <!--requiredCheckbox-->
+            <CheckBox 
+                x:Name="cbInsu01"
+                Margin="10"
+                FontWeight="Bold" 
+                IsChecked="{Binding IsChecked01}"
+                VerticalContentAlignment="Center"
+                Content=" (필수) 보험금 청구를 위한 개인정보 동의서"/>
+            <!--button-->
+            <StackPanel 
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <telerik:RadButton
+                    x:Name="radButtonRefuse"
+                    Style="{StaticResource btnstyle}"
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="0"/>
-        <telerik:RadButton x:Name="radButtonAgree" Grid.Row="15" Grid.Column="2" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20,10,10" Padding="50,10,50,10" FontWeight="ExtraBlack"
+                    CommandParameter="0"
+                    Content="다음에 하기" CornerRadius="15"/>
+                <telerik:RadButton 
+                    x:Name="radButtonAgree"
+                    Style="{StaticResource btnstyle}"
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="5"
                     Content="접수 신청" CornerRadius="15" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

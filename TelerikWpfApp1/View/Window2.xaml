@@ -34,18 +34,17 @@
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="MyTxtStyle1">
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Grid.Row" Value="0"/>
             <Setter Property="Grid.Column" Value="1"/>
             <Setter Property="Grid.ColumnSpan" Value="3"/>
-            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontSize" Value="30"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="TextWrapping" Value="NoWrap"/>
         </Style>
     </UserControl.Resources>
     
-    <Grid>
-        <Grid.ColumnDefinitions>
+    <Grid Margin="20">
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="120" />
@@ -59,33 +58,41 @@
             <RowDefinition Height="100" />
             <RowDefinition Height="100" />
             <RowDefinition Height="90" />
+        </Grid.RowDefinitions>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <telerik:RadButton x:Name="radButton1" Grid.Row="1" Grid.Column="1" Content="1" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="1" />
-        <telerik:RadButton x:Name="radButton2" Grid.Row="1" Grid.Column="2" Content="2" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="2" />
-        <telerik:RadButton x:Name="radButton3" Grid.Row="1" Grid.Column="3" Content="3" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="3" />
-        <telerik:RadButton x:Name="radButton4" Grid.Row="2" Grid.Column="1" Content="4" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="4" />
-        <telerik:RadButton x:Name="radButton5" Grid.Row="2" Grid.Column="2" Content="5" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="5" />
-        <telerik:RadButton x:Name="radButton6" Grid.Row="2" Grid.Column="3" Content="6" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="6" />
-        <telerik:RadButton x:Name="radButton7" Grid.Row="3" Grid.Column="1" Content="7" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="7" />
-        <telerik:RadButton x:Name="radButton8" Grid.Row="3" Grid.Column="2" Content="8" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="8" />
-        <telerik:RadButton x:Name="radButton9" Grid.Row="3" Grid.Column="3" Content="9" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="9" />
-        <telerik:RadButton x:Name="radButtonDel" Grid.Row="4" Grid.Column="1" Content="정정" FontSize="28" Style="{StaticResource MyBtnStyle1}" Command="{Binding BackSpace}" />
-        <telerik:RadButton x:Name="radButton0" Grid.Row="4" Grid.Column="2" Content="0" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="0" />
-        <telerik:RadButton x:Name="radButtonOk" Grid.Row="4" Grid.Column="3" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="2"/>
 
+        <TextBlock
+            Grid.Row="1"
+            Margin="10"
+            x:Name="textBlock1" 
+            TextAlignment="Center" 
+            Text="주민등록번호 또는 환자번호를&#10;입력하세요" 
+            Style="{StaticResource MyTxtStyle1}"/>
+        <Image
+            Grid.Row="0"
+            x:Name="image"
+            Width="200" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Source="/Resource/MEIDAY.png"/>
 
-        <!--telerik:RadPasswordBox x:Name="radPasswordBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
-        HorizontalAlignment="Center" Margin="0,220,0,0" Password="" TextWrapping="NoWrap" Text="RadPasswordBox" VerticalAlignment="Top" WatermarkContent="ex) 12345 또는 000000-1234567" 
-        Width="340" Height="50" FontSize="20" Background="#FFFFFF"/-->
-        <TextBlock x:Name="textBlock1" TextAlignment="Center" Margin="0,130,0,0" Text="주민등록번호 또는 환자번호를&#10;입력하세요" Style="{StaticResource MyTxtStyle1}"/>
-        <Image x:Name="image" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,15,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="200" Source="/Resource/MEIDAY.png"/>
-
-        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" IsReadOnly="True"
-        HorizontalAlignment="Center" Margin="0,220,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-        DataContext="{StaticResource LoginViewModel}"
-        Text="{Binding DisplayText, Mode=OneWay}" 
-        TextWrapping="NoWrap" VerticalAlignment="Top" 
-        Width="340" Height="50" FontSize="20">
+        <TextBox
+            Grid.Row="2"
+            Margin="10"
+            IsReadOnly="True"
+            HorizontalAlignment="Center" 
+            HorizontalContentAlignment="Center" 
+            DataContext="{StaticResource LoginViewModel}"
+            Text="{Binding DisplayText, Mode=OneWay}" 
+            TextWrapping="NoWrap" VerticalAlignment="Top" 
+            Width="340" Height="50" FontSize="20">
             <TextBox.Style>
                 <Style TargetType="TextBox"  xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>
@@ -109,5 +116,39 @@
                 </Style>
             </TextBox.Style>
         </TextBox>
+        
+        <StackPanel 
+            Grid.Row="3"
+            Margin="10"
+            Orientation="Vertical" 
+            HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <telerik:RadButton x:Name="radButton1" Content="1" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="1" />
+                <telerik:RadButton x:Name="radButton2" Content="2" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="2" />
+                <telerik:RadButton x:Name="radButton3" Content="3" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="3" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <telerik:RadButton x:Name="radButton4" Content="4" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="4" />
+                <telerik:RadButton x:Name="radButton5" Content="5" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="5" />
+                <telerik:RadButton x:Name="radButton6" Content="6" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="6" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <telerik:RadButton x:Name="radButton7" Content="7" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="7" />
+                <telerik:RadButton x:Name="radButton8" Content="8" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="8" />
+                <telerik:RadButton x:Name="radButton9" Content="9" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="9" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <telerik:RadButton x:Name="radButtonDel" Content="정정" FontSize="28" Style="{StaticResource MyBtnStyle1}" Command="{Binding BackSpace}" />
+                <telerik:RadButton x:Name="radButton0" Content="0" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="0" />
+                <telerik:RadButton x:Name="radButtonOk" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="2"/>
+            </StackPanel>
+        </StackPanel>
+
+
+
+        <!--telerik:RadPasswordBox x:Name="radPasswordBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
+        HorizontalAlignment="Center" Margin="0,220,0,0" Password="" TextWrapping="NoWrap" Text="RadPasswordBox" VerticalAlignment="Top" WatermarkContent="ex) 12345 또는 000000-1234567" 
+        Width="340" Height="50" FontSize="20" Background="#FFFFFF"/-->
+        
     </Grid>
 </UserControl>
