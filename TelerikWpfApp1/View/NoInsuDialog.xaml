@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Meiday.View"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" FontFamily="SeoulNamsan B">
     <Grid>
         <Rectangle Fill="Gray" Opacity=".5" />
         <Border CornerRadius="10" Background="White" Height="100" Width="350"

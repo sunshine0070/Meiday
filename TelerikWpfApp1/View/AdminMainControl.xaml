@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:View="clr-namespace:Meiday.View"
              xmlns:ViewModel="clr-namespace:Meiday.ViewModel" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
-             d:DesignHeight="800" d:DesignWidth="600" Background="White">
+             d:DesignHeight="800" d:DesignWidth="600" Background="White" FontFamily="SeoulNamsan B">
 
     <Grid>
         <Grid.RowDefinitions>

@@ -9,14 +9,24 @@
         xmlns:local="clr-namespace:Meiday"
         x:Class="Meiday.WindowInsurance03"
         mc:Ignorable="d" 
-        Height="800" Width="600" Background="White">
+        Height="800" Width="600" Background="White" FontFamily="SeoulNamsan B">
     <UserControl.Resources>
         <local:AccidentViewModel x:Key="AccidentViewModel"/>
         <local:MainViewModel x:Key="MainViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18" />
+        </Style>
     </UserControl.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -34,28 +44,64 @@
             <RowDefinition Height ="*"/>
             <RowDefinition Height ="*"/>
             <RowDefinition Height ="*"/>
+        </Grid.RowDefinitions>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="2" Height="200" Width="200" Source="/Resource/MEIDAY.png" VerticalAlignment="Top"/>
+        <Image 
+            Grid.Row="0"
+            Width="200" 
+            Source="/Resource/MEIDAY.PNG"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"/>
+        <!--title-->
+        <TextBlock 
+            Grid.Row="1"
+            TextAlignment="Center" 
+            FontSize="36" 
+            FontWeight="Bold" 
+            Margin="0 0 0 10"
+            Text="보험금 청구"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Margin="0,10,0,0" 
-                   TextAlignment="Center" FontSize="36" FontWeight="Bold"
-                   Text="보험금 청구"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="42,30,58,30"
-                   FontSize="26" IsReadOnly="True" TextAlignment="Center"
-                   BorderThickness="0"
-                   DataContext="{StaticResource LoginViewModel}"
-                   Text="{Binding PatientName}"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" Margin="52,40,69,30"
-                   FontWeight="Bold" FontSize="20"
-                   Text="님의 보험회사 선택"/>
+        <StackPanel 
+            Orientation="Horizontal" 
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            Margin="10 50 10 10">
+            <TextBox 
+                FontSize="26" IsReadOnly="True" TextAlignment="Center"
+                BorderThickness="0"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                DataContext="{StaticResource LoginViewModel}"
+                Text="{Binding PatientName}"/>
+            <TextBlock
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontWeight="Bold" FontSize="20"
+                Text="님의 보험회사 선택"/>
+        </StackPanel>
+
         <!-- TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" VerticalAlignment="Bottom" 
                    TextAlignment="Center" FontSize="36" FontWeight="Bold" 
                    Text="{Binding SampleDatas[0].Name}"/-->
-        <telerik:RadGridView Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="4" IsReadOnly="True" SelectionMode="Extended" SelectionUnit="FullRow"
-                             x:Name ="PatientAccRecord" DataContext="{StaticResource AccidentViewModel}"  ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" 
-                             AutoGenerateColumns="False" ShowGroupPanel="False" IsFilteringAllowed="False"
-                             FontSize="18">
+        <telerik:RadGridView 
+            Grid.Row="3"
+            Width="500" Height="200"
+            Margin="20"
+            SelectionMode="Extended" SelectionUnit="FullRow"
+            x:Name ="PatientAccRecord" DataContext="{StaticResource AccidentViewModel}"
+            ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" 
+            AutoGenerateColumns="False" ShowGroupPanel="False" IsFilteringAllowed="False"
+            FontSize="18">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn x:Name="header_insuName" Width="0.8*"  DataMemberBinding="{Binding InsuName}" Header="보험회사" HeaderTextAlignment="Center" TextAlignment="Center" />
                 <telerik:GridViewDataColumn x:Name="header_insuProduct" Width="*"  DataMemberBinding="{Binding InsuProduct}" Header="보험 상품명" HeaderTextAlignment="Center" TextAlignment="Center"/>
@@ -69,47 +115,56 @@
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 
-        <!--CheckBox IsChecked="{Binding IsChecked02}" HorizontalAlignment="Center"/-->
+        <telerik:RadButton 
+            x:Name="radButtonCheck" 
+            Grid.Row="5"
+            HorizontalAlignment="Center" VerticalAlignment="Center" 
+            Margin="10" Padding="50,10,50,10" FontWeight="ExtraBlack"
+            DataContext="{StaticResource AccidentViewModel}"
+            Command="{Binding CheckCommand}"
+            Content="보험회사 선택" 
+            Height="60" FontSize="20" CornerRadius="15"/>
 
+        <StackPanel
+            Grid.Row="6"
+            Margin="20"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <TextBox 
+                FontSize="24"
+                IsReadOnly="True" 
+                TextAlignment="Center"
+                VerticalContentAlignment="Center"
+                Width="180" Height="50"
+                Margin="10"
+                Foreground="Blue"
+                DataContext="{StaticResource AccidentViewModel}"
+                Text="{Binding CheckInsuName}"/>
+            <TextBlock 
+                x:Name="textBlock" 
+                HorizontalAlignment="Center"
+                TextWrapping="Wrap"
+                Text="보험사에 청구 서류가 전달됩니다."
+                VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </StackPanel>
 
-        <!--DataGrid x:Name="dataGrid" Margin="0,270,0,0" VerticalAlignment="Top" Width="500" Height="200" FontWeight="SemiBold" FontSize="24">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="HorizontalContentAlignment" Value="Center">
+        <StackPanel
+            Orientation="Horizontal"
+            Grid.Row="7"
+            HorizontalAlignment="Center">
+            <telerik:RadButton 
+                x:Name="radButtonBefore" 
+                Style="{StaticResource btnstyle}"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="5"
+                Content="이전"/>
+            <telerik:RadButton 
+                x:Name="radButtonAfter"
+                Style="{StaticResource btnstyle}"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="102"
+                Content="전송"/>
+        </StackPanel>
 
-                    </Setter>
-                </Style>
-                <Style TargetType="DataGridCell">
-                    <Setter Property="HorizontalContentAlignment" Value="Center">
-
-                    </Setter>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="보험 회사" Width="150"></DataGridTextColumn>
-                <DataGridTextColumn Header="보험 상품명" Width="200"></DataGridTextColumn>
-                <DataGridTextColumn Header="선택" Width="150"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid-->
-        <telerik:RadButton x:Name="radButtonCheck" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4"
-                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,8,0,0" Padding="50,10,50,10" FontWeight="ExtraBlack"
-                    DataContext="{StaticResource AccidentViewModel}" Command="{Binding CheckCommand}"
-                    Content="보험회사 선택" Height="60" FontSize="20" CornerRadius="15"/>
-        <TextBox Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="99,10,44,50"
-                   FontSize="20" IsReadOnly="True" TextAlignment="Center" VerticalContentAlignment="Center"
-                   DataContext="{StaticResource AccidentViewModel}"
-                   Text="{Binding CheckInsuName}"/>
-        <TextBlock x:Name="textBlock" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" Margin="120,-40,0,0"
-                   TextWrapping="Wrap" Text="보험사에 청구 서류가 전달됩니다." VerticalAlignment="Center" FontSize="18" FontWeight="Bold"/>
-        <telerik:RadButton x:Name="radButtonBefore" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
-                    CommandParameter="5"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,-80,30,10" Padding="50,10,50,10" FontWeight="ExtraBlack"
-                    Command="{Binding SwitchViewCommand}"
-                    Content="이전" FontSize="15" CornerRadius="15"/>
-        <telerik:RadButton x:Name="radButtonAfter" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2"
-                    CommandParameter="102"
-                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,-80,-10,10" Padding="50,10,50,10"  FontWeight="ExtraBlack"
-                    Command="{Binding SwitchViewCommand}"
-                    Content="전송" FontSize="15" CornerRadius="15"/>
     </Grid>
 </UserControl>

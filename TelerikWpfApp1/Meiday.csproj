@@ -498,7 +498,6 @@
     <Resource Include="Resource\Stamp\jihun.png" />
     <Resource Include="Resource\Stamp\junyoung.png" />
     <Resource Include="Resource\Stamp\mina.png" />
-    <Resource Include="Resource\Stamp\Seoul.png" />
     <Resource Include="Resource\Stamp\songyi.png" />
     <Resource Include="Resource\Stamp\youngjae.png" />
   </ItemGroup>
@@ -512,6 +511,9 @@
     <Resource Include="Resource\admin_images\report.png" />
     <Resource Include="Resource\admin_images\search.png" />
     <Resource Include="Resource\admin_images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Stamp\meidaystamp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets')" />

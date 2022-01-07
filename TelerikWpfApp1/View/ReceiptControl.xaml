@@ -15,6 +15,16 @@
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
         <local:MainViewModel x:Key="MainViewModel"/>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="SeoulNamsan B"/>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -26,40 +36,52 @@
             </Grid.Background>
 
 
-            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/Seoul.png" 
-                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="424" RenderTransformOrigin="0.5,0.5" Width="140" Margin="360,400,0,0">
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/meidaystamp.png" 
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="424" RenderTransformOrigin="0.5,0.5" Width="140" Margin="390,365,0,0">
 
             </Image>
 
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Name}" Width="120" Margin="127,147,0,388" HorizontalAlignment="Left"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Id}" Width="120" Margin="127,130,303,405"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_DoctorPosition}" Width="120" Margin="282,130,148,405"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Doctor}" Width="120" Margin="360,113,70,422"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Date}" Width="120" Margin="440,129,-10,406"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptDatas[0].R_Pay}" Width="120" Margin="128,183,302,352"/>
-
-
-
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Name}" Width="120" Margin="127,147,0,388" HorizontalAlignment="Left"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Id}" Width="120" Margin="127,130,303,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_DoctorPosition}" Width="120" Margin="282,130,148,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Doctor}" Width="120" Margin="360,113,70,422"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Date}" Width="120" Margin="440,130,-10,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Pay}" Width="120" Margin="128,183,302,352"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Pay}" Width="120" Margin="440,235,-10,300"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Year}" Margin="228,443,290,92"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Month}" Margin="273,443,253,92"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Day}" Margin="307,443,221,92"/>
+            
             <TextBlock TextWrapping="Wrap" Text="메이데이병원" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="360,95,0,0"/>
             <TextBlock TextWrapping="Wrap" Text="000-000" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="127,95,0,0"/>
-            <TextBlock TextWrapping="Wrap" Text="서울특별시 중구 퇴계로 307" Width="163" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="126,112,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="서울특별시 중구" Width="163" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="126,112,0,0"/>
 
         </Grid>
+        <StackPanel 
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0 0 0 30">
+
+            <telerik:RadButton
+                Content="동의합니다"
+                Style="{StaticResource btnstyle}"
+                Click="Button_Click1"/>
 
 
+            <telerik:RadButton
+                Content="휴대폰 전송"
+                Style="{StaticResource btnstyle}"
+                Click="Button_Click2"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="108"/>
 
 
-        <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click1" Command="{Binding SwitchViewCommand}" CommandParameter="108"
-                    VerticalAlignment="Top" Height="40" Width="150" Margin="340,715,0,0"/>
+        </StackPanel>
 
-
-
-        <telerik:RadButton Content="동의합니다" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click2"
-                    VerticalAlignment="Top" Height="40" Width="150" Margin="100,715,0,0"/>
 
     </Grid>
 
-    <!-- Command="{Binding SwitchViewCommand}" CommandParameter="108"-->
 
 
 </UserControl>

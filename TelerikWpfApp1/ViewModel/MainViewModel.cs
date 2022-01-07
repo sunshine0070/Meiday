@@ -129,6 +129,7 @@ namespace Meiday
                 if (loginViewModel.ValidCheck())
                 {
                     SwitchView = 2;
+                    //PaymentViewModel.Select_Price();
                 }
                 else
                 {

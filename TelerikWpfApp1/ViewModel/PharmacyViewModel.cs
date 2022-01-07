@@ -143,7 +143,6 @@ namespace Meiday
         // RelayCommand 파트
         public bool CheckCanExecuted(object sender)
         {
-            Log.Debug("CheckCanExecuted");
             return true;
         }
 
@@ -153,7 +152,6 @@ namespace Meiday
             {
                 selectedmodel = Sender as Pharmacy;
             }
-            Log.Debug("CheckButtonExecuted");
         }
         private string _pharmacySequence;
         public string PharmacySequence

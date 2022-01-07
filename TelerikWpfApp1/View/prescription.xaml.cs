@@ -137,7 +137,7 @@ namespace Meiday.View
 
                 document.Save(filename);
                 // ...and start a viewer.
-                Process.Start(filename);
+                //Process.Start(filename);
 
                 Log.Debug("Button_Click");
             }

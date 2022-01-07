@@ -42,14 +42,22 @@ namespace Meiday.View
     {
         public ReceiptControl()
         {
-            InitializeComponent();
+            Log.Debug("Receipt");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Receipt");
+            }
         }
 
         // sms api 생성
         SmsApi api = new SmsApi(new SmsApiOptions
         {
-            ApiKey = "NCS2KEWSTC7TMQ0A",
-            ApiSecret = "0JBMWRUPR57GIGGAIUI6QVPOBCJRQWCI",
+            ApiKey = "NCSQUDCGXE7HMOIM",
+            ApiSecret = "QGKPD0IRIJ9CHEH0PPGTGRUBMIP6OJYP",
             DefaultSenderId = "01089677551" // 문자 보내는 사람 번호, coolsms 홈페이지에서 발신자 등록한 번호 필수
 
         });
@@ -63,9 +71,13 @@ namespace Meiday.View
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            
-            
-            RenderTargetBitmap rtb = new RenderTargetBitmap((int)receipt.ActualWidth, (int)receipt.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+
+            try
+            {
+            LoginViewModel loginViewModel = new LoginViewModel();
+
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)receipt.ActualWidth, 650, 96, 96, PixelFormats.Pbgra32);
+            //RenderTargetBitmap rtb = new RenderTargetBitmap((int)receipt.Width, (int)receipt.Height, 96, 96, PixelFormats.Pbgra32);
             rtb.Render(receipt);
             PngBitmapEncoder png = new PngBitmapEncoder();
             png.Frames.Add(BitmapFrame.Create(rtb));
@@ -73,7 +85,7 @@ namespace Meiday.View
             png.Save(stream);
 
             System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
-            string stampFileName = @"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.png";
+            string stampFileName = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증.png";
             image.Save(stampFileName);
             //이미지로 저장
 
@@ -87,17 +99,53 @@ namespace Meiday.View
             // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+                // Create a font
+                XFont font = new XFont("Verdana", 100, XFontStyle.Bold);
 
-            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.png");
+                XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증.png");
 
             gfx.DrawImage(im, 30, 30, 550, 700);
 
 
-            PdfSecuritySettings securitySettings = document.SecuritySettings;
 
-            securitySettings.UserPassword = patient_id;
+                string watermark = "Meiday";
+
+                string filename = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증.pdf";
+                //page = document.AddPage();
+
+                document.Save(filename);
+                page = document.Pages[0];
+
+                //gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Prepend);
+                gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
+
+                // Get the size (in point) of the text
+                XSize size = gfx.MeasureString(watermark, font);
+
+                // Define a rotation transformation at the center of the page
+                gfx.TranslateTransform(page.Width / 2, page.Height / 2);
+                gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
+                gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
+
+                // Create a string format
+                XStringFormat format = new XStringFormat();
+                format.Alignment = XStringAlignment.Near;
+                format.LineAlignment = XLineAlignment.Near;
+
+                // Create a dimmed red brush
+                //XBrush brush = new XSolidBrush(XColor.FromArgb(128, 255, 0, 0));
+                XBrush brush = new XSolidBrush(XColor.FromArgb(50, 106, 90, 205));
+
+
+                // Draw the string
+                gfx.DrawString(watermark, font, brush,
+              new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2),
+              format);
+
+
+                PdfSecuritySettings securitySettings = document.SecuritySettings;
+
+            securitySettings.UserPassword = loginViewModel.PtRegnum;
 
             securitySettings.OwnerPassword = "owner";
 
@@ -112,29 +160,40 @@ namespace Meiday.View
             securitySettings.PermitPrint = false;
 
             // Save the document...
-            string filename = @"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.pdf";
             document.Save(filename);
-            // ...and start a viewer.
-            //Process.Start(filename);
-            
-            // 이미지 업로드가 완료 되면 전송하기 위해 async 사용
-            //UploadImage(System.Windows.Forms.Application.StartupPath + "\\21002전자처방전.png");
-            
+                // ...and start a viewer.
+                //Process.Start(filename);
 
-            //UploadImage(@"C:\Users\user\Desktop\savefile\21002영수증.png");
-            //UploadImage(@"C:\Users\user\Desktop\savefile\21002영수증.png");
 
-            //Thread.Sleep(10000);
 
-            
+            Log.Debug("receipt_Button_Click");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "receipt_Button_Click");
+            }
+
+
+
         }
 
         private void Button_Click2(object sender, RoutedEventArgs e)
+
         {
+            try
+            {
 
-            UploadImage(@"C:\Users\user\Desktop\savefile\"+patient_id+"영수증.png");
+                //UploadImage(@"C:\Users\user\Desktop\savefile\"+patient_id+"영수증.png");
 
+                Log.Debug("receipt_Button2_Click");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "receipt_Button2_Click");
+            }
         }
+
+
 
             public async Task UploadImage(string imgloc)
         {
@@ -161,5 +220,6 @@ namespace Meiday.View
 
 
         }
+
     }
 }

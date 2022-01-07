@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Meiday.View"
              mc:Ignorable="d" BorderThickness="0"
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
+             VerticalAlignment="Stretch" FontFamily="SeoulNamsan B">
     <Grid>
         <Rectangle Fill="Gray" Opacity=".5" />
         <Border CornerRadius="10" Background="White" Height="100" Width="380"
@@ -24,7 +24,13 @@
                         Background="#34a8eb" BorderThickness="0"
                         FontWeight="Bold" FontSize="14" Content="확인"
                         Command="{Binding SwitchViewCommand}"
-                        CommandParameter="4"/>
+                        CommandParameter="4">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </Grid>
         </Border>
     </Grid>

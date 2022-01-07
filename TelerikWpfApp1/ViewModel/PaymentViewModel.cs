@@ -112,7 +112,7 @@ namespace Meiday
                 }
             }
         }
-
+        /*
         public string Total_Price
         {
             get { return tot_price.total_price; }
@@ -124,6 +124,21 @@ namespace Meiday
                     tot_price.total_price = value;
                     this.OnPropertyChanged("Total_Price");
                     //Select_Price();
+                }
+            }
+        
+        }
+        */
+
+        public string Price_str
+        {
+            get { return _pa.Price_str; }
+            set
+            {
+                if (value != _pa.Price_str)
+                {
+                    _pa.Price_str = value;
+                    this.OnPropertyChanged("Price_str");
                 }
             }
         }
@@ -398,17 +413,17 @@ namespace Meiday
 
         #endregion
 
-        ObservableCollection<payment> _sampleDatas = null;
-        ObservableCollection<prescription_ment> _prescriptionDatas = null;
-        ObservableCollection<receipt_ment> _receiptDatas = null;
+        ObservableCollection<payment> _paymentData = null;
+        ObservableCollection<prescription_ment> _prescriptionData = null;
+        ObservableCollection<receipt_ment> _receiptData = null;
 
-        public ObservableCollection<payment> SampleDatas
+        public ObservableCollection<payment> PaymentData
         {
             get
             {
-                if (_sampleDatas == null)
+                if (_paymentData == null)
                 {
-                    _sampleDatas = new ObservableCollection<payment>();
+                    _paymentData = new ObservableCollection<payment>();
                     DataSet ds = new DataSet();
                     /*
                     string query = @" select a.PT_NAME data_Name , c.DR_NAME data_Doctor , d.DR_DEPTNAME data_Depart, to_char(b.TREATMENT_TIME,'yyyy-mm-dd') data_Date, b.TREATMENT_PAY data_Pay
@@ -440,32 +455,33 @@ namespace Meiday
                                 Date = ds.Tables[0].Rows[idx]["data_Date"].ToString(),
                                 Price = ds.Tables[0].Rows[idx]["data_Pay"].ToString(),
                                 Checked = true,
+                                Price_str ="총 결제금액은 " + ds.Tables[0].Rows[idx]["data_Pay"].ToString() + " 원 입니다"
                             };
-                            SampleDatas.Add(obj);
+                            PaymentData.Add(obj);
 
                         }
-                        Log.Debug("SampleDatas");
+                        Log.Debug("PaymentData");
                     }
                     catch (Exception ex)
                     {
-                        Log.Fatal(ex, "SampleDatas");
+                        Log.Fatal(ex, "PaymentData");
                     }
                 }
-                return _sampleDatas;
+                return _paymentData;
             }
             set
             {
-                _sampleDatas = value; OnPropertyChanged("_sampleDatas");
+                _paymentData = value; OnPropertyChanged("PaymentData");
             }
         }
 
-        public ObservableCollection<prescription_ment> PrescriptionDatas
+        public ObservableCollection<prescription_ment> PrescriptionData
         {
             get
             {
-                if (_prescriptionDatas == null)
+                if (_prescriptionData == null)
                 {
-                    _prescriptionDatas = new ObservableCollection<prescription_ment>();
+                    _prescriptionData = new ObservableCollection<prescription_ment>();
                     DataSet ds = new DataSet();
 
 
@@ -494,29 +510,29 @@ namespace Meiday
                                 P_Code = ds.Tables[0].Rows[idx]["p_code"].ToString(),
 
                             };
-                            PrescriptionDatas.Add(obj);
+                            PrescriptionData.Add(obj);
 
                         }
-                        Log.Debug("PrescriptionDatas");
+                        Log.Debug("PrescriptionData");
                     }
                     catch (Exception ex)
                     {
-                        Log.Fatal(ex, "PrescriptionDatas");
+                        Log.Fatal(ex, "PrescriptionData");
                     }
                 }
-                return _prescriptionDatas;
+                return _prescriptionData;
             }
             set
-            { _prescriptionDatas = value; OnPropertyChanged("_prescriptionDatas"); }
+            { _prescriptionData = value; OnPropertyChanged("PrescriptionData"); }
         }
 
-        public ObservableCollection<receipt_ment> ReceiptDatas
+        public ObservableCollection<receipt_ment> ReceiptData
         {
             get
             {
-                if (_receiptDatas == null)
+                if (_receiptData == null)
                 {
-                    _receiptDatas = new ObservableCollection<receipt_ment>();
+                    _receiptData = new ObservableCollection<receipt_ment>();
                     DataSet ds = new DataSet();
 
 
@@ -538,26 +554,26 @@ namespace Meiday
                                 R_Doctor = ds.Tables[0].Rows[idx]["r_doctor"].ToString(),
                                 R_DoctorPosition = ds.Tables[0].Rows[idx]["r_doctorposition"].ToString(),
                                 R_Date = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(0, 10),
-                                R_Year = ds.Tables[0].Rows[idx]["r_date"].ToString(),
-                                R_Month = ds.Tables[0].Rows[idx]["r_date"].ToString(),
-                                R_Day = ds.Tables[0].Rows[idx]["r_date"].ToString()
+                                R_Year = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(0, 4),
+                                R_Month = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(5, 2),
+                                R_Day = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(8, 2)
 
 
                             };
-                            ReceiptDatas.Add(obj);
+                            ReceiptData.Add(obj);
 
                         }
-                        Log.Debug("ReceiptDatas");
+                        Log.Debug("ReceiptData");
                     }
                     catch (Exception ex)
                     {
-                        Log.Fatal(ex, "ReceiptDatas");
+                        Log.Fatal(ex, "ReceiptData");
                     }
                 }
-                return _receiptDatas;
+                return _receiptData;
             }
             set
-            { _receiptDatas = value; OnPropertyChanged("_receiptDatas"); }
+            { _receiptData = value; OnPropertyChanged("ReceiptData"); }
         }
 
         public static void PaymentSubmit() //한번 결제 한 진료를 확인하기 위한 업데이트
@@ -579,7 +595,7 @@ namespace Meiday
             }
         }
 
-
+        /*
         private ICommand _paystartCommand;
 
         public ICommand PaystartCommand
@@ -587,45 +603,6 @@ namespace Meiday
             get
             {
                 return (this._paystartCommand) ?? (this._paystartCommand = new RelayCommand(Select_Price));
-            }
-        }
-
-        #region 커맨드 테스트한거
-
-        private ICommand connectCommand;
-        public ICommand ConnectCommand
-        {
-            get
-            {
-                return (this.connectCommand) ?? (this.connectCommand = new RelayCommand(Connect));
-            }
-        }
-
-        private ICommand selectCommand;
-        public ICommand SelectCommand
-        {
-            get
-            {
-                return (this.selectCommand) ?? (this.selectCommand = new RelayCommand(DataSearch));
-            }
-        }
-
-        private ICommand loadedCommand;
-        public ICommand LoadedCommand
-        {
-            get
-            {
-                return (this.loadedCommand) ?? (this.loadedCommand = new RelayCommand(LoadEvent));
-            }
-        }
-
-        /*
-        private ICommand nextCommand;
-        public ICommand NextCommand
-        {
-            get
-            {
-                return (this.nextCommand) ?? (this.nextCommand = new RelayCommand(ButtonShow));
             }
         }
         */
@@ -637,7 +614,6 @@ namespace Meiday
                 return (this.payCommand) ?? (this.payCommand = new RelayCommand(payShow));
             }
         }
-        #endregion
 
         private void payShow()
         {
@@ -647,27 +623,12 @@ namespace Meiday
             pay.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             pay.ShowDialog();
         }
-
-        private void LoadEvent()
-        { //Connect to DB
-            if (OracleDBManager.Instance.GetConnection() == false)
-            {
-                string msg = $"Failed to Connect to Database";
-                MessageBox.Show(msg, "Error");
-                return;
-            }
-            else
-            {
-                string msg = $"Success to Connect to Database";
-                MessageBox.Show(msg, "Inform");
-            }
-        }
-
+        /*
         public void Select_Price()
         {
             Log.Debug("Select_Price");
             int temp_total = 0;
-            foreach (payment ob in SampleDatas)
+            foreach (payment ob in PaymentData)
             {
                 if (ob.Checked == true)
                 {
@@ -677,45 +638,6 @@ namespace Meiday
             }
             Total_Price = "총 결제금액은 " + temp_total.ToString() + "원 입니다.";
         }
-
-        private void DataSearch()
-        {
-            DataSet ds = new DataSet();
-            string query = @" select a.PT_NAME data_Name , c.DR_NAME data_Doctor , d.DR_DEPTNAME data_Depart, to_char(b.TREATMENT_TIME,'yyyy-mm-dd') data_Date, b.TREATMENT_PAY data_Pay
-                              from patient a, treatment b , doctor c , department d
-                              where (a.pt_idnum = " + patient_id + "or a.pt_regnum = " + patient_id +
-                    ") and a.PT_REGNUM = b.PT_REGNUM and b.DR_LICENSE = c.DR_LICENSE and c.DR_DEPTNUM = d.DR_DEPTNUM ";
-
-            OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-
-            for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
-            {
-                payment obj = new payment()
-                {
-                    Name = ds.Tables[0].Rows[idx]["data_Name"].ToString(),
-                    Doctor = ds.Tables[0].Rows[idx]["data_Doctor"].ToString(),
-                    Group = ds.Tables[0].Rows[idx]["data_Depart"].ToString(),
-                    Date = ds.Tables[0].Rows[idx]["data_Date"].ToString(),
-
-
-                };
-                SampleDatas.Add(obj);
-            }
-        }
-
-        public void Connect()
-        { //Connect to DB
-            if (OracleDBManager.Instance.GetConnection() == false)
-            {
-                string msg = $"Failed to Connect to Database";
-                MessageBox.Show(msg, "Error");
-                return;
-            }
-            else
-            {
-                string msg = $"Success to Connect to Database";
-                MessageBox.Show(msg, "Inform");
-            }
-        }
+        */
     }
 }

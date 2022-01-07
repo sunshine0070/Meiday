@@ -13,6 +13,17 @@
         <local:AccidentViewModel x:Key="AccidentViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="SeoulNamsan B"/>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -23,23 +34,23 @@
                 <ImageBrush ImageSource="/Resource/prescription.jpg"/>
             </Grid.Background>
 
-            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/Seoul.png" 
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/meidaystamp.png" 
                    VerticalAlignment="Top" HorizontalAlignment="Left" Height="494" RenderTransformOrigin="0.5,0.5" Width="180" Margin="410,475,0,0">
 
             </Image>
 
-            <Image DataContext="{StaticResource PaymentViewModel}" Source="{Binding PrescriptionDatas[0].P_Stamp}" 
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="{Binding PrescriptionData[0].P_Stamp}" 
                    VerticalAlignment="Top" HorizontalAlignment="Left" Height="163" RenderTransformOrigin="0.5,0.5" Width="90" Margin="313,168,0,0">
 
             </Image>
 
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Name}" Width="120" Margin="135,130,345,547"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Number}" Height="25" Margin="125,159,335,516"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Date}" Margin="125,105,335,575"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Doctor}" Margin="230,200,230,480"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorLicense}" Margin="475,210,40,470"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_DoctorPosition}" Margin="475,189,40,491"/>
-            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionDatas[0].P_Code}" Margin="65,196,450,484"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionData[0].P_Name}" Width="120" Margin="135,130,345,547"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionData[0].P_Number}" Height="25" Margin="125,159,335,516"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionData[0].P_Date}" Margin="125,105,335,575"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionData[0].P_Doctor}" Margin="230,200,230,480"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionData[0].P_DoctorLicense}" Margin="475,210,40,470"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionData[0].P_DoctorPosition}" Margin="475,189,40,491"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding PrescriptionData[0].P_Code}" Margin="65,196,450,484"/>
 
             <TextBlock TextWrapping="Wrap" Text="메이데이병원" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,105,0,0"/>
             <TextBlock TextWrapping="Wrap" Text="010-1234-5678" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,126,0,0"/>
@@ -47,7 +58,7 @@
             <TextBlock TextWrapping="Wrap" Text="meiday@ezcaretech.com" Width="140" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="415,168,0,0"/>
             <TextBlock TextWrapping="Wrap" Text="3" Width="20" Height="14" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="192,545,0,0"/>
 
-            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="35,273,335,231">
+            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionData, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="35,273,335,231">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -65,7 +76,7 @@
 
             </ItemsControl>
 
-            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="285,273,290,231">
+            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionData, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="285,273,290,231">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -83,7 +94,7 @@
 
             </ItemsControl>
 
-            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="334,273,250,231">
+            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionData, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="334,273,250,231">
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -104,15 +115,14 @@
         </Grid>
 
 
-        <telerik:RadButton x:Name="radButtonRefuse" Grid.Row="15" Grid.Column="1"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Padding="50,10,50,10"
-                    Content="처방전확인" CornerRadius="15"
-                    Click="Button_Click"              
-                    Command="{Binding SwitchViewCommand}"
-                    CommandParameter="3"/>
-
-
-
+        <telerik:RadButton
+            x:Name="radButtonRefuse"
+            Style="{StaticResource btnstyle}"
+            Content="처방전확인"
+            Click="Button_Click"              
+            Command="{Binding SwitchViewCommand}"
+            CommandParameter="3"
+            Margin="0,724,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 
