@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Meiday.View"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Meiday.View.AdminUserCountControl"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="600" Background="white">
+             d:DesignHeight="800" d:DesignWidth="600" Background="white" FontFamily="SeoulNamsan B">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

@@ -18,12 +18,12 @@
         <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="CornerRadius" Value="15" />
             <Setter Property="Height" Value="50"/>
             <Setter Property="Width" Value="150"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="SeoulNamsan B"/>
         </Style>
     </UserControl.Resources>
 
@@ -55,10 +55,6 @@
             <TextBlock TextWrapping="Wrap" Text="서울특별시 중구 퇴계로 307" Width="163" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="126,112,0,0"/>
 
         </Grid>
-
-
-
-<<<<<<< HEAD
         <StackPanel 
             Orientation="Horizontal"
             HorizontalAlignment="Center"
@@ -76,16 +72,7 @@
                 Style="{StaticResource btnstyle}"
                 Click="Button_Click2"/>
         </StackPanel>
-=======
-        <telerik:RadButton Content="동의합니다" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click1"
-                    VerticalAlignment="Top" Height="40" Width="150" Margin="100,715,0,0"/>
 
-        <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click2" Command="{Binding SwitchViewCommand}" CommandParameter="108"
-                    VerticalAlignment="Top" Height="40" Width="150" Margin="340,715,0,0"/>
-
-
->>>>>>> 013c5eb3c77364c673a491ad839fef0189b7d7e5
-        
 
     </Grid>
 

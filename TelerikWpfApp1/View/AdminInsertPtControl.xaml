@@ -8,7 +8,7 @@
              xmlns:vm="clr-namespace:Meiday.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="600"
-             Background="White">
+             Background="White" FontFamily="SeoulNamsan B">
 
     <UserControl.Resources>
         <local:MainViewModel x:Key="MainViewModel"/>

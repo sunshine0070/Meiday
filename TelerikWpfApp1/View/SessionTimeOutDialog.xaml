@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Meiday.View"
              mc:Ignorable="d" BorderThickness="0"
              HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
+             VerticalAlignment="Stretch" FontFamily="SeoulNamsan B">
     <Grid>
         <Rectangle Fill="Gray" Opacity=".5" />
         <Border CornerRadius="10" Background="White" Height="150" Width="400"

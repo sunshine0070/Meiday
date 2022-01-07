@@ -8,7 +8,7 @@
              mc:Ignorable="d" BorderThickness="0"
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
-             Background="White">
+             Background="White" FontFamily="SeoulNamsan B">
     <UserControl.Resources>
         <meiday:PaymentViewModel x:Key="PaymentViewModel"/>
         <meiday:MainViewModel x:Key="MainViewModel"/>

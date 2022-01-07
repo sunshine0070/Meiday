@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meiday" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" d:DataContext="{d:DesignInstance Type=local:PharmacyViewModel}"
              mc:Ignorable="d"
-        Height="750" Width="550">
+        Height="750" Width="550" FontFamily="SeoulNamsan B">
     <UserControl.Resources>
         <local:PharmacyViewModel x:Key="PharmacyViewModel"/>
     </UserControl.Resources>
