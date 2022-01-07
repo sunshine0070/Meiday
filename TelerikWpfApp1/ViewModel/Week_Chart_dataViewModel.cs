@@ -29,7 +29,7 @@ namespace Meiday.ViewModel
                                                            ELSE '미정'
                                          END AS                   성별
                                       FROM (
-                                      SELECT TO_CHAR( treatment_time ,'DAY') A , TO_CHAR(treatment_time-1,'D') B,SUBSTR(t.PT_REGNUM,7,1) BB
+                                      SELECT TO_CHAR( treatment_time ,'DY') A , TO_CHAR(treatment_time-1,'D') B,SUBSTR(t.PT_REGNUM,7,1) BB
                                       FROM TREATMENT T INNER JOIN PATIENT P ON T.PT_REGNUM = P.PT_REGNUM) 
                                       GROUP BY A,B,BB ORDER BY B";
 
@@ -68,7 +68,7 @@ namespace Meiday.ViewModel
                                                            ELSE '미정'
                                          END AS                   성별
                                       FROM (
-                                      SELECT TO_CHAR( treatment_time ,'DAY') A , TO_CHAR(treatment_time-1,'D') B,SUBSTR(t.PT_REGNUM,7,1) BB
+                                      SELECT TO_CHAR( treatment_time ,'DY') A , TO_CHAR(treatment_time-1,'D') B,SUBSTR(t.PT_REGNUM,7,1) BB
                                       FROM TREATMENT T INNER JOIN PATIENT P ON T.PT_REGNUM = P.PT_REGNUM) 
                                       GROUP BY A,B,BB ORDER BY B";
 
@@ -104,7 +104,7 @@ namespace Meiday.ViewModel
                     DataSet ds = new DataSet();
                     string query = @" SELECT COUNT(*) 갯수 , A 날짜 
                                         FROM (
-                                                SELECT TO_CHAR( treatment_time ,'DAY') A, TO_CHAR(treatment_time-1,'D') B
+                                                SELECT TO_CHAR( treatment_time ,'DY') A, TO_CHAR(treatment_time-1,'D') B
                                                 FROM TREATMENT)
                                        GROUP BY A,B ORDER BY B ";
 

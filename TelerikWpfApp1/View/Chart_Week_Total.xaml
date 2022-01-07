@@ -44,7 +44,7 @@
                 <dxc:XYDiagram2D.AxisY>
                     <dxc:AxisY2D >
                         <dxc:AxisY2D.NumericScaleOptions>
-                            <dxc:ContinuousNumericScaleOptions AutoGrid="false" GridSpacing="1" />
+                            <dxc:ContinuousNumericScaleOptions AutoGrid="false" GridSpacing="2" />
                         </dxc:AxisY2D.NumericScaleOptions>
                         <dxc:AxisY2D.Label>
                             <dxc:AxisLabel>
