@@ -25,7 +25,7 @@
         <Style TargetType="{x:Type telerik:GridViewCheckBoxColumn}" x:Key="colcbtype">
             <Setter Property="HeaderTextAlignment" Value="Center"/>
             <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="IsReadOnly" Value="False"/>
         </Style>
 
         <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
