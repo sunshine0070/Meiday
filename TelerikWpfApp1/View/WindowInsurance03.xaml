@@ -92,14 +92,14 @@
 
         <!-- TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" VerticalAlignment="Bottom" 
                    TextAlignment="Center" FontSize="36" FontWeight="Bold" 
-                   Text="{Binding SampleDatas[0].Name}"/-->
+                   Text="{Binding InsuranceData[0].Name}"/-->
         <telerik:RadGridView 
             Grid.Row="3"
             Width="500" Height="200"
             Margin="20"
             SelectionMode="Extended" SelectionUnit="FullRow"
             x:Name ="PatientAccRecord" DataContext="{StaticResource AccidentViewModel}"
-            ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" 
+            ItemsSource="{Binding Path= InsuranceData, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" 
             AutoGenerateColumns="False" ShowGroupPanel="False" IsFilteringAllowed="False"
             FontSize="18">
             <telerik:RadGridView.Columns>

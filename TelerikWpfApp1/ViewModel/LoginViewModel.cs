@@ -45,11 +45,11 @@ namespace Meiday
             }
             set
             {
-                Log.Debug("PatientName");
+                Log.Debug("PtRegnum");
                 if (value != _pa.patientName)
                 {
                     _pa.patientName = value;
-                    OnPropertyChanged("PatientName");
+                    OnPropertyChanged("PtRegnum");
                 }
             }
         }

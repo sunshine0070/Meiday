@@ -63,7 +63,7 @@ namespace Meiday
             get => _isChoice01;
             set
             {
-                Log.Debug("IsChoice01");
+                Log.Debug("PharmacyChoice(IsChoice01)");
                 _isChoice01 = value;
                 OnPropertyChanged("IsChoice01");
             }
@@ -74,7 +74,7 @@ namespace Meiday
             get => _isChoice02;
             set
             {
-                Log.Debug("IsChoice02");
+                Log.Debug("InsuranceChoice(IsChoice02)");
                 _isChoice02 = value;
                 OnPropertyChanged("IsChoice02");
             }
@@ -234,7 +234,6 @@ namespace Meiday
         //약국 선택하기 버튼 활성화 부분
         public bool CheckCanExecuted(object sender)
         {
-            Log.Debug("CheckCanExecuted");
             bool ret = false;
             if (PharmacyViewModel.selectedmodel != null)
             {

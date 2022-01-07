@@ -171,7 +171,7 @@ namespace Meiday
         public void AccCheck()
         {
             Log.Debug("AccCheck");
-            foreach (ment ob in SampleDatas)
+            foreach (ment ob in InsuranceData)
             {
                 if (ob.IsChecked02 == true)
                 {
@@ -187,24 +187,31 @@ namespace Meiday
                 }
             }
         }
-        private string _selectedInsuranceMail;
+        private string _selectedInsuranceMail = String.Empty;
         public string selectedInsuranceMail
         { 
             get
             {
-                DataSet ds = new DataSet();
-                string query = @" SELECT i.INSURANCE_MANAGEEMAIL InsuranceMail
-                                    FROM INSURANCE i 
-                                    JOIN CHECKINSURANCE c ON i.INSURANCE_NUM = c.INSURANCE_NUM 
-                                    JOIN PATIENT        p ON p.PT_REGNUM     = c.PT_REGNUM
-                                    WHERE p.pt_idnum =  " + patient_id + "or p.pt_regnum = " + patient_id;
-                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-                _selectedInsuranceMail = ds.Tables[0].Rows[0]["InsuranceMail"].ToString();
+                try
+                {
+                    DataSet ds = new DataSet();
+                    string query = @" SELECT i.INSURANCE_MANAGEEMAIL InsuranceMail
+                                        FROM INSURANCE i 
+                                        JOIN CHECKINSURANCE c ON i.INSURANCE_NUM = c.INSURANCE_NUM 
+                                        JOIN PATIENT        p ON p.PT_REGNUM     = c.PT_REGNUM
+                                        WHERE p.pt_idnum =  " + patient_id + "or p.pt_regnum = " + patient_id;
+                    OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                    _selectedInsuranceMail = ds.Tables[0].Rows[0]["InsuranceMail"].ToString();
+                    Log.Debug("selectedInsuranceMail");
+                }
+                catch (Exception ex)
+                {
+                    Log.Fatal(ex, "selectedInsuranceMail");
+                }
                 return _selectedInsuranceMail;
             }
             set
             {
-                Log.Debug("selectedInsuranceMail");
                 if (value != _selectedInsuranceMail)
                 {
                     _selectedInsuranceMail = value;
@@ -217,17 +224,24 @@ namespace Meiday
         {
             get
             {
-                DataSet ds = new DataSet();
-                string query = @"select p.PT_NAME data_Name, INSURANCE_SEQ.nextval SeqSubmit
-                              from patient p
-                              where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
-                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-                _insuranceSequence = ds.Tables[0].Rows[0]["SeqSubmit"].ToString();
+                try
+                {
+                    DataSet ds = new DataSet();
+                    string query = @"select p.PT_NAME data_Name, INSURANCE_SEQ.nextval SeqSubmit
+                                  from patient p
+                                  where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
+                    OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                    _insuranceSequence = ds.Tables[0].Rows[0]["SeqSubmit"].ToString();
+                    Log.Debug("InsuranceSequence");
+                }
+                catch(Exception ex)
+                {
+                    Log.Fatal(ex, "InsuranceSequence");
+                }
                 return _insuranceSequence;
             }
             set
             {
-                Log.Debug("InsuranceSequence");
                 if (value != _insuranceSequence)
                 {
                     _insuranceSequence = value;
@@ -238,37 +252,44 @@ namespace Meiday
 
 
         ObservableCollection<ment> _sampleDatas = null;
-        public ObservableCollection<ment> SampleDatas
+        public ObservableCollection<ment> InsuranceData
         {
             get
             {
-                if (_sampleDatas == null)
+                try
                 {
-                    _sampleDatas = new ObservableCollection<ment>();
-                    DataSet ds = new DataSet();
-
-                    string query = @" SELECT i.INSURANCE_NAME InsuName, i.INSURANCE_PRODUCT InsuProduct
-                                    FROM INSURANCE i 
-                                    JOIN CHECKINSURANCE c ON i.INSURANCE_NUM = c.INSURANCE_NUM 
-                                    JOIN PATIENT        p ON p.PT_REGNUM     = c.PT_REGNUM
-                                    WHERE p.pt_idnum =  " + patient_id + "or p.pt_regnum = " + patient_id;
-                    OracleDBManager.Instance.ExecuteDsQuery(ds, query);
-
-                    for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
+                    if (_sampleDatas == null)
                     {
-                        ment obj = new ment()
+                        _sampleDatas = new ObservableCollection<ment>();
+                        DataSet ds = new DataSet();
+
+                        string query = @" SELECT i.INSURANCE_NAME InsuName, i.INSURANCE_PRODUCT InsuProduct
+                                        FROM INSURANCE i 
+                                        JOIN CHECKINSURANCE c ON i.INSURANCE_NUM = c.INSURANCE_NUM 
+                                        JOIN PATIENT        p ON p.PT_REGNUM     = c.PT_REGNUM
+                                        WHERE p.pt_idnum =  " + patient_id + "or p.pt_regnum = " + patient_id;
+                        OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+
+                        for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
                         {
-                            InsuName = ds.Tables[0].Rows[idx]["InsuName"].ToString(),
-                            InsuProduct = ds.Tables[0].Rows[idx]["InsuProduct"].ToString(),
-                        };
-                        SampleDatas.Add(obj);
+                            ment obj = new ment()
+                            {
+                                InsuName = ds.Tables[0].Rows[idx]["InsuName"].ToString(),
+                                InsuProduct = ds.Tables[0].Rows[idx]["InsuProduct"].ToString(),
+                            };
+                            InsuranceData.Add(obj);
+                        }
                     }
+                    Log.Debug("InsuranceData");
+                }
+                catch (Exception ex)
+                {
+                    Log.Fatal(ex, "InsuranceData");
                 }
                 return _sampleDatas;
             }
             set
             {
-                Log.Debug("AccSampleDatas");
                 _sampleDatas = value;
                 OnPropertyChanged("_sampleDatas");
             }

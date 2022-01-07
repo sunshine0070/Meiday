@@ -158,7 +158,6 @@ namespace Meiday
         {
             get
             {
-                Log.Debug("PharmacySequence");
 
                 DataSet ds = new DataSet();
                 string query = @"select p.PT_NAME data_Name, PHARMACY_SEQ.nextval SeqSubmit
@@ -168,7 +167,9 @@ namespace Meiday
                 try
                 {
                     _pharmacySequence = ds.Tables[0].Rows[0]["SeqSubmit"].ToString();
-                }catch (Exception ex)
+                    Log.Debug("PharmacySequence");
+                }
+                catch (Exception ex)
                 {
                     Log.Fatal(ex, "PharmacySequence");
                 }
@@ -188,7 +189,6 @@ namespace Meiday
         public static void PharmacySubmit() //MainViewModel에서 확인
         {
             //로그 기록남기기
-            Log.Debug("PharmacySubmit");
             try
             {
                 //MessageBox.Show(PaymentViewModel.TREATE_NUM.Count.ToString());
@@ -209,6 +209,7 @@ namespace Meiday
                         //MessageBox.Show(oracleDBManager.CheckDBConnected().ToString());
                     }
                 }
+                Log.Debug("PharmacySubmit");
             }
             catch (Exception ex)
             {
@@ -219,7 +220,6 @@ namespace Meiday
         public void Pharmacy_SendEmail()
         {
             //로그 기록남기기
-            Log.Debug("Pharmacy_SendEmail");
             try
             {
                 LoginViewModel loginViewModel = new LoginViewModel();
@@ -239,6 +239,7 @@ namespace Meiday
                 SmtpServer.Credentials = new NetworkCredential("ezsun0070", "1q2w3e4r!");
                 SmtpServer.EnableSsl = true;
                 SmtpServer.Send(mail);
+                Log.Debug("Pharmacy_SendEmail");
             }
             catch (Exception ex)
             {

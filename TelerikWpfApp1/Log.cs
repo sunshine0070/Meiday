@@ -144,8 +144,8 @@ namespace Meiday
             OracleDBManager oracleDBManager = new OracleDBManager();
             oracleDBManager.GetConnection();
 
-            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID) 
-            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','"+error + "')";
+            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID, ERROR_MESSAGE) 
+            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','"+ error + "')";
             string query1 = @"commit";
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
@@ -195,8 +195,8 @@ namespace Meiday
             OracleDBManager oracleDBManager = new OracleDBManager();
             oracleDBManager.GetConnection();
 
-            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID) 
-            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + error + "','" + message + "')";
+            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID, ERROR_MESSAGE) 
+            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + message + "')";
             string query1 = @"commit";
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
@@ -246,7 +246,7 @@ namespace Meiday
             OracleDBManager oracleDBManager = new OracleDBManager();
             oracleDBManager.GetConnection();
 
-            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID) 
+            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID, ERROR_MESSAGE) 
             VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + error + "')";
             string query1 = @"commit";
             OracleDBManager.Instance.ExecuteNonQuery(query);
@@ -297,8 +297,8 @@ namespace Meiday
             OracleDBManager oracleDBManager = new OracleDBManager();
             oracleDBManager.GetConnection();
 
-            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID) 
-            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + error + "','" + message + "')";
+            string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID, ERROR_MESSAGE) 
+            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + message + "')";
             string query1 = @"commit";
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
