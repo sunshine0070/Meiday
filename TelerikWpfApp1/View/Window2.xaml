@@ -8,7 +8,7 @@
         xmlns:Controls="clr-namespace:Telerik.Windows.Controls.Spreadsheet.Controls;assembly=Telerik.Windows.Controls.Spreadsheet" 
         x:Class="Meiday.Window2"
         mc:Ignorable="d"
-        Height="800" Width="600" Background="White">
+        Height="800" Width="600" Background="White" FontFamily="SeoulNamsan B">
     <UserControl.Resources>
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <Style TargetType="{x:Type telerik:RadButton}" x:Key="MyBtnStyle1">
@@ -32,34 +32,10 @@
             <Setter Property="CornerRadius" Value="15"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        <Style TargetType="{x:Type TextBlock}" x:Key="MyTxtStyle1">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Grid.Row" Value="0"/>
-            <Setter Property="Grid.Column" Value="1"/>
-            <Setter Property="Grid.ColumnSpan" Value="3"/>
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="TextWrapping" Value="NoWrap"/>
-        </Style>
     </UserControl.Resources>
-    
-    <Grid Margin="20">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="120" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="310" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="90" />
-        </Grid.RowDefinitions>-->
 
+    <Grid Margin="20">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -68,13 +44,6 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock
-            Grid.Row="1"
-            Margin="10"
-            x:Name="textBlock1" 
-            TextAlignment="Center" 
-            Text="주민등록번호 또는 환자번호를&#10;입력하세요" 
-            Style="{StaticResource MyTxtStyle1}"/>
         <Image
             Grid.Row="0"
             x:Name="image"
@@ -83,15 +52,36 @@
             VerticalAlignment="Top"
             Source="/Resource/MEIDAY.png"/>
 
+        <StackPanel Grid.Row="1">
+            <TextBlock
+                x:Name="textBlock1" 
+                TextAlignment="Center" 
+                HorizontalAlignment="Center"
+                FontSize="30"
+                FontWeight="Bold">
+                <Span Foreground="Blue">주민등록번호</Span> 또는
+                <Span Foreground="Blue">환자번호</Span>를
+            </TextBlock>
+            <TextBlock
+                x:Name="textBlock2" 
+                TextAlignment="Center" 
+                HorizontalAlignment="Center"
+                FontSize="30"
+                FontWeight="Bold">
+            입력하세요
+            </TextBlock>
+        </StackPanel>
+
         <TextBox
             Grid.Row="2"
             Margin="10"
             IsReadOnly="True"
-            HorizontalAlignment="Center" 
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
             HorizontalContentAlignment="Center" 
             DataContext="{StaticResource LoginViewModel}"
             Text="{Binding DisplayText, Mode=OneWay}" 
-            TextWrapping="NoWrap" VerticalAlignment="Top" 
+            TextWrapping="NoWrap"
             Width="340" Height="50" FontSize="20">
             <TextBox.Style>
                 <Style TargetType="TextBox"  xmlns:sys="clr-namespace:System;assembly=mscorlib">

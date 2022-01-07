@@ -13,6 +13,16 @@
         <local:AccidentViewModel x:Key="AccidentViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18" />
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -104,15 +114,14 @@
         </Grid>
 
 
-        <telerik:RadButton x:Name="radButtonRefuse" Grid.Row="15" Grid.Column="1"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" Padding="50,10,50,10"
-                    Content="처방전확인" CornerRadius="15"
-                    Click="Button_Click"              
-                    Command="{Binding SwitchViewCommand}"
-                    CommandParameter="3"/>
-
-
-
+        <telerik:RadButton
+            x:Name="radButtonRefuse"
+            Style="{StaticResource btnstyle}"
+            Content="처방전확인"
+            Click="Button_Click"              
+            Command="{Binding SwitchViewCommand}"
+            CommandParameter="3"
+            Margin="0,724,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 

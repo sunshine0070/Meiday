@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Meiday"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              mc:Ignorable="d"
-             d:DesignHeight="800" d:DesignWidth="600" Background="White">
+             d:DesignHeight="800" d:DesignWidth="600" Background="White"
+             FontFamily="SeoulNamsan B">
 
 
     <UserControl.Resources>
@@ -27,9 +28,18 @@
             <Setter Property="IsReadOnly" Value="True"/>
         </Style>
 
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="CornerRadius" Value="15"/>
+        </Style>
     </UserControl.Resources>
 
-    <Grid>
+        
+    <Grid Margin="20">
         <Grid.Resources>
             <telerik:FontFamiliesProvider x:Key="FontFamiliesProvider"/>
             <telerik:EditingContextTypeToBoolConverter x:Key="EditingContextTypeToBoolConverter"/>
@@ -60,7 +70,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -84,13 +94,15 @@
         <StackPanel 
             Orientation="Horizontal"
             Grid.Row="2"
-            Margin="0 10 0 10">
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom">
             <TextBlock 
-                FontSize="40" FontWeight="Bold" 
+                FontSize="34" FontWeight="Bold"
+                Margin="10 0 10 0"
                 DataContext="{StaticResource LoginViewModel}"
                 Text="{Binding PatientName}"/>
             <TextBlock 
-                FontSize="35" 
+                FontSize="34" 
                 Text="님의 진료기록 입니다"/>
         </StackPanel>
 
@@ -106,7 +118,7 @@
             ShowGroupPanel="False" 
             IsFilteringAllowed="False"
             FontSize="18"
-            Height="200">
+            Height="230">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn
                     x:Name="header_name" 
@@ -133,50 +145,54 @@
                     Style="{StaticResource coltype}"
                     Header="금액" />
                 <telerik:GridViewCheckBoxColumn 
-                    x:Name="checkbox_ischeck" 
+                    x:Name="checkbox_ischeck"
+                    Header="선택"
                     Width="0.5*" 
                     DataMemberBinding="{Binding Checked}" 
-                    Header="수납"
                     Style="{StaticResource colcbtype}"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 
         <TextBlock 
+            Margin="10"
             Grid.Row="4"
             TextAlignment="Center" FontSize="30"
-            FontWeight="Bold"
             DataContext="{StaticResource PaymentViewModel}"
             Text="{Binding Total_Price}"/>
 
         <CheckBox 
             Grid.Row="6"
+            Margin="10"
             x:Name="choice2"
             FontWeight="Bold" IsChecked="{Binding IsPayChoice}"
-            FontSize="15"
+            FontSize="20"
             Content="영수증 핸드폰으로 받기" />
 
 
         <StackPanel
+            Margin="10"
             Grid.Row="7"
             Orientation="Horizontal"
             HorizontalAlignment="center">
-            <telerik:RadButton Height="50" Width="100" Margin="30 0 30 0" 
-                    FontSize="16" FontWeight="Bold" Content="결제하기" 
-                    DataContext="{StaticResource PaymentViewModel}"
-                    Command="{Binding PayCommand}"
-                    IsEnabled="True" CornerRadius="10"
-                    CommandParameter="91"/>
-            <telerik:RadButton Height="50" Width="100" Margin="0 0 30 0" 
-                    FontSize="16" FontWeight="Bold" Content="가격확인"
-                    DataContext="{StaticResource PaymentViewModel}"
-                    Command="{Binding PaystartCommand}"
-                    IsEnabled="True" CornerRadius="10"
-                    CommandParameter="92"/>
-
-            <telerik:RadButton Height="50" Width="100" Margin="0 0 30 0" 
-                    FontSize="16" FontWeight="Bold" Content="다음으로" 
-                    Command="{Binding SwitchViewCommand}" CornerRadius="10"
-                    CommandParameter="108"/>
+            <telerik:RadButton 
+                Content="결제하기" 
+                Style="{StaticResource btnstyle}"
+                DataContext="{StaticResource PaymentViewModel}"
+                Command="{Binding PayCommand}"
+                IsEnabled="True"
+                CommandParameter="91"/>
+            <telerik:RadButton 
+                Content="가격확인"
+                Style="{StaticResource btnstyle}"
+                DataContext="{StaticResource PaymentViewModel}"
+                Command="{Binding PaystartCommand}"
+                IsEnabled="True"
+                CommandParameter="92"/>
+            <telerik:RadButton 
+                Content="다음으로" 
+                Style="{StaticResource btnstyle}"
+                Command="{Binding SwitchViewCommand}" CornerRadius="10"
+                CommandParameter="108"/>
         </StackPanel>
 
     </Grid>

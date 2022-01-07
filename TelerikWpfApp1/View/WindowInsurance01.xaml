@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Meiday"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Meiday.WindowInsurance01"
         mc:Ignorable="d"
-        Height="800" Width="600" FontSize="16" Background="White">
+        Height="800" Width="600" FontSize="16" Background="White"
+        FontFamily="SeoulNamsan B">
     <UserControl.Resources>
         <local:ReadViewModel x:Key="ReadViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
@@ -17,6 +18,7 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="Margin" Value="10" />
+            <Setter Property="FontFamily" Value="Yu Gothic UI Semilight"/>
         </Style>
         <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
             <Setter Property="HorizontalAlignment" Value="Center"/>

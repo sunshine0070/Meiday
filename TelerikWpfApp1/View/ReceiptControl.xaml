@@ -15,6 +15,16 @@
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
         <local:MainViewModel x:Key="MainViewModel"/>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18" />
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -48,14 +58,24 @@
 
 
 
+        <StackPanel 
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0 0 0 30">
+            <telerik:RadButton
+                Content="휴대폰 전송"
+                Style="{StaticResource btnstyle}"
+                Click="Button_Click1"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="108"/>
 
-        <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click1" Command="{Binding SwitchViewCommand}" CommandParameter="108"
-                    VerticalAlignment="Top" Height="40" Width="150" Margin="340,715,0,0"/>
-
-
-
-        <telerik:RadButton Content="동의합니다" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click2"
-                    VerticalAlignment="Top" Height="40" Width="150" Margin="100,715,0,0"/>
+            <telerik:RadButton
+                Content="동의합니다"
+                Style="{StaticResource btnstyle}"
+                Click="Button_Click2"/>
+        </StackPanel>
+        
 
     </Grid>
 
