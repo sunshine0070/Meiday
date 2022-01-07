@@ -7,11 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1050" Background="WhiteSmoke">
     <Grid>
-        <Rectangle x:Name="rectangle" HorizontalAlignment="Center" Height="280" Margin="0,81,0,0" VerticalAlignment="Top" Width="1000" RadiusX="10.5" RadiusY="10.5" RenderTransformOrigin="0.5,0.5" Fill="#00498c"/>
 
         <Grid x:Name="grid" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Margin="207,24,0,0">
             <TextBox HorizontalAlignment="Left" Height="50" Text="DashBoard" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="{x:Null}" SelectionBrush="{x:Null}"  Foreground="Gray" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="28" FontWeight="Bold" Margin="-207,-21,0,0"/>
         </Grid>
+        
+        <Rectangle x:Name="rectangle" HorizontalAlignment="Center" Height="280" Margin="0,81,0,0" VerticalAlignment="Top" Width="1000" RadiusX="10.5" RadiusY="10.5" RenderTransformOrigin="0.5,0.5" Fill="#00498c"/>
 
         <Grid x:Name="grid1" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Margin="26,71,0,0">
             <TextBox HorizontalAlignment="Left" Height="50" Text="실시간 로그분석" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FFFAF0" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="24" FontWeight="Bold"/>

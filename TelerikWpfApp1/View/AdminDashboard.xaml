@@ -95,9 +95,13 @@
     <Grid>
         <Rectangle Fill="WhiteSmoke" RadiusX="18.08" RadiusY="18.08" Margin="0,30,0,0" />
 
-        <StackPanel HorizontalAlignment="Left" Height="500" VerticalAlignment="Center" Width="173" RenderTransformOrigin="0.5,0.5" Background="#FFFAF0">
+        <StackPanel HorizontalAlignment="Left" Height="600" VerticalAlignment="Center" Width="173" RenderTransformOrigin="0.5,0.5" Background="#FFFAF0">
             <Grid Height="45" Margin="0,20,0,0">
                 <TextBlock Text="MEIDAY" TextAlignment="Center" TextWrapping="Wrap" Padding="0,5,0,0" FontWeight="Bold" FontSize="25" Foreground="#00498c"/>
+            </Grid>
+            <Grid Height="150" Margin="0,0,0,0">
+                <Image Source="/Resource/admin_images/profile.png" Width="70" Height="70" Margin="0,0,0,0"/>
+                <TextBlock Text="USER NAME" TextAlignment="Center" Padding="0,0,0,0" Margin="0,120,0,0" FontWeight="Bold" FontSize="17" Foreground="#00498c" Height="30" Width="100"/>
             </Grid>
             <Grid Height="45" Margin="0,20,0,0">
                 <StackPanel Orientation="Horizontal">
