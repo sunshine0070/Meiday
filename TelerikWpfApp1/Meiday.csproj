@@ -154,6 +154,9 @@
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminDashboard.xaml.cs">
+      <DependentUpon>AdminDashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Chart_Week_Total.xaml.cs">
       <DependentUpon>Chart_Week_Total.xaml</DependentUpon>
     </Compile>
@@ -245,6 +248,10 @@
       <DependentUpon>WindowPharmacy02.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AccidentNoneDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -464,6 +471,17 @@
     <Resource Include="Resource\Stamp\Seoul.png" />
     <Resource Include="Resource\Stamp\songyi.png" />
     <Resource Include="Resource\Stamp\youngjae.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\admin_images\bill.png" />
+    <Resource Include="Resource\admin_images\chart1.png" />
+    <Resource Include="Resource\admin_images\chart2.png" />
+    <Resource Include="Resource\admin_images\chart3.png" />
+    <Resource Include="Resource\admin_images\exit.png" />
+    <Resource Include="Resource\admin_images\home.png" />
+    <Resource Include="Resource\admin_images\report.png" />
+    <Resource Include="Resource\admin_images\search.png" />
+    <Resource Include="Resource\admin_images\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1054.31\build\Microsoft.Web.WebView2.targets')" />

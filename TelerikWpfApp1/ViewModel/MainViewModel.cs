@@ -140,6 +140,8 @@ namespace Meiday
             {
                 SwitchView = 90;
                 LoginViewModel.LoginInit();
+                AdminDashboard adminDashboard = new AdminDashboard();
+                adminDashboard.ShowDialog();
             }
 
             if (SwitchView == 4 && _isChecked01 == true) // 개인정보 동의 체크박스 초기화
