@@ -99,15 +99,51 @@ namespace Meiday.View
             // Get an XGraphics object for drawing
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+                // Create a font
+                XFont font = new XFont("Verdana", 100, XFontStyle.Bold);
 
-            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증.png");
+                XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증.png");
 
             gfx.DrawImage(im, 30, 30, 550, 700);
 
 
-            PdfSecuritySettings securitySettings = document.SecuritySettings;
+
+                string watermark = "Meiday";
+
+                string filename = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증.pdf";
+                //page = document.AddPage();
+
+                document.Save(filename);
+                page = document.Pages[0];
+
+                //gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Prepend);
+                gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
+
+                // Get the size (in point) of the text
+                XSize size = gfx.MeasureString(watermark, font);
+
+                // Define a rotation transformation at the center of the page
+                gfx.TranslateTransform(page.Width / 2, page.Height / 2);
+                gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
+                gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
+
+                // Create a string format
+                XStringFormat format = new XStringFormat();
+                format.Alignment = XStringAlignment.Near;
+                format.LineAlignment = XLineAlignment.Near;
+
+                // Create a dimmed red brush
+                //XBrush brush = new XSolidBrush(XColor.FromArgb(128, 255, 0, 0));
+                XBrush brush = new XSolidBrush(XColor.FromArgb(50, 106, 90, 205));
+
+
+                // Draw the string
+                gfx.DrawString(watermark, font, brush,
+              new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2),
+              format);
+
+
+                PdfSecuritySettings securitySettings = document.SecuritySettings;
 
             securitySettings.UserPassword = loginViewModel.PtRegnum;
 
@@ -124,7 +160,6 @@ namespace Meiday.View
             securitySettings.PermitPrint = false;
 
             // Save the document...
-            string filename = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증.pdf";
             document.Save(filename);
                 // ...and start a viewer.
                 //Process.Start(filename);

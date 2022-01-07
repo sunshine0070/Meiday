@@ -538,9 +538,9 @@ namespace Meiday
                                 R_Doctor = ds.Tables[0].Rows[idx]["r_doctor"].ToString(),
                                 R_DoctorPosition = ds.Tables[0].Rows[idx]["r_doctorposition"].ToString(),
                                 R_Date = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(0, 10),
-                                R_Year = ds.Tables[0].Rows[idx]["r_date"].ToString(),
-                                R_Month = ds.Tables[0].Rows[idx]["r_date"].ToString(),
-                                R_Day = ds.Tables[0].Rows[idx]["r_date"].ToString()
+                                R_Year = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(0, 4),
+                                R_Month = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(5, 2),
+                                R_Day = ds.Tables[0].Rows[idx]["r_date"].ToString().ToString().Substring(8, 2)
 
 
                             };
