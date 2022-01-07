@@ -56,6 +56,16 @@
     <Reference Include="CoolSms, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CoolSms.1.1.1\lib\net451\CoolSms.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Charts.Designer.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataVisualization.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Mvvm.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Charts.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Controls.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Dashboard.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.DataAccess.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Printing.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Imgur.API, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Imgur.API.4.0.1\lib\net45\Imgur.API.dll</HintPath>
     </Reference>
@@ -134,13 +144,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Log.cs" />
+    <Compile Include="Model\DataPoint.cs" />
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
     <Compile Include="ViewModel\AccidentViewModel.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
+    <Compile Include="ViewModel\Week_Chart_dataViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Chart_Week_Total.xaml.cs">
+      <DependentUpon>Chart_Week_Total.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ChoiceControl.xaml.cs">
       <DependentUpon>ChoiceControl.xaml</DependentUpon>
@@ -230,6 +245,10 @@
       <DependentUpon>WindowPharmacy02.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AccidentNoneDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Chart_Week_Total.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
