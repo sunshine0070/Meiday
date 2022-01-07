@@ -158,7 +158,7 @@
             Grid.Row="4"
             TextAlignment="Center" FontSize="30"
             DataContext="{StaticResource PaymentViewModel}"
-            Text="{Binding Total_Price}"/>
+            Text="{Binding PaymentData[0].Price_str}"/>
 
         <CheckBox 
             Grid.Row="6"
@@ -183,13 +183,7 @@
                 Command="{Binding PayCommand}"
                 IsEnabled="True"
                 CommandParameter="91"/>
-            <telerik:RadButton 
-                Content="가격확인"
-                Style="{StaticResource btnstyle}"
-                DataContext="{StaticResource PaymentViewModel}"
-                Command="{Binding PaystartCommand}"
-                IsEnabled="True"
-                CommandParameter="92"/>
+
             <telerik:RadButton 
                 Content="다음으로" 
                 Style="{StaticResource btnstyle}"

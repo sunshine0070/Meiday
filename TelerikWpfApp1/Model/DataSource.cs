@@ -26,6 +26,7 @@ namespace Meiday.Model
 		public string Date { get; set; }
 		public string Price { get; set; }
 		public bool Checked { get; set; }
+		public string Price_str { get; set; }
 	}
 
 	public class prescription_ment

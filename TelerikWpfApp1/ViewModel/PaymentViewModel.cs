@@ -112,7 +112,7 @@ namespace Meiday
                 }
             }
         }
-
+        /*
         public string Total_Price
         {
             get { return tot_price.total_price; }
@@ -124,6 +124,21 @@ namespace Meiday
                     tot_price.total_price = value;
                     this.OnPropertyChanged("Total_Price");
                     //Select_Price();
+                }
+            }
+        
+        }
+        */
+
+        public string Price_str
+        {
+            get { return _pa.Price_str; }
+            set
+            {
+                if (value != _pa.Price_str)
+                {
+                    _pa.Price_str = value;
+                    this.OnPropertyChanged("Price_str");
                 }
             }
         }
@@ -440,6 +455,7 @@ namespace Meiday
                                 Date = ds.Tables[0].Rows[idx]["data_Date"].ToString(),
                                 Price = ds.Tables[0].Rows[idx]["data_Pay"].ToString(),
                                 Checked = true,
+                                Price_str ="총 결제금액은 " + ds.Tables[0].Rows[idx]["data_Pay"].ToString() + " 원 입니다"
                             };
                             PaymentData.Add(obj);
 
@@ -579,7 +595,7 @@ namespace Meiday
             }
         }
 
-
+        /*
         private ICommand _paystartCommand;
 
         public ICommand PaystartCommand
@@ -589,7 +605,7 @@ namespace Meiday
                 return (this._paystartCommand) ?? (this._paystartCommand = new RelayCommand(Select_Price));
             }
         }
-
+        */
         private ICommand payCommand;
         public ICommand PayCommand
         {
@@ -607,7 +623,7 @@ namespace Meiday
             pay.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             pay.ShowDialog();
         }
-
+        /*
         public void Select_Price()
         {
             Log.Debug("Select_Price");
@@ -622,5 +638,6 @@ namespace Meiday
             }
             Total_Price = "총 결제금액은 " + temp_total.ToString() + "원 입니다.";
         }
+        */
     }
 }
