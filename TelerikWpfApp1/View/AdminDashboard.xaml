@@ -78,7 +78,7 @@
         <StackPanel HorizontalAlignment="Left" Height="500" VerticalAlignment="Center" Width="173" RenderTransformOrigin="0.5,0.5" Background="#FFFAF0">
 
             <Grid Height="45" Margin="0,20,0,0">
-                <TextBlock Text="MAYDAY" TextAlignment="Center" TextWrapping="Wrap" Padding="0,5,0,0" FontWeight="Bold" FontSize="25" Foreground="#00498c"/>
+                <TextBlock Text="MEIDAY" TextAlignment="Center" TextWrapping="Wrap" Padding="0,5,0,0" FontWeight="Bold" FontSize="25" Foreground="#00498c"/>
             </Grid>
 
             <Grid Height="45" Margin="0,20,0,0">
@@ -130,19 +130,17 @@
             <TextBox HorizontalAlignment="Left" Height="28" Margin="0,55,0,0" Text="YESTERDAY" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Background="{x:Null}" SelectionBrush="{x:Null}"  Foreground="#FFB0B0B0" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontWeight="Normal"/>
         </Grid>
 
-        <Rectangle HorizontalAlignment="Left" Height="230" Margin="230,402,0,0" VerticalAlignment="Top" Width="300" RadiusX="10.5" RadiusY="10.5" Fill="White" />
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="220" Margin="230,400,0,0" VerticalAlignment="Top" Width="300" Source="/Resource/admin_images/chart3.png" Stretch="Fill" Visibility="Visible"/>
+        <local:Chart_Week_Total HorizontalAlignment="Left" Height="230" Margin="230,402,0,0" VerticalAlignment="Top" Width="470"/>
 
-        <Rectangle x:Name="rectangle3" HorizontalAlignment="Left" Height="230" Margin="580,402,0,0" VerticalAlignment="Top" Width="300" RadiusX="10.5" RadiusY="10.5" Fill="White"/>
-        <Image x:Name="image2" HorizontalAlignment="Left" Height="220" Margin="630,400,0,0" VerticalAlignment="Top" Width="300" Source="/Resource/admin_images/chart1.png" Stretch="Uniform" />
-
-        <Rectangle x:Name="rectangle4" HorizontalAlignment="Left" Height="230" Margin="930,402,0,0" VerticalAlignment="Top" Width="300" RadiusX="10.5" RadiusY="10.5" Fill="White"/>
-        <Image x:Name="image3" HorizontalAlignment="Left" Height="220" Margin="980,400,0,0" VerticalAlignment="Top" Width="300" Source="/Resource/admin_images/chart1.png" Stretch="Uniform"/>
+        <Rectangle x:Name="rectangle3" HorizontalAlignment="Left" Height="230" Margin="760,402,0,0" VerticalAlignment="Top" Width="470" RadiusX="10.5" RadiusY="10.5" Fill="White"/>
+        <Image x:Name="image2" HorizontalAlignment="Left" Height="220" Margin="890,400,0,0" VerticalAlignment="Top" Width="250" Source="/Resource/admin_images/chart1.png" Stretch="Uniform" />
 
         <Image HorizontalAlignment="Left" Height="200" Margin="250,150,134,0" Width="600"  VerticalAlignment="Top" Source="/Resource/admin_images/chart2.png" RenderTransformOrigin="0.511,0.512" Stretch="Fill" />
 
+        <!--종료 버튼-->
         <Button Width="50" Height="40" Margin="1233,45,17,615" Background="{x:Null}" BorderThickness="0" Click="sb_Completed">
             <Image  Height="30" Source="/Resource/admin_images/exit.png"/>
         </Button>
+        
     </Grid>
 </Window>
