@@ -93,8 +93,6 @@
             <view:NoInsuDialog />
         </DataTemplate>
 
-
-
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding }">

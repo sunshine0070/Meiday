@@ -53,6 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="CoolSms, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CoolSms.1.1.1\lib\net451\CoolSms.dll</HintPath>
     </Reference>
@@ -150,12 +151,25 @@
     <Compile Include="Model\Total_Price.cs" />
     <Compile Include="ViewModel\AccidentViewModel.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\Week_Chart_dataViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AdminDashboard.xaml.cs">
       <DependentUpon>AdminDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminSwitch1.xaml.cs">
+      <DependentUpon>AdminSwitch1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminSwitch2.xaml.cs">
+      <DependentUpon>AdminSwitch2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminSwitch3.xaml.cs">
+      <DependentUpon>AdminSwitch3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminSwitch4.xaml.cs">
+      <DependentUpon>AdminSwitch4.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Chart_Week_Total.xaml.cs">
       <DependentUpon>Chart_Week_Total.xaml</DependentUpon>
@@ -252,6 +266,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AdminDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminSwitch1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminSwitch2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminSwitch3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminSwitch4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

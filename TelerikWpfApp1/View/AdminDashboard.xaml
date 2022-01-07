@@ -4,10 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meiday.View"
+        xmlns:viewmodel="clr-namespace:Meiday.ViewModel"
         mc:Ignorable="d" Closing= "Window_Closing"
         Title="AdminDashboard" Height="700" Width="1300" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
     
+        <Window.DataContext>
+            <viewmodel:AdminViewModel />
+        </Window.DataContext>
+
     <Window.Resources>
+        <DataTemplate x:Key="adminSwitch1" DataType="{x:Type viewmodel:AdminViewModel}">
+            <local:AdminSwitch1 />
+        </DataTemplate>
+
+        <DataTemplate x:Key="adminSwitch2" DataType="{x:Type viewmodel:AdminViewModel}">
+            <local:AdminSwitch2 />
+        </DataTemplate>
+        
+        <DataTemplate x:Key="adminSwitch3" DataType="{x:Type viewmodel:AdminViewModel}">
+            <local:AdminSwitch3 />
+        </DataTemplate>
+        
+        <DataTemplate x:Key="adminSwitch4" DataType="{x:Type viewmodel:AdminViewModel}">
+            <local:AdminSwitch4 />
+        </DataTemplate>
+
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -69,78 +90,82 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
+    
     <Grid>
-
         <Rectangle Fill="WhiteSmoke" RadiusX="18.08" RadiusY="18.08" Margin="0,30,0,0" />
 
         <StackPanel HorizontalAlignment="Left" Height="500" VerticalAlignment="Center" Width="173" RenderTransformOrigin="0.5,0.5" Background="#FFFAF0">
-
             <Grid Height="45" Margin="0,20,0,0">
                 <TextBlock Text="MEIDAY" TextAlignment="Center" TextWrapping="Wrap" Padding="0,5,0,0" FontWeight="Bold" FontSize="25" Foreground="#00498c"/>
             </Grid>
-
             <Grid Height="45" Margin="0,20,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resource/admin_images/home.png" Width="24" Height="24" Margin="20,0,0,0"/>
-                    <Button Style="{DynamicResource ButtonStyle1}" Content="DashBoard" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF5B5A5A" />
+                    <Button Style="{DynamicResource ButtonStyle1}" Content="DashBoard" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" 
+                            BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF5B5A5A"
+                            Command="{Binding SwitchViewCommand}" CommandParameter="1"
+                            />
                 </StackPanel>
             </Grid>
-
             <Grid Height="45">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resource/admin_images/report.png" Width="24" Height="24" Margin="20,0,0,0"/>
-                    <Button Content="System Reports" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  Foreground="#FF5B5A5A"/>
+                    <Button Content="System Reports" Padding="15,0,0,0" FontWeight="Normal" Width="127" 
+                            HorizontalAlignment="Right" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" 
+                            BorderBrush="{x:Null}" Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  
+                            Foreground="#FF5B5A5A" Command="{Binding SwitchViewCommand}" CommandParameter="2"
+                            />
                 </StackPanel>
             </Grid>
-
             <Grid Height="45">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resource/admin_images/user.png" Width="24" Height="24" Margin="20,0,0,0"/>
-                    <Button Content="Patients" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  Foreground="#FF5B5A5A"/>
+                    <Button Content="Patients" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" 
+                            HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" 
+                            Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  Foreground="#FF5B5A5A"
+                            Command="{Binding SwitchViewCommand}" CommandParameter="3"
+                            />
                 </StackPanel>
             </Grid>
-
             <Grid Height="45">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resource/admin_images/bill.png" Width="24" Height="24" Margin="20,0,0,0"/>
-                    <Button Content="Billing" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  Foreground="#FF5B5A5A"/>
+                    <Button Content="Billing" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" 
+                            HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" 
+                            Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  Foreground="#FF5B5A5A"
+                            Command="{Binding SwitchViewCommand}" CommandParameter="4"
+                            />
                 </StackPanel>
             </Grid>
-
         </StackPanel>
 
-        <Rectangle x:Name="rectangle" HorizontalAlignment="Left" Height="280" Margin="230,90,0,0" VerticalAlignment="Top" Width="1000" RadiusX="10.5" RadiusY="10.5" RenderTransformOrigin="0.5,0.5" Fill="#00498c"/>
-
-        <Grid x:Name="grid" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Margin="210,30,0,0">
-            <TextBox HorizontalAlignment="Left" Height="50" Text="DashBoard" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="{x:Null}" SelectionBrush="{x:Null}"  Foreground="Gray" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="28" FontWeight="Bold"/>
-        </Grid>
-
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Margin="230,80,0,0">
-            <TextBox HorizontalAlignment="Left" Height="50" Text="실시간 로그분석" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Background="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FFFAF0" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="24" FontWeight="Bold"/>
-        </Grid>
-        <Grid x:Name="grid2" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Margin="950,150,0,0" >
-            <TextBox HorizontalAlignment="Left" Height="50" Text="275명" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Background="{x:Null}" SelectionBrush="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="24" FontWeight="Bold"/>
-            <TextBox HorizontalAlignment="Left" Height="28" Margin="0,55,0,0" Text="TODAY" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Background="{x:Null}" SelectionBrush="{x:Null}" Foreground="#FFB0B0B0" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontWeight="Normal"/>
-
-        </Grid>
-        <Grid x:Name="grid3" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Margin="1070,150,0,0" >
-            <TextBox HorizontalAlignment="Left" Height="50" Text="125명" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Background="{x:Null}" SelectionBrush="{x:Null}" Foreground="White" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="24" FontWeight="Bold"/>
-            <TextBox HorizontalAlignment="Left" Height="28" Margin="0,55,0,0" Text="YESTERDAY" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Background="{x:Null}" SelectionBrush="{x:Null}"  Foreground="#FFB0B0B0" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontWeight="Normal"/>
-        </Grid>
-
-        <local:Chart_Week_Total HorizontalAlignment="Left" Height="230" Margin="230,402,0,0" VerticalAlignment="Top" Width="470"/>
-
-        <Rectangle x:Name="rectangle3" HorizontalAlignment="Left" Height="230" Margin="760,402,0,0" VerticalAlignment="Top" Width="470" RadiusX="10.5" RadiusY="10.5" Fill="White"/>
-        <Image x:Name="image2" HorizontalAlignment="Left" Height="220" Margin="890,400,0,0" VerticalAlignment="Top" Width="250" Source="/Resource/admin_images/chart1.png" Stretch="Uniform" />
-
-        <Image HorizontalAlignment="Left" Height="200" Margin="250,150,134,0" Width="600"  VerticalAlignment="Top" Source="/Resource/admin_images/chart2.png" RenderTransformOrigin="0.511,0.512" Stretch="Fill" />
-
         <!--종료 버튼-->
-        <Button Width="50" Height="40" Margin="1233,45,17,615" Background="{x:Null}" BorderThickness="0" Click="sb_Completed">
+        <Button Width="50" Height="40" Margin="1241,45,9,615" Background="{x:Null}" BorderThickness="0" Click="sb_Completed" Style="{DynamicResource ButtonStyle1}" >
             <Image  Height="30" Source="/Resource/admin_images/exit.png"/>
         </Button>
-        
+
+        <!--UserControl 부분--> 
+       <!-- <local:AdminSwitch1 Width="1050" Height="650" Margin="200,37,60,13"/> -->
+        <ContentControl Content="{Binding }" Width="1050" Height="650" Margin="193,37,57,13">
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="ContentTemplate" Value="{StaticResource adminSwitch1}" />
+                    <!--First view-->
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="2">
+                            <Setter Property="ContentTemplate" Value="{StaticResource adminSwitch2}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="3">
+                            <Setter Property="ContentTemplate" Value="{StaticResource adminSwitch3}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="4">
+                            <Setter Property="ContentTemplate" Value="{StaticResource adminSwitch4}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+
     </Grid>
 </Window>
