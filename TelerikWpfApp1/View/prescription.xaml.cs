@@ -105,13 +105,19 @@ namespace Meiday.View
             format.Alignment = XStringAlignment.Near;
             format.LineAlignment = XLineAlignment.Near;
 
-            // Create a dimmed red brush
-            XBrush brush = new XSolidBrush(XColor.FromArgb(128, 255, 0, 0));
+                // Create a dimmed red brush
+                //XBrush brush = new XSolidBrush(XColor.FromArgb(128, 255, 0, 0));
+                XBrush brush = new XSolidBrush(XColor.FromArgb(50, 106, 90, 205));
 
-            // Draw the string
-            gfx.DrawString(watermark, font, brush,
+
+                // Draw the string
+                gfx.DrawString(watermark, font, brush,
               new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2),
               format);
+
+
+
+
 
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
