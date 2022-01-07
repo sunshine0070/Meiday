@@ -24,7 +24,7 @@
         </Style>
         <Style TargetType="{x:Type telerik:RadButton}" x:Key="MyBtnStyle2">
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Width" Value="80"/>
             <Setter Property="Height" Value="80"/>
             <Setter Property="Margin" Value="10,10,10,10"/>

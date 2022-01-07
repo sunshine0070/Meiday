@@ -142,7 +142,7 @@
                     x:Name="radButtonRefuse"
                     Style="{StaticResource btnstyle}"
                     Command="{Binding SwitchViewCommand}"
-                    CommandParameter="0"
+                    CommandParameter="109"
                     Content="다음에 하기" CornerRadius="15"/>
                 <telerik:RadButton 
                     x:Name="radButtonAgree"

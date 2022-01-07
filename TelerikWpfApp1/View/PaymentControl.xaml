@@ -166,7 +166,9 @@
             x:Name="choice2"
             FontWeight="Bold" IsChecked="{Binding IsPayChoice}"
             FontSize="20"
-            Content="영수증 핸드폰으로 받기" />
+            HorizontalContentAlignment="Center"
+            HorizontalAlignment="Center"
+            Content="영수증 핸드폰으로 받기"/>
 
 
         <StackPanel
