@@ -28,16 +28,37 @@
         <Grid.InputBindings>
             <MouseBinding Gesture="LeftClick" Command="{Binding SwitchViewCommand}" CommandParameter="1"/>
         </Grid.InputBindings>
-        <Image gif:ImageBehavior.AnimatedSource="/Resource/logo33.gif" Margin="0,100,0,0" Width="600" Height="600" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/Resource/logo33.gif"/>
+        <Image
+            gif:ImageBehavior.AnimatedSource="/Resource/logo33.gif"
+            Width="600" Height="600" Margin="0 100 0 0"
+            Stretch="Uniform"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Source="/Resource/logo33.gif" />
         <!--Image x:Name="image1_1" HorizontalAlignment="Center" 
                VerticalAlignment="Top" Width="600" Height="600" 
                Source="/img1.png"/-->
         <!--cs코드에서 visibility 조절로 번갈아 띄우기?-->
-        <Image x:Name="image1_2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="200" Height="200" Margin="0,0,0,60" Source="/Resource/MEIDAY.png"/>
-        <TextBlock x:Name="textBlock1_1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="320" Height="80" FontSize="36" FontWeight="Bold" Margin="0,0,0,160" TextWrapping="NoWrap" FontFamily="HYHeadline">
+        <Image 
+            x:Name="image1_2" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Bottom" 
+            Width="200" Margin="0,0,0,40" 
+            Source="/Resource/MEIDAY.png"/>
+        <TextBlock 
+            x:Name="textBlock1_1" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Bottom" 
+            FontSize="36" 
+            FontWeight="Bold" 
+            Margin="0,0,0,160" 
+            TextWrapping="NoWrap" FontFamily="HYHeadline">
             화면을 <Run Foreground="#FF3648F4">터치</Run>하세요!
         </TextBlock>
-        <TextBlock x:Name="ForTouch" Width="600" Height="800" />
+        <TextBlock 
+            x:Name="ForTouch"
+            Height="800"
+            Width="600" />
     </Grid>
 </UserControl>
 
