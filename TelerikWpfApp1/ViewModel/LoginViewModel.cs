@@ -57,7 +57,7 @@ namespace Meiday
 
         public string PatientName
         {
-            get 
+            get
             {
                 DataSet ds = new DataSet();
                 string query = @" select p.PT_NAME data_Name
@@ -107,9 +107,9 @@ namespace Meiday
                 Log.Debug("DisplayText");
                 if (displayText != value)
                 {
-/*                    displayText = value;*/
+                    /*                    displayText = value;*/
                     displayText = value;
-                    if(displayText.Length > 6)
+                    if (displayText.Length > 6)
                     {
                         displayText = displayText.Substring(0, 6) + '-' + displayText.Substring(6);
                     }

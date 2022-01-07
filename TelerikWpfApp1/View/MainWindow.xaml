@@ -68,6 +68,9 @@
         <DataTemplate x:Key="AdminInsertPtTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AdminInsertPtControl />
         </DataTemplate>
+        <DataTemplate x:Key="AdminLoginTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AdminLoginControl />
+        </DataTemplate>
         <DataTemplate x:Key="AgreementDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AgreementDialog />
         </DataTemplate>
@@ -91,6 +94,9 @@
         </DataTemplate>
         <DataTemplate x:Key="NoInsuDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:NoInsuDialog />
+        </DataTemplate>
+        <DataTemplate x:Key="ManagerLoginFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:ManagerLoginFailDialog />
         </DataTemplate>
 
     </Window.Resources>
@@ -130,6 +136,9 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="93">
                             <Setter Property="ContentTemplate" Value="{StaticResource AdminInsertPtTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="94">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdminLoginTemplate}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="101">
                             <Setter Property="ContentTemplate" Value="{StaticResource AgreementDialogTemplate}" />
@@ -174,6 +183,9 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="113">
                             <Setter Property="ContentTemplate" Value="{StaticResource NoInsuDialogTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="114">
+                            <Setter Property="ContentTemplate" Value="{StaticResource ManagerLoginFailDialogTemplate}" />
                         </DataTrigger>
                         
                     </Style.Triggers>

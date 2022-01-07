@@ -23,7 +23,7 @@ namespace Meiday
         LoginViewModel loginViewModel = new LoginViewModel();
         PharmacyViewModel pharmacyViewModel = new PharmacyViewModel();
         PaymentViewModel PaymentViewModel = new PaymentViewModel();
-        
+
         private int switchView;
         public int SwitchView
         {
@@ -38,7 +38,7 @@ namespace Meiday
                 OnPropertyChanged("SwitchView");
             }
         }
-        
+
 
         private bool _isChecked01 = false;
         private bool _isChoice01 = false;
@@ -104,7 +104,7 @@ namespace Meiday
             endPageTimer.Interval = TimeSpan.FromSeconds(1);
             endPageTimer.Tick += EndPageTimer_Tick; // 1번만 실행
             SwitchViewCommand = new RelayCommand<object>(p => OnSwitchView(p));
-            
+
         }
         private void OnSwitchView(object index)
         {
@@ -163,7 +163,7 @@ namespace Meiday
             {
                 AccidentDateSaved();
                 LoginViewModel.Login();
-                if (loginViewModel.ValidInsuCheck()== false)
+                if (loginViewModel.ValidInsuCheck() == false)
                 {
                     SwitchView = 113;
                     LoginViewModel.LoginInit();
@@ -182,16 +182,16 @@ namespace Meiday
                 _isChecked02 = false;
             }
             else if (SwitchView == 102 && _isChecked02 == false) // 보험목록 미체크 시 Dialog 화면
-            { 
+            {
                 SwitchView = 103;
             }
 
-            if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == false) 
+            if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == false)
             {
                 SwitchView = 109;
             }
 
-            else if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == true) 
+            else if (SwitchView == 3 && _isChoice01 == false && _isChoice02 == true)
             {
                 SwitchView = 4;
             }
@@ -201,11 +201,11 @@ namespace Meiday
                 SwitchView = 3;
             }
 
-            if (SwitchView == 4 && _isChoice02 == false) 
+            if (SwitchView == 4 && _isChoice02 == false)
             {
                 SwitchView = 109;
             }
-            
+
             if (SwitchView == 106)
             {
                 PharmacyViewModel.PharmacySubmit();
@@ -252,15 +252,15 @@ namespace Meiday
         public void SessionTimer_Tick(object sender, EventArgs e)
         {
             TimeRemaining -= 1;
-            if(TimeRemaining == 16)
+            if (TimeRemaining == 16)
             {
                 SwitchViewtmp = SwitchView; // 원래 화면 넘버 임시저장
             }
-            else if(TimeRemaining <= 15 && TimeRemaining >= 0) // 남은 시간 표시 15초부터
+            else if (TimeRemaining <= 15 && TimeRemaining >= 0) // 남은 시간 표시 15초부터
             {
                 SwitchView = 111;
             }
-            else if(TimeRemaining < 0) // 종료 case02, 세션 타임아웃, 타이머 종료
+            else if (TimeRemaining < 0) // 종료 case02, 세션 타임아웃, 타이머 종료
             {
                 SwitchView = 0;
                 SessionTimer_Reset();

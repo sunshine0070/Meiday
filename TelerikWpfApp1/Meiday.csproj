@@ -159,6 +159,9 @@
     <Compile Include="View\AdminDashboard.xaml.cs">
       <DependentUpon>AdminDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AdminLoginControl.xaml.cs">
+      <DependentUpon>AdminLoginControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminSwitch1.xaml.cs">
       <DependentUpon>AdminSwitch1.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,9 @@
     </Compile>
     <Compile Include="View\EndControl.xaml.cs">
       <DependentUpon>EndControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagerLoginFailDialog.xaml.cs">
+      <DependentUpon>ManagerLoginFailDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NoInsuDialog.xaml.cs">
       <DependentUpon>NoInsuDialog.xaml</DependentUpon>
@@ -269,6 +275,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AdminLoginControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AdminSwitch1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -294,6 +304,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EndControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManagerLoginFailDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
