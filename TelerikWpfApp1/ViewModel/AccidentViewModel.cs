@@ -279,13 +279,14 @@ namespace Meiday
         {
             try
             {
+                LoginViewModel loginViewModel = new LoginViewModel();
                 MailMessage mailMessage = new MailMessage();
                 mailMessage.From = new MailAddress("ezsun0070@naver.com", "SNUH_Meiday", Encoding.UTF8);
                 // 보내는 계정 주소
                 mailMessage.To.Add(selectedInsuranceMail); // 받는이 메일 주소
                 //mailMessage.To.Add("hcsong95@naver.com"); // 받는이 메일 주소
                 //mailMessage.CC.Add("zzz@naver.com"); // 참조 메일 주소
-                mailMessage.Subject = "Meiday_실비청구_서류_제출번호(" + InsuranceSequence + ")_" + CheckInsuName2; // 제목
+                mailMessage.Subject = "Meiday_실비청구_서류_제출번호(" + InsuranceSequence + ")" + loginViewModel.PatientName + "_" + CheckInsuName2; // 제목
                 mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
                 mailMessage.Body = "사고(발병)일: " + _accidentSelectedDateTime2
                                    + "\n사고유형: " + _accidentType
@@ -293,7 +294,7 @@ namespace Meiday
                                    + "\n보험사명: " + CheckInsuName2; // 본문
                 mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
                 mailMessage.BodyEncoding = Encoding.UTF8; // 본문 인코딩 타입(UTF-8) 선택
-                mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + patient_id + "전자처방전.pdf", FileMode.Open, FileAccess.Read), "test" + patient_id + ".pdf"));
+                mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "전자처방전.pdf", FileMode.Open, FileAccess.Read), loginViewModel.PatientName + "_전자처방전(보험용)" + ".pdf"));
                 // 파일 첨부
                 SmtpClient SmtpServer = new SmtpClient("smtp.naver.com");
                 // SMTP 서버 주소

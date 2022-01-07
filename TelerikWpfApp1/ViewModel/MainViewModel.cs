@@ -176,7 +176,7 @@ namespace Meiday
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {
                 LoginViewModel.LoginInit();
-                //accidentViewModel.AccidentSendEmail();
+                accidentViewModel.AccidentSendEmail();
                 accidentViewModel.AccidentSubmit();
                 _isChecked02 = false;
             }
@@ -208,7 +208,7 @@ namespace Meiday
             if (SwitchView == 106)
             {
                 PharmacyViewModel.PharmacySubmit();
-                //pharmacyViewModel.Pharmacy_SendEmail();
+                pharmacyViewModel.Pharmacy_SendEmail();
             }
 
             if (SwitchView == 3)
