@@ -16,6 +16,17 @@
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
         <local:MainViewModel x:Key="MainViewModel"/>
+        <Style TargetType="{x:Type telerik:GridViewDataColumn}" x:Key="coltype">
+            <Setter Property="HeaderTextAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+        <Style TargetType="{x:Type telerik:GridViewCheckBoxColumn}" x:Key="colcbtype">
+            <Setter Property="HeaderTextAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+
     </UserControl.Resources>
 
     <Grid>
@@ -26,7 +37,7 @@
             <telerik:IconSources x:Key="ShapesIconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/"/>
         </Grid.Resources>
 
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -44,57 +55,111 @@
             <RowDefinition Height ="*"/>
             <RowDefinition Height ="*"/>
             <RowDefinition Height ="*"/>
+        </Grid.RowDefinitions>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="2" Height="200" Width="200" Source="/Resource/MEIDAY.png" VerticalAlignment="Top"/>
+        <Image 
+            Grid.Row="0" 
+            Width="200" 
+            Source="/Resource/MEIDAY.png"
+            VerticalAlignment="Top"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Top"
-                   TextAlignment="Center" FontSize="36" FontWeight="Bold" 
-                   Text="진료 기록"/>
+        <TextBlock 
+            Grid.Row="1" 
+            HorizontalAlignment="Center"
+            TextAlignment="Center" 
+            FontSize="36" FontWeight="Bold" 
+            Text="진료 기록"/>
 
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Top"
-                   TextAlignment="Center" FontSize="40" FontWeight="Bold" 
-                   DataContext="{StaticResource LoginViewModel}" Text="{Binding PatientName}" Margin="10,10,90,0"/>
+        <StackPanel 
+            Orientation="Horizontal"
+            Grid.Row="2"
+            Margin="0 10 0 10">
+            <TextBlock 
+                FontSize="40" FontWeight="Bold" 
+                DataContext="{StaticResource LoginViewModel}"
+                Text="{Binding PatientName}"/>
+            <TextBlock 
+                FontSize="35" 
+                Text="님의 진료기록 입니다"/>
+        </StackPanel>
 
-        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" VerticalAlignment="Top"
-                   TextAlignment="Center" FontSize="35" 
-                   Text="님의 진료기록 입니다" Margin="50,15,50,0"/>
 
-        <telerik:RadGridView Grid.Row="3" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="6" SelectionMode="Extended" SelectionUnit="FullRow"
-                             x:Name ="Patient_Record" DataContext="{StaticResource PaymentViewModel}"  ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
-                             AutoGenerateColumns="False" ShowGroupPanel="False" IsFilteringAllowed="False"
-                             FontSize="18" >
-
-
+        <telerik:RadGridView
+            Margin="20"
+            x:Name ="Patient_Record"
+            Grid.Row="3"
+            SelectionMode="Extended" SelectionUnit="FullRow"
+            DataContext="{StaticResource PaymentViewModel}"
+            ItemsSource="{Binding Path= SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+            AutoGenerateColumns="False" 
+            ShowGroupPanel="False" 
+            IsFilteringAllowed="False"
+            FontSize="18"
+            Height="200">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn x:Name="header_name" Width="0.7*" DataMemberBinding="{Binding Name}" Header="이름" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_doctor" Width="0.7*" DataMemberBinding="{Binding Doctor}" Header="주치의" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_group" Width="*" DataMemberBinding="{Binding Group}" Header="진료과" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_date" Width="*" DataMemberBinding="{Binding Date}" Header="진료일" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
-                <telerik:GridViewDataColumn x:Name="header_price" Width="0.8*" DataMemberBinding="{Binding Price}" Header="금액" HeaderTextAlignment="Center" TextAlignment="Center" IsReadOnly="True"></telerik:GridViewDataColumn>
-                <telerik:GridViewCheckBoxColumn x:Name="checkbox_ischeck" Width="0.5*" DataMemberBinding="{Binding Checked}" Header="수납" AutoSelectOnEdit="True" EditTriggers="CellClick" HeaderTextAlignment="Center"></telerik:GridViewCheckBoxColumn>
+                <telerik:GridViewDataColumn
+                    x:Name="header_name" 
+                    Width="0.7*" 
+                    Style="{StaticResource coltype}"
+                    DataMemberBinding="{Binding Name}" 
+                    Header="이름" />
+                <telerik:GridViewDataColumn 
+                    x:Name="header_doctor" 
+                    Width="0.7*" 
+                    DataMemberBinding="{Binding Doctor}"
+                    Style="{StaticResource coltype}"
+                    Header="주치의" />
+                <telerik:GridViewDataColumn 
+                    x:Name="header_group"
+                    Width="*" 
+                    DataMemberBinding="{Binding Group}" 
+                    Style="{StaticResource coltype}"
+                    Header="진료과"/>
+                <telerik:GridViewDataColumn 
+                    x:Name="header_price" 
+                    Width="0.8*" 
+                    DataMemberBinding="{Binding Price}"
+                    Style="{StaticResource coltype}"
+                    Header="금액" />
+                <telerik:GridViewCheckBoxColumn 
+                    x:Name="checkbox_ischeck" 
+                    Width="0.5*" 
+                    DataMemberBinding="{Binding Checked}" 
+                    Header="수납"
+                    Style="{StaticResource colcbtype}"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 
-        <StackPanel Grid.Row="6" 
-                    Grid.ColumnSpan="6" 
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center"
-                    Margin="15">
-            <TextBlock TextAlignment="Center" FontSize="30"
-                       FontWeight="Bold"
-                       DataContext="{StaticResource PaymentViewModel}"
-                       Text="{Binding Total_Price}"
-                       Margin="50,0,50,0"/>
-        </StackPanel>
+        <TextBlock 
+            Grid.Row="4"
+            TextAlignment="Center" FontSize="30"
+            FontWeight="Bold"
+            DataContext="{StaticResource PaymentViewModel}"
+            Text="{Binding Total_Price}"/>
 
-        <CheckBox x:Name="choice2" Grid.Row="6" Grid.Column="2"
-                  FontWeight="Bold" IsChecked="{Binding IsPayChoice}"
-                  FontSize="15"
-                  Content="영수증 핸드폰으로 받기" Grid.ColumnSpan="2" Margin="0,63,0,10"/>
+        <CheckBox 
+            Grid.Row="6"
+            x:Name="choice2"
+            FontWeight="Bold" IsChecked="{Binding IsPayChoice}"
+            FontSize="15"
+            Content="영수증 핸드폰으로 받기" />
 
 
-        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Grid.ColumnSpan="6" Margin="90,75,0,25" Grid.RowSpan="2">
+        <StackPanel
+            Grid.Row="7"
+            Orientation="Horizontal"
+            HorizontalAlignment="center">
             <telerik:RadButton Height="50" Width="100" Margin="30 0 30 0" 
                     FontSize="16" FontWeight="Bold" Content="결제하기" 
                     DataContext="{StaticResource PaymentViewModel}"
