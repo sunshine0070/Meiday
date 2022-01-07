@@ -30,6 +30,30 @@ namespace Meiday
             //백 스페이스 버튼을 클릭할 때 실행, 한글자 삭제
             this.BackSpace = new BackSpace(this);
         }
+        private string ptRegnum = string.Empty;
+        public string PtRegnum
+        {
+            get
+            {
+                DataSet ds = new DataSet();
+                string query = @" select p.PT_REGNUM pt_regnum
+                              from patient p
+                              where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                ptRegnum = ds.Tables[0].Rows[0]["pt_regnum"].ToString();
+                return ptRegnum;
+            }
+            set
+            {
+                Log.Debug("PatientName");
+                if (value != _pa.patientName)
+                {
+                    _pa.patientName = value;
+                    OnPropertyChanged("PatientName");
+                }
+            }
+        }
+
 
         public string PatientName
         {

@@ -294,7 +294,7 @@ namespace Meiday
                                    + "\n보험사명: " + CheckInsuName2; // 본문
                 mailMessage.IsBodyHtml = false; // 본문의 포맷에 따라 선택
                 mailMessage.BodyEncoding = Encoding.UTF8; // 본문 인코딩 타입(UTF-8) 선택
-                mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "전자처방전.pdf", FileMode.Open, FileAccess.Read), loginViewModel.PatientName + "_전자처방전(보험용)" + ".pdf"));
+                mailMessage.Attachments.Add(new Attachment(new FileStream(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_전자처방전.pdf", FileMode.Open, FileAccess.Read), loginViewModel.PatientName + "_전자처방전(보험용)" + ".pdf"));
                 // 파일 첨부
                 SmtpClient SmtpServer = new SmtpClient("smtp.naver.com");
                 // SMTP 서버 주소

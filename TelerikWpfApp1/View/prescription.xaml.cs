@@ -59,7 +59,7 @@ namespace Meiday.View
                 png.Save(stream);
 
                 System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
-                string stampFileName = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "전자처방전.png";
+                string stampFileName = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_전자처방전.png";
                 image.Save(stampFileName);
                 //이미지로 저장
 
@@ -75,7 +75,7 @@ namespace Meiday.View
                 // Get an XGraphics object for drawing
                 XGraphics gfx = XGraphics.FromPdfPage(page);
 
-                XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "전자처방전.png");
+                XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_전자처방전.png");
 
                 gfx.DrawImage(im, 30, 30, 550, 700);
 
@@ -83,7 +83,7 @@ namespace Meiday.View
 
                 string watermark = "Meiday";
 
-                string filename = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "전자처방전.pdf";
+                string filename = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_전자처방전.pdf";
                 //page = document.AddPage();
 
                 document.Save(filename);
@@ -118,10 +118,9 @@ namespace Meiday.View
 
 
 
-
                 PdfSecuritySettings securitySettings = document.SecuritySettings;
 
-                securitySettings.UserPassword = patient_id;
+                securitySettings.UserPassword = loginViewModel.PtRegnum;
 
                 securitySettings.OwnerPassword = "meiday";
 
