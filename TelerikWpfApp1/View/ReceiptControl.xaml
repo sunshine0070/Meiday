@@ -36,7 +36,7 @@
             </Grid.Background>
 
 
-            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/Seoul.png" 
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/meidaystamp.png" 
                    VerticalAlignment="Top" HorizontalAlignment="Left" Height="424" RenderTransformOrigin="0.5,0.5" Width="140" Margin="360,400,0,0">
 
             </Image>
@@ -58,6 +58,7 @@
 
 
 
+<<<<<<< HEAD
         <StackPanel 
             Orientation="Horizontal"
             HorizontalAlignment="Center"
@@ -75,11 +76,19 @@
                 Style="{StaticResource btnstyle}"
                 Click="Button_Click2"/>
         </StackPanel>
+=======
+        <telerik:RadButton Content="동의합니다" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click1"
+                    VerticalAlignment="Top" Height="40" Width="150" Margin="100,715,0,0"/>
+
+        <telerik:RadButton Content="휴대폰 전송" FontSize="20" HorizontalAlignment="Left" CornerRadius="15" Click="Button_Click2" Command="{Binding SwitchViewCommand}" CommandParameter="108"
+                    VerticalAlignment="Top" Height="40" Width="150" Margin="340,715,0,0"/>
+
+
+>>>>>>> 013c5eb3c77364c673a491ad839fef0189b7d7e5
         
 
     </Grid>
 
-    <!-- Command="{Binding SwitchViewCommand}" CommandParameter="108"-->
 
 
 </UserControl>
