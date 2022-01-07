@@ -159,16 +159,16 @@ namespace Meiday
             else if (SwitchView == 6)
             {
                 AccidentDateSaved();
-                //LoginViewModel.Login();
-                //if (loginViewModel.ValidInsuCheck())
-                //{
-                //    SwitchView = 6;
-                //}
-                //else
-                //{
-                //    SwitchView = 113;
-                //    LoginViewModel.LoginInit();
-                //}
+                LoginViewModel.Login();
+                if (loginViewModel.ValidInsuCheck()== false)
+                {
+                    SwitchView = 113;
+                    LoginViewModel.LoginInit();
+                }
+                else
+                {
+                    SwitchView = 6;
+                }
             }
 
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면

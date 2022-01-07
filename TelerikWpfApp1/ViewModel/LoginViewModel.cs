@@ -145,7 +145,7 @@ namespace Meiday
                                      ,checkinsurance  c
                               WHERE   p.pt_regnum     = c.pt_regnum
                               AND     i.insurance_num = c.insurance_num
-                              AND     p.pt_idnum" + patient_id + "or p.pt_regnum = " + patient_id;
+                              AND     p.pt_idnum =" + patient_id + "or p.pt_regnum = " + patient_id;
 
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
             try
