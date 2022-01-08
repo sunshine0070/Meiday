@@ -228,10 +228,7 @@ namespace Meiday.ViewModel
                     }
 
                 }
-                if(!this.idNum.StartsWith("22"))
-                {
-                    MessageBox.Show("등록번호 형식에 맞게 입력해주세요.\n ex)2022년도 입원 : 22###");
-                }
+
                 if(this.idNum.IsNumeric() || this.age.IsNumeric() || this.regNum.IsNumeric() || this.phone.IsNumeric())
                 {
                     MessageBox.Show("정보를 정확하게 입력해주세요.");
