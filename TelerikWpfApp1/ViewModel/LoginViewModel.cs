@@ -11,12 +11,14 @@ namespace Meiday
     public class LoginViewModel : ViewModelBase
     {
         ment _pa = new ment();
-
+        //MainViewModel mainViewModel = new MainViewModel();
 
         //아래 두 필드는 속성으로 구현되어 있다. //출력될 문자들을 담아둘 변수
         static string inputString = string.Empty;
+        static string managerinputString = string.Empty;
         //계산기 화면의 출력 텍스트박스에 대응되는 필드
         string displayText = "";
+        string managerdisplayText = "";
         // patient_id는 PT_IDNUM or PT_REGNUM 둘 중 하나로 입력해도 가능
         public static string patient_id = "";
         public static bool connect_fail_flag = false; //
@@ -96,18 +98,34 @@ namespace Meiday
             get { return inputString; }
         }
 
+        public string ManagerInputString
+        {
+            set
+            {
+                Log.Debug("ManagerInputString");
+                if (managerinputString != value)
+                {
+                    managerinputString = value;
+                    OnPropertyChanged("ManagerInputString");
+                    if (value != "")
+                    {
+                        ManagerDisplayText = value;
+                    }
+                }
+            }
+            get { return managerinputString; }
+        }
         /// <summary> 
         ///  계산기의 출력창과 바인딩된 속성 
         ///  </summary>
 
-        public string DisplayText // oneway
+        public string DisplayText
         {
             internal set
             {
                 Log.Debug("DisplayText");
                 if (displayText != value)
                 {
-                    /*                    displayText = value;*/
                     displayText = value;
                     if (displayText.Length > 6)
                     {
@@ -121,6 +139,23 @@ namespace Meiday
                 return displayText;
             }
         }
+        public string ManagerDisplayText
+        {
+            internal set
+            {
+                Log.Debug("ManagerDisplayText");
+                if (managerdisplayText != value)
+                {
+                    managerdisplayText = value;
+                    OnPropertyChanged("ManagerDisplayText");
+                }
+            }
+            get
+            {
+                return managerdisplayText;
+            }
+        }
+
         public ICommand Append { protected set; get; }
         public ICommand BackSpace { protected set; get; }
 
@@ -130,30 +165,52 @@ namespace Meiday
             patient_id = inputString;
         }
 
-        static public void LoginInit()
+        public static void LoginInit()
         {
             Log.Debug("LoginInit");
             inputString = "";
+            managerinputString = "";
         }
-        string validCheck;
+        private string validCheck;
         public bool ValidCheck() //MainViewModel에서 확인
         {
 
             DataSet ds = new DataSet();
-            string query = @" select count(*) data_Name2
+            string query = @" select count(*) PT_COUNT
                               from patient p
                               where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
 
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
             try
             {
-                validCheck = ds.Tables[0].Rows[0]["data_Name2"].ToString();
+                validCheck = ds.Tables[0].Rows[0]["PT_COUNT"].ToString();
                 Log.Debug("ValidCheck");
                 return int.Parse(validCheck) > 0;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "ValidCheck");
+                return false;
+            }
+        }
+
+        private string manageCheck;
+        public bool ManageCheck()
+        {
+            DataSet ds = new DataSet();
+            string query = @" select count(*) MANAGE_COUNT
+                              from doctor d
+                              where d.DR_LICENSE = " + patient_id;
+            OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+            try
+            {
+                manageCheck = ds.Tables[0].Rows[0]["MANAGE_COUNT"].ToString();
+                Log.Debug("ManageCheck");
+                return int.Parse(manageCheck) > 0;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "ManageCheck");
                 return false;
             }
         }

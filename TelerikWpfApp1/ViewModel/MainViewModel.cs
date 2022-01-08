@@ -137,12 +137,25 @@ namespace Meiday
                     LoginViewModel.LoginInit();
                 }
             }
-            else if (SwitchView == 2 && loginViewModel.InputString == "00000") // 관리자번호 입력 시 관리자 페이지 진행
+            else if (SwitchView == 2 && loginViewModel.InputString == "00000") // 00000 입력 시 관리자 입력 모드 진행
             {
-                SwitchView = 90;
+                SwitchView = 94;
                 LoginViewModel.LoginInit();
-                AdminDashboard adminDashboard = new AdminDashboard();
-                adminDashboard.ShowDialog();
+            }
+            if (SwitchView == 90) // 관리자번호 제대로 입력 시 창 닫히고 관리자 페이지 생성
+            {
+                LoginViewModel.Login();
+                if (loginViewModel.ManageCheck())
+                {
+                    SwitchView = 90;
+                    AdminDashboard adminDashboard = new AdminDashboard();
+                    adminDashboard.ShowDialog();
+                }
+                else
+                {
+                    LoginViewModel.LoginInit();
+                    SwitchView = 114;
+                }
             }
 
             if (SwitchView == 4 && _isChecked01 == true) // 개인정보 동의 체크박스 초기화
@@ -345,7 +358,7 @@ namespace Meiday
         private void ViewInit()
         {
             Log.Debug("ViewInit");
-            LoginInit();
+            LoginViewModel.LoginInit();
             _accidentType = AccidentType.None;
             _accidentSelectedDateTime = DateTime.Now;
             _isChoice01 = false;

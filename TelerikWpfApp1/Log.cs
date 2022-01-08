@@ -17,7 +17,7 @@ namespace Meiday
     {
         public static void Debug()
         {
-            String patient = "";
+/*            String patient = "";
 
             //MessageBox.Show("현재 레벨 : DEBUG");
             String level = "DEBUG";
@@ -56,11 +56,11 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-            oracleDBManager.Close();
+            oracleDBManager.Close();*/
         }
         public static void Debug(String message)
         {
-            String patient = "";
+/*            String patient = "";
 
             //MessageBox.Show("현재 레벨 : DEBUG");
             String level = "DEBUG";
@@ -94,16 +94,16 @@ namespace Meiday
             oracleDBManager.GetConnection();
 
             string query = @"INSERT INTO LOG(LOG_LEVEL, CLASS, METHOD, IPADDRESS, PATIENT_ID, ETC) 
-            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + message +"')";
+            VALUES('" + level + "' , '" + prevClassName + "', '" + prevFuncName + "','" + ipaddress + "','" + patient + "','" + message + "')";
             string query1 = @"commit";
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-            oracleDBManager.Close();
+            oracleDBManager.Close();*/
         }
         public static void Error(Exception ex)
         {
-            String patient = "";
+/*            String patient = "";
             String error = "";
 
             //MessageBox.Show("현재 레벨 : DEBUG");
@@ -150,11 +150,11 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-            oracleDBManager.Close();
+            oracleDBManager.Close();*/
         }
         public static void Error(Exception ex, string message)
         {
-            String patient = "";
+/*            String patient = "";
             String error = "";
 
             //MessageBox.Show("현재 레벨 : DEBUG");
@@ -201,11 +201,11 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-            oracleDBManager.Close();
+            oracleDBManager.Close();*/
         }
         public static void Fatal(Exception ex)
         {
-            String patient = "";
+/*            String patient = "";
             String error = "";
 
             //MessageBox.Show("현재 레벨 : DEBUG");
@@ -252,11 +252,11 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-            oracleDBManager.Close();
+            oracleDBManager.Close();*/
         }
         public static void Fatal(Exception ex, String message)
         {
-            String patient = "";
+/*            String patient = "";
             String error = "";
 
             //MessageBox.Show("현재 레벨 : DEBUG");
@@ -303,7 +303,7 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query);
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-            oracleDBManager.Close();
+            oracleDBManager.Close();*/
         }
     }
 }
