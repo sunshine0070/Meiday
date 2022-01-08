@@ -183,7 +183,9 @@ namespace Meiday.View
             try
             {
 
-                //UploadImage(@"C:\Users\user\Desktop\savefile\"+patient_id+"영수증.png");
+                LoginViewModel loginViewModel = new LoginViewModel();
+
+                UploadImage(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "영수증.png");
 
                 Log.Debug("receipt_Button2_Click");
             }
