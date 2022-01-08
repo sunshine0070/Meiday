@@ -98,6 +98,9 @@
         <DataTemplate x:Key="ManagerLoginFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:ManagerLoginFailDialog />
         </DataTemplate>
+        <DataTemplate x:Key="AdminLoginControlTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AdminLoginControl />
+        </DataTemplate>
 
     </Window.Resources>
     <Grid>
@@ -187,7 +190,9 @@
                         <DataTrigger Binding="{Binding SwitchView}" Value="114">
                             <Setter Property="ContentTemplate" Value="{StaticResource ManagerLoginFailDialogTemplate}" />
                         </DataTrigger>
-                        
+                        <DataTrigger Binding="{Binding SwitchView}" Value="120">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AdminLoginControlTemplate}" />
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>
