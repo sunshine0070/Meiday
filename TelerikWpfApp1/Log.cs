@@ -256,7 +256,7 @@ namespace Meiday
         }
         public static void Fatal(Exception ex, String message)
         {
-/*            String patient = "";
+            /*String patient = "";
             String error = "";
 
             //MessageBox.Show("현재 레벨 : DEBUG");
