@@ -117,6 +117,10 @@ namespace Meiday
                 endPageTimer.Stop();
                 EndPageTimer_Reset();
             }
+            if(SwitchView == 1)
+            {
+                LoginViewModel.LoginInit();
+            }
             if (SwitchView >= 1 && SwitchView != 111) // 키패드 화면 들어가면 세션 타이머 시작
             {
                 //SessionTimer_Reset(); // 화면 갱신때마다 남은 초 초기화

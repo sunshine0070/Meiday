@@ -5,14 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meiday.View"
         xmlns:viewmodel="clr-namespace:Meiday.ViewModel"
+        xmlns:local2="clr-namespace:Meiday"
         mc:Ignorable="d" Closing= "Window_Closing"
         Title="AdminDashboard" Height="700" Width="1300" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
     
-        <Window.DataContext>
-            <viewmodel:AdminViewModel />
-        </Window.DataContext>
+    <Window.DataContext>
+        <viewmodel:AdminViewModel />
+    </Window.DataContext>
 
     <Window.Resources>
+        <local2:MainViewModel x:Key="MainViewModel"/>
+        
         <DataTemplate x:Key="adminSwitch1" DataType="{x:Type viewmodel:AdminViewModel}">
             <local:AdminSwitch1 />
         </DataTemplate>
@@ -24,7 +27,7 @@
         <DataTemplate x:Key="adminSwitch3" DataType="{x:Type viewmodel:AdminViewModel}">
             <local:AdminSwitch3 />
         </DataTemplate>
-        
+
         <DataTemplate x:Key="adminSwitch4" DataType="{x:Type viewmodel:AdminViewModel}">
             <local:AdminSwitch4 />
         </DataTemplate>
@@ -141,6 +144,15 @@
                             Command="{Binding SwitchViewCommand}" CommandParameter="4"
                             />
                 </StackPanel>
+            </Grid>
+            <Grid Height="45"></Grid>
+            <Grid Height="45"></Grid>
+            <Grid Height="45"></Grid>
+            <Grid Height="45">
+                <TextBlock x:Name="TimeText"
+                           Text="{Binding TimeRemaining}"
+                           FontSize="30" TextAlignment="Center">
+                </TextBlock>
             </Grid>
         </StackPanel>
 

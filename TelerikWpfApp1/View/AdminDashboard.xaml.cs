@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Meiday.ViewModel;
 
 namespace Meiday.View
 {
@@ -23,9 +24,18 @@ namespace Meiday.View
         public AdminDashboard()
         {
             InitializeComponent();
+/*            AdminViewModel adminViewModel = new AdminViewModel();
+            if (adminViewModel.CloseAction == null)
+                adminViewModel.CloseAction = new Action(this.Close);
+            if (adminViewModel.ChangeColorAction == null)
+                adminViewModel.ChangeColorAction = new Action(this.ChangeTextColor);*/
         }
         //Insert the code needed to create the object below this point.
-
+/*        private void ChangeTextColor()
+        {
+            TextBlock textBlock = new TextBlock();
+            textBlock.Foreground = Brushes.Red;
+        }*/
         bool _closinganimation = true; //closing 기본값 true 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -50,7 +60,6 @@ namespace Meiday.View
             sb.Children.Add(dop);
             sb.Completed += new EventHandler(sb_Completed);//(a, b) => {this.Close(); };
             sb.Begin();
-
         }
 
         void sb_Completed(object sender, EventArgs e)
