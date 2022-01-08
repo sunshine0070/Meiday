@@ -102,7 +102,7 @@
                 DataContext="{StaticResource LoginViewModel}"
                 Text="{Binding PatientName}"/>
             <TextBlock 
-                FontSize="34" 
+                FontSize="28" 
                 Text="님의 진료기록 입니다"/>
         </StackPanel>
 
@@ -153,12 +153,27 @@
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 
-        <TextBlock 
-            Margin="10"
+        <StackPanel 
             Grid.Row="4"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock 
+            Margin="10"
+            TextAlignment="Center" FontSize="28"
+            Text="총 결제금액은 "/>
+            <TextBlock 
+            Margin="10"
             TextAlignment="Center" FontSize="30"
+            Foreground="Red"
             DataContext="{StaticResource PaymentViewModel}"
             Text="{Binding PaymentData[0].Price_str}"/>
+            <TextBlock 
+            Margin="10"
+            TextAlignment="Center" FontSize="28"
+            Text="원 입니다."/>
+        </StackPanel>
+        
 
         <CheckBox 
             Grid.Row="6"

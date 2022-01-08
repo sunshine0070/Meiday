@@ -138,6 +138,8 @@
                 Width="180" Height="50"
                 Margin="10"
                 Foreground="Blue"
+                FontWeight="Bold"
+                BorderThickness="0"
                 DataContext="{StaticResource AccidentViewModel}"
                 Text="{Binding CheckInsuName}"/>
             <TextBlock 

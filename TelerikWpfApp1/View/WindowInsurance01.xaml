@@ -19,6 +19,7 @@
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="Margin" Value="10" />
             <Setter Property="FontFamily" Value="Yu Gothic UI Semilight"/>
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
         </Style>
         <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
             <Setter Property="HorizontalAlignment" Value="Center"/>

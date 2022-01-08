@@ -43,6 +43,20 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <StackPanel>
+            <telerik:RadButton 
+            Grid.Row="4"
+            HorizontalAlignment="Left"
+            x:Name="radButtonHome" 
+            Style="{StaticResource MyBtnStyle2}"
+            Height="60"
+            Width="60"
+            CornerRadius="100"
+            Command="{Binding SwitchViewCommand}" 
+            CommandParameter="1"
+            Content="⮌">
+            </telerik:RadButton>
+        </StackPanel>
         <Image
             Grid.Row="0"
             x:Name="image"
@@ -58,7 +72,7 @@
                 HorizontalAlignment="Center"
                 FontSize="30"
                 FontWeight="Bold">
-                - 관리자 화면 -
+                
             </TextBlock>
 
             <TextBlock
@@ -132,15 +146,5 @@
                 <telerik:RadButton x:Name="radButtonOk" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="90"/>
             </StackPanel>
         </StackPanel>
-        <telerik:RadButton 
-            Grid.Row="4"
-            HorizontalAlignment="Right"
-            x:Name="radButtonHome" 
-            Content="이전" 
-            Style="{StaticResource MyBtnStyle2}"
-            Height="60"
-            Width="150"
-            Command="{Binding SwitchViewCommand}" 
-            CommandParameter="1"/>
     </Grid>
 </UserControl>

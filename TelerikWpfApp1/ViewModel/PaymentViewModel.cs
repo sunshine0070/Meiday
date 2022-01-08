@@ -455,7 +455,7 @@ namespace Meiday
                                 Date = ds.Tables[0].Rows[idx]["data_Date"].ToString(),
                                 Price = ds.Tables[0].Rows[idx]["data_Pay"].ToString(),
                                 Checked = true,
-                                Price_str ="총 결제금액은 " + ds.Tables[0].Rows[idx]["data_Pay"].ToString() + " 원 입니다"
+                                Price_str = ds.Tables[0].Rows[idx]["data_Pay"].ToString()
                             };
                             PaymentData.Add(obj);
 
