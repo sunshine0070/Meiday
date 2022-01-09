@@ -10,7 +10,6 @@
              d:DesignHeight="650" d:DesignWidth="1050" Background="WhiteSmoke" FontFamily="SeoulNamsan B">
     <UserControl.Resources>
         <vm:AdminInsertPtViewModel x:Key="AdminInsertPtViewModel" />
-        <vm:InsertAdminViewModel x:Key="InsertAdminViewModel"/>
         <Style TargetType="{x:Type Label}" x:Key="lblstyle">
             <Setter Property="Width" Value="100"/>
             <Setter Property="FontSize" Value="16"/>
@@ -53,7 +52,7 @@
             <!-- Insert Patient -->
             <StackPanel 
                     HorizontalAlignment="Left" 
-                    DataContext="{StaticResource InsertAdminViewModel}"
+                    DataContext="{StaticResource AdminInsertPtViewModel}"
                     Margin="20">
                 <Label x:Name="label_Copy" 
                         Foreground="White"
@@ -80,48 +79,48 @@
                         <Label
                                 x:Name="lblAge"
                                 Style="{StaticResource lblstyle}"
-                                Content="등  록  번  호" />
+                                Content="나　　　　이" />
                         <TextBox 
-                                x:Name="tbLicense"
+                                x:Name="tbAge"
                                 Style="{StaticResource tbstyle}"
-                                Text="{Binding license}"  />
+                                Text="{Binding age}"  />
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource borderstyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label 
-                                x:Name="lblEmail" 
+                                x:Name="lblRegNum" 
                                 Style="{StaticResource lblstyle}"
-                                Content="이    메    일 " />
+                                Content="주민등록번호" />
                         <TextBox 
-                                x:Name="tbEmail" 
+                                x:Name="tbRegNum" 
                                 Style="{StaticResource tbstyle}"
-                                Text="{Binding email}"  />
+                                Text="{Binding regNum}"  />
                     </StackPanel>
                 </Border>
 
                 <Border Style="{StaticResource borderstyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label 
-                            x:Name="lblPosition" 
+                            x:Name="lblAddr" 
                             Style="{StaticResource lblstyle}"
-                            Content="직           급" />
+                            Content="주　　　　소" />
                         <TextBox 
-                            x:Name="tbPosition" 
+                            x:Name="tbAddr" 
                             Style="{StaticResource tbstyle}"
-                            Text="{Binding position}"  />
+                            Text="{Binding addr}"  />
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource borderstyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label
-                                x:Name="lblDeptnum" 
+                                x:Name="lblPhone" 
                                 Style="{StaticResource lblstyle}"
-                                Content="부  서  번  호" />
+                                Content="연　  락 　처" />
                         <TextBox 
-                                x:Name="tbDeptnum"
+                                x:Name="tbPhone"
                                 Style="{StaticResource tbstyle}"
-                                Text="{Binding deptnum}"  />
+                                Text="{Binding phone}"  />
                     </StackPanel>
                 </Border>
 
@@ -135,7 +134,7 @@
                         FontSize="20"
                         HorizontalAlignment="Center"
                         CornerRadius="10"
-                        Command="{Binding AddAdmin}" />
+                        Command="{Binding AddPatient}" />
             </StackPanel>
         </StackPanel>
 
@@ -153,7 +152,6 @@
                     FontSize="16" FontWeight="Bold"
                     Content="조회"
                     CornerRadius="10"
-                    DataContext="{StaticResource AdminInsertPtViewModel}"
                     Command="{Binding LoadPatient}"/>
                 </StackPanel>
 
@@ -187,8 +185,8 @@
                     </ListView.View>
                 </ListView>
             </StackPanel>
-
-
+            
+            
             <!-- inquire Admin List-->
             <StackPanel Height="300">
                 <StackPanel Orientation="Horizontal">
@@ -232,7 +230,7 @@
                     </ListView.View>
                 </ListView>
             </StackPanel>
-
+            
         </StackPanel>
     </Grid>
 </UserControl>
