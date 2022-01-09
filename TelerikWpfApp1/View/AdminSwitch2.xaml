@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Meiday.View"
-             xmlns:local2="clr-namespace:Meiday.View.adminView"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1050" Background="WhiteSmoke">
     <Grid>
@@ -12,16 +11,15 @@
         <Grid x:Name="grid" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Margin="140,24,0,0">
             <TextBox HorizontalAlignment="Left" Height="50" Text="System Reports" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" Background="{x:Null}" SelectionBrush="{x:Null}"  Foreground="Gray" BorderBrush="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" FontSize="28" FontWeight="Bold" Margin="-207,-21,0,0"/>
         </Grid>
-
-        <!--보험 현황 도넛 차트-->
-        <local2:InsuranceUseChart HorizontalAlignment="Left" Height="300" Width="500" Margin="25,70,0,0" VerticalAlignment="Top" BorderThickness="0" />
-
+        
         <!--과별 연령별 리스트 (막대, 꺾은선)-->
 
-        <!--약국 현황 도넛 차트-->
-        <local2:pharmacyUseChart HorizontalAlignment="Left" Height="270" Width="1000" Margin="25,370,0,0" VerticalAlignment="Top" BorderThickness="0" />
+        
+        <!--약국 보험 현황 3D 파이차트-->
+        
 
         <!-- ERROR,FATAL 로그 리스트 출력 파트 -->
-
+        <Rectangle x:Name="rectangle" HorizontalAlignment="Center" Height="200" Margin="0,423,0,0" VerticalAlignment="Top" Width="1000" RadiusX="10.5" RadiusY="10.5" RenderTransformOrigin="0.5,0.5" Fill="#00498c"/>
+    
     </Grid>
 </UserControl>
