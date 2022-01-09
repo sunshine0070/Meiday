@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meiday", "TelerikWpfApp1\Meiday.csproj", "{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Debug|Any CPU.Build.0 = Debug|x86
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Debug|x86.ActiveCfg = Debug|x86
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Debug|x86.Build.0 = Debug|x86
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Release|Any CPU.ActiveCfg = Release|x86
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Release|Any CPU.Build.0 = Release|x86
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Release|x86.ActiveCfg = Release|x86
+		{A6476E03-C6C7-4C3E-B5A1-ECCEB002EF54}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {312456F8-01F5-4AD7-836C-A780F1437157}
+	EndGlobalSection
+EndGlobal

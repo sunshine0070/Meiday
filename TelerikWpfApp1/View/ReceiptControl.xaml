@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Meiday.View.ReceiptControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Meiday" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:meiday="clr-namespace:Meiday" 
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <telerik:IconSources x:Key="IconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Modern/"/>
+        <telerik:IconSources x:Key="ShapesIconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/"/>
+        <local:AccidentViewModel x:Key="AccidentViewModel"/>
+        <local:LoginViewModel x:Key="LoginViewModel"/>
+        <local:PaymentViewModel x:Key="PaymentViewModel"/>
+        <local:MainViewModel x:Key="MainViewModel"/>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="SeoulNamsan B"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+
+
+        <Grid  x:Name="receipt" Width="550" Height="550" VerticalAlignment="Center">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resource/receipt.jpg"/>
+            </Grid.Background>
+
+
+            <Image DataContext="{StaticResource PaymentViewModel}" Source="/Resource/Stamp/meidaystamp.png" 
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="424" RenderTransformOrigin="0.5,0.5" Width="140" Margin="390,365,0,0">
+
+            </Image>
+
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Name}" Width="120" Margin="127,147,0,388" HorizontalAlignment="Left"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Id}" Width="120" Margin="127,130,303,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_DoctorPosition}" Width="120" Margin="282,130,148,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Doctor}" Width="120" Margin="360,113,70,422"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Date}" Width="120" Margin="440,130,-10,405"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Pay}" Width="120" Margin="128,183,302,352"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Pay}" Width="120" Margin="440,235,-10,300"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Year}" Margin="228,443,290,92"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Month}" Margin="273,443,253,92"/>
+            <TextBlock TextWrapping="Wrap" DataContext="{StaticResource PaymentViewModel}" Text="{Binding ReceiptData[0].R_Day}" Margin="307,443,221,92"/>
+            
+            <TextBlock TextWrapping="Wrap" Text="메이데이병원" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="360,95,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="000-000" Width="120" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="127,95,0,0"/>
+            <TextBlock TextWrapping="Wrap" Text="서울특별시 중구" Width="163" Height="15" HorizontalAlignment="Left" VerticalAlignment="Top"   Margin="126,112,0,0"/>
+
+        </Grid>
+        <StackPanel 
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0 0 0 30">
+
+            <telerik:RadButton
+                Content="동의합니다"
+                Style="{StaticResource btnstyle}"
+                Click="Button_Click1"/>
+
+
+            <telerik:RadButton
+                Content="휴대폰 전송"
+                Style="{StaticResource btnstyle}"
+                Click="Button_Click2"
+                Command="{Binding SwitchViewCommand}"
+                CommandParameter="108"/>
+
+
+        </StackPanel>
+
+
+    </Grid>
+
+
+
+</UserControl>
