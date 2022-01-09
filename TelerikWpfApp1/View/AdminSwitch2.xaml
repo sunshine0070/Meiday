@@ -16,11 +16,11 @@
         <!--보험 현황 도넛 차트-->
         <view:InsuranceUseChart HorizontalAlignment="Left" Height="300" Width="500" Margin="25,70,0,0" VerticalAlignment="Top" BorderThickness="0" />
 
-        <!--약국 보험 현황 3D 파이차트-->
-        
+        <!--약국 현황 막대그래프-->
+        <view:PharmacyUseChart HorizontalAlignment="Left" Height="300" Width="1000" Margin="25,350,0,0" VerticalAlignment="Top" BorderThickness="0" />
+
 
         <!-- ERROR,FATAL 로그 리스트 출력 파트 -->
-        <Rectangle x:Name="rectangle" HorizontalAlignment="Center" Height="200" Margin="0,423,0,0" VerticalAlignment="Top" Width="1000" RadiusX="10.5" RadiusY="10.5" RenderTransformOrigin="0.5,0.5" Fill="#00498c"/>
     
     </Grid>
 </UserControl>

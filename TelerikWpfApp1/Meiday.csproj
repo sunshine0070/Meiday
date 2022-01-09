@@ -155,6 +155,7 @@
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\adminViewModel\InsuranceUseViewModel.cs" />
+    <Compile Include="ViewModel\adminViewModel\PharmacyUseViewModel.cs" />
     <Compile Include="ViewModel\Dep_per_Ages.cs" />
     <Compile Include="ViewModel\InsertAdminViewModel.cs" />
     <Compile Include="ViewModel\Week_Chart_dataViewModel.cs" />
@@ -181,6 +182,9 @@
     </Compile>
     <Compile Include="View\adminView\InsuranceUseChart.xaml.cs">
       <DependentUpon>InsuranceUseChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\adminView\PharmacyUseChart.xaml.cs">
+      <DependentUpon>PharmacyUseChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin_Chart_Dep_per_Ages.xaml.cs">
       <DependentUpon>Admin_Chart_Dep_per_Ages.xaml</DependentUpon>
@@ -316,6 +320,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\adminView\InsuranceUseChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\adminView\PharmacyUseChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
