@@ -15,7 +15,6 @@ namespace Meiday.Model
         public string dep_name { get; set; }
 
         //test1234
-        
         public string dep_Ages { get; set; }
         public int dep_count { get; set; }
     }
