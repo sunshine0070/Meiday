@@ -7,9 +7,9 @@
              xmlns:uc="clr-namespace:Meiday.View"
              xmlns:local="clr-namespace:Meiday.View"
              mc:Ignorable="d" 
-             d:DesignHeight="230" d:DesignWidth="470">
+             d:DesignHeight="290" d:DesignWidth="470">
     <Grid>
-        <dx:DXTabControl>
+        <dx:DXTabControl FontWeight="Bold">
             <dx:DXTabItem x:Name="chart1" Header="내과">
                 <uc:Admin_Chart_Dep_per_Ages></uc:Admin_Chart_Dep_per_Ages>
             </dx:DXTabItem>

@@ -7,15 +7,15 @@
              xmlns:local="clr-namespace:Meiday.View"
              xmlns:ViewModel ="clr-namespace:Meiday.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="230" d:DesignWidth="470">
+             d:DesignHeight="290" d:DesignWidth="470">
 
     <UserControl.DataContext>
         <ViewModel:Week_Chart_dataViewModel/>
     </UserControl.DataContext>
-    <Grid>
-        <dxc:ChartControl DataSource="{Binding Data}">
+    <Grid Background="WhiteSmoke">
+        <dxc:ChartControl DataSource="{Binding Data}" BorderThickness="1" Background="WhiteSmoke">
             <dxc:ChartControl.Titles>
-                <dxc:Title Content="주간 방문자" Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <dxc:Title Content="주간 방문자" Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold"/>
             </dxc:ChartControl.Titles>
             <dxc:ChartControl.Legends>
                 <dxc:Legend/>
