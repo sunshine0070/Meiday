@@ -229,8 +229,10 @@ namespace Meiday
                 mail.To.Add(selectedmodel.Email);
                 //mail.To.Add("hcsong95@naver.com");
                 mail.Subject = "Meiday_약국처방전_서류_제출번호(" + PharmacySequence + ")" + loginViewModel.PatientName + "_" + selectedmodel.Name; // 제목
-                mail.Body = "PDF_Password: 환자 주민등록번호" +
-                            "\n수신약국: " + selectedmodel.Name;
+                mail.Body = "PDF Password: " + loginViewModel.PtRegnum
+                            + "\n환자 전화번호: " + loginViewModel.PtPhone
+                            + "\n수신약국: " + selectedmodel.Name;
+
                 Attachment attachment;
                 attachment = new Attachment(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_전자처방전.pdf");
                 mail.Attachments.Add(attachment);
@@ -244,6 +246,7 @@ namespace Meiday
             catch (Exception ex)
             {
                 Log.Fatal(ex, "Pharmacy_SendEmail");
+                MessageBox.Show("프로그램 오류로 처방전 전송에 실패했습니다.\n데스크 직원에게 문의하시기 바랍니다.", "알림", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

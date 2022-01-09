@@ -146,12 +146,12 @@ namespace Meiday
                 SwitchView = 94;
                 LoginViewModel.LoginInit();
             }
-            if (SwitchView == 90) // 관리자번호 제대로 입력 시 창 닫히고 관리자 페이지 생성
+            if (SwitchView == 99) // 관리자번호 제대로 입력 시 창 닫히고 관리자 페이지 생성
             {
                 LoginViewModel.Login();
                 if (loginViewModel.ManageCheck())
                 {
-                    SwitchView = 90;
+                    SwitchView = 90; // 90 AdminMainControl.xaml.cs에 close 메소드 호출
                     AdminDashboard adminDashboard = new AdminDashboard();
                     adminDashboard.ShowDialog();
                 }

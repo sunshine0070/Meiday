@@ -24,18 +24,8 @@ namespace Meiday.View
         public AdminDashboard()
         {
             InitializeComponent();
-/*            AdminViewModel adminViewModel = new AdminViewModel();
-            if (adminViewModel.CloseAction == null)
-                adminViewModel.CloseAction = new Action(this.Close);
-            if (adminViewModel.ChangeColorAction == null)
-                adminViewModel.ChangeColorAction = new Action(this.ChangeTextColor);*/
         }
         //Insert the code needed to create the object below this point.
-/*        private void ChangeTextColor()
-        {
-            TextBlock textBlock = new TextBlock();
-            textBlock.Foreground = Brushes.Red;
-        }*/
         bool _closinganimation = true; //closing 기본값 true 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {

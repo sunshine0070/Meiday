@@ -11,6 +11,7 @@ namespace Meiday
     public class LoginViewModel : ViewModelBase
     {
         ment _pa = new ment();
+        PatientModel patientModel = new PatientModel();
         //MainViewModel mainViewModel = new MainViewModel();
 
         //아래 두 필드는 속성으로 구현되어 있다. //출력될 문자들을 담아둘 변수
@@ -48,10 +49,32 @@ namespace Meiday
             set
             {
                 Log.Debug("PtRegnum");
-                if (value != _pa.patientName)
+                if (value != ptRegnum)
                 {
-                    _pa.patientName = value;
+                    ptRegnum = value;
                     OnPropertyChanged("PtRegnum");
+                }
+            }
+        }
+        public string PtPhone
+        {
+            get
+            {
+                DataSet ds = new DataSet();
+                string query = @" select p.PT_PHONE pt_phone
+                              from patient p
+                              where p.pt_idnum = " + patient_id + "or p.pt_regnum = " + patient_id;
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                patientModel.Phone = ds.Tables[0].Rows[0]["pt_phone"].ToString();
+                return patientModel.Phone;
+            }
+            set
+            {
+                Log.Debug("PtPhone");
+                if (value != patientModel.Phone)
+                {
+                    patientModel.Phone = value;
+                    OnPropertyChanged("PtPhone");
                 }
             }
         }
@@ -163,6 +186,12 @@ namespace Meiday
         {
             Log.Debug("Login");
             patient_id = inputString;
+        }
+
+        static public void ManagerLogin()
+        {
+            Log.Debug("ManagerLogin");
+            patient_id = managerinputString;
         }
 
         public static void LoginInit()
