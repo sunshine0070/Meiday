@@ -149,6 +149,7 @@
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\DataPoint.cs" />
     <Compile Include="Model\LogData.cs" />
+    <Compile Include="Model\Log_Model.cs" />
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
@@ -158,8 +159,10 @@
     <Compile Include="ViewModel\adminViewModel\InsuranceUseViewModel.cs" />
     <Compile Include="ViewModel\adminViewModel\LogIssueViewModel.cs" />
     <Compile Include="ViewModel\adminViewModel\PharmacyUseViewModel.cs" />
+    <Compile Include="ViewModel\Admin_Chart_Log.cs" />
     <Compile Include="ViewModel\Dep_per_Ages.cs" />
     <Compile Include="ViewModel\InsertAdminViewModel.cs" />
+    <Compile Include="ViewModel\Logs.cs" />
     <Compile Include="ViewModel\Week_Chart_dataViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
@@ -199,6 +202,9 @@
     </Compile>
     <Compile Include="View\Admin_Chart_Dep_per_Ages2.xaml.cs">
       <DependentUpon>Admin_Chart_Dep_per_Ages2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin_Chart_log.xaml.cs">
+      <DependentUpon>Admin_Chart_log.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Admin_Chart_TabControl.xaml.cs">
       <DependentUpon>Admin_Chart_TabControl.xaml</DependentUpon>
@@ -345,6 +351,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin_Chart_Dep_per_Ages2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin_Chart_log.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
