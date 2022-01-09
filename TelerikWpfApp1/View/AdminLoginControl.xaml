@@ -143,7 +143,7 @@
             <StackPanel Orientation="Horizontal">
                 <telerik:RadButton x:Name="radButtonDel" Content="정정" FontSize="28" Style="{StaticResource MyBtnStyle1}" Command="{Binding BackSpace}" />
                 <telerik:RadButton x:Name="radButton0" Content="0" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="0" />
-                <telerik:RadButton x:Name="radButtonOk" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="90"/>
+                <telerik:RadButton x:Name="radButtonOk" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="99"/>
             </StackPanel>
         </StackPanel>
     </Grid>

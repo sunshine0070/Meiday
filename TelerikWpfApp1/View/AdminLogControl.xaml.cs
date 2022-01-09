@@ -25,6 +25,7 @@ namespace Meiday.View
             Log.Debug("AdminLogControl");
             try
             {
+                Application.Current.Shutdown();
                 InitializeComponent();
             }
             catch (Exception ex)

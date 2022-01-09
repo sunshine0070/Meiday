@@ -32,6 +32,10 @@
             <local:AdminSwitch4 />
         </DataTemplate>
 
+        <DataTemplate x:Key="adminLogControl" DataType="{x:Type viewmodel:AdminViewModel}">
+            <local:AdminLogControl />
+        </DataTemplate>
+
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -104,7 +108,7 @@
             </Grid>
             <Grid Height="150" Margin="0,0,0,0">
                 <Image Source="/Resource/admin_images/profile.png" Width="70" Height="70" Margin="0,0,0,0"/>
-                <TextBlock Text="USER NAME" TextAlignment="Center" Padding="0,0,0,0" Margin="0,120,0,0" FontWeight="Bold" FontSize="17" Foreground="#00498c" Height="30" Width="100"/>
+                <TextBlock Text="{Binding ManagerName}" TextAlignment="Center" Padding="0,0,0,0" Margin="0,120,0,0" FontWeight="Bold" FontSize="17" Foreground="#00498c" Height="30" Width="100"/>
             </Grid>
             <Grid Height="45" Margin="0,20,0,0">
                 <StackPanel Orientation="Horizontal">
@@ -150,7 +154,7 @@
             <Grid Height="45"></Grid>
             <Grid Height="45">
                 <TextBlock x:Name="TimeText"
-                           Text="{Binding TimeRemaining}"
+                           Text="{Binding TimeRemainingString}"
                            FontSize="30" TextAlignment="Center">
                 </TextBlock>
             </Grid>
@@ -177,6 +181,9 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="4">
                             <Setter Property="ContentTemplate" Value="{StaticResource adminSwitch4}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="5">
+                            <Setter Property="ContentTemplate" Value="{StaticResource adminLogControl}" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
