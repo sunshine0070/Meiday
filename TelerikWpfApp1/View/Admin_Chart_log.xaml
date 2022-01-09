@@ -12,17 +12,44 @@
         <ViewModel:Admin_Chart_Log/>
     </UserControl.DataContext>
     <Grid>
-        <dxc:ChartControl>
+        <dxc:ChartControl Background="#FF044763" BorderThickness="0" Foreground="White">
             <dxc:ChartControl.Legends>
-                <dxc:Legend/>
+                <dxc:Legend Background="#FF044763" BorderThickness="0" Foreground="White"/>
             </dxc:ChartControl.Legends>
-            <dxc:XYDiagram2D>
+            <dxc:XYDiagram2D Background="#FF044763" FontWeight="Bold" Foreground="White">
+                
+                
                 <dxc:SplineAreaSeries2D DisplayName="DEBUG" DataSource="{Binding Logs_CHART_DEBUG}" ArgumentDataMember="str_date" ValueDataMember="log_count">
                 </dxc:SplineAreaSeries2D>
+                
                 <dxc:SplineAreaSeries2D DisplayName="FATAL" DataSource="{Binding Logs_CHART_FATAL}" ArgumentDataMember="str_date" ValueDataMember="log_count">
                 </dxc:SplineAreaSeries2D>
+                
                 <dxc:SplineAreaSeries2D DisplayName="TOTAL" DataSource="{Binding LOGS_CHART_TOTAL}" ArgumentDataMember="str_date" ValueDataMember="log_count">
+                    <dxc:SplineAreaSeries2D.Border>
+                        <dxc:SeriesBorder Brush="#D6003458"/>
+                    </dxc:SplineAreaSeries2D.Border>
                 </dxc:SplineAreaSeries2D>
+
+                <dxc:XYDiagram2D.AxisX>
+                    <dxc:AxisX2D>
+                        <dxc:AxisX2D.Label>
+                            <dxc:AxisLabel Foreground="White" FontWeight="Normal" />
+                        </dxc:AxisX2D.Label>
+                    </dxc:AxisX2D>
+                </dxc:XYDiagram2D.AxisX>
+                <dxc:XYDiagram2D.AxisY>
+                    <dxc:AxisY2D>
+                        <dxc:AxisY2D.Label>
+                            <dxc:AxisLabel Foreground="White" FontWeight="Normal" />
+                        </dxc:AxisY2D.Label>
+                    </dxc:AxisY2D>
+                </dxc:XYDiagram2D.AxisY>
+
+                <dxc:XYDiagram2D.DefaultPane>
+                    <dxc:Pane DomainBrush="{x:Null}" EnableAxisXNavigation="False" EnableAxisYNavigation="False"/>
+                </dxc:XYDiagram2D.DefaultPane>
+
             </dxc:XYDiagram2D>
         </dxc:ChartControl>
     </Grid>
