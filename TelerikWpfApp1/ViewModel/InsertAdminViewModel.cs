@@ -78,21 +78,21 @@ namespace Meiday.ViewModel
 
 
 
-        ObservableCollection<AdminModel> _sampleDatas1 = null;
-        public ObservableCollection<AdminModel> SampleDatas1
+        ObservableCollection<AdminModel> _sampleDatas = null;
+        public ObservableCollection<AdminModel> SampleDatas
         {
             get
             {
-                if (_sampleDatas1 == null)
+                if (_sampleDatas == null)
                 {
-                    _sampleDatas1 = new ObservableCollection<AdminModel>();
+                    _sampleDatas = new ObservableCollection<AdminModel>();
                 }
-                return _sampleDatas1;
+                return _sampleDatas;
             }
             set
             {
-                Log.Debug("SampleDatas1");
-                _sampleDatas1 = value;
+                Log.Debug("SampleDatas");
+                _sampleDatas = value;
             }
         }
 
@@ -127,7 +127,7 @@ namespace Meiday.ViewModel
                         DrPosition = ds.Tables[0].Rows[idx]["DR_POSITION"].ToString(),
                         DrDeptName = ds.Tables[0].Rows[idx]["DR_DEPTNUM"].ToString(),
                     };
-                    SampleDatas1.Add(obj);
+                    SampleDatas.Add(obj);
                 }
             }
             catch (Exception ex)
@@ -141,7 +141,7 @@ namespace Meiday.ViewModel
         {
             try
             {
-                AdminModel p = new AdminModel()
+                AdminModel a = new AdminModel()
                 {
                     DrLicense = this.license,
                     DrName = this.name,
@@ -173,9 +173,10 @@ namespace Meiday.ViewModel
                     }
                     else
                     {
+                        
                         string query = @"MERGE INTO DOCTOR USING dual ON (DR_LICENSE = '#License') 
-                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_EMail = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
-                                WHEN NOT MATCHED THEN INSERT (DR_NAME,DR_EMail,DR_POSITION,DR_DEPTNUM) VALUES ('#Name', '#Email', '#Position', '#Deptnum') ";
+                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
+                                WHEN NOT MATCHED THEN INSERT (DR_LICENSE,DR_NAME,DR_EMail,DR_POSITION,DR_DEPTNUM) VALUES ('#License', '#Name', '#Email', '#Position', '#Deptnum') ";
                         string query1 = @"commit";
                         query = query.Replace("#License", this.license);
                         query = query.Replace("#Name", this.name);

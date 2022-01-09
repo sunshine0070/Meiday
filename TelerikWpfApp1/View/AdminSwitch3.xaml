@@ -10,6 +10,7 @@
              d:DesignHeight="650" d:DesignWidth="1050" Background="WhiteSmoke" FontFamily="SeoulNamsan B">
     <UserControl.Resources>
         <vm:AdminInsertPtViewModel x:Key="AdminInsertPtViewModel" />
+        <vm:InsertAdminViewModel x:Key="InsertAdminViewModel"/>
         <Style TargetType="{x:Type Label}" x:Key="lblstyle">
             <Setter Property="Width" Value="100"/>
             <Setter Property="FontSize" Value="16"/>
@@ -52,7 +53,7 @@
             <!-- Insert Patient -->
             <StackPanel 
                     HorizontalAlignment="Left" 
-                    DataContext="{StaticResource AdminInsertPtViewModel}"
+                    DataContext="{StaticResource InsertAdminViewModel}"
                     Margin="20">
                 <Label x:Name="label_Copy" 
                         Foreground="White"
@@ -80,51 +81,61 @@
                                 x:Name="lblAge"
                                 Style="{StaticResource lblstyle}"
 <<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                                Content="등  록  번  호" />
+=======
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
                                 Content="나　　　　이" />
 =======
                                 Content="면  허  번  호" />
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+=======
+>>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
+>>>>>>> Stashed changes
                         <TextBox 
-                                x:Name="tbAge"
+                                x:Name="tbLicense"
                                 Style="{StaticResource tbstyle}"
-                                Text="{Binding age}"  />
+                                Text="{Binding license}"  />
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource borderstyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label 
-                                x:Name="lblRegNum" 
+                                x:Name="lblEmail" 
                                 Style="{StaticResource lblstyle}"
-                                Content="주민등록번호" />
+                                Content="이    메    일 " />
                         <TextBox 
-                                x:Name="tbRegNum" 
+                                x:Name="tbEmail" 
                                 Style="{StaticResource tbstyle}"
-                                Text="{Binding regNum}"  />
+                                Text="{Binding email}"  />
                     </StackPanel>
                 </Border>
 
                 <Border Style="{StaticResource borderstyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label 
-                            x:Name="lblAddr" 
+                            x:Name="lblPosition" 
                             Style="{StaticResource lblstyle}"
-                            Content="주　　　　소" />
+                            Content="직           급" />
                         <TextBox 
-                            x:Name="tbAddr" 
+                            x:Name="tbPosition" 
                             Style="{StaticResource tbstyle}"
-                            Text="{Binding addr}"  />
+                            Text="{Binding position}"  />
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource borderstyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label
-                                x:Name="lblPhone" 
+                                x:Name="lblDeptnum" 
                                 Style="{StaticResource lblstyle}"
-                                Content="연　  락 　처" />
+                                Content="부  서  번  호" />
                         <TextBox 
-                                x:Name="tbPhone"
+                                x:Name="tbDeptnum"
                                 Style="{StaticResource tbstyle}"
-                                Text="{Binding phone}"  />
+                                Text="{Binding deptnum}"  />
                     </StackPanel>
                 </Border>
 
@@ -138,7 +149,7 @@
                         FontSize="20"
                         HorizontalAlignment="Center"
                         CornerRadius="10"
-                        Command="{Binding AddPatient}" />
+                        Command="{Binding AddAdmin}" />
             </StackPanel>
         </StackPanel>
 
@@ -156,6 +167,7 @@
                     FontSize="16" FontWeight="Bold"
                     Content="조회"
                     CornerRadius="10"
+                    DataContext="{StaticResource AdminInsertPtViewModel}"
                     Command="{Binding LoadPatient}"/>
                 </StackPanel>
 
@@ -195,8 +207,8 @@
                     </ListView.View>
                 </ListView>
             </StackPanel>
-            
-            
+
+
             <!-- inquire Admin List-->
             <StackPanel Height="300">
                 <StackPanel Orientation="Horizontal">
@@ -207,18 +219,57 @@
                     FontSize="16" FontWeight="Bold"
                     Content="조회"
                     CornerRadius="10"
+<<<<<<< Updated upstream
                     DataContext="{StaticResource AdminInsertPtViewModel}"
+=======
+<<<<<<< HEAD
+                    DataContext="{StaticResource InsertAdminViewModel}"
+=======
+                    DataContext="{StaticResource AdminInsertPtViewModel}"
+>>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
+>>>>>>> Stashed changes
                     Command="{Binding LoadAdmin}"/>
                 </StackPanel>
 
                 <ListView 
                     Width="550" Height="240" Margin="10" FontSize="14"
+<<<<<<< Updated upstream
                     DataContext="{StaticResource AdminInsertPtViewModel}"
                     ItemsSource="{Binding SampleAdmins, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+=======
+<<<<<<< HEAD
+                    DataContext="{StaticResource InsertAdminViewModel}"
+                    ItemsSource="{Binding SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+=======
+                    DataContext="{StaticResource AdminInsertPtViewModel}"
+                    ItemsSource="{Binding SampleAdmins, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+>>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
+>>>>>>> Stashed changes
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     ScrollViewer.CanContentScroll="False">
                     <ListView.View>
                         <GridView>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+                            <GridViewColumn DisplayMemberBinding="{Binding License}"
+                            Width="120"
+                            Header="등록번호" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                            Width="100"
+                            Header="이름" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Email}"
+                            Width="180"
+                            Header="이메일" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Position}"
+                            Width="50"
+                            Header="직급" />
+                            <GridViewColumn DisplayMemberBinding="{Binding DeptNum}"
+                            Width="80"
+                            Header="부서번호" />
+                            
+=======
+>>>>>>> Stashed changes
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding DrLicense}"
                                 Width="80"
@@ -239,11 +290,15 @@
                                 DisplayMemberBinding="{Binding DrEmail}"
                                 Width="160"
                                 Header="이메일" />
+<<<<<<< Updated upstream
+=======
+>>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
+>>>>>>> Stashed changes
                         </GridView>
                     </ListView.View>
                 </ListView>
             </StackPanel>
-            
+
         </StackPanel>
     </Grid>
 </UserControl>
