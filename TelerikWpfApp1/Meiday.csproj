@@ -145,6 +145,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Log.cs" />
+    <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\DataPoint.cs" />
     <Compile Include="Model\PatientModel.cs" />
     <Compile Include="Model\PharModel.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="ViewModel\AccidentViewModel.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
+    <Compile Include="ViewModel\InsertAdminViewModel.cs" />
     <Compile Include="ViewModel\Week_Chart_dataViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
