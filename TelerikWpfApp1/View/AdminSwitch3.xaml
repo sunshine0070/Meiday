@@ -80,21 +80,9 @@
                         <Label
                                 x:Name="lblAge"
                                 Style="{StaticResource lblstyle}"
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
                                 Content="등  록  번  호" />
-=======
->>>>>>> Stashed changes
-<<<<<<< Updated upstream
                                 Content="나　　　　이" />
-=======
                                 Content="면  허  번  호" />
->>>>>>> Stashed changes
-<<<<<<< Updated upstream
-=======
->>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
->>>>>>> Stashed changes
                         <TextBox 
                                 x:Name="tbLicense"
                                 Style="{StaticResource tbstyle}"
@@ -219,39 +207,22 @@
                     FontSize="16" FontWeight="Bold"
                     Content="조회"
                     CornerRadius="10"
-<<<<<<< Updated upstream
                     DataContext="{StaticResource AdminInsertPtViewModel}"
-=======
-<<<<<<< HEAD
                     DataContext="{StaticResource InsertAdminViewModel}"
-=======
                     DataContext="{StaticResource AdminInsertPtViewModel}"
->>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
->>>>>>> Stashed changes
                     Command="{Binding LoadAdmin}"/>
                 </StackPanel>
 
                 <ListView 
                     Width="550" Height="240" Margin="10" FontSize="14"
-<<<<<<< Updated upstream
                     DataContext="{StaticResource AdminInsertPtViewModel}"
                     ItemsSource="{Binding SampleAdmins, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
-=======
-<<<<<<< HEAD
                     DataContext="{StaticResource InsertAdminViewModel}"
                     ItemsSource="{Binding SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
-=======
-                    DataContext="{StaticResource AdminInsertPtViewModel}"
-                    ItemsSource="{Binding SampleAdmins, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
->>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
->>>>>>> Stashed changes
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     ScrollViewer.CanContentScroll="False">
                     <ListView.View>
                         <GridView>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
                             <GridViewColumn DisplayMemberBinding="{Binding License}"
                             Width="120"
                             Header="등록번호" />
@@ -268,8 +239,6 @@
                             Width="80"
                             Header="부서번호" />
                             
-=======
->>>>>>> Stashed changes
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding DrLicense}"
                                 Width="80"
@@ -290,10 +259,6 @@
                                 DisplayMemberBinding="{Binding DrEmail}"
                                 Width="160"
                                 Header="이메일" />
-<<<<<<< Updated upstream
-=======
->>>>>>> 83e876e9809edb8bdcfed4486f3c7b5bd298e62e
->>>>>>> Stashed changes
                         </GridView>
                     </ListView.View>
                 </ListView>
