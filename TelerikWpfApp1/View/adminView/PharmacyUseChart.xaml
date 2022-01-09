@@ -19,21 +19,23 @@
                            HorizontalAlignment="Left" Foreground="Gray"
                            FontSize="17" FontWeight="Bold"/>
             </dxc:ChartControl.Titles>
-              <dxc:XYDiagram2D>
+              <dxc:XYDiagram2D FontWeight="Bold" FontStyle="Normal" Foreground="gray">
                 <dxc:BarSideBySideSeries2D 
                                            DisplayName="pharmacy_name" 
                                            ArgumentDataMember="pharmacy_name" 
                                            ValueDataMember="Value" 
                                            CrosshairLabelPattern="{}{A} {V}건"
                                            ShowInLegend="False" 
-                                           BarWidth="0.7"/>
-
+                                           BarWidth="0.7"
+                                           FontSize="13"
+                                           />
+    
                 <dxc:XYDiagram2D.AxisX>
                         <dxc:AxisX2D>
                             <dxc:AxisX2D.QualitativeScaleOptions>
                                 <dxc:QualitativeScaleOptions 
-                                    AutoGrid="False" GridSpacing="1" />
-                            </dxc:AxisX2D.QualitativeScaleOptions>
+                                    AutoGrid="False" GridSpacing="1"/>
+                        </dxc:AxisX2D.QualitativeScaleOptions>
                         </dxc:AxisX2D>
 
                     </dxc:XYDiagram2D.AxisX>

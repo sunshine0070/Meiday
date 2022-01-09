@@ -139,16 +139,6 @@
                             />
                 </StackPanel>
             </Grid>
-            <Grid Height="45">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resource/admin_images/bill.png" Width="24" Height="24" Margin="20,0,0,0"/>
-                    <Button Content="Billing" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" 
-                            HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" 
-                            Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  Foreground="#FF5B5A5A"
-                            Command="{Binding SwitchViewCommand}" CommandParameter="4"
-                            />
-                </StackPanel>
-            </Grid>
             <Grid Height="45"></Grid>
             <Grid Height="45"></Grid>
             <Grid Height="45"></Grid>
@@ -178,9 +168,6 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="3">
                             <Setter Property="ContentTemplate" Value="{StaticResource adminSwitch3}" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding SwitchView}" Value="4">
-                            <Setter Property="ContentTemplate" Value="{StaticResource adminSwitch4}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="5">
                             <Setter Property="ContentTemplate" Value="{StaticResource adminLogControl}" />

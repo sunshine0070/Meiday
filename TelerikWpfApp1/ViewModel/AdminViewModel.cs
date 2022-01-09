@@ -60,11 +60,6 @@ namespace Meiday.ViewModel
                 SwitchView = 3;
                 SessionTimer_Reset();
             }
-            else if (SwitchView == 4)
-            {
-                SwitchView = 4;
-                SessionTimer_Reset();
-            }
         }
 
         DispatcherTimer adminsessionTimer = new DispatcherTimer();
