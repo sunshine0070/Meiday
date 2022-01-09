@@ -79,7 +79,11 @@
                         <Label
                                 x:Name="lblAge"
                                 Style="{StaticResource lblstyle}"
+<<<<<<< Updated upstream
                                 Content="나　　　　이" />
+=======
+                                Content="면  허  번  호" />
+>>>>>>> Stashed changes
                         <TextBox 
                                 x:Name="tbAge"
                                 Style="{StaticResource tbstyle}"
@@ -141,7 +145,7 @@
 
         <StackPanel 
             Grid.Column="1"
-            Margin="10">
+            Margin="20">
             <!-- inquire Admin List-->
             <StackPanel Height="300">
                 <StackPanel Orientation="Horizontal">
@@ -165,21 +169,27 @@
                         <GridView>
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding IdNum}"
+                                Width="70"
                                 Header="등록번호" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding Name}"
+                                Width="60"
                                 Header="이름" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding Age}"
+                                Width="40"
                                 Header="나이" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding RegNum}"
+                                Width="130"
                                 Header="주민등록번호" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding Phone}"
+                                Width="120"
                                 Header="연락처" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding Addr}"
+                                Width="100"
                                 Header="주소" />
                         </GridView>
                     </ListView.View>
@@ -190,42 +200,45 @@
             <!-- inquire Admin List-->
             <StackPanel Height="300">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="30 10 280 10"  Foreground="Black"
+                    <TextBlock Margin="30 20 280 10"  Foreground="Black"
                     FontSize="24" FontWeight="Bold"
                     Text="관리자 리스트" />
                     <telerik:RadButton Width="100" Height="30"
                     FontSize="16" FontWeight="Bold"
                     Content="조회"
                     CornerRadius="10"
-                    Command="{Binding LoadPatient}"/>
+                    DataContext="{StaticResource AdminInsertPtViewModel}"
+                    Command="{Binding LoadAdmin}"/>
                 </StackPanel>
 
                 <ListView 
                     Width="550" Height="240" Margin="10" FontSize="14"
                     DataContext="{StaticResource AdminInsertPtViewModel}"
-                    ItemsSource="{Binding SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+                    ItemsSource="{Binding SampleAdmins, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     ScrollViewer.CanContentScroll="False">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding IdNum}"
-                            Width="60"
-                            Header="등록번호" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Name}"
-                            Width="60"
-                            Header="이름" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Age}"
-                            Width="50"
-                            Header="나이" />
-                            <GridViewColumn DisplayMemberBinding="{Binding RegNum}"
-                            Width="120"
-                            Header="주민등록번호" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Phone}"
-                            Width="110"
-                            Header="연락처" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Addr}"
-                            Width="80"
-                            Header="주소" />
+                            <GridViewColumn 
+                                DisplayMemberBinding="{Binding DrLicense}"
+                                Width="80"
+                                Header="면허번호" />
+                            <GridViewColumn 
+                                DisplayMemberBinding="{Binding DrName}"
+                                Width="60"
+                                Header="이름" />
+                            <GridViewColumn 
+                                DisplayMemberBinding="{Binding DrDeptName}"
+                                Width="100"
+                                Header="부서" />
+                            <GridViewColumn 
+                                DisplayMemberBinding="{Binding DrPosition}"
+                                Width="80"
+                                Header="직급" />
+                            <GridViewColumn 
+                                DisplayMemberBinding="{Binding DrEmail}"
+                                Width="160"
+                                Header="이메일" />
                         </GridView>
                     </ListView.View>
                 </ListView>

@@ -10,10 +10,10 @@ namespace Meiday.Model
 {
     public class AdminModel
     {
-        public string Name { get; set; }
-        public string Position { get; set; }
-        public string License { get; set; }
-        public string Email { get; set; }
-        public string Deptnum { get; set; }
+        public string DrName { get; set; }
+        public string DrPosition { get; set; }
+        public string DrLicense { get; set; }
+        public string DrEmail { get; set; }
+        public string DrDeptName { get; set; }
     }
 }

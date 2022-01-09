@@ -121,11 +121,11 @@ namespace Meiday.ViewModel
                 {
                     AdminModel obj = new AdminModel
                     {
-                        License = ds.Tables[0].Rows[idx]["DR_LICENSE"].ToString(),
-                        Name = ds.Tables[0].Rows[idx]["dr_name"].ToString(),
-                        Email = ds.Tables[0].Rows[idx]["DR_EMAIL"].ToString(),
-                        Position = ds.Tables[0].Rows[idx]["DR_POSITION"].ToString(),
-                        Deptnum = ds.Tables[0].Rows[idx]["DR_DEPTNUM"].ToString(),
+                        DrLicense = ds.Tables[0].Rows[idx]["DR_LICENSE"].ToString(),
+                        DrName = ds.Tables[0].Rows[idx]["dr_name"].ToString(),
+                        DrEmail = ds.Tables[0].Rows[idx]["DR_EMAIL"].ToString(),
+                        DrPosition = ds.Tables[0].Rows[idx]["DR_POSITION"].ToString(),
+                        DrDeptName = ds.Tables[0].Rows[idx]["DR_DEPTNUM"].ToString(),
                     };
                     SampleDatas1.Add(obj);
                 }
@@ -143,11 +143,11 @@ namespace Meiday.ViewModel
             {
                 AdminModel p = new AdminModel()
                 {
-                    License = this.license,
-                    Name = this.name,
-                    Email = this.email,
-                    Position = this.position,
-                    Deptnum = this.deptnum,
+                    DrLicense = this.license,
+                    DrName = this.name,
+                    DrEmail = this.email,
+                    DrPosition = this.position,
+                    DrDeptName = this.deptnum,
                 };
                 if (this.name != null && this.email != null && this.position != null && this.deptnum != null)
                 {

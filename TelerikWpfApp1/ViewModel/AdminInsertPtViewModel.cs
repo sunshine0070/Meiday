@@ -106,14 +106,89 @@ namespace Meiday.ViewModel
             }
         }
 
+        private string adminLicense;
+        public string AdminLicense
+        {
+            get => adminLicense;
+            set
+            {
+                Log.Debug("AdminLicense");
+                adminLicense = value;
+                OnPropertyChanged("AdminLicense");
+            }
+        }
+        private string drName;
+        public string DrName
+        {
+            get => drName;
+            set
+            {
+                Log.Debug("DrName");
+                drName = value;
+                OnPropertyChanged("DrName");
+            }
+        }
+        private string drDeptName;
+        public string DrDeptName
+        {
+            get => drDeptName;
+            set
+            {
+                Log.Debug("DrDeptName");
+                drDeptName = value;
+                OnPropertyChanged("DrDeptName");
+            }
+        }
+        private string drPosition;
+        public string DrPosition
+        {
+            get => drPosition;
+            set
+            {
+                Log.Debug("DrPosition");
+                drPosition = value;
+                OnPropertyChanged("DrPosition");
+            }
+        }
+        private string drEmail;
+        public string DrEmail
+        {
+            get => drEmail;
+            set
+            {
+                Log.Debug("DrEmail");
+                drEmail = value;
+                OnPropertyChanged("DrEmail");
+            }
+        }
+
+        ObservableCollection<AdminModel> _sampleAdmins = null;
+        public ObservableCollection<AdminModel> SampleAdmins
+        {
+            get
+            {
+                if (_sampleAdmins == null)
+                {
+                    _sampleAdmins = new ObservableCollection<AdminModel>();
+                }
+                return _sampleAdmins;
+            }
+            set
+            {
+                Log.Debug("SampleAdmins");
+                _sampleAdmins = value;
+            }
+        }
+
         public RelayCommand AddPatient { get; set; }
         public RelayCommand LoadPatient { get; set; }
-
+        public RelayCommand LoadAdmin { get; set; }
         public AdminInsertPtViewModel()
         {
             Log.Debug("AdminInsertPtViewModel");
             AddPatient = new RelayCommand(AddNewPatient);
             LoadPatient = new RelayCommand(DataSearch);
+            LoadAdmin = new RelayCommand(AdminSearch);
         }
 
         private void DataSearch()
@@ -121,9 +196,9 @@ namespace Meiday.ViewModel
             try
             {
                 DataSet ds = new DataSet();
-                string query2 = @"SELECT pt_idnum, pt_age, pt_regnum, pt_phone, pt_addr, pt_name
-                            FROM     patient
-                            ORDER BY pt_idnum DESC";
+                string query2 = @"SELECT   pt_idnum, pt_age, pt_regnum, pt_phone, pt_addr, pt_name
+                                  FROM     patient
+                                  ORDER BY pt_idnum DESC";
 
                 OracleDBManager.Instance.ExecuteDsQuery(ds, query2);
 
@@ -146,6 +221,41 @@ namespace Meiday.ViewModel
                 Log.Fatal(ex, "DataSearch");
             }
             
+        }
+
+        private void AdminSearch()
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                string query2 = @"SELECT a.DR_LICENSE, 
+                                         a.DR_NAME, 
+                                         b.DR_DEPTNAME, 
+                                         a.DR_POSITION, 
+                                         a.DR_EMAIL
+                                  FROM   DOCTOR     a, 
+                                         DEPARTMENT b 
+                                  WHERE  a.DR_DEPTNUM=b.DR_DEPTNUM";
+
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query2);
+
+                for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
+                {
+                    AdminModel obj = new AdminModel
+                    {
+                        DrLicense = ds.Tables[0].Rows[idx]["DR_LICENSE"].ToString(),
+                        DrName = ds.Tables[0].Rows[idx]["DR_NAME"].ToString(),
+                        DrDeptName = ds.Tables[0].Rows[idx]["DR_DEPTNAME"].ToString(),
+                        DrPosition = ds.Tables[0].Rows[idx]["DR_POSITION"].ToString(),
+                        DrEmail = ds.Tables[0].Rows[idx]["DR_EMAIL"].ToString(),
+                    };
+                    SampleAdmins.Add(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "DataSearch");
+            }
         }
 
         private void AddNewPatient()
