@@ -15,7 +15,7 @@
     <Grid>
         <dxc:ChartControl HorizontalAlignment="Center" Height="200" VerticalAlignment="Bottom" Width="470" DataSource="{Binding Dep_Ages2}" Margin="0,0,0,0">
             <dxc:ChartControl.Legends>
-                <dxc:Legend HorizontalPosition="Right" VerticalPosition="Center">
+                <dxc:Legend HorizontalPosition="RightOutside" VerticalPosition="Center">
                     <dxc:Legend.Title>
                         <dxc:LegendTitle Content="연령" Visible="true"/>
                     </dxc:Legend.Title>
@@ -28,14 +28,9 @@
             </dxc:ChartControl.Titles>
             <dxc:SimpleDiagram2D Dimension="1" LayoutDirection="Horizontal">
                 <dxc:PieSeries2D x:Name="Series" 
-                                 DisplayName="Sales"
-                                 ArgumentDataMember="dep_Ages" 
-                                 ValueDataMember="dep_count"
-                                 LabelsVisibility="True"
-                                 LegendTextPattern="{}  {A}  :  {V}명"
-                                 HoleRadiusPercent="50">
+                                 ArgumentDataMember="dep_Ages" DisplayName="Sales" HoleRadiusPercent="50" LegendTextPattern="  {A}  :  {V}명" LabelsVisibility="true" ValueDataMember="dep_count">
                     <dxc:PieSeries2D.TotalLabel>
-                        <dxc:PieTotalLabel TextPattern="Total:&#x0a;{TV}명"/>
+                        <dxc:PieTotalLabel TextPattern="Total:&#xD;&#xA;{TV}명"/>
                     </dxc:PieSeries2D.TotalLabel>
                 </dxc:PieSeries2D>
             </dxc:SimpleDiagram2D>
