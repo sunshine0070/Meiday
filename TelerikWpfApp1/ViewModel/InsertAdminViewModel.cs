@@ -110,6 +110,7 @@ namespace Meiday.ViewModel
         {
             try
             {
+                SampleDatas.Clear();
                 DataSet ds = new DataSet();
                 string query2 = @"SELECT DR_LICENSE, DR_NAME, DR_EMAIL, DR_POSITION, DR_DEPTNUM
                             FROM     DOCTOR
@@ -128,6 +129,7 @@ namespace Meiday.ViewModel
                         Deptnum = ds.Tables[0].Rows[idx]["DR_DEPTNUM"].ToString(),
                     };
                     SampleDatas.Add(obj);
+
                 }
             }
             catch (Exception ex)
@@ -136,6 +138,7 @@ namespace Meiday.ViewModel
             }
 
         }
+
 
         private void AddNewAdmin()
         {

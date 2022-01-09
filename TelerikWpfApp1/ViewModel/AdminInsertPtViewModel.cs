@@ -120,6 +120,7 @@ namespace Meiday.ViewModel
         {
             try
             {
+                SampleDatas.Clear();
                 DataSet ds = new DataSet();
                 string query2 = @"SELECT pt_idnum, pt_age, pt_regnum, pt_phone, pt_addr, pt_name
                             FROM     patient
