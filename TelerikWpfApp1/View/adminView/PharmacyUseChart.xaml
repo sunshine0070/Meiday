@@ -17,31 +17,18 @@
             <dxc:ChartControl.Titles>
                 <dxc:Title Content="약국 접수현황" 
                            HorizontalAlignment="Left" Foreground="Gray"
-                           FontSize="17" FontWeight="Bold"
-                           />
+                           FontSize="17" FontWeight="Bold"/>
             </dxc:ChartControl.Titles>
-            <dxc:ChartControl.Legends>
-                <dxc:Legend BorderBrush="Blue"/>
-            </dxc:ChartControl.Legends>
-
-              <dxc:XYDiagram2D SeriesItemsSource="{Binding pharmacyData}">
-                  
-                    <dxc:BarSideBySideSeries2D 
+              <dxc:XYDiagram2D>
+                <dxc:BarSideBySideSeries2D 
+                                           DisplayName="pharmacy_name" 
                                            ArgumentDataMember="pharmacy_name" 
                                            ValueDataMember="Value" 
-                                           DisplayName="pharmacy_name" 
                                            CrosshairLabelPattern="{}{A} {V}건"
-                                           LegendTextPattern="{}{A}"
                                            ShowInLegend="False" 
-                                           BarWidth="0.7"
-                                           >
-                        
-                        <dxc:BarSideBySideSeries2D.Model>
-                            <dxc:BorderlessSimpleBar2DModel/>
-                        </dxc:BarSideBySideSeries2D.Model>
-                    </dxc:BarSideBySideSeries2D>
+                                           BarWidth="0.7"/>
 
-                    <dxc:XYDiagram2D.AxisX>
+                <dxc:XYDiagram2D.AxisX>
                         <dxc:AxisX2D>
                             <dxc:AxisX2D.QualitativeScaleOptions>
                                 <dxc:QualitativeScaleOptions 
@@ -54,8 +41,8 @@
                 </dxc:XYDiagram2D>
 
             <dxc:ChartControl.CrosshairOptions>
-                <dxc:CrosshairOptions ShowArgumentLabels="True" 
-                                      ShowValueLabels="True" 
+                <dxc:CrosshairOptions ShowArgumentLabels="False" 
+                                      ShowValueLabels="False" 
                                       ShowValueLine="True"
                                       ShowCrosshairLabels="True"
                                       ArgumentLineBrush="Orange"

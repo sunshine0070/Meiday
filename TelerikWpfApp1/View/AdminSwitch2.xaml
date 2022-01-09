@@ -19,8 +19,8 @@
         <!--약국 현황 막대그래프-->
         <view:PharmacyUseChart HorizontalAlignment="Left" Height="300" Width="1000" Margin="25,350,0,0" VerticalAlignment="Top" BorderThickness="0" />
 
-
         <!-- ERROR,FATAL 로그 리스트 출력 파트 -->
-    
+        <view:LogIsuueList HorizontalAlignment="Left" Height="300" Width="500" Margin="525,70,0,0" VerticalAlignment="Top" BorderThickness="0" />
+
     </Grid>
 </UserControl>

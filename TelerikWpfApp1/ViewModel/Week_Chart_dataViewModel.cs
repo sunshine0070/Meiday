@@ -26,7 +26,6 @@ namespace Meiday.ViewModel
                     string query = @" SELECT COUNT(*) 갯수 , A 날짜, BB,
                                 CASE WHEN BB = '1' OR BB = '3' THEN '남자'
                                      WHEN BB = '2' OR BB = '4' THEN '여자'
-
                                                    ELSE '미정'
                                 END AS                   성별
                               FROM (

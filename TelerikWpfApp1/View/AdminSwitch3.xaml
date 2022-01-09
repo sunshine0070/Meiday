@@ -140,7 +140,6 @@
             </StackPanel>
         </StackPanel>
 
-
         <StackPanel 
             Grid.Column="1"
             Margin="10">

@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Meiday.View.adminView.LogIsuueList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Meiday.View.adminView" 
+             xmlns:viewModel="clr-namespace:Meiday.ViewModel.adminViewModel"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500" Background="WhiteSmoke">
+    <UserControl.DataContext>
+        <viewModel:LogIssueViewModel/>
+    </UserControl.DataContext>
+
+    <StackPanel Height="300">
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0 10 320 10"  Foreground="Gray"
+                    FontSize="17" FontWeight="Bold"
+                    Text="로그 이슈" />
+                <telerik:RadButton Width="100" Height="30"
+                    FontSize="17" FontWeight="Bold"
+                    Content="조회"
+                    CornerRadius="10"
+                    Command="{Binding LoadLog}"/>
+            </StackPanel>
+
+            <ListView 
+                    Width="480" Height="240" Margin="5" FontSize="12"
+                    ItemsSource="{Binding LogDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    ScrollViewer.CanContentScroll="True" Foreground="Red" HorizontalAlignment="Center">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="45" 
+                                DisplayMemberBinding="{Binding Log_no}"
+                                Header="번호" />
+                        <GridViewColumn Width="45"
+                                DisplayMemberBinding="{Binding Log_level}"
+                                Header="레벨" />
+                        <GridViewColumn Width="120"
+                                DisplayMemberBinding="{Binding Log_class}"
+                                Header="CLASS" />
+                        <GridViewColumn Width="95"
+                                DisplayMemberBinding="{Binding Log_ip}"
+                                Header="ip" />
+                        <GridViewColumn Width="135"
+                                DisplayMemberBinding="{Binding Log_date}"
+                                Header="날짜" />
+                        <GridViewColumn Width="55"
+                                DisplayMemberBinding="{Binding Patient_id}"
+                                Header="환자번호" />
+                        <GridViewColumn Width="50"
+                                DisplayMemberBinding="{Binding Log_method}"
+                                Header="Method" />
+                </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        
+</UserControl>
