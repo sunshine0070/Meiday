@@ -71,6 +71,7 @@
                         <TextBox
                                 x:Name="tbName" 
                                 Style="{StaticResource tbstyle}"
+                                
                                 Text="{Binding name}" />
                     </StackPanel>
                 </Border>
@@ -160,7 +161,7 @@
                 <ListView 
                     Width="550" Height="240" Margin="10" FontSize="16"
                     DataContext="{StaticResource AdminInsertPtViewModel}"
-                    ItemsSource="{Binding SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
+                    ItemsSource="{Binding Path=SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     ScrollViewer.CanContentScroll="False">
                     <ListView.View>
@@ -212,10 +213,11 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding License}"
-                            Width="120"
-                            Header="등록번호" />
+                            Width="70"
+                            Header="등록번호"
+                            />
                             <GridViewColumn DisplayMemberBinding="{Binding Name}"
-                            Width="100"
+                            Width="50"
                             Header="이름" />
                             <GridViewColumn DisplayMemberBinding="{Binding Email}"
                             Width="180"
@@ -223,7 +225,7 @@
                             <GridViewColumn DisplayMemberBinding="{Binding Position}"
                             Width="50"
                             Header="직급" />
-                            <GridViewColumn DisplayMemberBinding="{Binding DeptNum}"
+                            <GridViewColumn DisplayMemberBinding="{Binding Deptnum}"
                             Width="80"
                             Header="부서번호" />
                             
