@@ -10,11 +10,14 @@
              d:DesignHeight="230" d:DesignWidth="470">
     <Grid>
         <dx:DXTabControl>
-            <dx:DXTabItem x:Name="chart1" Header="막대차트">
+            <dx:DXTabItem x:Name="chart1" Header="내과">
                 <uc:Admin_Chart_Dep_per_Ages></uc:Admin_Chart_Dep_per_Ages>
             </dx:DXTabItem>
-            <dx:DXTabItem x:Name="chart2" Header="도넛차트">
-                <uc:Admin_Chart_Dep_per_Ages></uc:Admin_Chart_Dep_per_Ages>
+            <dx:DXTabItem x:Name="chart2" Header="안과">
+                <uc:Admin_Chart_Dep_per_Ages1></uc:Admin_Chart_Dep_per_Ages1>
+            </dx:DXTabItem>
+            <dx:DXTabItem x:Name="chart3" Header="순환기내과">
+                <uc:Admin_Chart_Dep_per_Ages2></uc:Admin_Chart_Dep_per_Ages2>
             </dx:DXTabItem>
         </dx:DXTabControl>
     </Grid>

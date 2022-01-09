@@ -181,6 +181,12 @@
     <Compile Include="View\Admin_Chart_Dep_per_Ages.xaml.cs">
       <DependentUpon>Admin_Chart_Dep_per_Ages.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin_Chart_Dep_per_Ages1.xaml.cs">
+      <DependentUpon>Admin_Chart_Dep_per_Ages1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin_Chart_Dep_per_Ages2.xaml.cs">
+      <DependentUpon>Admin_Chart_Dep_per_Ages2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin_Chart_TabControl.xaml.cs">
       <DependentUpon>Admin_Chart_TabControl.xaml</DependentUpon>
     </Compile>
@@ -306,6 +312,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin_Chart_Dep_per_Ages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin_Chart_Dep_per_Ages1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin_Chart_Dep_per_Ages2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
