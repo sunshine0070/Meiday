@@ -7,13 +7,13 @@
              xmlns:ViewModel="clr-namespace:Meiday.ViewModel"
              xmlns:local="clr-namespace:Meiday.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="230" d:DesignWidth="470">
 
     <UserControl.DataContext>
         <ViewModel:Dep_per_Ages/>
     </UserControl.DataContext>
     <Grid>
-        <dxc:ChartControl HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="710" DataSource="{Binding Dep_Ages}" Margin="0,-60,0,0">
+        <dxc:ChartControl HorizontalAlignment="Center" Height="200" VerticalAlignment="Bottom" Width="470" DataSource="{Binding Dep_Ages}" Margin="0,0,0,0">
             <dxc:ChartControl.Legends>
                 <dxc:Legend HorizontalPosition="Right" VerticalPosition="Top">
                     <dxc:Legend.Title>
