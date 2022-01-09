@@ -141,7 +141,7 @@ namespace Meiday.ViewModel
         {
             try
             {
-                AdminModel p = new AdminModel()
+                AdminModel a = new AdminModel()
                 {
                     License = this.license,
                     Name = this.name,
@@ -173,9 +173,10 @@ namespace Meiday.ViewModel
                     }
                     else
                     {
+                        
                         string query = @"MERGE INTO DOCTOR USING dual ON (DR_LICENSE = '#License') 
-                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_EMail = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
-                                WHEN NOT MATCHED THEN INSERT (DR_NAME,DR_EMail,DR_POSITION,DR_DEPTNUM) VALUES ('#Name', '#Email', '#Position', '#Deptnum') ";
+                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
+                                WHEN NOT MATCHED THEN INSERT (DR_LICENSE,DR_NAME,DR_EMail,DR_POSITION,DR_DEPTNUM) VALUES ('#License', '#Name', '#Email', '#Position', '#Deptnum') ";
                         string query1 = @"commit";
                         query = query.Replace("#License", this.license);
                         query = query.Replace("#Name", this.name);
