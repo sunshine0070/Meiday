@@ -64,7 +64,6 @@
     <Reference Include="DevExpress.Mvvm.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Charts.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Controls.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Core.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Dashboard.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.DataAccess.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Printing.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -152,7 +151,6 @@
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
     <Compile Include="ViewModel\AccidentViewModel.cs" />
-    <Compile Include="ViewModel\AdminChart_Dep_per_Ages.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\InsertAdminViewModel.cs" />
@@ -177,12 +175,6 @@
     </Compile>
     <Compile Include="View\AdminSwitch4.xaml.cs">
       <DependentUpon>AdminSwitch4.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Admin_Chart_Tabcontrol.xaml.cs">
-      <DependentUpon>Admin_Chart_Tabcontrol.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Admin_Dep_per_Ages.xaml.cs">
-      <DependentUpon>Admin_Dep_per_Ages.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Chart_Week_Total.xaml.cs">
       <DependentUpon>Chart_Week_Total.xaml</DependentUpon>
@@ -302,14 +294,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AdminSwitch4.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Admin_Chart_Tabcontrol.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Admin_Dep_per_Ages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
