@@ -29,7 +29,7 @@
 
         <local:Chart_Week_Total HorizontalAlignment="Left" Height="230" Margin="26,393,0,0" VerticalAlignment="Top" Width="470"/>
 
-        <local:Chart_Week_Total HorizontalAlignment="Left" Height="230" Margin="26,393,0,0" VerticalAlignment="Top" Width="470"/>
+        <local:Admin_Chart_TabControl HorizontalAlignment="Left" Height="230" Margin="526,393,0,0" VerticalAlignment="Top" Width="500"/>
 
         <Image HorizontalAlignment="Left" Height="200" Margin="45,141,0,0" Width="600"  VerticalAlignment="Top" Source="/Resource/admin_images/chart2.png" RenderTransformOrigin="0.511,0.512" Stretch="Fill" />
     </Grid>
