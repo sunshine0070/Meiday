@@ -64,6 +64,7 @@
     <Reference Include="DevExpress.Mvvm.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Charts.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Controls.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Dashboard.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.DataAccess.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Printing.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -151,9 +152,19 @@
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
     <Compile Include="ViewModel\AccidentViewModel.cs" />
+    <Compile Include="ViewModel\AdminChart_Dep_per_Ages.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
+<<<<<<< Updated upstream
     <Compile Include="ViewModel\InsertAdminViewModel.cs" />
+=======
+<<<<<<< HEAD
+    <Compile Include="ViewModel\adminViewModel\InsuranceUseViewModel.cs" />
+    <Compile Include="ViewModel\adminViewModel\PharmacyUseViewModel.cs" />
+=======
+    <Compile Include="ViewModel\InsertAdminViewModel.cs" />
+>>>>>>> 2e9edc638300b8504f480f94c23931b942958457
+>>>>>>> Stashed changes
     <Compile Include="ViewModel\Week_Chart_dataViewModel.cs" />
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
@@ -175,6 +186,26 @@
     </Compile>
     <Compile Include="View\AdminSwitch4.xaml.cs">
       <DependentUpon>AdminSwitch4.xaml</DependentUpon>
+    </Compile>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    <Compile Include="View\adminView\InsuranceUseChart.xaml.cs">
+      <DependentUpon>InsuranceUseChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\adminView\pharmacyUseChart.xaml.cs">
+      <DependentUpon>pharmacyUseChart.xaml</DependentUpon>
+=======
+>>>>>>> Stashed changes
+    <Compile Include="View\Admin_Chart_Tabcontrol.xaml.cs">
+      <DependentUpon>Admin_Chart_Tabcontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin_Dep_per_Ages.xaml.cs">
+      <DependentUpon>Admin_Dep_per_Ages.xaml</DependentUpon>
+<<<<<<< Updated upstream
+=======
+>>>>>>> 2e9edc638300b8504f480f94c23931b942958457
+>>>>>>> Stashed changes
     </Compile>
     <Compile Include="View\Chart_Week_Total.xaml.cs">
       <DependentUpon>Chart_Week_Total.xaml</DependentUpon>
@@ -294,6 +325,28 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AdminSwitch4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    <Page Include="View\adminView\InsuranceUseChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\adminView\pharmacyUseChart.xaml">
+=======
+>>>>>>> Stashed changes
+    <Page Include="View\Admin_Chart_Tabcontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin_Dep_per_Ages.xaml">
+<<<<<<< Updated upstream
+=======
+>>>>>>> 2e9edc638300b8504f480f94c23931b942958457
+>>>>>>> Stashed changes
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
