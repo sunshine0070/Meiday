@@ -87,6 +87,7 @@
                                 x:Name="tbAge"
                                 Style="{StaticResource tbstyle}"
                                 FontSize="22"
+                                FontWeight="f"
                                 Text="{Binding age}"  />
                     </StackPanel>
                 </Border>
@@ -109,6 +110,7 @@
                         <Label 
                             x:Name="lblPosition" 
                             Style="{StaticResource lblstyle}"
+                            
                             Content="직           급" />
                         <TextBox 
                             x:Name="tbPosition" 
@@ -224,6 +226,7 @@
                     DataContext="{StaticResource InsertAdminViewModel}"
                     ItemsSource="{Binding SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    
                     ScrollViewer.CanContentScroll="False"
                    >
                     <ListView.View>
