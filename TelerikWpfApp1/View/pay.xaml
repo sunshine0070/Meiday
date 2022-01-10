@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Meiday.View"
+        xmlns:i="clr-namespace:Meiday.IconSettings"
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="pay" Height="720" Width="800">
-    <Grid>
+        Height="720" Width="800"
+        i:WindowEx.ShowIcon="False">
 
+    <Grid>
         <DockPanel>
             <wv2:WebView2 Name="webView"
                           Source="http://nicepay.azurewebsites.net" 

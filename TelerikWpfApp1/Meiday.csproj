@@ -145,6 +145,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IconSettings\WindowEx.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\DataPoint.cs" />
