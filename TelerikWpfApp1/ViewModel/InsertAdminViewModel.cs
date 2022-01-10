@@ -34,6 +34,18 @@ namespace Meiday.ViewModel
             }
         }
 
+        private string _age;
+        public string age
+        {
+            get => _age;
+            set
+            {
+                Log.Debug("age");
+                _age = value;
+                OnPropertyChanged("age");
+            }
+        }
+
         private string _email;
         public string email
         {
@@ -122,7 +134,7 @@ namespace Meiday.ViewModel
             {
                 SampleDatas.Clear();
                 DataSet ds = new DataSet();
-                string query2 = @"SELECT   a.DR_LICENSE, a.DR_NAME, a.DR_EMAIL, a.DR_POSITION, b.DR_DEPTNAME, a.DR_DEPTNUM
+                string query2 = @"SELECT   a.DR_LICENSE, a.DR_NAME,a.DR_AGE, a.DR_EMAIL, a.DR_POSITION, b.DR_DEPTNAME, a.DR_DEPTNUM
                                   FROM     DOCTOR a, DEPARTMENT b
                                   WHERE    a.dr_deptnum = b.dr_deptnum
                                   ORDER BY DR_LICENSE DESC";
@@ -135,6 +147,7 @@ namespace Meiday.ViewModel
                     {
                         License = ds.Tables[0].Rows[idx]["DR_LICENSE"].ToString(),
                         Name = ds.Tables[0].Rows[idx]["dr_name"].ToString(),
+                        Age = ds.Tables[0].Rows[idx]["dr_age"].ToString(),
                         Email = ds.Tables[0].Rows[idx]["DR_EMAIL"].ToString(),
                         Position = ds.Tables[0].Rows[idx]["DR_POSITION"].ToString(),
                         Deptname = ds.Tables[0].Rows[idx]["DR_DEPTNAME"].ToString(),
@@ -160,20 +173,22 @@ namespace Meiday.ViewModel
                 {
                     License = this.license,
                     Name = this.name,
+                    Age = this.age,
                     Email = this.email,
                     Position = this.position,
                     Deptnum = this.deptnum,
                 };
-                if (this.name != null && this.email != null && this.position != null && this.deptnum != null)
+                if (this.name != null && this.age != null && this.email != null && this.position != null && this.deptnum != null)
                 {
                     if (this.license == null)
                     {
                         string query = @"MERGE INTO DOCTOR USING dual ON (DR_LICENSE = '#License') 
-                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
-                                WHEN NOT MATCHED THEN INSERT (DR_NAME,DR_EMAIL,DR_POSITION,DR_DEPTNUM) VALUES ('#Name', '#Email', '#Position', '#Deptnum') ";
+                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_AGE = '#Age', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
+                                WHEN NOT MATCHED THEN INSERT (DR_NAME,DR_AGE,DR_EMAIL,DR_POSITION,DR_DEPTNUM) VALUES ('#Name', '#Age', '#Email', '#Position', '#Deptnum') ";
                         string query1 = @"commit";
                         query = query.Replace("#License", this.license);
                         query = query.Replace("#Name", this.name);
+                        query = query.Replace("#Age", this.age);
                         query = query.Replace("#Email", this.email);
                         query = query.Replace("#Position", this.position);
                         query = query.Replace("#Deptnum", this.deptnum);
@@ -182,19 +197,23 @@ namespace Meiday.ViewModel
 
                         this.license = string.Empty;
                         this.name = string.Empty;
+                        this.age = string.Empty;
                         this.email = string.Empty;
                         this.position = string.Empty;
                         this.deptnum = string.Empty;
+
+                        MessageBox.Show("새 관리자가 등록되었습니다");
                     }
                     else
                     {
                         
                         string query = @"MERGE INTO DOCTOR USING dual ON (DR_LICENSE = '#License') 
-                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
-                                WHEN NOT MATCHED THEN INSERT (DR_LICENSE,DR_NAME,DR_EMAIL,DR_POSITION,DR_DEPTNUM) VALUES ('#License', '#Name', '#Email', '#Position', '#Deptnum') ";
+                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_AGE = '#Age', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
+                                WHEN NOT MATCHED THEN INSERT (DR_LICENSE,DR_NAME,DR_AGE,DR_EMAIL,DR_POSITION,DR_DEPTNUM) VALUES ('#License', '#Name', '#Age', '#Email', '#Position', '#Deptnum') ";
                         string query1 = @"commit";
                         query = query.Replace("#License", this.license);
                         query = query.Replace("#Name", this.name);
+                        query = query.Replace("#Age", this.age);
                         query = query.Replace("#Email", this.email);
                         query = query.Replace("#Position", this.position);
                         query = query.Replace("#Deptnum", this.deptnum);
@@ -203,9 +222,12 @@ namespace Meiday.ViewModel
 
                         this.license = string.Empty;
                         this.name = string.Empty;
+                        this.age = string.Empty;
                         this.email = string.Empty;
                         this.position = string.Empty;
                         this.deptnum = string.Empty;
+                        MessageBox.Show("새 관리자가 등록되었습니다");
+
                     }
                 }
                 else
@@ -214,6 +236,7 @@ namespace Meiday.ViewModel
                     string result = "";
                     string last = " 을(를) 입력해주세요.";
                     if (this.name != string.Empty) { result += " 이름,"; }
+                    if (this.age != string.Empty) { result += " 나이,"; }
                     if (this.email != string.Empty) { result += " 이메일,"; }
                     if (this.position != string.Empty) { result += " 직급,"; }
                     if (this.deptnum != string.Empty) { result += " 부서번호,"; }

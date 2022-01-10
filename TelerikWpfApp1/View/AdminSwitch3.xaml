@@ -71,7 +71,8 @@
                         <TextBox
                                 x:Name="tbName" 
                                 Style="{StaticResource tbstyle}"
-                                
+                                FontSize="22"
+                                HorizontalContentAlignment='Stretch'
                                 Text="{Binding name}" />
                     </StackPanel>
                 </Border>
@@ -81,11 +82,12 @@
                         <Label
                                 x:Name="lblAge"
                                 Style="{StaticResource lblstyle}"
-                                Content="등  록  번  호" />
+                                Content="나           이" />
                         <TextBox 
-                                x:Name="tbLicense"
+                                x:Name="tbAge"
                                 Style="{StaticResource tbstyle}"
-                                Text="{Binding license}"  />
+                                FontSize="22"
+                                Text="{Binding age}"  />
                     </StackPanel>
                 </Border>
                 <Border Style="{StaticResource borderstyle}">
@@ -97,6 +99,7 @@
                         <TextBox 
                                 x:Name="tbEmail" 
                                 Style="{StaticResource tbstyle}"
+                                FontSize="22"
                                 Text="{Binding email}"  />
                     </StackPanel>
                 </Border>
@@ -110,6 +113,7 @@
                         <TextBox 
                             x:Name="tbPosition" 
                             Style="{StaticResource tbstyle}"
+                            FontSize="22"
                             Text="{Binding position}"  />
                     </StackPanel>
                 </Border>
@@ -122,6 +126,7 @@
                         <TextBox 
                                 x:Name="tbDeptnum"
                                 Style="{StaticResource tbstyle}"
+                                FontSize="22"
                                 Text="{Binding deptnum}"  />
                     </StackPanel>
                 </Border>
@@ -136,7 +141,8 @@
                         FontSize="20"
                         HorizontalAlignment="Center"
                         CornerRadius="10"
-                        Command="{Binding AddAdmin}" />
+                        Command="{Binding AddAdmin}" 
+                        />
             </StackPanel>
         </StackPanel>
 
@@ -224,21 +230,26 @@
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding License}"
                             Width="80"
-                            Header="등록번호"
-                            />
+                            Header="등록번호"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Name}"
                             Width="70"
                             Header="이름" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Age}"
+                            Width="40"
+                            Header="나이" />
                             <GridViewColumn DisplayMemberBinding="{Binding Email}"
                             Width="180"
                             Header="이메일" />
                             <GridViewColumn DisplayMemberBinding="{Binding Position}"
                             Width="80"
                             Header="직급" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Deptname}"
+                            Width="90"
+                            Header="부서" />
                             <GridViewColumn DisplayMemberBinding="{Binding Deptnum}"
                             Width="80"
-                            
                             Header="부서번호" />
+                            
                             
                         </GridView>
                     </ListView.View>
