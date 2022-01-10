@@ -141,7 +141,7 @@ namespace Meiday.ViewModel
                 }
             }
         }
-        /*private string managerimage = string.Empty;
+        private string managerimage = string.Empty;
         public string ManagerImage
         {
             get
@@ -163,6 +163,6 @@ namespace Meiday.ViewModel
                     OnPropertyChanged("ManagerImage");
                 }
             }
-        }*/
+        }
     }
 }

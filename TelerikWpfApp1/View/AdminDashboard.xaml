@@ -107,8 +107,10 @@
                 <TextBlock Text="MEIDAY" TextAlignment="Center" TextWrapping="Wrap" Padding="0,5,0,0" FontWeight="Bold" FontSize="25" Foreground="#00498c"/>
             </Grid>
             <Grid Height="150" Margin="0,0,0,0">
-                <Image Source="/Resource/admin_images/profile.png" Width="70" Height="70" Margin="0,0,0,0"/>
-                <TextBlock Text="{Binding ManagerName}" TextAlignment="Center" Padding="0,0,0,0" Margin="0,120,0,0" FontWeight="Bold" FontSize="17" Foreground="#00498c" Height="30" Width="100"/>
+                <Image Source="{Binding ManagerImage}" Width="128" Height="128" Margin="0,0,0,0"/>
+            </Grid>
+            <Grid Height="45">
+                <TextBlock Text="{Binding ManagerName}" TextAlignment="Center" Padding="0,0,0,0" Margin="0,0,0,0" FontWeight="Bold" FontSize="17" Foreground="#00498c" Height="30" Width="100"/>
             </Grid>
             <Grid Height="45" Margin="0,20,0,0">
                 <StackPanel Orientation="Horizontal">
@@ -138,7 +140,7 @@
                             Command="{Binding SwitchViewCommand}" CommandParameter="3"
                             />
                 </StackPanel>
-            </Grid>            
+            </Grid>
             <Grid Height="45">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resource/admin_images/log.png" Width="24" Height="24" Margin="20,0,0,0"/>
@@ -149,8 +151,6 @@
                             />
                 </StackPanel>
             </Grid>
-            <Grid Height="45"></Grid>
-            <Grid Height="45"></Grid>
             <Grid Height="45"></Grid>
             <Grid Height="45"></Grid>
             <Grid Height="45">
