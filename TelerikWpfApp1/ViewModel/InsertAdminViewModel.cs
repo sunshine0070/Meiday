@@ -176,7 +176,7 @@ namespace Meiday.ViewModel
                         query = query.Replace("#Name", this.name);
                         query = query.Replace("#Email", this.email);
                         query = query.Replace("#Position", this.position);
-                        query = query.Replace("#DR_DEPTNUM", this.deptnum);
+                        query = query.Replace("#Deptnum", this.deptnum);
                         OracleDBManager.Instance.ExecuteNonQuery(query);
                         OracleDBManager.Instance.ExecuteNonQuery(query1);
 
@@ -197,7 +197,7 @@ namespace Meiday.ViewModel
                         query = query.Replace("#Name", this.name);
                         query = query.Replace("#Email", this.email);
                         query = query.Replace("#Position", this.position);
-                        query = query.Replace("#DR_DEPTNUM", this.deptnum);
+                        query = query.Replace("#Deptnum", this.deptnum);
                         OracleDBManager.Instance.ExecuteNonQuery(query);
                         OracleDBManager.Instance.ExecuteNonQuery(query1);
 
