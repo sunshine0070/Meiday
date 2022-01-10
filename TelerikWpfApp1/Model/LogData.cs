@@ -33,9 +33,9 @@ namespace Meiday.Model
             }
         }
 
-        private DateTime log_date;
+        private String log_date;
 
-        public DateTime Log_date
+        public String Log_date
         {
             get { return log_date; }
             set
@@ -85,6 +85,28 @@ namespace Meiday.Model
             {
                 patient_id = value;
                 this.OnPropertyChanged("Patient_id");
+            }
+        }
+
+        private String log_etc;
+        public String Log_etc
+        {
+            get { return log_etc; }
+            set
+            {
+                log_etc = value;
+                this.OnPropertyChanged("Log_etc");
+            }
+        }
+
+        private int log_etc2;
+        public int Log_etc2
+        {
+            get { return log_etc2; }
+            set
+            {
+                log_etc2 = value;
+                this.OnPropertyChanged("Log_etc");
             }
         }
 

@@ -65,33 +65,36 @@
 
         <ListView   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
                     BorderThickness="2" Background="WhiteSmoke"
-                    Width="1050" Height="430" FontSize="15"
+                    Width="1050" Height="430" FontSize="17"
                     ItemsSource="{Binding LogDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
-                    ScrollViewer.CanContentScroll="True" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    ScrollViewer.CanContentScroll="True" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="100"
+                    <GridViewColumn Width="60" 
                                 DisplayMemberBinding="{Binding Log_no}"
                                 Header="번호" />
-                    <GridViewColumn Width="100"
+                    <GridViewColumn Width="60"
                                 DisplayMemberBinding="{Binding Log_level}"
                                 Header="레벨" />
-                    <GridViewColumn Width="150"
+                    <GridViewColumn Width="180"
                                 DisplayMemberBinding="{Binding Log_class}"
                                 Header="CLASS" />
-                    <GridViewColumn Width="150"
-                                DisplayMemberBinding="{Binding Log_ip}"
-                                Header="ip" />
-                    <GridViewColumn Width="250"
-                                DisplayMemberBinding="{Binding Log_date}"
-                                Header="날짜" />
-                    <GridViewColumn Width="100"
-                                DisplayMemberBinding="{Binding Patient_id}"
-                                Header="환자번호" />
                     <GridViewColumn Width="200"
                                 DisplayMemberBinding="{Binding Log_method}"
                                 Header="Method" />
+                    <GridViewColumn Width="150"
+                                DisplayMemberBinding="{Binding Log_ip}"
+                                Header="ip" />
+                    <GridViewColumn Width="70"
+                                DisplayMemberBinding="{Binding Patient_id}"
+                                Header="환자번호" />
+                    <GridViewColumn Width="230"
+                                DisplayMemberBinding="{Binding Log_date}"
+                                Header="날짜" />
+                    <GridViewColumn Width="100"
+                                DisplayMemberBinding="{Binding Log_etc}"
+                                Header="ETC" />
                 </GridView>
             </ListView.View>
         </ListView>

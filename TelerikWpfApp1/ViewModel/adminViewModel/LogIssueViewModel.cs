@@ -41,7 +41,7 @@ namespace Meiday.ViewModel.adminViewModel
             try
             {
                 DataSet ds = new DataSet();
-                string query2 = @"SELECT LOG_NO, LOG_LEVEL, CURRENTDATE, CLASS, ETC, IPADDRESS, PATIENT_ID
+                string query2 = @"SELECT LOG_NO, LOG_LEVEL, CURRENTDATE, CLASS, METHOD, ETC, IPADDRESS, PATIENT_ID
                                 FROM LOG 
                                 WHERE LOG_LEVEL='ERROR' OR LOG_LEVEL='FATAL' 
                                 ORDER BY LOG_NO ASC";
@@ -54,9 +54,10 @@ namespace Meiday.ViewModel.adminViewModel
                     {
                         Log_no = int.Parse(ds.Tables[0].Rows[idx]["LOG_NO"].ToString()),
                         Log_level = ds.Tables[0].Rows[idx]["LOG_LEVEL"].ToString(),
-                        Log_date = Convert.ToDateTime(ds.Tables[0].Rows[idx]["CURRENTDATE"]),
+                        Log_date = ds.Tables[0].Rows[idx]["CURRENTDATE"].ToString(),
                         Log_class = ds.Tables[0].Rows[idx]["CLASS"].ToString(),
-                        Log_method = ds.Tables[0].Rows[idx]["ETC"].ToString(),
+                        Log_method = ds.Tables[0].Rows[idx]["METHOD"].ToString(),
+                        Log_etc = ds.Tables[0].Rows[idx]["ETC"].ToString(),
                         Log_ip = ds.Tables[0].Rows[idx]["IPADDRESS"].ToString(),
                         Patient_id = ds.Tables[0].Rows[idx]["PATIENT_ID"].ToString()
                     };
