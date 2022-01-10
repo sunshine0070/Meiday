@@ -7,12 +7,13 @@
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         WindowStyle="None" WindowStartupLocation="CenterScreen"
-        Title="pay" Height="520" Width="800">
+        Title="pay" Height="720" Width="800">
     <Grid>
 
         <DockPanel>
             <wv2:WebView2 Name="webView" 
-                  Source="http://nicepay.azurewebsites.net"/>
+                  Source="http://nicepay.azurewebsites.net" Height="1500" Width="300"/>
+            <Button Width="100" Height="200">결제완료</Button>
         </DockPanel>
 
 
