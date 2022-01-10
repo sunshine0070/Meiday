@@ -101,6 +101,12 @@
         <DataTemplate x:Key="AdminLoginControlTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AdminLoginControl />
         </DataTemplate>
+        <DataTemplate x:Key="PharmacyEmailFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:PharmacyEmailFailDialog />
+        </DataTemplate>
+        <DataTemplate x:Key="AccidentEmailFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
+            <view:AccidentEmailFailDialog />
+        </DataTemplate>
 
     </Window.Resources>
     <Grid>
@@ -189,6 +195,12 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="114">
                             <Setter Property="ContentTemplate" Value="{StaticResource ManagerLoginFailDialogTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="115">
+                            <Setter Property="ContentTemplate" Value="{StaticResource PharmacyEmailFailDialogTemplate}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SwitchView}" Value="116">
+                            <Setter Property="ContentTemplate" Value="{StaticResource AccidentEmailFailDialogTemplate}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="120">
                             <Setter Property="ContentTemplate" Value="{StaticResource AdminLoginControlTemplate}" />

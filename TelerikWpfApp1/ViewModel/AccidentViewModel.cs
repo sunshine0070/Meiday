@@ -9,6 +9,7 @@ using Meiday.Model;
 using System.Collections.ObjectModel;
 using System.Data;
 using static Meiday.LoginViewModel;
+using static Meiday.MainViewModel;
 using System.Windows.Input;
 using System.Windows;
 using System.Windows.Data;
@@ -332,7 +333,8 @@ namespace Meiday
             catch (Exception ex)
             {
                 Log.Fatal(ex, "AccidentSendEmail");
-                MessageBox.Show("프로그램 오류로 보험서류 전송에 실패했습니다.\n데스크 직원에게 문의하시기 바랍니다.", "알림", MessageBoxButton.OK, MessageBoxImage.Error);
+                accident_email_fail_flag = true;
+                //MessageBox.Show("프로그램 오류로 보험서류 전송에 실패했습니다.\n데스크 직원에게 문의하시기 바랍니다.", "알림", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private string _query;

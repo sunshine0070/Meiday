@@ -194,9 +194,15 @@ namespace Meiday
             if (SwitchView == 102 && _isChecked02 == true) // 보험목록 체크 시 Dialog 화면
             {
                 LoginViewModel.LoginInit();
-                accidentViewModel.AccidentSendEmail();
                 accidentViewModel.AccidentSubmit();
                 _isChecked02 = false;
+                accidentViewModel.AccidentSendEmail();
+                if (accident_email_fail_flag == true)
+                {
+                    SwitchView = 116;
+                    accident_email_fail_flag = false;
+                }
+
             }
             else if (SwitchView == 102 && _isChecked02 == false) // 보험목록 미체크 시 Dialog 화면
             {
@@ -227,6 +233,11 @@ namespace Meiday
             {
                 PharmacyViewModel.PharmacySubmit();
                 pharmacyViewModel.Pharmacy_SendEmail();
+                if(pharmacy_email_fail_flag == true)
+                {
+                    SwitchView = 115;
+                    pharmacy_email_fail_flag = false;
+                }
             }
 
             if (SwitchView == 3)
@@ -247,7 +258,8 @@ namespace Meiday
             }
         }
 
-
+        static public bool pharmacy_email_fail_flag = false; // 약국 메일 전송 실패 경우 사용
+        static public bool accident_email_fail_flag = false; // 보험 메일 전송 실패 경우 사용
         //약국 선택하기 버튼 활성화 부분
         public bool CheckCanExecuted(object sender)
         {

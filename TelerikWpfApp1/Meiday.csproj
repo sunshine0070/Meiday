@@ -164,6 +164,9 @@
     <Compile Include="ViewModel\InsertAdminViewModel.cs" />
     <Compile Include="ViewModel\Logs.cs" />
     <Compile Include="ViewModel\Week_Chart_dataViewModel.cs" />
+    <Compile Include="View\AccidentEmailFailDialog.xaml.cs">
+      <DependentUpon>AccidentEmailFailDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,9 @@
     <Compile Include="View\pay.xaml.cs">
       <DependentUpon>pay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PharmacyEmailFailDialog.xaml.cs">
+      <DependentUpon>PharmacyEmailFailDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PharmacySubmitAlarm.xaml.cs">
       <DependentUpon>PharmacySubmitAlarm.xaml</DependentUpon>
     </Compile>
@@ -302,6 +308,10 @@
     <Compile Include="View\WindowPharmacy02.xaml.cs">
       <DependentUpon>WindowPharmacy02.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AccidentEmailFailDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AccidentNoneDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -417,6 +427,10 @@
     <Page Include="View\pay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PharmacyEmailFailDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PharmacySubmitAlarm.xaml">
       <SubType>Designer</SubType>

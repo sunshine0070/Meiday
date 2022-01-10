@@ -15,6 +15,7 @@ using System.Reflection;
 using Meiday.ViewModel;
 using System.Net.Mail;
 using static Meiday.LoginViewModel;
+using static Meiday.MainViewModel;
 
 namespace Meiday
 {
@@ -246,7 +247,7 @@ namespace Meiday
             catch (Exception ex)
             {
                 Log.Fatal(ex, "Pharmacy_SendEmail");
-                MessageBox.Show("프로그램 오류로 처방전 전송에 실패했습니다.\n데스크 직원에게 문의하시기 바랍니다.", "알림", MessageBoxButton.OK, MessageBoxImage.Error);
+                pharmacy_email_fail_flag = true;
             }
         }
     }
