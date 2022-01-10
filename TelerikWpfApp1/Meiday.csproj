@@ -600,6 +600,7 @@
     <Resource Include="Resource\admin_images\profile.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resource\admin_images\log.png" />
     <Content Include="Resource\undo-alt-solid.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
