@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Meiday.View"
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
-        Title="pay" Height="540" Width="670">
+        WindowStyle="None" WindowStartupLocation="CenterScreen"
+        Title="pay" Height="520" Width="800">
     <Grid>
 
         <DockPanel>
