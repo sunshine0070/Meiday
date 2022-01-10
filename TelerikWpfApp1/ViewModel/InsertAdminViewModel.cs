@@ -76,7 +76,17 @@ namespace Meiday.ViewModel
             }
         }
 
-
+        private string _deptname;
+        public string deptname
+        {
+            get => _deptname;
+            set
+            {
+                Log.Debug("deptname");
+                _deptname = value;
+                OnPropertyChanged("deptname");
+            }
+        }
 
         ObservableCollection<AdminModel> _sampleDatas = null;
         public ObservableCollection<AdminModel> SampleDatas
@@ -112,9 +122,10 @@ namespace Meiday.ViewModel
             {
                 SampleDatas.Clear();
                 DataSet ds = new DataSet();
-                string query2 = @"SELECT DR_LICENSE, DR_NAME, DR_EMAIL, DR_POSITION, DR_DEPTNUM
-                            FROM     DOCTOR
-                            ORDER BY DR_LICENSE DESC";
+                string query2 = @"SELECT   a.DR_LICENSE, a.DR_NAME, a.DR_EMAIL, a.DR_POSITION, b.DR_DEPTNAME, a.DR_DEPTNUM
+                                  FROM     DOCTOR a, DEPARTMENT b
+                                  WHERE    a.dr_deptnum = b.dr_deptnum
+                                  ORDER BY DR_LICENSE DESC";
 
                 OracleDBManager.Instance.ExecuteDsQuery(ds, query2);
 
@@ -126,6 +137,7 @@ namespace Meiday.ViewModel
                         Name = ds.Tables[0].Rows[idx]["dr_name"].ToString(),
                         Email = ds.Tables[0].Rows[idx]["DR_EMAIL"].ToString(),
                         Position = ds.Tables[0].Rows[idx]["DR_POSITION"].ToString(),
+                        Deptname = ds.Tables[0].Rows[idx]["DR_DEPTNAME"].ToString(),
                         Deptnum = ds.Tables[0].Rows[idx]["DR_DEPTNUM"].ToString(),
                     };
                     SampleDatas.Add(obj);

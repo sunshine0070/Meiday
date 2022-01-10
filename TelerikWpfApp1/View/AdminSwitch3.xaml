@@ -25,10 +25,10 @@
             <Setter Property="Margin" Value="10" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Height" Value="60" />
-            <Setter Property="Width" Value="400"/>
+            <Setter Property="Width" Value="340"/>
         </Style>
         <Style TargetType="{x:Type TextBox}" x:Key="tbstyle">
-            <Setter Property="Width" Value="250"/>
+            <Setter Property="Width" Value="180"/>
             <Setter Property="Height" Value="35"/>
         </Style>
     </UserControl.Resources>
@@ -42,7 +42,8 @@
         <StackPanel 
             Background="#00498c" 
             Grid.Column="0"
-            Height="650">
+            Height="650"
+            Width="400">
             <TextBlock 
                 TextAlignment="Center" 
                 FontSize="36" 
@@ -146,7 +147,7 @@
             <!-- inquire Admin List-->
             <StackPanel Height="300">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="30 10 310 10"  Foreground="Black"
+                    <TextBlock Margin="30 10 360 10"  Foreground="Black"
                     FontSize="24" FontWeight="Bold"
                     Text="환자 리스트" />
                     <telerik:RadButton Width="100" Height="30"
@@ -158,7 +159,7 @@
                 </StackPanel>
 
                 <ListView 
-                    Width="550" Height="240" Margin="10" FontSize="16"
+                    Width="600" Height="240" Margin="10" FontSize="16"
                     DataContext="{StaticResource AdminInsertPtViewModel}"
                     ItemsSource="{Binding Path=SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
@@ -167,12 +168,15 @@
                         <GridView>
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding IdNum}"
+                                Width="80"
                                 Header="등록번호" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding Name}"
+                                Width="70"
                                 Header="이름" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding Age}"
+                                Width="50"
                                 Header="나이" />
                             <GridViewColumn 
                                 DisplayMemberBinding="{Binding RegNum}"
@@ -192,7 +196,7 @@
             <!-- inquire Admin List-->
             <StackPanel Height="300">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="30 10 280 10"  Foreground="Black"
+                    <TextBlock Margin="30 10 330 10"  Foreground="Black"
                     FontSize="24" FontWeight="Bold"
                     Text="관리자 리스트" />
                     <telerik:RadButton Width="100" Height="30"
@@ -204,7 +208,7 @@
                 </StackPanel>
 
                 <ListView 
-                    Width="550" Height="240" Margin="10" FontSize="14"
+                    Width="600" Height="240" Margin="10" FontSize="16"
                     DataContext="{StaticResource InsertAdminViewModel}"
                     ItemsSource="{Binding SampleDatas, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
@@ -212,22 +216,25 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding License}"
-                            Width="70"
-                            Header="등록번호"
-                            />
+                            Width="80"
+                            Header="등록번호"/>
                             <GridViewColumn DisplayMemberBinding="{Binding Name}"
-                            Width="50"
+                            Width="60"
                             Header="이름" />
                             <GridViewColumn DisplayMemberBinding="{Binding Email}"
                             Width="180"
                             Header="이메일" />
                             <GridViewColumn DisplayMemberBinding="{Binding Position}"
-                            Width="50"
+                            Width="90"
                             Header="직급" />
+                            <GridViewColumn DisplayMemberBinding="{Binding Deptname}"
+                            Width="90"
+                            Header="부서명" />
                             <GridViewColumn DisplayMemberBinding="{Binding Deptnum}"
-                            Width="80"
-                            Header="부서번호" />
-                            
+                            Width="60"
+                            Header="부서번호"/>
+
+
                         </GridView>
                     </ListView.View>
                 </ListView>
