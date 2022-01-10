@@ -144,7 +144,7 @@
             <Grid Height="45">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resource/admin_images/log.png" Width="24" Height="24" Margin="20,0,0,0"/>
-                    <Button Content="로그" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" 
+                    <Button Content="Log" Padding="15,0,0,0" FontWeight="Normal" Width="127" HorizontalAlignment="Right" 
                             HorizontalContentAlignment="Left" Grid.IsSharedSizeScope="True" BorderBrush="{x:Null}" 
                             Background="{x:Null}" Style="{DynamicResource ButtonStyle1}"  Foreground="#FF5B5A5A"
                             Command="{Binding SwitchViewCommand}" CommandParameter="4"

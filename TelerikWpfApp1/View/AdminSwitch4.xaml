@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Meiday.View"
+             xmlns:view="clr-namespace:Meiday.View.adminView"
              mc:Ignorable="d" 
-            d:DesignHeight="650" d:DesignWidth="1050" Background="green">
+             d:DesignHeight="650" d:DesignWidth="1050" Background="WhiteSmoke">
     <Grid>
-            
+
+        <view:LogIsuueList HorizontalAlignment="Left" Height="650" Width="1050" Margin="0" VerticalAlignment="Top" BorderThickness="0" />
+
+
     </Grid>
 </UserControl>
