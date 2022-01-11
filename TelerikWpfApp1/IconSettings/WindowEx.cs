@@ -9,7 +9,7 @@ using System.Windows.Interop;
 
 namespace Meiday.IconSettings
 {
-    public class WindowEx
+    public class WindowEx : Window
     {
         private const int GwlExstyle = -20;
         private const int SwpFramechanged = 0x0020;
