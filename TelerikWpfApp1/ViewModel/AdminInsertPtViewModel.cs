@@ -124,7 +124,7 @@ namespace Meiday.ViewModel
                 DataSet ds = new DataSet();
                 string query2 = @"SELECT pt_idnum, pt_age, pt_regnum, pt_phone, pt_addr, pt_name
                             FROM     patient
-                            ORDER BY pt_idnum DESC";
+                            ORDER BY pt_idnum";
 
                 OracleDBManager.Instance.ExecuteDsQuery(ds, query2);
 
@@ -135,12 +135,13 @@ namespace Meiday.ViewModel
                         IdNum = ds.Tables[0].Rows[idx]["pt_idnum"].ToString(),
                         Name = ds.Tables[0].Rows[idx]["pt_name"].ToString(),
                         Age = ds.Tables[0].Rows[idx]["pt_age"].ToString(),
-                        RegNum = ds.Tables[0].Rows[idx]["pt_regnum"].ToString(),
-                        Phone = ds.Tables[0].Rows[idx]["pt_phone"].ToString(),
+                        RegNum = ds.Tables[0].Rows[idx]["pt_regnum"].ToString().Substring(0,7) + "******",
+                        Phone = ds.Tables[0].Rows[idx]["pt_phone"].ToString().Substring(0,7) + "****",
                         Addr = ds.Tables[0].Rows[idx]["pt_addr"].ToString(),
                     };
                     SampleDatas.Add(obj);
                 }
+
             }
             catch (Exception ex)
             {
