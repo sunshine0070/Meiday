@@ -173,17 +173,27 @@
             TextAlignment="Center" FontSize="28"
             Text="원 입니다."/>
         </StackPanel>
-        
+
 
         <CheckBox 
             Grid.Row="6"
-            Margin="10"
+            Margin="0,0,180,0"
             x:Name="choice2"
-            FontWeight="Bold" IsChecked="{Binding IsPayChoice}"
+            FontWeight="Bold" 
             FontSize="20"
             HorizontalContentAlignment="Center"
             HorizontalAlignment="Center"
-            Content="영수증 핸드폰으로 받기"/>
+            Content="전자 처방전 받기"/>
+
+        <CheckBox 
+            Grid.Row="6"
+            Margin="200,0,0,0"
+            x:Name="choice3"
+            FontWeight="Bold" 
+            FontSize="20"
+            HorizontalContentAlignment="Center"
+            HorizontalAlignment="Center"
+            Content="종이 처방전 받기 "/>
 
 
         <StackPanel
@@ -206,7 +216,7 @@
                 Style="{StaticResource btnstyle}"
                 Command="{Binding SwitchViewCommand}" CornerRadius="15"
                 FontWeight="Bold"
-                CommandParameter="108"/>
+                CommandParameter="110"/>
         </StackPanel>
 
     </Grid>

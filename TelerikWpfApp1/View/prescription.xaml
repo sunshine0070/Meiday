@@ -141,7 +141,7 @@
             Click="Button_Click"              
             CornerRadius="15"
             Command="{Binding SwitchViewCommand}"
-            CommandParameter="3"
+            CommandParameter="108"
             Margin="0,688,0,0" VerticalAlignment="Top"/>
 
     </Grid>
