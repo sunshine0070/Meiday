@@ -112,6 +112,25 @@
 
             </ItemsControl>
 
+            <ItemsControl DataContext="{StaticResource PaymentViewModel}" ItemsSource="{Binding Path= PrescriptionData, Mode=TwoWay, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Margin="375,273,209,231">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" Background="White" Margin="0,0,0,0" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate >
+                        <UserControl>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding P_MedicationTotal}" FontSize="10" Height="25" />
+                        </UserControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+
         </Grid>
 
 
