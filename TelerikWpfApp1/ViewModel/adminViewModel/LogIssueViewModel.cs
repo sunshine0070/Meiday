@@ -221,7 +221,7 @@ namespace Meiday.ViewModel.adminViewModel
                                   AND log.LOG_LEVEL = 'FATAL'";
 
                 OracleDBManager.Instance.ExecuteDsQuery(ds4, query4);
-                week_Fatal_count = ds3.Tables[0].Rows[0]["COUNT"].ToString();
+                week_Fatal_count = ds4.Tables[0].Rows[0]["COUNT"].ToString();
             }
             catch (Exception ex)
             {
