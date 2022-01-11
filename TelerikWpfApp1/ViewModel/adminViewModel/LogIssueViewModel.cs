@@ -13,10 +13,10 @@ namespace Meiday.ViewModel.adminViewModel
     public class LogIssueViewModel : LogData
     {
 
-        public static String total_log_count { get; set; }
-        public static String week_log_count { get; set; }
-        public static String week_Error_count { get; set; }
-        public static String week_Fatal_count { get; set; }
+        public static String total_log_count { get; set; } // 총 로그 수 
+        public static String week_log_count { get; set; } // 7일간 로그 수 
+        public static String week_Error_count { get; set; } // 7일간 Error수 
+        public static String week_Fatal_count { get; set; } // 7일간 Fatal 수 
         
 
         ObservableCollection<LogData> logDatas = null;
@@ -188,24 +188,46 @@ namespace Meiday.ViewModel.adminViewModel
             }
         }
 
-        public String LogCountSearch()
+        public void LogCountSearch()
         {
             total_log_count = "0";
             try
             {
+                // 총 로그수 기록 
                 DataSet ds = new DataSet();
-                string query2 = @"SELECT Count(*) as COUNT FROM log";
+                string query = @"SELECT Count(*) as COUNT FROM log";
 
-                OracleDBManager.Instance.ExecuteDsQuery(ds, query2);
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
                 total_log_count = ds.Tables[0].Rows[0]["COUNT"].ToString();
 
+                DataSet ds2 = new DataSet();
+                string query2 = @"SELECT Count(*) as COUNT FROM log	
+                                  WHERE CURRENTDATE >= TO_CHAR(SYSDATE-7,'YYYYMMDD')";
+
+                OracleDBManager.Instance.ExecuteDsQuery(ds2, query2);
+                week_log_count = ds2.Tables[0].Rows[0]["COUNT"].ToString();
+
+                DataSet ds3 = new DataSet();
+                string query3 = @"SELECT Count(*) as COUNT FROM log	
+                                  WHERE CURRENTDATE >= TO_CHAR(SYSDATE-7,'YYYYMMDD') 
+                                  AND log.LOG_LEVEL = 'ERROR'";
+
+                OracleDBManager.Instance.ExecuteDsQuery(ds3, query3);
+                week_Error_count = ds3.Tables[0].Rows[0]["COUNT"].ToString();
+
+                DataSet ds4 = new DataSet();
+                string query4 = @"SELECT Count(*) as COUNT FROM log	
+                                  WHERE CURRENTDATE >= TO_CHAR(SYSDATE-7,'YYYYMMDD') 
+                                  AND log.LOG_LEVEL = 'FATAL'";
+
+                OracleDBManager.Instance.ExecuteDsQuery(ds4, query4);
+                week_Fatal_count = ds3.Tables[0].Rows[0]["COUNT"].ToString();
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "LogCountSearch");
             }
 
-           return total_log_count;
         }
 
 
