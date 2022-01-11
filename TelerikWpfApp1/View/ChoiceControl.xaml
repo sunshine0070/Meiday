@@ -48,7 +48,7 @@
 
                     </CheckBox>
 
-
+                    <TextBlock></TextBlock>
                     <CheckBox x:Name="choice2" 
                   FontWeight="Bold" IsChecked="{Binding IsChoice02}"
                   Content=" 실비보험 청구">
@@ -59,7 +59,7 @@
 
                     </CheckBox>
                     <TextBlock></TextBlock>
-                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0"> ※ 선택을 하지 않고 종료하시려면 확인 버튼을 눌러주세요</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="14"> ※ 선택을 하지 않고 종료하시려면 확인 버튼을 눌러주세요.</TextBlock>
                 </StackPanel>
 
                 <Button Grid.Row="1" Width="100" Height="30" 

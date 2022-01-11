@@ -37,7 +37,7 @@
                 <StackPanel Grid.Row="3" Margin="10">
 
                     <TextBlock FontSize="20" 
-                           TextAlignment="Center" Text="모든 접수가 완료되었습니다.&#10;고객님의 빠른 쾌유를 기원합니다" />
+                           TextAlignment="Center" Text="모든 접수가 완료되었습니다.&#10;고객님의 빠른 쾌유를 기원합니다." />
 
                 </StackPanel>
 
