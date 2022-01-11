@@ -626,6 +626,7 @@
   <ItemGroup>
     <Resource Include="Resource\admin_images\log.png" />
     <Resource Include="Resource\admin_images\dr_haechan.jpg" />
+    <Resource Include="Resource\close.png" />
     <Content Include="Resource\undo-alt-solid.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

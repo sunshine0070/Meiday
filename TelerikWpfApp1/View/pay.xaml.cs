@@ -32,5 +32,10 @@ namespace Meiday.View
                 Log.Error(ex, "pay");
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).Close();
+        }
     }
 }

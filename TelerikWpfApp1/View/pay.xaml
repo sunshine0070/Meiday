@@ -8,15 +8,19 @@
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Height="720" Width="800"
+        WindowStyle="None"
+        Height="650" Width="800"
         i:WindowEx.ShowIcon="False">
-
     <Grid>
-        <DockPanel>
-            <wv2:WebView2 Name="webView"
-                          Source="http://nicepay.azurewebsites.net" 
-                          Height="538"
-                          Width="760"/>
-        </DockPanel>
+        
+        <Button Width="70" Height="65" Margin="696,15,34,515" Background="White" BorderThickness="0" Click="Button_Click">
+            <ContentControl>
+                    <Image Source="/Resource/close.png" Width="50" Height="50" Margin="0,0,13,13"/>
+            </ContentControl>
+        </Button>
+        
+        <wv2:WebView2 x:Name="webView"
+                              Source="http://nicepay.azurewebsites.net"
+                              Height="500" Width="750" Margin="25,96,25,4"/>
     </Grid>
 </Window>
