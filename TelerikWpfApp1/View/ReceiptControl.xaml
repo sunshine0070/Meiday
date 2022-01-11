@@ -62,21 +62,13 @@
             Margin="0 0 0 30">
 
             <telerik:RadButton
-                Content="동의합니다"
+                Content="확인"
                 Style="{StaticResource btnstyle}"
-                CornerRadius="15"
-                FontWeight="Bold"
-                Click="Button_Click1"/>
-
-
-            <telerik:RadButton
-                Content="휴대폰 전송"
-                Style="{StaticResource btnstyle}"
-                Click="Button_Click2"
                 Command="{Binding SwitchViewCommand}"
                 CornerRadius="15"
                 FontWeight="Bold"
-                CommandParameter="108"/>
+                Click="Button_Click1"
+                CommandParameter="110"/>
 
 
         </StackPanel>

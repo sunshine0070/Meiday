@@ -11,7 +11,6 @@ namespace Meiday.Model
     public class AdminModel
     {
         public string Name { get; set; }
-
         public string Age { get; set; }
         public string Position { get; set; }
         public string License { get; set; }

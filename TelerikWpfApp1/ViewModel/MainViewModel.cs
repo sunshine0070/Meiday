@@ -253,6 +253,8 @@ namespace Meiday
 
             if (SwitchView == 109)
             {
+                ReceiptControl receiptControl = new ReceiptControl();
+                receiptControl.SendReceipt();
                 EndPageTimer_Reset();
                 EndPageTimer_Start();
             }

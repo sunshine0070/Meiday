@@ -216,7 +216,7 @@
                 Style="{StaticResource btnstyle}"
                 Command="{Binding SwitchViewCommand}" CornerRadius="15"
                 FontWeight="Bold"
-                CommandParameter="110"/>
+                CommandParameter="112"/>
         </StackPanel>
 
     </Grid>

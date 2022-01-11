@@ -287,24 +287,25 @@ namespace Meiday.View
         // sms api 생성
         SmsApi api = new SmsApi(new SmsApiOptions
         {
-            ApiKey = "NCSQUDCGXE7HMOIM",
-            ApiSecret = "N3Q8TRA98HBCMJFHXKHUKYQ2PEFQW3K6",
-            DefaultSenderId = "01089677551" // 문자 보내는 사람 번호, coolsms 홈페이지에서 발신자 등록한 번호 필수
+            ApiKey = "NCSFARWFTK1XRHVY",
+            ApiSecret = "SPLOROS9HRQCKRN8PG7S7HAHXCHSEWBA",
+            DefaultSenderId = "01035412132" // 문자 보내는 사람 번호, coolsms 홈페이지에서 발신자 등록한 번호 필수
 
         });
 
         // 이미지 업로드 주소용
         string ImageURL = "";
         // Imgur API 키
-        string ImgurAPIKey = "e2263752244a51b";
+        string ImgurAPIKey = "40da6cc06a9fc50";
         // Imgur Secret 키
-        string ImgurAPISecretKey = "5ead3d3cb33e8c735250aec83795038ffa03bd05";
+        string ImgurAPISecretKey = "5a1118c81ea256683a4760a71813c02d4455d8c8"; // 문자기능 안되면 키값 계속 확인필요
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
 
+            LoginViewModel loginViewModel = new LoginViewModel();
 
-            RenderTargetBitmap rtb = new RenderTargetBitmap((int)receipt.ActualWidth, (int)receipt.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)receipt.ActualWidth, 650, 96, 96, PixelFormats.Pbgra32);
             rtb.Render(receipt);
             PngBitmapEncoder png = new PngBitmapEncoder();
             png.Frames.Add(BitmapFrame.Create(rtb));
@@ -312,9 +313,11 @@ namespace Meiday.View
             png.Save(stream);
 
             System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
-            string stampFileName = @"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.png";
+            string stampFileName = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증(보험용).png";
             image.Save(stampFileName);
             //이미지로 저장
+
+
 
 
 
@@ -327,16 +330,53 @@ namespace Meiday.View
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
             // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.Bold);
+            XFont font = new XFont("Verdana", 100, XFontStyle.Bold);
 
-            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.png");
+            XImage im = XImage.FromFile(@"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증(보험용).png");
 
             gfx.DrawImage(im, 30, 30, 550, 700);
 
 
+
+            string watermark = "Meiday";
+
+            string filename = @"C:\Users\user\Desktop\savefile\" + loginViewModel.PatientName + "_영수증(보험용).pdf";
+            //page = document.AddPage();
+
+            document.Save(filename);
+
+            page = document.Pages[0];
+
+            //gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Prepend);
+            gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Append);
+
+            // Get the size (in point) of the text
+            XSize size = gfx.MeasureString(watermark, font);
+
+            // Define a rotation transformation at the center of the page
+            gfx.TranslateTransform(page.Width / 2, page.Height / 2);
+            gfx.RotateTransform(-Math.Atan(page.Height / page.Width) * 180 / Math.PI);
+            gfx.TranslateTransform(-page.Width / 2, -page.Height / 2);
+
+            // Create a string format
+            XStringFormat format = new XStringFormat();
+            format.Alignment = XStringAlignment.Near;
+            format.LineAlignment = XLineAlignment.Near;
+
+            // Create a dimmed red brush
+            //XBrush brush = new XSolidBrush(XColor.FromArgb(128, 255, 0, 0));
+            XBrush brush = new XSolidBrush(XColor.FromArgb(50, 106, 90, 205));
+
+
+            // Draw the string
+            gfx.DrawString(watermark, font, brush,
+          new XPoint((page.Width - size.Width) / 2, (page.Height - size.Height) / 2),
+          format);
+
+
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
-            securitySettings.UserPassword = patient_id;
+            securitySettings.UserPassword = loginViewModel.PtRegnum;
 
             securitySettings.OwnerPassword = "owner";
 
@@ -351,8 +391,9 @@ namespace Meiday.View
             securitySettings.PermitPrint = false;
 
             // Save the document...
-            string filename = @"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.pdf";
             document.Save(filename);
+            // ...and start a viewer.
+            //Process.Start(filename);
             // ...and start a viewer.
             //Process.Start(filename);
 
@@ -368,11 +409,9 @@ namespace Meiday.View
 
         }
 
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        public void SendReceipt()
         {
-
-            UploadImage(@"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.png");
-
+            UploadImage(@"C:\Users\user\Desktop\savefile\" + patient_id + "영수증.png"); // 만들어놓은거 문자로 보낼거
         }
 
         public async Task UploadImage(string imgloc)
@@ -395,10 +434,8 @@ namespace Meiday.View
             // 업로드 된 이미지 주소값 가져오기
             ImageURL = img.Link;
 
-            var request = new SendMessageRequest("01089677551", "메이데이 결제 영수증 \r\n" + ImageURL); // 이미지 링크가 포함된 문자                                                      // 문자 보낼 전화번호 , 보낼 메세지(한글 40자)
+            var request = new SendMessageRequest("01035412132", "메이데이 결제 영수증 \r\n" + ImageURL); // 이미지 링크가 포함된 문자                                                      // 문자 보낼 전화번호 , 보낼 메세지(한글 40자)
             var result = api.SendMessageAsync(request);
-
-
         }
     }
 }

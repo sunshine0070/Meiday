@@ -137,7 +137,7 @@
         <telerik:RadButton
             x:Name="radButtonRefuse"
             Style="{StaticResource btnstyle}"
-            Content="처방전 확인"
+            Content="확인"
             Click="Button_Click"              
             CornerRadius="15"
             Command="{Binding SwitchViewCommand}"
