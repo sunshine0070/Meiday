@@ -23,8 +23,8 @@ namespace Meiday.ViewModel
         public int Value { get; set; }
         public static ObservableCollection<DPoint> GetDataPoints()
         {
-            string[] arguement = new string[5];
-            int[] val = new int[5];
+            string[] arguement = new string[6];
+            int[] val = new int[6];
             DataSet ds = new DataSet();
             string query = @"SELECT category_age, count(*) 
                                     FROM (SELECT PATIENT.PT_AGE,
@@ -52,7 +52,8 @@ namespace Meiday.ViewModel
                     new DPoint { Argument = arguement[0], Value = val[0]},
                     new DPoint { Argument = arguement[1], Value = val[1]},
                     new DPoint { Argument = arguement[3], Value = val[3]},
-                    new DPoint { Argument = arguement[4], Value = val[4]}
+                    new DPoint { Argument = arguement[4], Value = val[4]},
+                    new DPoint { Argument = arguement[5], Value = val[5]}
                    };
         }
     }
