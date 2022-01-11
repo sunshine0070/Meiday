@@ -19,7 +19,7 @@
 
     <Grid>
         <Rectangle Fill="Gray" Opacity=".5" />
-        <Border CornerRadius="10" Background="White" Height="200" Width="400"
+        <Border CornerRadius="10" Background="White" Height="240" Width="400"
                 HorizontalAlignment="Center" VerticalAlignment="Center"  >
             <Grid Margin="5">
 
@@ -40,7 +40,7 @@
                 <StackPanel Grid.Row="3" Margin="25">
                     <CheckBox x:Name="choice1"
                   FontWeight="Bold" IsChecked="{Binding IsChoice01}"
-                  Content=" 약국으로 처방전 전송 후 약 제조">
+                  Content=" 약국 처방전 전송">
 
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
@@ -48,19 +48,18 @@
 
                     </CheckBox>
 
-
-                    <TextBlock></TextBlock>
 
                     <CheckBox x:Name="choice2" 
                   FontWeight="Bold" IsChecked="{Binding IsChoice02}"
-                  Content=" 나의 실비보험 확인 후 서류 전송">
+                  Content=" 실비보험 청구">
 
                         <CheckBox.LayoutTransform>
                             <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                         </CheckBox.LayoutTransform>
 
                     </CheckBox>
-
+                    <TextBlock></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0"> ※ 선택을 하지 않고 종료하시려면 확인 버튼을 눌러주세요</TextBlock>
                 </StackPanel>
 
                 <Button Grid.Row="1" Width="100" Height="30" 
@@ -68,7 +67,7 @@
                         FontWeight="Bold" FontSize="14" Content="확인"
                         Command="{Binding SwitchViewCommand}"
                         CommandParameter="3"
-                        Margin="145,105,145,10">
+                        Margin="145,105,145,-10">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
