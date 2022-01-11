@@ -14,10 +14,10 @@
 
             .customoverlay {position:relative;bottom:85px;border-radius:30px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
             .customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;border-radius: 30px;}
-            .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:30px;font-size:14px;font-weight:bold;overflow:hidden;background: mediumaquamarine;background: mediumaquamarine url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+            .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:30px;font-size:14px;font-weight:bold;overflow:hidden;background: white;background: white url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
             .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
             .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-            .circlemarker {display:block;text-decoration:none;color:#000;text-align:center;border-radius:30px;font-size:14px;font-weight:bold;overflow:hidden;}
+            .circlemarker {display:block;text-decoration:none;color:#000;text-align:center;border-radius:30px;font-size:14px;font-weight:bold;overflow:hidden;border: #000;}
       </style> 
          
     </head>
@@ -58,8 +58,8 @@
 
             // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             var content = '<div class="customoverlay">' +
-                '  <a href="https://place.map.kakao.com/13565525" target="_blank" style="margin-right:0px;">' +
-                '    <span class="title" style="font-size: 12px; font-weight: bold; width: 42px; height: 9px;line-height: 10px;">현재 위치</span>' +
+                '  <a href="https://place.map.kakao.com/13565525" target="_blank" style="margin-right:0px;" >' +
+                '    <span class="title" style="font-size: 14px; font-weight: extrabold; font-family: Noto Sans kr; width: 30px; height: 10px; line-height: 10px;">현재 위치 </span>' +
                 '  </a>' +
                 '</div>';
 
@@ -100,22 +100,22 @@
                 // 마커가 지도 위에 표시되도록 설정합니다
                 marker.setMap(map);
 
-                if(parseInt(wait) >= 10){
-                                var content = '<div class="customoverlay" style="border-radius:30px">' +
+                if(parseInt(wait) >= 20){
+                                var content = '<div class="customoverlay" style="border-radius:30px" >' +
                                 '<a class="circlemarker" style="color:red;">'+
-                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '<span class="title" style="font-size: 20px; text-indent: -0.25em; text-align: right; font-weight: bold;width: 10px; height: 9px; line-height: 9px;margin-right:0px">'+ wait+' ' +'</span>' +
                                 '</a>'+
                                 '</div>';
-                             }else if(parseInt(wait) < 10 && parseInt(wait) >=5){
-                                var content = '<div class="customoverlay" style="border-radius:30px">' +
-                                '<a class="circlemarker" style="color:orange;">'+
-                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                             }else if(parseInt(wait) <=19 && parseInt(wait) >=10){
+                                var content = '<div class="customoverlay" style="border-radius:30px" text-align: right;>' +
+                                '<a class="circlemarker" style="color:orange;" text-align: right;>'+
+                                '<span class="title" style="font-size: 20px; text-indent: -0.25em; text-align: right; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
                                 '</a>'+
                                 '</div>';
                             }else{
                                 var content = '<div class="customoverlay" style="border-radius:30px">' +
                                 '<a class="circlemarker" style="color:green;">'+
-                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '<span class="title" style="font-size: 20px;  font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
                                 '</a>'+
                                 '</div>';
                             }
@@ -174,8 +174,8 @@
 
                             // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                             var content = '<div class="customoverlay">' +
-                                        '<a class="circlemarker">'+
-                                         '<span class="title" style="font-size: 17px;color:black; font-weight: bold;width: 85px; height: 9px;line-height: 9px; margin-right:0px">'+ "접수자 : " + wait + "명" +'</span>' +
+                                        '<a class="circlemarker" width:50px;>'+
+                                         '<span class="title" style="font-size: 17px;color:black; text-indent: -0.45em font-family: Malgun Gothic; font-weight: extrabold;width: 85px; height: 9px;line-height: 9px; margin-right:0px">'+ "접수자: " + wait + "명" +"&nbsp&nbsp"+'</span>' +
                                         '</a>'+
                                          '</div>';
 
@@ -212,22 +212,22 @@
                             marker.setMap(map);
 
                             // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                            if(parseInt(wait) >= 10){
+                            if(parseInt(wait) >= 20){
                                 var content = '<div class="customoverlay" style="border-radius:30px">' +
                                 '<a class="circlemarker" style="color:red;">'+
-                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '<span class="title" style="font-size: 20px; text-indent: -0.25em; text-align: center; font-weight: light;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'  '+'</span>' +
                                 '</a>'+
                                 '</div>';
-                             }else if(parseInt(wait) < 10 && parseInt(wait) >=5){
+                             }else if(parseInt(wait) <=19 && parseInt(wait) >=10){
                                 var content = '<div class="customoverlay" style="border-radius:30px">' +
                                 '<a class="circlemarker" style="color:orange;">'+
-                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '<span class="title" style="font-size: 20px; text-indent: -0.25em; font-weight: light;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
                                 '</a>'+
                                 '</div>';
                             }else{
                                 var content = '<div class="customoverlay" style="border-radius:30px">' +
                                 '<a class="circlemarker" style="color:green;">'+
-                                '<span class="title" style="font-size: 17px; font-weight: bold;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
+                                '<span class="title" style="font-size: 20px;  font-weight: light;width: 10px; height: 9px;line-height: 9px;margin-right:0px">'+ wait +'</span>' +
                                 '</a>'+
                                 '</div>';
                             }
