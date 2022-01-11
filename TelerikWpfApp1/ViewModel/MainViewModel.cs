@@ -8,7 +8,7 @@ using System.ComponentModel;
 using Meiday.Model;
 using Meiday.ViewModel;
 using static Meiday.AccidentViewModel;
-using static Meiday.LoginViewModel;
+using static Meiday.PaymentViewModel;
 using System.Data;
 using System;
 using System.Windows.Threading;
@@ -94,7 +94,7 @@ namespace Meiday
 
         public ICommand SwitchViewCommand { get; }
         public ICommand SwitchViewCommand2 => new RelayCommand<object>(OnSwitchView, CheckCanExecuted); // 약국 클릭하면 확대 기능 and 제출하기 버튼 활성화 함수
-
+        public ICommand SwitchViewCommand3 => new RelayCommand<object>(OnSwitchView, CheckCanExecuted1);
         public MainViewModel()
         {
             Log.Debug("MainViewModel");
@@ -271,6 +271,16 @@ namespace Meiday
                 ret = true;
             }
             return ret;
+        }
+
+        public bool CheckCanExecuted1(object sender)
+        {
+            bool ret1 = false;
+            if (pay_end_flag == true)
+            {
+                ret1 = true;
+            }
+            return ret1;
         }
 
         // 세션 타이머 설정 부분

@@ -628,7 +628,7 @@ namespace Meiday
                 return (this.payCommand) ?? (this.payCommand = new RelayCommand(payShow));
             }
         }
-
+        static public bool pay_end_flag = false;
         private void payShow()
         {
             Log.Debug("payShow");
@@ -636,6 +636,7 @@ namespace Meiday
             pay.Owner = Application.Current.MainWindow;
             pay.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             pay.ShowDialog();
+            pay_end_flag = true;
         }
         /*
         public void Select_Price()
