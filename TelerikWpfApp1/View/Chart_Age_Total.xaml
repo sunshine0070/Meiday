@@ -20,16 +20,33 @@
                                       ShowValueLine="True"/>
             </dxc:ChartControl.CrosshairOptions>
             <dxc:ChartControl.Titles>
-                <dxc:Title Content="연령별 환자 집계" 
+                <dxc:Title Content="연령별 사용자 집계" 
                            HorizontalAlignment="Center"/>
             </dxc:ChartControl.Titles>
-            <dxc:ChartControl.Legends>
-                <dxc:Legend/>
-            </dxc:ChartControl.Legends>
+
             <dxc:XYDiagram2D>
-                <dxc:BarSideBySideSeries2D DisplayName="환자 명수" 
-                                           ArgumentDataMember="Argument" 
+                <dxc:BarSideBySideSeries2D ArgumentDataMember="Argument" 
                                            ValueDataMember="Value" />
+                <dxc:XYDiagram2D.AxisX>
+                    <dxc:AxisX2D>
+                        <dxc:AxisX2D.QualitativeScaleOptions>
+                            <dxc:QualitativeScaleOptions AutoGrid="false" GridSpacing="1"  />
+                        </dxc:AxisX2D.QualitativeScaleOptions>
+                        <dxc:AxisX2D.Label>
+                            <dxc:AxisLabel>
+                                <dxc:Axis2D.ResolveOverlappingOptions>
+                                    <dxc:AxisLabelResolveOverlappingOptions AllowHide="false" MinIndent="1" />
+                                </dxc:Axis2D.ResolveOverlappingOptions>
+                            </dxc:AxisLabel>
+                        </dxc:AxisX2D.Label>
+                        <dxc:AxisX2D.VisualRange>
+                            <dxc:Range/>
+                        </dxc:AxisX2D.VisualRange>
+                        <dxc:AxisX2D.WholeRange>
+                            <dxc:Range/>
+                        </dxc:AxisX2D.WholeRange>
+                    </dxc:AxisX2D>
+                </dxc:XYDiagram2D.AxisX>
             </dxc:XYDiagram2D>
         </dxc:ChartControl>
     </Grid>
