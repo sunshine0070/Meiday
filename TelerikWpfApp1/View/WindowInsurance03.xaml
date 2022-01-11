@@ -159,12 +159,14 @@
                 Style="{StaticResource btnstyle}"
                 Command="{Binding SwitchViewCommand}"
                 CommandParameter="5"
+                FontSize="20"
                 Content="이전"/>
             <telerik:RadButton 
                 x:Name="radButtonAfter"
                 Style="{StaticResource btnstyle}"
                 Command="{Binding SwitchViewCommand}"
                 CommandParameter="102"
+                FontSize="20"
                 Content="전송"/>
         </StackPanel>
 

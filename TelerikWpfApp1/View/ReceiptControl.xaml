@@ -9,9 +9,7 @@
              d:DesignHeight="800" d:DesignWidth="600">
 
     <UserControl.Resources>
-        <telerik:IconSources x:Key="IconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Modern/"/>
-        <telerik:IconSources x:Key="ShapesIconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/"/>
-        <local:AccidentViewModel x:Key="AccidentViewModel"/>
+                <local:AccidentViewModel x:Key="AccidentViewModel"/>
         <local:LoginViewModel x:Key="LoginViewModel"/>
         <local:PaymentViewModel x:Key="PaymentViewModel"/>
         <local:MainViewModel x:Key="MainViewModel"/>
@@ -66,6 +64,8 @@
             <telerik:RadButton
                 Content="동의합니다"
                 Style="{StaticResource btnstyle}"
+                CornerRadius="15"
+                FontWeight="Bold"
                 Click="Button_Click1"/>
 
 
@@ -74,6 +74,8 @@
                 Style="{StaticResource btnstyle}"
                 Click="Button_Click2"
                 Command="{Binding SwitchViewCommand}"
+                CornerRadius="15"
+                FontWeight="Bold"
                 CommandParameter="108"/>
 
 

@@ -118,12 +118,14 @@
                     Style="{StaticResource btnstyle}"
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="109"
+                    FontSize="20"
                     Content="다음에 하기" CornerRadius="15"/>
                 <telerik:RadButton 
                     x:Name="radButtonAgree"
                     Style="{StaticResource btnstyle}"
                     Command="{Binding SwitchViewCommand}"
                     CommandParameter="5"
+                    FontSize="20"
                     Content="접수 신청" CornerRadius="15" />
             </StackPanel>
         </StackPanel>

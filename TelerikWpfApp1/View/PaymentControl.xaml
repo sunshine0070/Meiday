@@ -196,13 +196,16 @@
                 Style="{StaticResource btnstyle}"
                 DataContext="{StaticResource PaymentViewModel}"
                 Command="{Binding PayCommand}"
+                CornerRadius="15"
                 IsEnabled="True"
+                FontWeight="Bold"
                 CommandParameter="91"/>
 
             <telerik:RadButton 
                 Content="다음으로" 
                 Style="{StaticResource btnstyle}"
-                Command="{Binding SwitchViewCommand}" CornerRadius="10"
+                Command="{Binding SwitchViewCommand}" CornerRadius="15"
+                FontWeight="Bold"
                 CommandParameter="108"/>
         </StackPanel>
 

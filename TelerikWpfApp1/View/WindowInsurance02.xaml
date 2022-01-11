@@ -27,7 +27,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -36,6 +36,7 @@
             <Setter Property="Height" Value="50"/>
             <Setter Property="Width" Value="150"/>
             <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="{x:Type TextBlock}" x:Key="txtstyle">
             <Setter Property="Margin" Value="50 0 20 0"/>
@@ -45,7 +46,7 @@
 
     </UserControl.Resources>
 
-    <Grid Margin="20">
+    <Grid >
         <!--<Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -74,7 +75,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            
+
         </Grid.RowDefinitions>
 
         <Image 
@@ -91,7 +92,7 @@
             FontWeight="Bold" 
             Margin="0 0 0 10"
             Text="보험 세부정보 입력"/>
-        
+
         <!--accidentDate-->
         <StackPanel 
             Grid.Row="2"
@@ -178,17 +179,17 @@
                          Content="교통사고" />
                 </StackPanel>
             </Border>
-            
+
         </StackPanel>
         <!--radiobutton-->
 
-        
-        
+
+
         <!--button-->
         <StackPanel 
             Orientation="Horizontal" 
-            Grid.Row="5"
-            HorizontalAlignment="Center">
+            Grid.Row="4"
+            HorizontalAlignment="Center" Margin="0,141,0,-8" Grid.RowSpan="3">
             <telerik:RadButton 
                 x:Name="radButtonBefore"
                 Style="{StaticResource btnstyle}"
@@ -202,7 +203,7 @@
                 CommandParameter="6"
                 Content="다음"/>
         </StackPanel>
-        
+
         <!--TextBox Grid.ColumnSpan="2" DataContext="{StaticResource AccidentViewModel}" Text="{Binding AccidentTypes}"/-->
     </Grid>
 </UserControl>

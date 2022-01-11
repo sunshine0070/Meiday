@@ -87,7 +87,6 @@
                                 x:Name="tbAge"
                                 Style="{StaticResource tbstyle}"
                                 FontSize="22"
-                                FontWeight="Bold"
                                 Text="{Binding age}"  />
                     </StackPanel>
                 </Border>

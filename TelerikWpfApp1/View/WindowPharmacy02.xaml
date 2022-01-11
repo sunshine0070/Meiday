@@ -7,7 +7,19 @@
              mc:Ignorable="d"
         Height="750" Width="550" FontFamily="SeoulNamsan B">
     <UserControl.Resources>
+        <telerik:IconSources x:Key="IconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Modern/"/>
+        <telerik:IconSources x:Key="ShapesIconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/Shapes/Light/"/>
         <local:PharmacyViewModel x:Key="PharmacyViewModel"/>
+        <Style TargetType="{x:Type telerik:RadButton}" x:Key="btnstyle">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="SeoulNamsan B"/>
+        </Style>
     </UserControl.Resources>
     <!--Window.DataContext>
         <ViewModel:PharmacyViewModel/>
@@ -68,10 +80,10 @@
                 Text="* 주의사항 * &#10; 1. 접수시 선택한 약국에 제조 처방전이 보내집니다.&#10; 2. 당일 내에 약을 수령하지 않을 시 폐기되며 어떠한 보상도 받으실 수 없습니다." Margin="7,0,0,0"/>
 
 
-            <telerik:RadButton x:Name="Cancel" Grid.Column="0" Content="이전" FontSize="16" HorizontalAlignment="Center"  CornerRadius="15" Grid.Row="7" VerticalAlignment="Center"
-                    Height="40" Width="150" Grid.ColumnSpan="3" Command="{Binding SwitchViewCommand}" CommandParameter="3" Margin="-200,0,0,0" FontWeight="ExtraBlack" />
-            <telerik:RadButton x:Name="Submit" Grid.Column="2" Content="접수하기" FontSize="16" HorizontalAlignment="Center" CornerRadius="15" Grid.Row="7" 
-                    VerticalAlignment="Center" Height="40" Width="150" Command="{Binding SwitchViewCommand}" CommandParameter="106" Margin="100,0,0,0" FontWeight="ExtraBlack"/>
+            <telerik:RadButton x:Name="Cancel" Style="{StaticResource btnstyle}" Grid.Column="0" Content="이전" FontSize="20" HorizontalAlignment="Center"  CornerRadius="15" Grid.Row="7" VerticalAlignment="Center"
+                     Grid.ColumnSpan="3" Command="{Binding SwitchViewCommand}" CommandParameter="3" Margin="-200,0,0,0" FontWeight="ExtraBlack" />
+            <telerik:RadButton x:Name="Submit" Style="{StaticResource btnstyle}" Grid.Column="2" Content="접수하기" FontSize="20" HorizontalAlignment="Center" CornerRadius="15" Grid.Row="7" 
+                    VerticalAlignment="Center"  Command="{Binding SwitchViewCommand}" CommandParameter="106" Margin="100,0,0,0" FontWeight="ExtraBlack"/>
 
 
         </Grid>

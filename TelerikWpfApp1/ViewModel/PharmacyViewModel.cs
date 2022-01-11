@@ -44,10 +44,10 @@ namespace Meiday
                 String email = ds.Tables[0].Rows[idx]["PHARMACY_EMAIL"].ToString();
                 String wait = ds.Tables[0].Rows[idx]["WAIT_PERSON"].ToString();
                 String fontcolor = "ForestGreen";
-                if (int.Parse(wait) >= 10) //접수자수 많은 약국 세곳은 글씨 빨간색으로
+                if (int.Parse(wait) >= 20) //접수자수 많은 약국 세곳은 글씨 빨간색으로
                 {
                     fontcolor = "red";
-                } else if (int.Parse(wait) >= 5 && int.Parse(wait) <= 9)
+                } else if (int.Parse(wait) >= 10 && int.Parse(wait) <= 19)
                 {
                     fontcolor = "orange";
                 }
