@@ -64,7 +64,6 @@
                 <Border Style="{StaticResource borderstyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <Label
-                                FontWeight="Bold"
                                 x:Name="lblName"
                                 Style="{StaticResource lblstyle}"
                                 Content="이　　　　름" />
