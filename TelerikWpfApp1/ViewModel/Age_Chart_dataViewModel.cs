@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Meiday.ViewModel
 {
@@ -21,6 +22,7 @@ namespace Meiday.ViewModel
     {
         public string Argument { get; set; }
         public int Value { get; set; }
+        public object Color { get; set; }
         public static ObservableCollection<DPoint> GetDataPoints()
         {
             string[] arguement = new string[6];
@@ -48,12 +50,12 @@ namespace Meiday.ViewModel
             }
 
             return new ObservableCollection<DPoint> {
-                    new DPoint { Argument = arguement[5], Value = val[5]},
-                    new DPoint { Argument = arguement[2], Value = val[2]},
-                    new DPoint { Argument = arguement[0], Value = val[0]},
-                    new DPoint { Argument = arguement[1], Value = val[1]},
-                    new DPoint { Argument = arguement[3], Value = val[3]},
-                    new DPoint { Argument = arguement[4], Value = val[4]}
+                    new DPoint { Argument = arguement[5], Value = val[5], Color=Colors.Crimson},
+                    new DPoint { Argument = arguement[2], Value = val[2], Color=Colors.Crimson},
+                    new DPoint { Argument = arguement[0], Value = val[0], Color=Colors.Crimson},
+                    new DPoint { Argument = arguement[1], Value = val[1], Color=Colors.Crimson},
+                    new DPoint { Argument = arguement[3], Value = val[3], Color=Colors.Crimson},
+                    new DPoint { Argument = arguement[4], Value = val[4], Color=Colors.Crimson}
                     
                    };
         }

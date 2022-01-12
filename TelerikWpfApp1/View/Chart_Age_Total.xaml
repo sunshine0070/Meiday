@@ -20,13 +20,18 @@
                                       ShowValueLine="True"/>
             </dxc:ChartControl.CrosshairOptions>
             <dxc:ChartControl.Titles>
-                <dxc:Title Content="연령별 사용자 집계" 
+                <dxc:Title Content="연령별 키오스크 사용자 집계" 
                            HorizontalAlignment="Center"/>
             </dxc:ChartControl.Titles>
 
             <dxc:XYDiagram2D>
                 <dxc:BarSideBySideSeries2D ArgumentDataMember="Argument" 
-                                           ValueDataMember="Value" />
+                                           ValueDataMember="Value"
+                                           ColorDataMember="Color">
+                    <dxc:BarSideBySideSeries2D.Colorizer>
+                        <dxc:ColorObjectColorizer/>
+                    </dxc:BarSideBySideSeries2D.Colorizer>
+                </dxc:BarSideBySideSeries2D>
                 <dxc:XYDiagram2D.AxisX>
                     <dxc:AxisX2D>
                         <dxc:AxisX2D.QualitativeScaleOptions>
