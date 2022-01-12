@@ -10,11 +10,14 @@ using System.Net;
 using System.Diagnostics;
 using Meiday;
 using System.Data;
+using log4net;
 
 namespace Meiday
 {
     public class Log
     {
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType); 
+
         public static void Debug()
         {
             String patient = "";
@@ -57,6 +60,7 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
             oracleDBManager.Close();
+
         }
         public static void Debug(String message)
         {
@@ -100,6 +104,7 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
             oracleDBManager.Close();
+
         }
         public static void Error(Exception ex)
         {
@@ -202,6 +207,9 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
             oracleDBManager.Close();
+
+            log.Error(message);//txt 저장 부분
+
         }
         public static void Fatal(Exception ex)
         {
@@ -253,6 +261,8 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
             oracleDBManager.Close();
+
+            log.Fatal("Fatal"); //txt 저장 부분 
         }
         public static void Fatal(Exception ex, String message)
         {
@@ -304,6 +314,9 @@ namespace Meiday
             OracleDBManager.Instance.ExecuteNonQuery(query1);
 
             oracleDBManager.Close();
+
+            log.Fatal(message);//txt 저장 부분
+
         }
     }
 }
