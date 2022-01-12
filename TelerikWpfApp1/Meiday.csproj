@@ -182,6 +182,7 @@
     <Compile Include="Log.cs" />
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\AgeModel.cs" />
+    <Compile Include="Model\Chart_RealTime.cs" />
     <Compile Include="Model\DataPoint.cs" />
     <Compile Include="Model\LogData.cs" />
     <Compile Include="Model\Log_Model.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Model\PharModel.cs" />
     <Compile Include="Model\Total_Price.cs" />
     <Compile Include="ViewModel\AccidentViewModel.cs" />
+    <Compile Include="ViewModel\AdminChartViewModel\Chart_RealTimeViewModel.cs" />
     <Compile Include="ViewModel\AdminInsertPtViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\adminViewModel\InsuranceUseViewModel.cs" />
@@ -206,6 +208,9 @@
     </Compile>
     <Compile Include="View\AccidentNoneDialog.xaml.cs">
       <DependentUpon>AccidentNoneDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminChartView\Admin_RealChart_View.xaml.cs">
+      <DependentUpon>Admin_RealChart_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AdminDashboard.xaml.cs">
       <DependentUpon>AdminDashboard.xaml</DependentUpon>
@@ -359,6 +364,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AccidentNoneDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminChartView\Admin_RealChart_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

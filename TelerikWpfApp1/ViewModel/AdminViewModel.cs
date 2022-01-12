@@ -86,7 +86,7 @@ namespace Meiday.ViewModel
         public void SessionTimer_Reset()
         {
             Log.Debug("SessionTimer_Reset");
-            TimeRemaining = 600; // 세션 시간(10분)
+            TimeRemaining = 6000; // 세션 시간(10분)
         }
         private string timeRemainingString = string.Empty;
         public string TimeRemainingString
