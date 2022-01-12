@@ -16,7 +16,6 @@ namespace Meiday
 
         //아래 두 필드는 속성으로 구현되어 있다. //출력될 문자들을 담아둘 변수
         static string inputString = string.Empty;
-        private const int maxLength = 14; // 번호입력 항목 제한
         static string managerinputString = string.Empty;
         //계산기 화면의 출력 텍스트박스에 대응되는 필드
         string displayText = "";
@@ -154,10 +153,6 @@ namespace Meiday
                     if (displayText.Length > 6)
                     {
                         displayText = displayText.Substring(0, 6) + '-' + displayText.Substring(6);
-                    }
-                    if(displayText.Length > maxLength)
-                    {
-                        displayText = displayText.Substring(0, maxLength);
                     }
                     OnPropertyChanged("DisplayText");
                 }
