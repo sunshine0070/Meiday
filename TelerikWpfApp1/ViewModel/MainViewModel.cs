@@ -43,8 +43,6 @@ namespace Meiday
         private bool _isChecked01 = false;
         private bool _isChoice01 = false;
         private bool _isChoice02 = false;
-        private bool _prescription_Choice01 = false;
-        private bool _prescription_Choice02 = false;
 
         private bool _isPayChoice = false;
 
@@ -81,29 +79,6 @@ namespace Meiday
                 OnPropertyChanged("IsChoice02");
             }
         }
-
-        public bool PrescriptionChoice01
-        {
-            get => _prescription_Choice01;
-            set
-            {
-                Log.Debug("PrescriptionChoice01");
-                _prescription_Choice01 = value;
-                OnPropertyChanged("PrescriptionChoice01");
-            }
-        }
-
-        public bool PrescriptionChoice02
-        {
-            get => _prescription_Choice02;
-            set
-            {
-                Log.Debug("PrescriptionChoice02");
-                _prescription_Choice02 = value;
-                OnPropertyChanged("PrescriptionChoice02");
-            }
-        }
-
 
         public bool IsPayChoice
         {
@@ -209,8 +184,6 @@ namespace Meiday
             {
                 AccidentDateSaved();
                 LoginViewModel.Login();
-                accidentViewModel.AccCheck();
-
                 if (loginViewModel.ValidInsuCheck() == false)
                 {
                     SwitchView = 113;
@@ -271,6 +244,10 @@ namespace Meiday
                 }
             }
 
+            if (SwitchView == 3)
+            {
+                //PaymentViewModel.PaymentSubmit();
+            }
 
             if (SwitchView == 108 && _isPayChoice == true)
             {
@@ -284,16 +261,6 @@ namespace Meiday
                 receiptControl.SendReceipt();
                 EndPageTimer_Reset();
                 EndPageTimer_Start();
-            }
-            
-            if (SwitchView == 112 && (PrescriptionChoice01 == true || PrescriptionChoice02 == true)) // 결제 다음 눌렀을 때 넘어가면 결제할거리 사라짐
-            {
-                //PaymentViewModel.PaymentSubmit();
-            }
-            
-            if (SwitchView == 112 && PrescriptionChoice01 == false && PrescriptionChoice02 == false) // 처방전 수령방법 체크 아무것도 안했을때
-            {
-                SwitchView = 117;
             }
         }
 
@@ -428,8 +395,6 @@ namespace Meiday
             _accidentSelectedDateTime = DateTime.Now;
             _isChoice01 = false;
             _isChoice02 = false;
-            _prescription_Choice01 = false;
-            _prescription_Choice02 = false;
         }
     }
 }

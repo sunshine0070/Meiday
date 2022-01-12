@@ -265,9 +265,6 @@
     <Compile Include="View\NoInsuDialog.xaml.cs">
       <DependentUpon>NoInsuDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\NonePresChoiceDialog.xaml.cs">
-      <DependentUpon>NonePresChoiceDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\PaymentControl.xaml.cs">
       <DependentUpon>PaymentControl.xaml</DependentUpon>
     </Compile>
@@ -438,10 +435,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NoInsuDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\NonePresChoiceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

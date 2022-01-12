@@ -133,20 +133,6 @@
                 <telerik:RadButton x:Name="radButtonOk" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="2"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="10,0,0,40">
-            <telerik:RadButton 
-            HorizontalAlignment="Left"
-            x:Name="radButtonHome" 
-            Style="{StaticResource MyBtnStyle2}"
-            Height="60"
-            Width="60"
-            CornerRadius="100"
-            Command="{Binding SwitchViewCommand}" 
-            CommandParameter="0"
-            Content="⮌">
-            </telerik:RadButton>
-        </StackPanel>
-
 
 
 

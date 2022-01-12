@@ -109,9 +109,6 @@
         <DataTemplate x:Key="AccidentEmailFailDialogTemplate" DataType="{x:Type local:MainViewModel}">
             <view:AccidentEmailFailDialog />
         </DataTemplate>
-        <DataTemplate x:Key="NonePresChoiceDialogTemplate" DataType="{x:Type local:MainViewModel}">
-            <view:NonePresChoiceDialog />
-        </DataTemplate>
 
     </Window.Resources>
     <Grid>
@@ -206,9 +203,6 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="116">
                             <Setter Property="ContentTemplate" Value="{StaticResource AccidentEmailFailDialogTemplate}" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding SwitchView}" Value="117">
-                            <Setter Property="ContentTemplate" Value="{StaticResource NonePresChoiceDialogTemplate}" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SwitchView}" Value="120">
                             <Setter Property="ContentTemplate" Value="{StaticResource AdminLoginControlTemplate}" />
