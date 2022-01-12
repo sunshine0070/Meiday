@@ -114,6 +114,10 @@ namespace Meiday
             if (SwitchView == 0) // 종료 case01, 다음에 하기 로그인 정보 초기화
             {
                 ViewInit();
+                ret = false;
+                ret1 = false;
+                pay_end_flag = false;
+                PharmacyViewModel.selectedmodel = null;
                 endPageTimer.Stop();
                 EndPageTimer_Reset();
             }
@@ -262,10 +266,11 @@ namespace Meiday
 
         static public bool pharmacy_email_fail_flag = false; // 약국 메일 전송 실패 경우 사용
         static public bool accident_email_fail_flag = false; // 보험 메일 전송 실패 경우 사용
+        private bool ret = false;
+        private bool ret1 = false;
         //약국 선택하기 버튼 활성화 부분
         public bool CheckCanExecuted(object sender)
         {
-            bool ret = false;
             if (PharmacyViewModel.selectedmodel != null)
             {
                 ret = true;
@@ -275,7 +280,6 @@ namespace Meiday
 
         public bool CheckCanExecuted1(object sender)
         {
-            bool ret1 = false;
             if (pay_end_flag == true)
             {
                 ret1 = true;
