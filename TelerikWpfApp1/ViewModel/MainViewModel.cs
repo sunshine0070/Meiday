@@ -385,7 +385,7 @@ namespace Meiday
             }
             set
             {
-                Log.Debug("TimeRemaining");
+                //Log.Debug("TimeRemaining");
                 timeRemaining = value;
                 OnPropertyChanged("TimeRemaining");
             }
