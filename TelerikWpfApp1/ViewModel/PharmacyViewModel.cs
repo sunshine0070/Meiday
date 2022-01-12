@@ -230,7 +230,7 @@ namespace Meiday
                 mail.To.Add(selectedmodel.Email);
                 //mail.To.Add("hcsong95@naver.com");
                 mail.Subject = "Meiday_약국처방전_서류_제출번호(" + PharmacySequence + ")" + loginViewModel.PatientName + "_" + selectedmodel.Name; // 제목
-                mail.Body = "PDF Password: " + loginViewModel.PtRegnum
+                mail.Body = "PDF Password: " + patient_id
                             + "\n환자 전화번호: " + loginViewModel.PtPhone
                             + "\n수신약국: " + selectedmodel.Name;
 

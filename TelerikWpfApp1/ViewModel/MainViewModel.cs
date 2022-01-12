@@ -152,8 +152,8 @@ namespace Meiday
             }
             if (SwitchView >= 1 && SwitchView != 111) // 키패드 화면 들어가면 세션 타이머 시작
             {
-                //SessionTimer_Reset(); // 화면 갱신때마다 남은 초 초기화
-                //SessionTimer_Start(); // 화면 갱신때마다 초 세기 시작
+                SessionTimer_Reset(); // 화면 갱신때마다 남은 초 초기화
+                SessionTimer_Start(); // 화면 갱신때마다 초 세기 시작
             }
             if (SwitchView == 2 && loginViewModel.InputString != "00000") // 환자등록번호 입력 시 정상진행
             {
@@ -281,7 +281,7 @@ namespace Meiday
             if (SwitchView == 109)
             {
                 ReceiptControl receiptControl = new ReceiptControl();
-                receiptControl.SendReceipt();
+                //receiptControl.SendReceipt();
                 EndPageTimer_Reset();
                 EndPageTimer_Start();
             }
@@ -349,7 +349,7 @@ namespace Meiday
         public void SessionTimer_Reset()
         {
             Log.Debug("SessionTimer_Reset");
-            TimeRemaining = 180; // 세션 시간(3분)
+            TimeRemaining = 300; // 세션 시간(3분)
         }
 
         DispatcherTimer endPageTimer = new DispatcherTimer();

@@ -280,16 +280,14 @@ namespace Meiday.View
         public ReceiptControl()
         {
             InitializeComponent();
-
-
         }
 
         // sms api 생성
         SmsApi api = new SmsApi(new SmsApiOptions
         {
-            ApiKey = "NCSFARWFTK1XRHVY",
-            ApiSecret = "SPLOROS9HRQCKRN8PG7S7HAHXCHSEWBA",
-            DefaultSenderId = "01035412132" // 문자 보내는 사람 번호, coolsms 홈페이지에서 발신자 등록한 번호 필수
+            ApiKey = "NCSBE6Y4ZTAPQZDG",
+            ApiSecret = "YSAUQNBD5GMZWDERDDBXSKIPU6ONSOML",
+            DefaultSenderId = "01071356327" // 문자 보내는 사람 번호, coolsms 홈페이지에서 발신자 등록한 번호 필수
 
         });
 
@@ -298,7 +296,7 @@ namespace Meiday.View
         // Imgur API 키
         string ImgurAPIKey = "40da6cc06a9fc50";
         // Imgur Secret 키
-        string ImgurAPISecretKey = "5a1118c81ea256683a4760a71813c02d4455d8c8"; // 문자기능 안되면 키값 계속 확인필요
+        string ImgurAPISecretKey = "3fbcc249a08fb3c3270fbc6bb7e254d65ece664d"; // 문자기능 안되면 키값 계속 확인필요
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
@@ -376,7 +374,7 @@ namespace Meiday.View
 
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
-            securitySettings.UserPassword = loginViewModel.PtRegnum;
+            securitySettings.UserPassword = patient_id;
 
             securitySettings.OwnerPassword = "owner";
 

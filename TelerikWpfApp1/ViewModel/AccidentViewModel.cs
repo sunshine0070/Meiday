@@ -311,7 +311,7 @@ namespace Meiday
                 //mailMessage.CC.Add("zzz@naver.com"); // 참조 메일 주소
                 mailMessage.Subject = "Meiday_실비청구_서류_제출번호(" + InsuranceSequence + ")" + loginViewModel.PatientName + "_" + CheckInsuName2; // 제목
                 mailMessage.SubjectEncoding = Encoding.UTF8; // 메일 제목 인코딩 타입(UTF-8) 선택
-                mailMessage.Body = "PDF_Password: " + loginViewModel.PtRegnum
+                mailMessage.Body = "PDF_Password: " + patient_id
                                    + "\n사고(발병)일: " + _accidentSelectedDateTime2
                                    + "\n사고유형: " + _accidentType
                                    + "\n피보험자 전화번호: " + loginViewModel.PtPhone

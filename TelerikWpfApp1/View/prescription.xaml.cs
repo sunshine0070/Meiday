@@ -120,7 +120,7 @@ namespace Meiday.View
 
                 PdfSecuritySettings securitySettings = document.SecuritySettings;
 
-                securitySettings.UserPassword = loginViewModel.PtRegnum;
+                securitySettings.UserPassword = patient_id;
 
                 securitySettings.OwnerPassword = "meiday";
 
