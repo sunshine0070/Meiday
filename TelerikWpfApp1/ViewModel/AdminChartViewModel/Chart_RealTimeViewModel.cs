@@ -26,29 +26,38 @@ namespace Meiday.ViewModel.AdminChartViewModel
         }
         private void Timer_Tick(object sender, System.EventArgs e)
         {
-            string temp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:dd");
-            DateTime now_01 = DateTime.Now;
-            DateTime now = DateTime.Now.AddSeconds(-15);
-            DateTime test1 = DateTime.Now.AddHours(-2);
-            string tx_test1 = (test1.ToString()).Substring(14, 5);
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+            DateTime now = DateTime.Now.AddMinutes(-3);
+            string length = now.ToString("HH-mm-ss");
+            string   tx_now = (now.ToString()).Substring(14, 4);
+            string aaa = DateTime.Now.ToString();
+            string ampm = aaa.Substring(11, 2);
+            //DateTime test1 = DateTime.Now.AddHours(-2);
+            //string tx_test1 = (test1.ToString()).Substring(14, 4);
             count++;
-            this.DataPoints.Add(new Chart_RealTime(test1, GenerateValue(tx_test1)));
+            this.DataPoints.Add(new Chart_RealTime(now, GenerateValue(tx_now, length,today)));
             if (DataPoints.Count == MaxPointCount) { timer.Stop(); }
 
 
 
         }
 
-        public double GenerateValue(string a)
+        public double GenerateValue(string a,string b,string c)
         {
-            DataSet ds = new DataSet();
-            string query = @"SELECT TO_CHAR(CURRENTDATE, 'HH:MI:SS') 시간,COUNT(*) 갯수
-                               FROM LOG WHERE TO_CHAR(CURRENTDATE, 'HH:MI')>= " + "'" + a + "'" + "GROUP BY TO_CHAR(CURRENTDATE, 'HH:MI:SS')ORDER BY TO_CHAR(CURRENTDATE, 'HH:MI:SS') ASC";
+            string hour    = b.Substring(0, 2);
+            string minute  = b.Substring(3, 2);
+            string second  = b.Substring(6, 2);
+            string query_b = hour + ":" + minute + ":" + second;
 
-            OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+                DataSet ds = new DataSet();
+                string query = @"SELECT TO_CHAR(CURRENTDATE, 'HH24:MI:SS') 시간,COUNT(*) 갯수
+                               FROM LOG WHERE TO_CHAR(CURRENTDATE, 'HH24:MI')>= " + "'" + query_b + "'" + "AND TO_CHAR(CURRENTDATE,'YYYY-MM-DD')=" + "'" +c + "'" + "GROUP BY TO_CHAR(CURRENTDATE, 'HH24:MI:SS')ORDER BY TO_CHAR(CURRENTDATE, 'HH24:MI:SS') ASC";
 
-            if(ds.Tables[0].Rows.Count==0) { timer.Stop(); }
-            return Double.Parse(ds.Tables[0].Rows[count]["갯수"].ToString());
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query);
+
+                if (ds.Tables[0].Rows.Count == 0) { timer.Stop(); }
+                return Double.Parse(ds.Tables[0].Rows[count]["갯수"].ToString());
+
         }
     }
 }
