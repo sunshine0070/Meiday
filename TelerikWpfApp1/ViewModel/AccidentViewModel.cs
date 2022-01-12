@@ -188,6 +188,7 @@ namespace Meiday
                 }
             }
         }
+
         private string _selectedInsuranceMail = String.Empty;
         public string selectedInsuranceMail
         { 

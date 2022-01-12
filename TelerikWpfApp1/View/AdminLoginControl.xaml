@@ -43,20 +43,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel>
-            <telerik:RadButton 
-            Grid.Row="4"
-            HorizontalAlignment="Left"
-            x:Name="radButtonHome" 
-            Style="{StaticResource MyBtnStyle2}"
-            Height="60"
-            Width="60"
-            CornerRadius="100"
-            Command="{Binding SwitchViewCommand}" 
-            CommandParameter="1"
-            Content="⮌">
-            </telerik:RadButton>
-        </StackPanel>
+        
         <Image
             Grid.Row="0"
             x:Name="image"
@@ -145,6 +132,19 @@
                 <telerik:RadButton x:Name="radButton0" Content="0" Style="{StaticResource MyBtnStyle1}" Command="{Binding Append}" CommandParameter="0" />
                 <telerik:RadButton x:Name="radButtonOk" Content="확인" Style="{StaticResource MyBtnStyle2}" Command="{Binding SwitchViewCommand}" CommandParameter="99"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="10,0,0,40">
+                <telerik:RadButton 
+            HorizontalAlignment="Left"
+            x:Name="radButtonHome" 
+            Style="{StaticResource MyBtnStyle2}"
+            Height="60"
+            Width="60"
+            CornerRadius="100"
+            Command="{Binding SwitchViewCommand}" 
+            CommandParameter="1"
+            Content="⮌">
+                </telerik:RadButton>
         </StackPanel>
     </Grid>
 </UserControl>

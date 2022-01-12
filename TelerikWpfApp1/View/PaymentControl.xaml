@@ -183,6 +183,7 @@
             FontSize="20"
             HorizontalContentAlignment="Center"
             HorizontalAlignment="Center"
+            IsChecked="{Binding PrescriptionChoice01}"
             Content="전자 처방전 받기"/>
 
         <CheckBox 
@@ -193,6 +194,7 @@
             FontSize="20"
             HorizontalContentAlignment="Center"
             HorizontalAlignment="Center"
+            IsChecked="{Binding PrescriptionChoice02}"
             Content="종이 처방전 받기 "/>
 
 
