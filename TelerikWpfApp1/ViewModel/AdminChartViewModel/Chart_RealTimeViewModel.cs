@@ -32,7 +32,6 @@ namespace Meiday.ViewModel.AdminChartViewModel
             string second = (Int32.Parse(DateTime.Now.ToString("ss"))-3).ToString();
 
             string str_time = hour + minute + second;
-            count++;
             this.DataPoints.Add(new Chart_RealTime(now, GenerateValue(str_time)));
             if (DataPoints.Count == MaxPointCount) { timer.Stop(); }
         }
@@ -52,7 +51,7 @@ namespace Meiday.ViewModel.AdminChartViewModel
 
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
             if (ds.Tables[0].Rows.Count == 0) { timer.Stop(); }
-                return double.Parse(ds.Tables[0].Rows[count]["갯수"].ToString())-1;
+                return double.Parse(ds.Tables[0].Rows[0]["갯수"].ToString())-1;
 
         }
     }
