@@ -12,7 +12,7 @@ namespace Meiday.Model
         public double Value { get; set; }
         public Chart_RealTime(DateTime argument, double value)
         {
-            int day = Int32.Parse(argument.ToString("M"));
+            int day = Int32.Parse(argument.ToString("MM"));
             int hour = Int32.Parse(argument.ToString("HH"));
             int minite = Int32.Parse(argument.ToString("mm"));
             int second = Int32.Parse(argument.ToString("ss"));
