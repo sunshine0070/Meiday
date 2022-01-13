@@ -12,10 +12,11 @@ namespace Meiday.Model
         public double Value { get; set; }
         public Chart_RealTime(DateTime argument, double value)
         {
+            int day = Int32.Parse(argument.ToString("M"));
             int hour = Int32.Parse(argument.ToString("HH"));
             int minite = Int32.Parse(argument.ToString("mm"));
             int second = Int32.Parse(argument.ToString("ss"));
-            this.Argument = new DateTime(2022, 01, 12, hour, minite, second);
+            this.Argument = new DateTime(2022, 01, day, hour, minite, second);
             this.Value = value;
         }
     }
