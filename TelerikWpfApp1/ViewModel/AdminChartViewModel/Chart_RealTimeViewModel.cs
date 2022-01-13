@@ -14,7 +14,6 @@ namespace Meiday.ViewModel.AdminChartViewModel
     {
         const int MaxPointCount = 50000;
         readonly DispatcherTimer timer = new DispatcherTimer();
-        int count = -1;
 
         public ObservableCollection<Chart_RealTime> DataPoints { get; } = new ObservableCollection<Chart_RealTime>();
 
