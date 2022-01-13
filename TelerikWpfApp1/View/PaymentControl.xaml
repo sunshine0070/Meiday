@@ -36,6 +36,7 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="CornerRadius" Value="15"/>
         </Style>
+        <BooleanToVisibilityConverter x:Key="B2VConverter"/>
     </UserControl.Resources>
 
         
@@ -175,27 +176,32 @@
         </StackPanel>
 
 
-        <CheckBox 
+        <StackPanel
             Grid.Row="6"
-            Margin="0,0,180,0"
-            x:Name="choice2"
-            FontWeight="Bold" 
-            FontSize="20"
-            HorizontalContentAlignment="Center"
-            HorizontalAlignment="Center"
-            IsChecked="{Binding PrescriptionChoice01}"
-            Content="전자 처방전 받기"/>
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center">
+            <CheckBox 
+                Margin="10 0 10 0"
+                x:Name="choice2"
+                FontWeight="Bold" 
+                FontSize="20"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                IsChecked="{Binding PrescriptionChoice01}"
+                Content="전자 처방전 받기"/>
 
-        <CheckBox 
-            Grid.Row="6"
-            Margin="200,0,0,0"
-            x:Name="choice3"
-            FontWeight="Bold" 
-            FontSize="20"
-            HorizontalContentAlignment="Center"
-            HorizontalAlignment="Center"
-            IsChecked="{Binding PrescriptionChoice02}"
-            Content="종이 처방전 받기 "/>
+            <CheckBox 
+                Margin="10 0 10 0"
+                x:Name="choice3"
+                FontWeight="Bold" 
+                FontSize="20"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                IsChecked="{Binding PrescriptionChoice02}"
+                Content="종이 처방전 받기 "/>
+        </StackPanel>
+        
 
 
         <StackPanel
@@ -204,6 +210,7 @@
             Orientation="Horizontal"
             HorizontalAlignment="center">
             <telerik:RadButton 
+                Name="PayBtn"
                 Content="결제하기" 
                 Style="{StaticResource btnstyle}"
                 DataContext="{StaticResource PaymentViewModel}"
@@ -215,6 +222,7 @@
 
             <telerik:RadButton 
                 Content="다음으로" 
+                Name="btnNext"
                 Style="{StaticResource btnstyle}"
                 Command="{Binding SwitchViewCommand3}" CornerRadius="15"
                 FontWeight="Bold"

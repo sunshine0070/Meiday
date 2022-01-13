@@ -131,7 +131,7 @@
             Orientation="Horizontal"
             HorizontalAlignment="Center">
             <TextBox 
-                FontSize="24"
+                FontSize="30"
                 IsReadOnly="True" 
                 TextAlignment="Center"
                 VerticalContentAlignment="Center"

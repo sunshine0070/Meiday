@@ -115,7 +115,7 @@
                 Stretch="Fill"
                 StretchDirection="UpOnly"
                 Height="250" Width="250"
-                Margin="105 10 0 10">
+                Margin="65 10 0 10">
                 <Calendar
                     x:Name="accidentDate"
                     DataContext="{StaticResource AccidentViewModel}"
