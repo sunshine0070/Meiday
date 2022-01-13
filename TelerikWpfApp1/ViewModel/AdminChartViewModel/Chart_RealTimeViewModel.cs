@@ -47,7 +47,7 @@ namespace Meiday.ViewModel.AdminChartViewModel
 
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
             if (ds.Tables[0].Rows.Count == 0) { timer.Stop(); }
-                return double.Parse(ds.Tables[0].Rows[count]["갯수"].ToString());
+                return double.Parse(ds.Tables[0].Rows[count]["갯수"].ToString())-1;
 
         }
     }

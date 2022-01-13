@@ -103,9 +103,11 @@ namespace Meiday.ViewModel
                 {
                     _sampleDatas = new ObservableCollection<DataPoint>();
                     DataSet ds = new DataSet();
-                    string query = @" SELECT COUNT(*) 갯수 , A 날짜 FROM (
-                              SELECT TO_CHAR( treatment_time ,'dy') A FROM TREATMENT)
-                              GROUP BY A ORDER BY A ";
+                    string query = @" SELECT COUNT(*) 갯수 , A 날짜
+                                        FROM (
+                                                SELECT TO_CHAR( treatment_time ,'dy') A ,TO_CHAR( treatment_time-1 ,'d') B 
+                                                  FROM TREATMENT) 
+                                       GROUP BY A,B ORDER BY B";
 
                     OracleDBManager.Instance.ExecuteDsQuery(ds, query);
 
