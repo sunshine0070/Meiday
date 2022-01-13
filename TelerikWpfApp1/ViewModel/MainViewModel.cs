@@ -349,7 +349,7 @@ namespace Meiday
         public void SessionTimer_Reset()
         {
             Log.Debug("SessionTimer_Reset");
-            TimeRemaining = 300; // 세션 시간(3분)
+            TimeRemaining = 300; // 세션 시간(5분)
         }
 
         DispatcherTimer endPageTimer = new DispatcherTimer();

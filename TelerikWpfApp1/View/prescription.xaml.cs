@@ -39,7 +39,7 @@ namespace Meiday.View
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "prescription");
+                Log.Fatal(ex, "prescription");
             }
         }
 

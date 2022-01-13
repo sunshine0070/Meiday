@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public ManagerLoginFailDialog()
         {
-            InitializeComponent();
+            Log.Debug("ManagerLoginFailDialog");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "ManagerLoginFailDialog");
+            }
         }
     }
 }

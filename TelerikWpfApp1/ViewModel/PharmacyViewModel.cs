@@ -246,7 +246,7 @@ namespace Meiday
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Pharmacy_SendEmail");
+                Log.Error(ex, "Pharmacy_SendEmail");
                 pharmacy_email_fail_flag = true;
             }
         }

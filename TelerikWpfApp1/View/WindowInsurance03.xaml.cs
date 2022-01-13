@@ -29,7 +29,7 @@ namespace Meiday
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "WindowInsurance03");
+                Log.Fatal(ex, "WindowInsurance03");
             }
         }
     }

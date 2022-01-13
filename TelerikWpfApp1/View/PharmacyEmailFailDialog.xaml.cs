@@ -22,7 +22,15 @@ namespace Meiday.View
     {
         public PharmacyEmailFailDialog()
         {
-            InitializeComponent();
+            Log.Debug("PharmacyEmailFailDialog");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "PharmacyEmailFailDialog");
+            }
         }
     }
 }

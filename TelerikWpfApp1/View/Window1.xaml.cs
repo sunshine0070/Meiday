@@ -28,7 +28,7 @@ namespace Meiday
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Window1");
+                Log.Fatal(ex, "Window1");
             }
         }
     }

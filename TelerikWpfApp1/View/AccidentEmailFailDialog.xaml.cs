@@ -29,7 +29,7 @@ namespace Meiday.View
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "AccidentEmailFailDialog");
+                Log.Fatal(ex, "AccidentEmailFailDialog");
             }
         }
     }

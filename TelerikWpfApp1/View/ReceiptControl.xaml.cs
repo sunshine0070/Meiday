@@ -279,7 +279,15 @@ namespace Meiday.View
     {
         public ReceiptControl()
         {
-            InitializeComponent();
+            Log.Debug("ReceiptControl");
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "ReceiptControl");
+            }
         }
 
         // sms api 생성
@@ -296,7 +304,7 @@ namespace Meiday.View
         // Imgur API 키
         string ImgurAPIKey = "40da6cc06a9fc50";
         // Imgur Secret 키
-        string ImgurAPISecretKey = "3fbcc249a08fb3c3270fbc6bb7e254d65ece664d"; // 문자기능 안되면 키값 계속 확인필요
+        string ImgurAPISecretKey = "a252b994523820171f92b5f7b3155fce47bf1608"; // 문자기능 안되면 키값 계속 확인필요
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
