@@ -29,7 +29,8 @@ namespace Meiday.ViewModel.AdminChartViewModel
             DateTime now = DateTime.Now;
             string hour = DateTime.Now.ToString("HH");
             string minute = DateTime.Now.ToString("mm");
-            string second = (Int32.Parse(DateTime.Now.ToString("ss"))-3).ToString();
+            //string second = (Int32.Parse(DateTime.Now.ToString("ss"))-3).ToString();
+            string second = DateTime.Now.ToString("ss");
 
             string str_time = hour + minute + second;
             this.DataPoints.Add(new Chart_RealTime(now, GenerateValue(str_time)));
