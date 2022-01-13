@@ -122,12 +122,16 @@
                         <Label
                                 x:Name="lblDeptnum" 
                                 Style="{StaticResource lblstyle}"
-                                Content="부  서  번  호" />
-                        <TextBox 
-                                x:Name="tbDeptnum"
-                                Style="{StaticResource tbstyle}"
+                                Content="부    서    명" />
+
+                        <ComboBox 
+                                Width="250"
+                                Height="35"
                                 FontSize="22"
-                                Text="{Binding deptnum}"  />
+                                ItemsSource="{Binding Path= Combobox}"
+                                SelectedItem="{Binding TheSelectedItem, Mode=TwoWay}">
+
+                        </ComboBox>
                     </StackPanel>
                 </Border>
 

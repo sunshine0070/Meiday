@@ -183,6 +183,7 @@
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\AgeModel.cs" />
     <Compile Include="Model\Chart_RealTime.cs" />
+    <Compile Include="Model\ComboBox.cs" />
     <Compile Include="Model\DataPoint.cs" />
     <Compile Include="Model\LogData.cs" />
     <Compile Include="Model\Log_Model.cs" />

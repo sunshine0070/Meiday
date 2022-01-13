@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Windows;
@@ -8,8 +9,26 @@ namespace Meiday.ViewModel
 {
     public class InsertAdminViewModel : ViewModelBase
     {
-        //public ObservableCollection<PatientModel> patients { get; set; }
+        public ObservableCollection<ComboBox> COMBO_MODEL { get; set; }
 
+        //콤보박스
+        List<string> _combobox = new List<string> { };
+        public List<string> Combobox
+        {
+            get { return _combobox; }
+            set { _combobox = value; }
+
+        }
+
+        string _theSelectedItem = null;
+        public string TheSelectedItem
+        {
+            get { return _theSelectedItem; }
+            set { _theSelectedItem = value; } // NotifyPropertyChanged
+        }
+
+
+        //public ObservableCollection<PatientModel> patients { get; set; }
         private string _license;
         public string license
         {
@@ -63,7 +82,6 @@ namespace Meiday.ViewModel
         //    a = a.Substring(0, 5) + "-" + a.Substring(6, 12);
         //    return a;
         //}
-
         private string _position;
         public string position
         {
@@ -76,27 +94,27 @@ namespace Meiday.ViewModel
             }
         }
 
-        private string _deptnum;
-        public string deptnum
+        private string _Deptname;
+        public string Deptname
         {
-            get => _deptnum;
+            get => _Deptname;
             set
             {
-                Log.Debug("deptnum");
-                _deptnum = value;
-                OnPropertyChanged("deptnum");
+                Log.Debug("Deptname");
+                _Deptname = value;
+                OnPropertyChanged("Deptname");
             }
         }
 
-        private string _deptname;
-        public string deptname
+        private string _SelectDeptname;
+        public string SelectDeptname
         {
-            get => _deptname;
+            get => _SelectDeptname;
             set
             {
-                Log.Debug("deptname");
-                _deptname = value;
-                OnPropertyChanged("deptname");
+                Log.Debug("SelectDeptname");
+                _SelectDeptname = value;
+                OnPropertyChanged("SelectDeptname");
             }
         }
 
@@ -118,14 +136,25 @@ namespace Meiday.ViewModel
             }
         }
 
+        private ComboBox _selectCom;
+        public ComboBox SelectedComboBox
+        {
+            get { return _selectCom; }
+            set { _selectCom = value; }
+        }
+
+
         public RelayCommand AddAdmin { get; set; }
         public RelayCommand LoadAdmin { get; set; }
+        public RelayCommand ComboBox { get; set; }
+
 
         public InsertAdminViewModel()
         {
             Log.Debug("InsertAdminViewModel");
             AddAdmin = new RelayCommand(AddNewAdmin);
             LoadAdmin = new RelayCommand(DataSearch);
+            DataSearch1();
         }
 
         private void DataSearch()
@@ -164,82 +193,82 @@ namespace Meiday.ViewModel
 
         }
 
+        private void DataSearch1()
+        {
+            try
+            {
+                COMBO_MODEL = new ObservableCollection<ComboBox>();
+                DataSet ds = new DataSet();
+                string query2 = @"SELECT DR_DEPTNUM, DR_DEPTNAME FROM DEPARTMENT";
+
+                OracleDBManager.Instance.ExecuteDsQuery(ds, query2);
+
+                for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
+                {
+                    ComboBox obj = new ComboBox
+                    {
+                        Deptnum = ds.Tables[0].Rows[idx]["DR_DEPTNUM"].ToString(),
+                        Deptname = ds.Tables[0].Rows[idx]["DR_DEPTNAME"].ToString(),
+                    };
+
+                    COMBO_MODEL.Add(obj);
+                    Combobox.Add(obj.Deptname);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "DataSearch1");
+            }
+
+        }
 
         private void AddNewAdmin()
         {
+            MessageBox.Show(TheSelectedItem);
             try
             {
                 AdminModel a = new AdminModel()
                 {
-                    License = this.license,
-                    Name = this.name,
-                    Age = this.age,
-                    Email = this.email,
-                    Position = this.position,
-                    Deptnum = this.deptnum,
+                    Name = name,
+                    Age = age,
+                    Email = email,
+                    Position = position,
+                    Deptname = TheSelectedItem
+
                 };
-                if (this.name != null && this.age != null && this.email != null && this.position != null && this.deptnum != null)
+                if (a.Name != null && a.Age != null && a.Email != null && a.Position != null && a.Deptname != null)
                 {
-                    if (this.license == null)
-                    {
-                        string query = @"MERGE INTO DOCTOR USING dual ON (DR_LICENSE = '#License') 
-                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_AGE = '#Age', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
-                                WHEN NOT MATCHED THEN INSERT (DR_NAME,DR_AGE,DR_EMAIL,DR_POSITION,DR_DEPTNUM) VALUES ('#Name', '#Age', '#Email', '#Position', '#Deptnum') ";
-                        string query1 = @"commit";
-                        query = query.Replace("#License", this.license);
-                        query = query.Replace("#Name", this.name);
-                        query = query.Replace("#Age", this.age);
-                        query = query.Replace("#Email", this.email);
-                        query = query.Replace("#Position", this.position);
-                        query = query.Replace("#Deptnum", this.deptnum);
-                        OracleDBManager.Instance.ExecuteNonQuery(query);
-                        OracleDBManager.Instance.ExecuteNonQuery(query1);
+                    string query = @"INSERT INTO DOCTOR D( D.DR_NAME, D.DR_EMAIL, D.DR_POSITION, D.DR_DEPTNUM, D.DR_AGE) 
+                                        VALUES('#Name', '#Email', '#Position',(SELECT d.DR_DEPTNUM FROM DEPARTMENT d WHERE d.DR_DEPTNAME ='#Deptname'), '#Age')";
+                    string query1 = @"commit";
+                    query = query.Replace("#Name", a.Name);
+                    query = query.Replace("#Email", a.Email);
+                    query = query.Replace("#Position", a.Position);
+                    query = query.Replace("#Deptname", a.Deptname);
+                    query = query.Replace("#Age", a.Age);
+                    OracleDBManager.Instance.ExecuteNonQuery(query);
+                    OracleDBManager.Instance.ExecuteNonQuery(query1);
 
-                        this.license = string.Empty;
-                        this.name = string.Empty;
-                        this.age = string.Empty;
-                        this.email = string.Empty;
-                        this.position = string.Empty;
-                        this.deptnum = string.Empty;
+                    this.license = string.Empty;
+                    this.name = string.Empty;
+                    this.age = string.Empty;
+                    this.email = string.Empty;
+                    this.position = string.Empty;
+                    this.Deptname = string.Empty;
+                    TheSelectedItem = String.Empty;
 
-                        MessageBox.Show("새 관리자가 등록되었습니다");
-                    }
-                    else
-                    {
-                        
-                        string query = @"MERGE INTO DOCTOR USING dual ON (DR_LICENSE = '#License') 
-                                WHEN MATCHED THEN UPDATE SET DR_NAME = '#Name', DR_AGE = '#Age', DR_EMAIL = '#Email', DR_POSITION = '#Position' ,  DR_DEPTNUM = '#Deptnum' 
-                                WHEN NOT MATCHED THEN INSERT (DR_LICENSE,DR_NAME,DR_AGE,DR_EMAIL,DR_POSITION,DR_DEPTNUM) VALUES ('#License', '#Name', '#Age', '#Email', '#Position', '#Deptnum') ";
-                        string query1 = @"commit";
-                        query = query.Replace("#License", this.license);
-                        query = query.Replace("#Name", this.name);
-                        query = query.Replace("#Age", this.age);
-                        query = query.Replace("#Email", this.email);
-                        query = query.Replace("#Position", this.position);
-                        query = query.Replace("#Deptnum", this.deptnum);
-                        OracleDBManager.Instance.ExecuteNonQuery(query);
-                        OracleDBManager.Instance.ExecuteNonQuery(query1);
-
-                        this.license = string.Empty;
-                        this.name = string.Empty;
-                        this.age = string.Empty;
-                        this.email = string.Empty;
-                        this.position = string.Empty;
-                        this.deptnum = string.Empty;
-                        MessageBox.Show("새 관리자가 등록되었습니다");
-
-                    }
+                    MessageBox.Show("새 관리자가 등록되었습니다");
                 }
                 else
                 {
                     // textbox가 비었을 때 미충족 항목 MessageBox 팝업 띄워서 표시하기
                     string result = "";
                     string last = " 을(를) 입력해주세요.";
-                    if (this.name != string.Empty) { result += " 이름,"; }
-                    if (this.age != string.Empty) { result += " 나이,"; }
-                    if (this.email != string.Empty) { result += " 이메일,"; }
-                    if (this.position != string.Empty) { result += " 직급,"; }
-                    if (this.deptnum != string.Empty) { result += " 부서번호,"; }
+                    if (name == null) { result += " 이름,"; }
+                    if (age == null) { result += " 나이,"; }
+                    if (email == null) { result += " 이메일,"; }
+                    if (position == null) { result += " 직급,"; }
+                    if (Deptname == null) { result += " 부서명,"; }
                     if (result.Contains(','.ToString()))
                     {
                         result = result.Remove(result.LastIndexOf(','.ToString()));
@@ -251,7 +280,7 @@ namespace Meiday.ViewModel
 
                 }
 
-                if (this.license.IsNumeric() || this.email.IsNumeric() || this.position.IsNumeric() || this.deptnum.IsNumeric())
+                if (this.email.IsNumeric() || this.position.IsNumeric())
                 {
                     MessageBox.Show("정보를 정확하게 입력해주세요.");
                 }
