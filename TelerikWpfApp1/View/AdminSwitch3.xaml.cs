@@ -24,5 +24,6 @@ namespace Meiday.View
         {
             InitializeComponent();
         }
+
     }
 }

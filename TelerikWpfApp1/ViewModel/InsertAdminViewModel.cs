@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Windows;
+using System.Windows.Threading;
 using Meiday.Model;
 
 namespace Meiday.ViewModel
@@ -24,7 +25,22 @@ namespace Meiday.ViewModel
         public string TheSelectedItem
         {
             get { return _theSelectedItem; }
-            set { _theSelectedItem = value; } // NotifyPropertyChanged
+            set { _theSelectedItem = value;
+                OnPropertyChanged("TheSelectedItem");
+                
+            } // NotifyPropertyChanged
+        }
+
+        private int Comboindex = -1;
+
+        public int comboindex
+        {
+            get { return Comboindex; }
+            set
+            {
+                Comboindex = value;
+                OnPropertyChanged("comboindex");
+            }
         }
 
 
@@ -224,7 +240,6 @@ namespace Meiday.ViewModel
 
         private void AddNewAdmin()
         {
-            MessageBox.Show(TheSelectedItem);
             try
             {
                 AdminModel a = new AdminModel()
@@ -255,7 +270,8 @@ namespace Meiday.ViewModel
                     this.email = string.Empty;
                     this.position = string.Empty;
                     this.Deptname = string.Empty;
-                    TheSelectedItem = String.Empty;
+
+                    comboindex = -1;
 
                     MessageBox.Show("새 관리자가 등록되었습니다");
                 }

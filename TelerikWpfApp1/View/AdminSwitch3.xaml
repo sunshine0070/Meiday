@@ -124,14 +124,15 @@
                                 Style="{StaticResource lblstyle}"
                                 Content="부    서    명" />
 
-                        <ComboBox 
+                        <ComboBox x:Name="comboname"
                                 Width="250"
                                 Height="35"
                                 FontSize="22"
                                 ItemsSource="{Binding Path= Combobox}"
-                                SelectedItem="{Binding TheSelectedItem, Mode=TwoWay}">
+                                SelectedItem="{Binding TheSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedIndex="{Binding comboindex}"
+                                />
 
-                        </ComboBox>
                     </StackPanel>
                 </Border>
 
@@ -145,7 +146,7 @@
                         FontSize="20"
                         HorizontalAlignment="Center"
                         CornerRadius="10"
-                        Command="{Binding AddAdmin}" 
+                        Command="{Binding AddAdmin}"
                         />
             </StackPanel>
         </StackPanel>
