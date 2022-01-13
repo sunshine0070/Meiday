@@ -26,13 +26,18 @@ namespace Meiday.ViewModel.AdminChartViewModel
         }
         private void Timer_Tick(object sender, System.EventArgs e)
         {
-            DateTime now = DateTime.Now.AddMinutes(-52);
+            DateTime now = DateTime.Now;
+            string hour = DateTime.Now.ToString("HH");
+            string minute = DateTime.Now.ToString("mm");
+            string second = (Int32.Parse(DateTime.Now.ToString("ss"))-3).ToString();
+
+            string str_time = hour + minute + second;
             count++;
-            this.DataPoints.Add(new Chart_RealTime(now, GenerateValue()));
+            this.DataPoints.Add(new Chart_RealTime(now, GenerateValue(str_time)));
             if (DataPoints.Count == MaxPointCount) { timer.Stop(); }
         }
 
-        public double GenerateValue()
+        public double GenerateValue(string a)
         {
                 DataSet ds = new DataSet();
                 string query = @"select to_char(chk_date,'HH24:mi:ss') 시간, count(chk_date) 갯수
@@ -43,7 +48,7 @@ namespace Meiday.ViewModel.AdminChartViewModel
                                         ORDER BY CHK_DATE
                                        ) A LEFT OUTER JOIN LOG L 
                                                        ON TO_CHAR(A.CHK_DATE,'HH24:mi:ss') = TO_CHAR(L.CURRENTDATE, 'HH24:mi:ss')
-                                  WHERE TO_CHAR(A.CHK_DATE,'HH24:mi') >= '16:40' group by CHK_DATE ORDER BY CHK_DATE";
+                                  WHERE TO_CHAR(A.CHK_DATE,'HH24miss') >=" + "'" + a + "'" + "group by CHK_DATE ORDER BY CHK_DATE";
 
             OracleDBManager.Instance.ExecuteDsQuery(ds, query);
             if (ds.Tables[0].Rows.Count == 0) { timer.Stop(); }

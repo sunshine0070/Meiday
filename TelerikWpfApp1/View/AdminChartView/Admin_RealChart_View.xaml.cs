@@ -30,8 +30,8 @@ namespace Meiday.View.AdminChartView
         {
             // Adjust the visual range.
             AxisX2D axisX = ((XYDiagram2D)chart.Diagram).ActualAxisX;
-            DateTime maxRangeValue = new DateTime(2022, 01, 12, 23, 59, 59);
-            axisX.ActualVisualRange.SetMinMaxValues(maxRangeValue.AddHours(-13), maxRangeValue);
+            DateTime maxRangeValue = new DateTime(2022, 01, 13, 23, 00, 00);
+            axisX.ActualVisualRange.SetMinMaxValues(maxRangeValue.AddHours(-14), maxRangeValue);
         }
     }
 }
